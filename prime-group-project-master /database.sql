@@ -25,9 +25,16 @@ CREATE TABLE "camp_type" (
 );
 
 
+CREATE TABLE "activity_category" (
+    "id" serial primary key,
+    "category" varchar(25) NOT NULL
+);
+
+
 CREATE TABLE "activities" (
 	"id" serial primary key,
-	"activity" varchar(40) NOT NULL
+	"activity" varchar(40) NOT NULL,
+    "category_id" int NOT NULL
 );
 
 
@@ -43,13 +50,13 @@ CREATE TABLE "camp" (
 	"cost_min" int NOT NULL,
 	"cost_max" int NOT NULL,
 	"disabled_friendly" BOOLEAN NOT NULL,
-	"type_id" int NOT NULL REFERENCES "camp_type",
 	"phone" varchar(10),
 	"instagram" varchar(40),
 	"facebook" varchar(40),
 	"photo_url" varchar(100),
 	"logo_url" varchar(100),
-	"website" varchar(50)
+	"website" varchar(50),
+    "date added" timestamp without timezone DEFAULT now()
 );
 
 
@@ -97,6 +104,7 @@ CREATE TABLE "camp_program" (
 	"id" serial primary key,
 	"title" varchar(50) NOT NULL,
 	"gender_id" int NOT NULL REFERENCES "gender",
+	"type_id" int NOT NULL REFERENCES "camp_type",
 	"cost" int NOT NULL,
 	"age_min" int NOT NULL,
 	"age_max" int NOT NULL,
@@ -111,6 +119,7 @@ CREATE TABLE "program_dates" (
 	"start_time" TIME,
 	"end_time" TIME,
 	"program_id" int NOT NULL REFERENCES "camp_program",
+    "registration_start_date" DATE NOT NULL,
 	"registration_deadline" DATE NOT NULL
 );
 
@@ -169,8 +178,10 @@ VALUES ('Northern MN', 23), ('Southern MN', 23), ('Central MN', 23), ('Twin Citi
 
 INSERT INTO "status" ("status") VALUES ('interested'), ('applied'), ('registered'), ('waitlisted');
 
-INSERT INTO "activities" ("activity") VALUES ('academic'), ('arts'), ('cooking'), ('religious/spiritual'),
-('special needs'), ('general sports'), ('baseball'), ('basketball'), ('golf'), ('gymnastics'), ('horseback riding'),
-('lacrosse'), ('rock climbing'), ('sailing'), ('soccer'), ('tennis'), ('track and field'), ('music'), 
-('wilderness/outdoor adventures');
+INSERT INTO "activity_category" ("category") VALUES ('music'), ('athletic/sports'), ('outdoor/adventure'),
+('academic'), ('arts'), ('lifestyle');
 
+INSERT INTO "activities" ("activity", "category_id") VALUES ('academic', 4), ('theater', 5), ('visual arts', 5), 
+('cooking', 6), ('baseball', 2), ('basketball', 2), ('golf', 2), ('gymnastics', 2), ('horseback riding', 3),
+('lacrosse', 2), ('rock climbing', 3), ('sailing', 3), ('soccer', 2), ('tennis', 2), ('track and field', 2), ('band', 1), 
+('hiking', 3), ('choir', 1);
