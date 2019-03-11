@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 
 class Landing extends Component{
 
-
+goToSearch = ()=>{
+    this.props.history.push('/search')
+}
 
 
     render(){
@@ -12,7 +14,9 @@ class Landing extends Component{
             <div>
                 <div>Landing</div>
                 {JSON.stringify(this.props.reduxStore.LandingReducer.campName)}
-
+                <button onClick={this.goToSearch}>
+                Find Camps
+                </button>
             </div>
            
         )
