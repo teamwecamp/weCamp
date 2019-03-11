@@ -11,7 +11,7 @@ function* fetchCampItinerary (){
     }
 }
 
-function itinerarySaga(){
+function* itinerarySaga(){
     yield takeEvery('FETCH_CAMP_ITINERARY', fetchCampItinerary);
 }
 
