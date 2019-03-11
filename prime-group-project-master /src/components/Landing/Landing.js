@@ -20,8 +20,11 @@ class Landing extends Component{
 }
 
 
+
 const mapReduxStoreToProps = (reduxStore) => ({
     reduxStore
 });
 
 export default connect(mapReduxStoreToProps)(Landing);
+
+
