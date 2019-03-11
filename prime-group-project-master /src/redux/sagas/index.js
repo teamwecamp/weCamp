@@ -10,6 +10,11 @@ import searchSaga from './favoriteSaga';
 import updateItinerarySaga from './updateItinerary';
 import itinerarySaga from './itinerarySaga';
 import sharedSaga from './sharedSaga';
+import userProfileSaga from './userProfileSaga';
+import campRegistrationSaga from './campRegistrationSaga';
+import userRegistrationSaga from './userRegistrationSaga';
+
+
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -29,5 +34,8 @@ export default function* rootSaga() {
     updateItinerarySaga(),
     itinerarySaga(),
     sharedSaga(),
+    userProfileSaga(),
+    campRegistrationSaga(),
+    userRegistrationSaga(),
   ]);
 }
