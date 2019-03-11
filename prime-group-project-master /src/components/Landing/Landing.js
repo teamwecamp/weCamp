@@ -9,10 +9,16 @@ class Landing extends Component{
 
     render(){
         return(
-            <div>Landing</div>
+            <div>
+                <div>Landing</div>
+                {JSON.stringify(this.props.reduxStore.LandingReducer.campName)}
+
+            </div>
+           
         )
     }
 }
+
 
 const mapReduxStoreToProps = (reduxStore) => ({
     reduxStore

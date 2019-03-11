@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+
 const setRecentCamps = (state = [], action) => {
     console.log('in setRecentCamps');
 
@@ -26,3 +27,5 @@ export default combineReducers({
     setRecentCamps,
     setSponsoredCamps,
 });
+
+
