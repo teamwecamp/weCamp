@@ -39,7 +39,7 @@ function* fetchFavoriteCamps(){
     }
 }
 
-function* FavoriteSaga() {
+function* favoriteSaga() {
     // delete favorite camps
     yield takeEvery('DELETE_FAVORITE_CAMPS', deleteFavoriteCamps);
     // update camps
@@ -54,4 +54,4 @@ function* FavoriteSaga() {
 
 }
 
-export default FavoriteSaga;
+export default favoriteSaga;
