@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 
 class FavoriteCamps extends Component {
+
+
     render() {
         return (
             <div>Favorite Camps</div>
