@@ -14,6 +14,7 @@ const landingRouter = require('./routes/landing.router');
 const favoriteRouter = require('./routes/favorite.router');
 const searchRouter = require('./routes/search.router');
 const resultsRouter = require('./routes/results.router');
+const viewCampsRouter = require('./routes/viewcamps.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,7 +32,8 @@ app.use('/api/user', userRouter);
 app.use('/api/landing', landingRouter);
 app.use('/api/favorite',favoriteRouter);
 app.use('/api/search', searchRouter);
-app.use('/api/results');
+app.use('/api/results', resultsRouter);
+app.use('/api/viewcamps', viewCampsRouter);
 
 // Serve static files
 app.use(express.static('build'));
