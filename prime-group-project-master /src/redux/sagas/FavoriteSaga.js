@@ -2,39 +2,39 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 
-function* deleteFavoriteCamps(action){
+function* deleteFavoriteCamps(action) {
     console.log('this is inside of deleteFavoriteCamps');
-    try{
+    try {
         const campId = action.payload.campId
         console.log(campId);
         yield axios.delete(`/api/favorite/${campId}`);
-        const nextAction = {type: 'SET_FAVORITE_CAMPS'}
+        const nextAction = { type: 'SET_FAVORITE_CAMPS' }
         yield put(nextAction)
-    }catch (error){
+    } catch (error) {
         console.log('error in deleteFavoriteCamp saga', error);
     }
 }
 
-function* updateFavoriteCamps(action){
+function* updateFavoriteCamps(action) {
     console.log('this is updateFavoriteCamps');
-    try{
+    try {
         const campId = action.payload.campId
         yield axios.put(`/api/favorite/${campId}`);
-        const nextAction = {type: 'SET_FAVORITE_CAMPS'}
+        const nextAction = { type: 'SET_FAVORITE_CAMPS' }
         yield put(nextAction)
-    }catch (error){
+    } catch (error) {
         console.log('error in updateFavorietCamps', error);
     }
 }
 
-function* fetchFavoriteCamps(){
+function* fetchFavoriteCamps() {
     console.log('this is inside fetchFavoriteCamp');
-    try{
+    try {
         const response = yield axios.get(`/api/favortie`);
-        const nextAction = {type: 'SET_FAVORITE_CAMPS'}
+        const nextAction = { type: 'SET_FAVORITE_CAMPS' }
         yield put(nextAction);
 
-    }catch (error){
+    } catch (error) {
         console.log('error in fetchFavorieCamps saga', error);
     }
 }
@@ -48,8 +48,8 @@ function* favoriteSaga() {
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
 
 
-    
-    
+
+
 
 
 }
