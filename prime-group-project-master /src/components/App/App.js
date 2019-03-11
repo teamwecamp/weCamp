@@ -39,6 +39,18 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
+
+            <Route
+              exact
+              path="/search"
+              component={SearchCamps}
+            />
+
+            <Route
+              exact
+              path="/landing"
+              component={Landing}
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
