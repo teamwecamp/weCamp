@@ -20,8 +20,11 @@ class Landing extends Component{
 }
 
 
-const mapReduxStateToProps = (reduxState) => ({
-    reduxState
+
+const mapReduxStoreToProps = (reduxStore) => ({
+    reduxStore
 });
 
-export default connect(mapReduxStateToProps)(Landing);
+export default connect(mapReduxStoreToProps)(Landing);
+
+

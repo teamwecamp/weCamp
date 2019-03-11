@@ -17,7 +17,9 @@ class LandingSponsoredCamps extends Component {
     }
     render() {
         return (
-            <div>Landing Sponsored Camps</div>
+            <div>Landing Sponsored Camps
+                {JSON.stringify(this.props.reduxStore.setSponsoredCamps)}
+            </div>
         )
     }
 }

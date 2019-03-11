@@ -3,11 +3,26 @@ import { connect } from 'react-redux';
 
 
 class Itinerary extends Component {
+
+    componentDidMount=()=> {
+        this.setCampItinerary();
+    }
+
+    setCampItinerary(){
+        const action = {type:'SET_CAMP_ITINERARY'}
+        this.props.dispatch(action);
+    }
     render() {
         return (
-            <div>Itinerary</div>
+            <div>Itinerary
+                {JSON.stringify(this.props.reduxStore.setCampItinerary)}
+            </div>
+
         )
     }
 }
 
-export default Itinerary;
+const mapStateToProps = (reduxStore) => ({
+    reduxStore
+});
+export default connect(mapStateToProps)(Itinerary);
