@@ -1,7 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* addCampRegistration(){
+function* addCampRegistration(action){
     try{
         yield axios.post('/api/campRegistration', action.payload);
         const nextAction = {type: 'SET_CAMP_REGISTRATION'};
@@ -24,10 +24,10 @@ function* putCampRegistration (action){
     }
 }
 
-function* campRegisrrationSaga(){
+function* campRegistrationSaga(){
     yield takeEvery ('PUT_CAMP_REGISTRATION', putCampRegistration);
     yield takeEvery ('ADD_CAMP_REGISTRATION', addCampRegistration);
 }
 
 
-
+export default campRegistrationSaga;

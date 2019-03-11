@@ -30,4 +30,4 @@ export default combineReducers({
   setUserProfileInfo,
 });
 
-export default userReducer;
+// export default userReducer;
