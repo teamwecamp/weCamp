@@ -17,7 +17,12 @@ class LandingRecentCamps extends Component {
  
     render() {
         return (
-            <div>Landing Recent Camps</div>
+            
+            <div>Landing Recent Camps
+                {JSON.stringify(this.props.reduxStore.setRecentCamps)}
+            </div>
+            
+
         )
     }
 }
