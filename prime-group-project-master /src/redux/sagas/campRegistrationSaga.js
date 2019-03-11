@@ -24,10 +24,15 @@ function* putCampRegistration (action){
     }
 }
 
-function* campRegisrrationSaga(){
+function* campRegistrationSaga(){
     yield takeEvery ('PUT_CAMP_REGISTRATION', putCampRegistration);
     yield takeEvery ('ADD_CAMP_REGISTRATION', addCampRegistration);
 }
 
-export default campRegisrrationSaga;
+
+
+export default campRegistrationSaga;
+
+
+
 
