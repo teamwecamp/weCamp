@@ -7,6 +7,8 @@ import userSaga from './userSaga';
 import landingSaga from './landingSaga';
 import favoriteSaga from './favoriteSaga';
 import searchSaga from './favoriteSaga';
+import updateItinerarySaga from './updateItinerary';
+import itinerarySaga from './itinerarySaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +25,7 @@ export default function* rootSaga() {
     landingSaga(),
     favoriteSaga(),
     searchSaga(),
+    updateItinerarySaga(),
+    itinerarySaga(),
   ]);
 }
