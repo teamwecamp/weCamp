@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 
 
 class SearchCamps extends Component {
+
+    componentDidMount = () => {
+        this.setSearchCamps();
+    }
+
+    setSearchCamps = () => {
+        const action = {type: 'SET_SEARCH_CAMPS'}
+        this.props.dispatch(action);
+        console.log('action', action);
+    }
     render() {
         return (
             <div>Search Camps</div>
@@ -10,4 +20,7 @@ class SearchCamps extends Component {
     }
 }
 
-export default SearchCamps;
+const mapStateToProps = (reduxStore) => ({
+    reduxStore
+});
+export default connect(mapStateToProps)(SearchCamps);

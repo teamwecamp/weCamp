@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 
 class Landing extends Component{
+
+
+
+
     render(){
         return(
             <div>
@@ -15,8 +19,12 @@ class Landing extends Component{
     }
 }
 
-const mapStateToProps = reduxStore => ({
-    reduxStore: reduxStore
-})
 
-export default connect()(Landing);
+
+const mapReduxStoreToProps = (reduxStore) => ({
+    reduxStore
+});
+
+export default connect(mapReduxStoreToProps)(Landing);
+
+
