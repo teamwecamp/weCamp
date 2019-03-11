@@ -51,8 +51,9 @@ CREATE TABLE "camp" (
 	"cost_max" int NOT NULL,
 	"disabled_friendly" BOOLEAN NOT NULL,
 	"phone" varchar(10),
-	"instagram" varchar(40),
-	"facebook" varchar(40),
+	"instagram" varchar(80),
+	"facebook" varchar(80),
+	"twitter" varchar(80),
 	"photo_url" varchar(100),
 	"logo_url" varchar(100),
 	"website" varchar(50),
@@ -185,4 +186,4 @@ INSERT INTO "activity_category" ("category") VALUES ('music'), ('athletic/sports
 INSERT INTO "activities" ("activity", "category_id") VALUES ('academic', 4), ('theater', 5), ('visual arts', 5), 
 ('cooking', 6), ('baseball', 2), ('basketball', 2), ('golf', 2), ('gymnastics', 2), ('horseback riding', 3),
 ('lacrosse', 2), ('rock climbing', 3), ('sailing', 3), ('soccer', 2), ('tennis', 2), ('track and field', 2), ('band', 1), 
-('hiking', 3), ('choir', 1);
+('hiking', 3), ('choir', 1), ('canoeing', 3);
