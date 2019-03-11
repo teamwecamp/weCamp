@@ -22,20 +22,27 @@ true, 25, 515, false, 5077633567, 'https://www.facebook.com/pages/sheteklutheran
 'https://www.instagram.com/sheteklutheranministries/', 'http://shetek.org/wp-content/uploads/2016/12/10914834_10153302359333081_2510963860018673748_o.jpg', 
 'https://shetek.org/wp-content/uploads/2016/12/Shetek-Horiz-2000x400.png', 'https://shetek.org/');
 
--- camp with insta and twitter
-
+-- camp #4 without insta and twitter
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
+"disabled_friendly", "phone", "facebook", "photo_url", "logo_url", "website") VALUES ('Camp Winnebago', '19708 Camp Winnebago Road Caledonia, MN 55921', 
+2, '6/12/2019', '8/4/2019', 3, false, 950, 1350, true, 5077242351, 'https://www.facebook.com/campwinnebagocaledonia?fref=ts', 
+'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/2183326.jpg', 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/published/1465936858.png', 
+'http://www.campwinnebago.org');
 
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 
 ('Womens Way Canoe Trip', 2, 1, 500, 18, 99, 1), ('Two Weeks', 3, 1, 3025, 8, 16, 2), ('Four Weeks', 3, 1, 5775, 8, 16, 2), 
 ('Six Weeks', 3, 1, 8450, 8, 16, 2), ('Day Play', 3, 2, 25, 7, 8, 3), ('Explorer Camp', 3, 1, 440, 9, 14, 3), 
-('Confirmation Camp', 3, 1, 440, 12, 16, 3);
+('Confirmation Camp', 3, 1, 440, 12, 16, 3), ('Kids & Teens low care', 3, 1, 950, 5, 19, 4), ('Kids & Teens medium care', 3, 1, 1250, 5, 19, 4), 
+('Kids & Teens high care', 3, 1, 1350, 5, 19, 4);
 
 -- program dates without start times
 INSERT INTO "program_dates" ("start_date", "end_date", "program_id", "registration_start_date", "registration_deadline") 
 VALUES ('5/24/2019', '5/27/2019', 1, '3/1/2019', '5/23/2019'), ('6/16/2019', '6/24/2019', 2, '3/1/2019', '5/31/2019'), 
 ('7/5/2019', '7/13/2019', 2, '3/1/2019', '5/31/2019'), ('7/14/2019', '7/22/2019', 2, '3/1/2019', '5/31/2019'), 
-('7/24/2019', '8/1/2019', 2, '3/1/2019', '5/31/2019'), ('7/14/2019', '7/20/2019', 3, '3/1/2019', '5/31/2019');
+('7/24/2019', '8/1/2019', 2, '3/1/2019', '5/31/2019'), ('7/14/2019', '7/20/2019', 3, '3/1/2019', '5/31/2019'), ('7/10/2019', 
+'7/14/2019', 10, '3/1/2019', '6/1/2019'), ('7/10/2019', '7/14/2019', 11, '3/1/2019', '6/1/2019'), ('7/10/2019', '7/14/2019', 12, 
+'3/1/2019', '6/1/2019');
 
 -- program dates with start times
 INSERT INTO "program_dates" ("start_date", "end_date", "start_time", "end_time", "program_id", "registration_start_date", 
@@ -47,11 +54,12 @@ INSERT INTO "program_dates" ("start_date", "end_date", "start_time", "end_time",
 
 
 INSERT INTO "camps_activities" ("activity_id", "camp_id") VALUES (17, 1), (19, 1), (5, 2), (3, 2), (13, 2), (19, 2), (17, 2), 
-(9, 2), (6, 2), (11, 2), (20, 3), (21, 3), (17, 3), (19, 3), (5, 3), (6, 3);
+(9, 2), (6, 2), (11, 2), (20, 3), (21, 3), (17, 3), (19, 3), (5, 3), (6, 3), (5,4), (6,4), (22,4), (17,4), (21,4), (20,4), (19,4);
 
 INSERT INTO "program_activities" ("activity_id", "program_id") 
 VALUES (17, 1), (19, 2), (17, 2), (17, 3), (19, 3), (5, 4), (3, 4), (13, 4), (19, 4), (17, 4), (9, 4), (6, 4), (11, 4), 
 (5, 5), (3, 5), (13, 5), (19, 5), (17, 5), (9, 5), (6, 5), (11, 5), (5, 6), (3, 6), (13, 6), (19, 6), (17, 6), (9, 6), 
 (6, 6), (11, 6), (20, 7), (21, 7), (20, 8), (21, 8), (17, 8), (19, 8), (5, 8), (6, 8), (20, 9), (21, 9), (17, 9), (19, 9), 
-(5, 9), (6, 9);
+(5, 9), (6, 9), (5,10), (6,10), (22,10), (17,10), (21,10), (20,10), (19,10), (5,11), (6,11), (22,11), (17,11), (21,11), 
+(20,11), (19,11), (5,12), (6,12), (22,12), (17,12), (21,12), (20,12), (19,12);
 
