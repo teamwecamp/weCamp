@@ -19,4 +19,4 @@ const mapStateToProps = reduxStore => ({
     reduxStore: reduxStore
 })
 
-export default connect()(Landing);
+export default connect(mapStateToProps)(Landing);
