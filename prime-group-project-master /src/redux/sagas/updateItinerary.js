@@ -2,7 +2,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 
-function* postUpdateItinerary(){
+function* postUpdateItinerary(action){
     console.log('this is postUpdateItinerary saga');
     try{
         const itineraryId = action.payload.itineraryId
