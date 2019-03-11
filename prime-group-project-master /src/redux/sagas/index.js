@@ -16,7 +16,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    LandingSaga(),
+   LandingSaga(),
     FavoriteSaga(),
   ]);
 }
