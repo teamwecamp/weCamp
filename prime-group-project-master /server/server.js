@@ -17,6 +17,7 @@ const resultsRouter = require('./routes/results.router');
 const viewCampsRouter = require('./routes/viewcamps.router');
 const updateItineraryRouter = require('./routes/updateitinerary.router');
 const itineraryRouter = require('./routes/itinerary.router');
+const sharedAccessRouter = require('./routes/sharedaccess.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.use('/api/results', resultsRouter);
 app.use('/api/viewcamps', viewCampsRouter);
 app.use('/api/updateitinerary', updateItineraryRouter);
 app.use('/api/itinerary', itineraryRouter);
+app.use('/api/sharedaccess',sharedAccessRouter);
 
 
 
