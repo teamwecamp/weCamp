@@ -15,6 +15,7 @@ const favoriteRouter = require('./routes/favorite.router');
 const searchRouter = require('./routes/search.router');
 const resultsRouter = require('./routes/results.router');
 const viewCampsRouter = require('./routes/viewcamps.router');
+const updateItinerary = require('./routes/updateitinerary');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -34,6 +35,7 @@ app.use('/api/favorite',favoriteRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/results', resultsRouter);
 app.use('/api/viewcamps', viewCampsRouter);
+app.use('/api/updateitinerary', updateItinerary);
 
 // Serve static files
 app.use(express.static('build'));
