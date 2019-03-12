@@ -11,6 +11,15 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const landingRouter = require('./routes/landing.router');
+const favoriteRouter = require('./routes/favorite.router');
+const searchRouter = require('./routes/search.router');
+const resultsRouter = require('./routes/results.router');
+const viewCampsRouter = require('./routes/viewcamps.router');
+const updateItineraryRouter = require('./routes/updateitinerary.router');
+const itineraryRouter = require('./routes/itinerary.router');
+const sharedAccessRouter = require('./routes/sharedaccess.router');
+const userProfileInfoRouter = require('./routes/userprofileinfo.router');
+const campRegistrationRouter = require('./routes/campregistration.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +35,18 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/landing', landingRouter);
+app.use('/api/favorite', favoriteRouter);
+app.use('/api/search', searchRouter);
+app.use('/api/results', resultsRouter);
+app.use('/api/viewcamps', viewCampsRouter);
+app.use('/api/updateitinerary', updateItineraryRouter);
+app.use('/api/itinerary', itineraryRouter);
+app.use('/api/sharedaccess', sharedAccessRouter);
+app.use('/api/userprofileinfo', userProfileInfoRouter);
+app.use('/api/campregistration', campRegistrationRouter);
+
+
+
 
 // Serve static files
 app.use(express.static('build'));

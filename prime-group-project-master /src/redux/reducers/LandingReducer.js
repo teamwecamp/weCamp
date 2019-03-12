@@ -1,12 +1,31 @@
 import { combineReducers } from 'redux';
 
-const campName = (state = [], action) => {
-    if(action.type === 'SET_RECENT_CAMPS'){
-        return action.payload;
+
+const setRecentCamps = (state = [], action) => {
+    console.log('in setRecentCamps');
+
+    switch (action.type) {
+        case '':
+            return action.payload;
+        default:
+            return state;
     }
-    return state;
-}
+};
+
+const setSponsoredCamps = (state = [], action) => {
+    console.log('in setSponsoredCamps');
+
+    switch (action.type) {
+        case '':
+            return action.payload;
+        default:
+            return state;
+    }
+};
 
 export default combineReducers({
-    campName
-})
+    setRecentCamps,
+    setSponsoredCamps,
+});
+
+
