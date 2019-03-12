@@ -56,7 +56,7 @@ CREATE TABLE "camp" (
 	"twitter" varchar(80),
 	"photo_url" text,
 	"logo_url" text,
-	"website" varchar(80),
+	"website" varchar(100),
     "date added" timestamp without timezone DEFAULT now()
 );
 

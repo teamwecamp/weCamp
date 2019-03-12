@@ -41,7 +41,40 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 3, false, 300, 300, false, 5078220526, 'https://www.facebook.com/ReinbowsInc/', 'https://www.reinbowsinc.org/wp-content/uploads/2018/11/IMG_8094.jpg', 
 'https://www.reinbowsinc.org/wp-content/uploads/2018/03/Reinbows-Logo-1.jpg', 'https://www.reinbowsinc.org/programs/summer-horse-camps/');
 
+-- camp #7 with insta, fb and twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+"phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website") VALUES ('ASI Summer Day Camps', '2600 Park Avenue Minneapolis MN 55407', 4, 
+'6/24/2019', '8/15/19', 3, false, 60, 125, true, 6128714907, 'https://www.facebook.com/AmericanSwedishInstitute', 'https://twitter.com/AmSwedInstitute', 
+'https://www.instagram.com/amswedinstitute/', 'https://www.asimn.org/sites/default/files/styles/oc_picture_header_desk_narrow/public/vikings_1.jpg?itok=h7aH25ir&timestamp=1405627522', 
+'https://www.asimn.org/sites/all/themes/oc_child/logo.png', 'https://www.asimn.org/programs-education/youth-and-family-programs/summer-day-camps/summer-day-camps');
 
+-- camp #8 with insta, fb and twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
+"facebook", "twitter", "instagram", "photo_url", "logo_url", "website") VALUES ('Camp Como', '1225 Estabrook Drive, Saint Paul, MN 55103', 4, '6/10/19', '8/30/19', 
+3, false, 135, 330, true, 6514878272, 'https://www.facebook.com/ComoZooConservatory', 'https://twitter.com/ComoZoo', 'https://www.instagram.com/comozooconservatory/', 
+'http://www.comozooconservatory.org/wp-content/uploads/2019/01/01.-giraffe-feeding-6.jpg', 'http://www.comozooconservatory.org/wp-content/uploads/2019/02/2019-camp-como.jpg', 
+'http://www.comozooconservatory.org/education/kids/camps/#/general');
+
+-- camp #9 without twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
+"facebook", "instagram", "photo_url", "logo_url", "website") VALUES ('Mpls Bouldering Project Summer Camps', '1433 W. River Rd N. Minneapolis, MN 55411', 4, 
+'6/10/19', '8/23/19', 3, false, 200, 250, false, 6123082800, 'https://www.facebook.com/minneapolisboulderingproject', 'https://www.instagram.com/minneapolisboulderingproject/', 
+'https://static1.squarespace.com/static/58b0821a86e6c0c83ba97a07/5c3cc9d221c67c086c3b0427/5c3cd1c9b8a04593c30186e5/1547493889763/Youth+1.jpg?format=2500w', 
+'https://static1.squarespace.com/static/58b0821a86e6c0c83ba97a07/t/59cc8df064b05f23fa454581/1552336470786/?format=1500w', 'https://minneapolisboulderingproject.com/summer-camps');
+
+-- camp #10 without twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
+"facebook", "instagram", "photo_url", "logo_url", "website") VALUES ('Camp Lake Hubert for Girls', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/21/19', 2, false, 725, 
+9775, false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
+'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/PaddleboardGirls3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
+'https://www.lincoln-lakehubert.com/girls-camp/');
+
+-- camp #11 without twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", 
+"instagram", "photo_url", "logo_url", "website") VALUES ('Camp Lincoln for Boys', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/15/19', 1, false, 725, 9775, 
+false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
+'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/HighRopesBoys3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
+'https://www.lincoln-lakehubert.com/boys-camp/');
 
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 
