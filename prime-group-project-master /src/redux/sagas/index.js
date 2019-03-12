@@ -6,7 +6,7 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 
 // Sagas 
-import landingSaga from './LandingSaga';
+import landingSaga from './landingSaga';
 import favoriteSaga from './favoriteSaga';
 import searchSaga from './searchSaga';
 import updateItinerarySaga from './updateItinerary';
