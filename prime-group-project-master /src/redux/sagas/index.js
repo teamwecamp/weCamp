@@ -6,8 +6,8 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 
 // Sagas 
-import landingSaga from './landingSaga';
-import favoriteSaga from './favoriteSaga';
+import LandingSaga from './LandingSaga';
+import FavoriteSaga from './FavoriteSaga';
 import searchSaga from './searchSaga';
 import updateItinerarySaga from './updateItinerary';
 import itinerarySaga from './itinerarySaga';
@@ -30,8 +30,8 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    landingSaga(),
-    favoriteSaga(),
+    LandingSaga(),
+    FavoriteSaga(),
     searchSaga(),
     updateItinerarySaga(),
     itinerarySaga(),
