@@ -8,7 +8,7 @@ class UserRegistration extends Component {
     render() {
         return (
             <div>User Registration</div>
-            //I think this already exists as the RegisterPage
+            //Use this page to add kids to user profile
         )
     }
 }
