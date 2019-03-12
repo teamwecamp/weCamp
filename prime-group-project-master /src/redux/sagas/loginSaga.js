@@ -11,7 +11,9 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-
+    console.log(action.payload);
+    console.log(config);
+    
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
