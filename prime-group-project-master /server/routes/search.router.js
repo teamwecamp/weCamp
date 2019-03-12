@@ -8,7 +8,7 @@ const router = express.Router();
  */
 //This will get all the dropdown information from the database to
 //populate the search dropdowns.
-router.get("/", (req, res) => {
+router.get("/dropdown", (req, res) => {
   let dropDown = {};
   console.log("in get route for dropdown", dropDown);
   (async () => {
