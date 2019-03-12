@@ -1,8 +1,22 @@
+
+
 import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
-import LandingSaga from './LandingSaga';
+
+// Sagas 
+import landingSaga from './landingSaga';
+import favoriteSaga from './favoriteSaga';
+import searchSaga from './searchSaga';
+import updateItinerarySaga from './updateItinerary';
+import itinerarySaga from './itinerarySaga';
+import sharedSaga from './sharedSaga';
+import userProfileSaga from './userProfileSaga';
+import campRegistrationSaga from './campRegistrationSaga';
+import userRegistrationSaga from './userRegistrationSaga';
+
+
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -16,6 +30,14 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    LandingSaga(),
+    landingSaga(),
+    favoriteSaga(),
+    searchSaga(),
+    updateItinerarySaga(),
+    itinerarySaga(),
+    sharedSaga(),
+    userProfileSaga(),
+    campRegistrationSaga(),
+    userRegistrationSaga(),
   ]);
 }
