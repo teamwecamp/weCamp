@@ -105,11 +105,11 @@ class CampRegistration extends Component {
                 style = {{width: 75}}
                 margin="normal"
               >
-                {/* {this.props.reduxStore.setCampDropDown.map(type => (
+                {this.props.reduxStore.setCampDropDown.states.map(type => (
                   <MenuItem key={type.id} value={type.id}>
                   {type}
                   </MenuItem>
-                ))} */}
+                ))}
               </TextField>
 
             </form>

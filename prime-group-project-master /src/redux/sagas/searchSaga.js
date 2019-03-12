@@ -1,5 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+// import { ServerResponse } from 'http';
 
 function* fetchSearchCamps(){
     try{
@@ -17,7 +18,8 @@ function* fetchSearchCamps(){
 function* fetchSearchCampsDropDown() {
     try {
         const response = yield axios.get('/api/search/dropdown');
-        const nextAction = { type: 'SET_CAMP_DROP_DOWN' }
+        console.log(response);
+        const nextAction = { type: 'SET_CAMP_DROP_DOWN', payload:response.data };
         yield put(nextAction);
 
     } catch (error) {
