@@ -106,8 +106,6 @@ class RegisterPage extends Component {
                 onChange={this.handleInputChangeFor('state')}
               />
             </label>
-          </div>
-          <div>
             <label htmlFor="zip">
               Zip code:
               <input
