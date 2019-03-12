@@ -28,4 +28,5 @@ const setCampDropDown = (state= [], action ) =>{
 
 export default combineReducers({
     setSearchCamps,
+    setCampDropDown,
 });
