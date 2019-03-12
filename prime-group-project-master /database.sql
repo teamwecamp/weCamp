@@ -74,7 +74,7 @@ CREATE TABLE "user" (
 	"password" text NOT NULL,
 	"full_name" varchar(40) NOT NULL,
 	"email" varchar(50) NOT NULL,
-	"street address" varchar(50),
+	"street_address" varchar(50),
 	"city" varchar(40),
 	"state" varchar(2),
 	"zip" int
