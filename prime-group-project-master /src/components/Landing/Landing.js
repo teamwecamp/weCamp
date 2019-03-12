@@ -13,7 +13,7 @@ goToSearch = ()=>{
         return(
             <div>
                 <div>Landing</div>
-                {JSON.stringify(this.props.reduxStore.LandingReducer.campName)}
+                
                 <button onClick={this.goToSearch}>
                 Find Camps
                 </button>
