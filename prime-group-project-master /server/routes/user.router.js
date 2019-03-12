@@ -16,11 +16,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {  
-  const username = req.body.username;
+  const email = req.body.email;
+  const full_name = req.body.fullname;
+  const street_address = req.body.street_address;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zip = req.body.zip;
   const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = 'INSERT INTO person (username, password) VALUES ($1, $2) RETURNING id';
-  pool.query(queryText, [username, password])
+  const queryText = 'INSERT INTO "user" (email, full_name, password, street_address, city, state, zip) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id';
+  pool.query(queryText, [email, full_name, password, street_address, city, state, zip])
     .then(() => { res.sendStatus(201); })
     .catch((err) => { next(err); });
 });
@@ -30,6 +35,8 @@ router.post('/register', (req, res, next) => {
 // this middleware will run our POST if successful
 // this middleware will send a 404 if not successful
 router.post('/login', userStrategy.authenticate('local'), (req, res) => {
+  console.log('in user login post');
+  
   res.sendStatus(200);
 });
 
