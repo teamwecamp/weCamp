@@ -29,6 +29,20 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/2183326.jpg', 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/published/1465936858.png', 
 'http://www.campwinnebago.org');
 
+-- camp #5 without social media (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+"phone", "photo_url", "logo_url", "website") VALUES ('Camp Koronis', '15752 County Road 181  Paynesville, MN 56362-9377', 3, '6/12/2019', '8/3/2019', 3, true, 
+195, 680, false, 8556221973, 'https://www.koronisministries.org/files/tables/content/10569568/fields/primaryimage/00b97725562041e9b41f85945eb655a3/kayak+01.jpg?width=400&height=300&mode=crop', 
+'https://www.koronisministries.org/files/content/camps/images/koronis/newlogo_koronis.png', 'https://www.koronisministries.org/');
+
+-- camp #6 without insta and twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+"phone", "facebook", "photo_url", "logo_url", "website") VALUES ('Reinbows Inc of Windom', '43341 480th Ave Windom, MN 56101-3326', 2, '6/10/19', '6/14/19', 
+3, false, 300, 300, false, 5078220526, 'https://www.facebook.com/ReinbowsInc/', 'https://www.reinbowsinc.org/wp-content/uploads/2018/11/IMG_8094.jpg', 
+'https://www.reinbowsinc.org/wp-content/uploads/2018/03/Reinbows-Logo-1.jpg', 'https://www.reinbowsinc.org/programs/summer-horse-camps/');
+
+
+
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 
 ('Womens Way Canoe Trip', 2, 1, 500, 18, 99, 1), ('Two Weeks', 3, 1, 3025, 8, 16, 2), ('Four Weeks', 3, 1, 5775, 8, 16, 2), 
