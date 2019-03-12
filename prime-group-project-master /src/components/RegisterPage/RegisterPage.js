@@ -3,19 +3,29 @@ import {connect} from 'react-redux';
 
 class RegisterPage extends Component {
   state = {
-    username: '',
+    email: '',
+    fullname: '',
     password: '',
+    street_address: '',
+    city: '',
+    state: '',
+    zip: '',
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
-    if (this.state.username && this.state.password) {
+    if (this.state.email && this.state.password && this.state.fullname) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
-          username: this.state.username,
+          email: this.state.email,
+          fullname: this.state.fullname,
           password: this.state.password,
+          street_address: this.state.street_address,
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip,
         },
       });
     } else {
@@ -40,16 +50,69 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
+        <form className="userRegistrationForm" onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
-            <label htmlFor="username">
-              Username:
+            <label htmlFor="fullName">
+              Full name:
               <input
                 type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                name="fullName"
+                value={this.state.fullname}
+                onChange={this.handleInputChangeFor('fullname')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="email">
+              Email*:
+              <input
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="streetAddress">
+              Street address:
+              <input
+                type="text"
+                name="streetAddress"
+                value={this.state.street_address}
+                onChange={this.handleInputChangeFor('street_address')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="city">
+              City:
+              <input
+                type="text"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleInputChangeFor('city')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="state">
+              State:
+              <input
+                type="text"
+                name="state"
+                value={this.state.state}
+                onChange={this.handleInputChangeFor('state')}
+              />
+            </label>
+            <label htmlFor="zip">
+              Zip code:
+              <input
+                type="text"
+                name="zip"
+                value={this.state.zip}
+                onChange={this.handleInputChangeFor('zip')}
               />
             </label>
           </div>
