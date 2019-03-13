@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { createMuiTheme } from '@material-ui/core/styles';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const theme = createMuiTheme({
     palette: {
@@ -24,6 +25,9 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
     },
+    media: {
+        height: 140,
+    },
     card: {
         minWidth: 175,
         height: 250,
@@ -33,7 +37,7 @@ const styles = theme => ({
     },
     paper: {
         height: 200,
-        width: 160,
+        width: 260,
         textAlign: 'center',
     },
     pos: {
@@ -63,13 +67,18 @@ class FavoriteCampsDetails extends Component {
         return (
             <div>
                 {JSON.stringify(this.props.camp)}
-                <Grid className="innerGrid" item xs={6}>
+                <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card} className="guest-card">
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
-                                    <Typography className={classes.title}>{this.props.camp.camp.Name}</Typography>
-                                    {/* <Typography>Host: {this.props.event.first_name} {this.props.event.last_name}</Typography> */}
+                                    <Typography className={classes.title}>{this.props.camp.kid}</Typography>
+                                    <CardMedia
+                                        className={classes.media}
+                                        image={this.props.camp.camp.photo_url}
+                                        title="Camp Pic"
+                                    />
+                                    <Typography>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
