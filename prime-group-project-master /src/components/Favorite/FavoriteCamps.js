@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Card from '../Card/Card';
 
 
 class FavoriteCamps extends Component {
@@ -20,6 +21,7 @@ class FavoriteCamps extends Component {
         return (
             <div>Favorite Camps
                 {JSON.stringify(this.props.reduxStore.setFavoriteCamps)}
+                <Card/>
             </div>
         )
     }
