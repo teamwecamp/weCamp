@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
             //turns favorite into an array
             const favorites = favoriteList.rows;
             
-            console.log('favoritelistr', favorites);
+            console.log('favoritelist', favorites);
             
             console.log('favorite list row', favorites);
             //create empty array to push data into

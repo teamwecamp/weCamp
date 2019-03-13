@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FavoriteCampsDetails from './FavoriteCampsDetails';
 
@@ -16,13 +18,16 @@ const styles = theme => ({
 });
 
 class FavoriteCamps extends Component {
+    state = {
+        spacing: '16',
+    }
 
     componentDidMount(){
-        // this.setFavoriteCamps();
+        this.setFavoriteCamps();
     }
 
     setFavoriteCamps = () => {
-        const action = { type: 'SET_FAVORITE_CAMPS'}
+        const action = { type: 'FETCH_FAVORITE_CAMPS'}
         this.props.dispatch(action);
     }
 
@@ -47,23 +52,25 @@ class FavoriteCamps extends Component {
     }
 
     render() {
+        const { classes } = this.props;
+        const { spacing } = this.state;
         return (
             <div>
                 <h1>Favorite Camps</h1>
-                {/* {JSON.stringify(this.props.reduxStore.setFavoriteCamps)} */}
-                <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                {JSON.stringify(this.props.favoriteCamps)}
+                {/* <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.favoriteCamps()}
-                </Grid>
+                </Grid> */}
             </div>
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
-    favoriteCamps: reduxStore.setFavoriteCamps
+    favoriteCamps: reduxStore.setFavoriteCamps.setFavoriteCamps
 });
 
-Landing.propTypes = {
+FavoriteCamps.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
