@@ -48,6 +48,7 @@ router.get('/', (req, res) => {
                 let faves = {};
                 //to push into object
                 faves.camp= result;
+                faves.camp.id = camp;
                 faves.kid=kid;
                 // faves gets pshed into empty array from above
                 favCamps.push(faves);

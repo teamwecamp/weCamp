@@ -56,9 +56,10 @@ class FavoriteCampsDetails extends Component {
 
     moveToCamp = () => {
         console.log(this.props.camp);
-        const camp = { eventId: this.props.camp.id };
-        this.props.dispatch({ type: 'SET_CAMP_ID', payload: camp });
-        this.props.moveToEvent('/hostpage');
+        const camp = this.props.camp.camp.id;
+        console.log(camp);
+        
+        // this.props.history.push(`/viewCamp/${camp}`);
     }
 
 
