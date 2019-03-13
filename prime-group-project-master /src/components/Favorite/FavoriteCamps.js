@@ -34,13 +34,16 @@ class FavoriteCamps extends Component {
             )
         } else {
             return (
-                this.props.userHostEvents.map((hostEvent, i) => {
-                    return (<FavoriteCampItems moveToEvent={this.moveToEvent} key={i} event={hostEvent} />)
+                this.props.favoriteCamps.map((camp, i) => {
+                    return (<FavoriteCampItems moveToCamp={this.moveToCamp} key={i} camp={camp} />)
                 })
             )
         }
     }
 
+    moveToCamp = (page) => {
+        this.props.history.push(page);
+    }
 
     render() {
         return (
