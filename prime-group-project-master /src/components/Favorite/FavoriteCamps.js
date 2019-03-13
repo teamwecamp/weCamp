@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
+import FavoriteCampsDetails from './FavoriteCampsDetails';
 
 const styles = theme => ({
     root: {
@@ -35,7 +36,7 @@ class FavoriteCamps extends Component {
         } else {
             return (
                 this.props.favoriteCamps.map((camp, i) => {
-                    return (<FavoriteCampItems moveToCamp={this.moveToCamp} key={i} camp={camp} />)
+                    return (<FavoriteCampsDetails moveToCamp={this.moveToCamp} key={i} camp={camp} />)
                 })
             )
         }
