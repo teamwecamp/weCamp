@@ -40,7 +40,7 @@ CREATE TABLE "activities" (
 
 CREATE TABLE "camp" (
 	"id" serial primary key,
-	"Name" varchar(100) NOT NULL,
+	"name" varchar(100) NOT NULL,
 	"address" TEXT NOT NULL,
 	"region_id" int NOT NULL REFERENCES "regions",
 	"date_min" DATE NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE "camp" (
 	"photo_url" text,
 	"logo_url" text,
 	"website" varchar(100),
-    "date added" timestamp without time zone DEFAULT now(),
+    "date_added" timestamp without time zone DEFAULT now(),
 	"sponsored" BOOLEAN DEFAULT false
 );
 
@@ -162,6 +162,7 @@ CREATE TABLE "favorites" (
 	"camp_id" int NOT NULL REFERENCES "camp",
 	"favorite" BOOLEAN NOT NULL
 );
+-- should be "user_child_id" for consistency
 
 INSERT INTO "gender" ("gender") VALUES ('boy'), ('girl'), ('co-ed');
 

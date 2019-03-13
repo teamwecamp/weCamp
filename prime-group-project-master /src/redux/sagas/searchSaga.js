@@ -15,7 +15,7 @@ function* fetchSearchCamps(){
 }
 
 
-function* fetchSearchCampsDropDown() {
+function* fetchSearchCampsDropDown(action) {
     try {
         const response = yield axios.get('/api/search/dropdown');
         console.log(response);
@@ -29,8 +29,8 @@ function* fetchSearchCampsDropDown() {
 }
 
 function* searchSaga(){
-    takeEvery('FETCH_SEARCH_CAMPS', fetchSearchCamps);
-    takeEvery('FETCH_SEARCH_CAMPS_DROP_DOWN', fetchSearchCampsDropDown);
+   yield takeEvery('FETCH_SEARCH_CAMPS', fetchSearchCamps);
+   yield takeEvery('FETCH_SEARCH_CAMPS_DROP_DOWN', fetchSearchCampsDropDown);
 }
 
 export default searchSaga;

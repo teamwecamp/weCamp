@@ -18,7 +18,9 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import Landing from '../Landing/Landing';
 import SearchCamps from '../Search/SearchCamps';
+import Favorites from '../Favorite/FavoriteCamps';
 import CampRegistration from '../CampRegistration/CampRegistration';
+import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 
 
 import './App.css';
@@ -60,6 +62,11 @@ class App extends Component {
               path="/campregistration"
               component={CampRegistration}
             />
+            <Route
+              exact
+              path="/campregistrationpage2"
+              component={CampRegistrationPage2}
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -75,6 +82,11 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/favorites"
+              component={Favorites}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
