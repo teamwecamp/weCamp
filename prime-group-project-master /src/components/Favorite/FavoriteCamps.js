@@ -57,10 +57,10 @@ class FavoriteCamps extends Component {
         return (
             <div>
                 <h1>Favorite Camps</h1>
-                {JSON.stringify(this.props.favoriteCamps)}
-                {/* <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                
+                <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.favoriteCamps()}
-                </Grid> */}
+                </Grid>
             </div>
         )
     }
