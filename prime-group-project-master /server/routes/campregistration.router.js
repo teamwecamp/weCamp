@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
+//POST camps and programs as they are entered by camp admin on registration page
 });
 
 module.exports = router;
