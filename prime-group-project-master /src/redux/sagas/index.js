@@ -15,6 +15,7 @@ import sharedSaga from './sharedSaga';
 import userProfileSaga from './userProfileSaga';
 import campRegistrationSaga from './campRegistrationSaga';
 import userRegistrationSaga from './userRegistrationSaga';
+import viewCamp from './viewCamp';
 
 
 
@@ -39,5 +40,6 @@ export default function* rootSaga() {
     userProfileSaga(),
     campRegistrationSaga(),
     userRegistrationSaga(),
+    viewCamp(),
   ]);
 }

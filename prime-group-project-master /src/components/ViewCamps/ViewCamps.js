@@ -4,23 +4,23 @@ import { connect } from 'react-redux';
 
 class ViewCamps extends Component {
     componentDidMount = ()=>{
-        this.setViewCampsDetails();
+        this.setViewCamps();
     }
 
-    setViewCampsDetails = ()=>{
-        const action = {type:'SET_VIEW_CAMPS_DETALS'}
-        this.props.dispatch(action);
+    setViewCamps = ()=>{
+        const camp = this.props.match.params.id
+        this.props.dispatch({ type: 'FETCH_CAMP_DETAILS', payload: camp});
     }
     render() {
         return (
             <div>View Camps
-            {JSON.stringify(this.props.reduxStore.setViewCampsDetails)}
+            {JSON.stringify(this.props.viewCamp)}
             </div>
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    viewCamp: reduxStore.setViewCampsDetails
 });
 export default connect(mapStateToProps)(ViewCamps);
