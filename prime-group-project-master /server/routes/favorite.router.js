@@ -19,10 +19,10 @@ router.get('/', (req, res) => {
             let queryText = `SELECT "favorites"."camp_id", "child_profile"."name"
                     FROM "favorites" 
                     JOIN "user_child" 
-                    ON "favorites"."user_kid_id"="user_child"."child_id"
+                    ON "favorites"."user_kid_id"="user_child"."id"
                     JOIN "child_profile"
                     ON "user_child"."child_id"="child_profile"."id"
-                    WHERE "user_child"."user_id"= $1`;
+                    WHERE "user_child"."user_id"= $1;`;
             const favoriteList = await client.query(queryText,[user]);
             //turns favorite into an array
             const favorites = favoriteList.rows;
