@@ -9,7 +9,7 @@ class RegisterPage extends Component {
     street_address: '',
     city: '',
     state: '',
-    zip: '',
+    zip: null,
   };
 
   registerUser = (event) => {

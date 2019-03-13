@@ -76,7 +76,7 @@ CREATE TABLE "user" (
 	"email" varchar(50) NOT NULL,
 	"street_address" varchar(50),
 	"city" varchar(40),
-	"state" varchar(2),
+	"state" varchar(20),
 	"zip" int
 );
 
