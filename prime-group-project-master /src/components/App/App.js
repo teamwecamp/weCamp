@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import Landing from '../Landing/Landing';
 import SearchCamps from '../Search/SearchCamps';
 import CampRegistration from '../CampRegistration/CampRegistration';
+import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 
 
 import './App.css';
@@ -59,6 +60,11 @@ class App extends Component {
               exact
               path="/campregistration"
               component={CampRegistration}
+            />
+            <Route
+              exact
+              path="/campregistrationpage2"
+              component={CampRegistrationPage2}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
