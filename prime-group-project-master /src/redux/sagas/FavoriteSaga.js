@@ -30,8 +30,10 @@ function* updateFavoriteCamps(action) {
 function* fetchFavoriteCamps() {
     console.log('this is inside fetchFavoriteCamp');
     try {
-        const response = yield axios.get(`/api/favortie`);
-        const nextAction = { type: 'SET_FAVORITE_CAMPS' }
+        const response = yield axios.get(`/api/favorite`);
+        console.log(response);
+        
+        const nextAction = { type: 'SET_FAVORITE_CAMPS', payload: response.data}
         yield put(nextAction);
 
     } catch (error) {
