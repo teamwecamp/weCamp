@@ -8,7 +8,7 @@ const router = express.Router();
  */
 //This will get all the dropdown information from the database to
 //populate the search dropdowns.
-router.get("/", (req, res) => {
+router.get("/dropdown", (req, res) => {
   let dropDown = {};
   console.log("in get route for dropdown", dropDown);
   (async () => {
@@ -19,32 +19,33 @@ router.get("/", (req, res) => {
       let queryText = 'SELECT * FROM "gender";';
       let dropDownResult = await client.query(queryText);
       //This will add the results of the query to the dropdown Object.
-      dropDown = { gender: dropDownResult.rows };
-
+      dropDown.gender = dropDownResult.rows;
+      
       //Starting Camp Type query 
       queryText ='SELECT * FROM "camp_type";';
       dropDownResult = await client.query(queryText);
-      dropDown = { campType: dropDownResult.rows };
+      dropDown.campType = dropDownResult.rows;
 
      //Starting Activity Category query
       queryText ='SELECT * FROM "activity_category";';
       dropDownResult = await client.query(queryText);
-      dropDown = { activityCatergory: dropDownResult.rows };
-      
+      dropDown.activityCategory = dropDownResult.rows;
+      //change category
       //Starting Activity Specific Type query
       queryText ='SELECT * FROM "activities";';
       dropDownResult = await client.query(queryText);
-      dropDown = { activities: dropDownResult.rows };
+      dropDown.activities = dropDownResult.rows;
 
       //Starting Select State query
       queryText ='SELECT * FROM "states";';
       dropDownResult = await client.query(queryText);
-      dropDown = { states: dropDownResult.rows };
+      dropDown.states = dropDownResult.rows;
 
       //Starting State Region query 
       queryText ='SELECT * FROM "regions";';
       dropDownResult = await client.query(queryText);
-      dropDown = { regions: dropDownResult.rows };
+      dropDown.regions = dropDownResult.rows;
+      
     
       //end of query statements
 

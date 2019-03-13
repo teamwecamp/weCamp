@@ -11,7 +11,7 @@ import setSearchCamps from './searchCampsReducer';
 import setViewCampsDetails from './viewCampsDetailsReducer';
 import setCampItinerary from './itineraryReducer';
 import setSharedAcess from './sharedAccessReducer';
-import LandingReducer from './LandingReducer';
+
 
 
 // rootReducer is the primary reducer for our entire project
