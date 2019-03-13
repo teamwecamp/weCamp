@@ -43,14 +43,22 @@ class CampRegistration extends Component {
         religion:'',
         accessibility:'',
     }
-    componentDidMount = () => {
+    componentDidMount ()  {
         //insert action to get drop down info here.
+        console.log('consolelog component did mount');
         this.getDropDowns();
+       
+
     }
+
     getDropDowns = () => {
         const action = {type: 'FETCH_SEARCH_CAMPS_DROP_DOWN'};
         this.props.dispatch(action);
+        console.log('GET DROP DOWNS',action);
+        
+
     }
+
     handleInputChangeFor = propertyName => (event) => {
         this.setState({
           [propertyName]: event.target.value,
@@ -58,16 +66,20 @@ class CampRegistration extends Component {
       }
 
     render() {
+        console.log(this.props.dropDown);
         const { classes } = this.props;
         return (
             <div>
+            
             <h1>Camp Registration Page 1</h1>
+            
             <form
               id="input-form"
               className={classes.container}
               noValidate
               autoComplete="off"
               >
+              
                 <TextField
                 required
                 id="outlined-icon"
@@ -89,7 +101,7 @@ class CampRegistration extends Component {
                 variant="standard"
               />
               <TextField
-                required
+                //required
                 id="outlined-type"
                 select
                 label="State"
@@ -102,16 +114,16 @@ class CampRegistration extends Component {
                     className: classes.menu
                   }
                 }}
-                style = {{width: 75}}
+                style = {{width: 200}}
                 margin="normal"
               >
-                {this.props.reduxStore.setCampDropDown.states.map(type => (
+                {this.props.dropDown.states !== undefined && this.props.dropDown.states.map(type => (
                   <MenuItem key={type.id} value={type.id}>
-                  {type}
+                  {type.state}
                   </MenuItem>
                 ))}
               </TextField>
-
+{/* The above code will be run only when states is not undefined. */}
             </form>
             </div>
         )
@@ -123,7 +135,7 @@ CampRegistration.propTypes = {
 };
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    dropDown:reduxStore.setSearchCamps.setCampDropDown
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(CampRegistration));

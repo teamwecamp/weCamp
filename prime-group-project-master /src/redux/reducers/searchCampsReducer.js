@@ -12,8 +12,8 @@ const setSearchCamps = (state = [], action) => {
 };
 
 // gets the camp for our drop down
-const setCampDropDown = (state= {}, action ) =>{
-    console.log('in setCampDropDown reducer');
+const setCampDropDown = (state= {}, action ) => {
+    console.log('in setCampDropDown reducer',action.payload);
 
     switch (action.type){
         case 'SET_CAMP_DROP_DOWN':
