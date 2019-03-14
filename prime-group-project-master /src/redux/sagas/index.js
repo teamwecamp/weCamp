@@ -7,7 +7,8 @@ import userSaga from './userSaga';
 
 // Sagas 
 import LandingSaga from './LandingSaga';
-import FavoriteSaga from './favoriteSaga';
+// add Favorie saga
+import FavoriteSaga from './FavoriteSaga';
 import searchSaga from './searchSaga';
 import updateItinerarySaga from './updateItinerary';
 import itinerarySaga from './itinerarySaga';
@@ -15,6 +16,7 @@ import sharedSaga from './sharedSaga';
 import userProfileSaga from './userProfileSaga';
 import campRegistrationSaga from './campRegistrationSaga';
 import userRegistrationSaga from './userRegistrationSaga';
+import viewCamp from './viewCampSaga';
 
 
 
@@ -39,5 +41,6 @@ export default function* rootSaga() {
     userProfileSaga(),
     campRegistrationSaga(),
     userRegistrationSaga(),
+    viewCamp(),
   ]);
 }
