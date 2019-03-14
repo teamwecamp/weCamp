@@ -65,17 +65,34 @@ class CampRegistrationPage3 extends Component {
             }
         }
         console.log(trueState);
-        this.props.history.push('//campregistrationpage4')
+        this.props.history.push('/campregistrationpage4')
+    }
+
+    mapInfo = () => {
+        return (
+            this.props.dropDown.activities !== undefined && this.props.dropDown.activities.map((option, i) => {
+                const desc = option.activity
+                return (<label key={i}>
+                        <input
+                        name={option.id}
+                        type="checkbox"
+                        checked={this.state.desc}
+                        onChange={this.handleChange}/>
+                        {desc}
+                </label>)
+            })
+        )
     }
 
     render() {
+        console.log(this.state);
         return (
             <div>
             <h1>Camp Registration Page 3</h1>
             <h2>Select Activities Provided by your camp</h2>
             <form onSubmit={this.setOptions}>
                     {this.mapInfo()}
-                    <button type="submit">Submit</button>
+                    <button type="submit">Next</button>
                 </form>
             </div>
         )
