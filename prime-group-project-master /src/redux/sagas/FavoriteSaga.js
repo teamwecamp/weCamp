@@ -15,6 +15,7 @@ function* deleteFavoriteCamps(action) {
     }
 }
 
+
 function* updateFavoriteCamps(action) {
     // console.log('this is updateFavoriteCamps');
     try {
@@ -48,6 +49,7 @@ function* favoriteSaga() {
     yield takeEvery('UPDATE_FAVORITE_CAMPS', updateFavoriteCamps);
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
+    //
 
 
 
