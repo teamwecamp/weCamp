@@ -12,7 +12,7 @@ const userReducer = (state = {}, action) => {
 };
 
 const setUserProfileInfo = (state=[], action)=>{
-  console.log('in setUserProfileInfo');
+  // console.log('in setUserProfileInfo');
 
   switch (action.type) {
     case 'SET_USER_PROFILE_INFO':

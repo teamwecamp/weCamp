@@ -15,7 +15,7 @@ function* updateSharedAcess(action){
 }
 
 function* deleteSharedAcess(action){
-    console.log('this is in deleteSharedAcess');
+    // console.log('this is in deleteSharedAcess');
     try{
         const sharedId = action.payload.sharedId
         yield axios.delete(`/api/sharedAcess/${sharedId}`);
