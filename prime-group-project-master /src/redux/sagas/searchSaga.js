@@ -5,7 +5,7 @@ import axios from 'axios';
 function* fetchSearchCamps(){
     try{
         const response = yield axios.get('/api/search');
-        const nextAction = {type: 'SET_SEARCH_CAMPS'}
+        const nextAction = {type: 'SET_SEARCH_CAMPS', payload: response.data}
         yield put(nextAction);
 
     }catch(error) {
@@ -15,10 +15,10 @@ function* fetchSearchCamps(){
 }
 
 
-function* fetchSearchCampsDropDown(action) {
+function* fetchSearchCampsDropDown() {
+    console.log('this is in fetchSearchCampsDropDown');
     try {
         const response = yield axios.get('/api/search/dropdown');
-        console.log(response);
         const nextAction = { type: 'SET_CAMP_DROP_DOWN', payload:response.data };
         yield put(nextAction);
 

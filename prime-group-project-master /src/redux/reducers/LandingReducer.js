@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 
 const setRecentCamps = (state = [], action) => {
-    console.log('in setRecentCamps');
+    // console.log('in setRecentCamps');
 
     switch (action.type) {
         case 'SET_RECENT_CAMPS':
@@ -13,7 +13,7 @@ const setRecentCamps = (state = [], action) => {
 };
 
 const setSponsoredCamps = (state = [], action) => {
-    console.log('in setSponsoredCamps');
+    // console.log('in setSponsoredCamps');
 
     switch (action.type) {
         case 'SET_SPONSORED_CAMPS':

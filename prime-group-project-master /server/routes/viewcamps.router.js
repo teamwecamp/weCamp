@@ -4,11 +4,20 @@ const router = express.Router();
 
 
 //This is for Viewing the camps.
-/**
- * GET route template
- */
 router.get('/:id', (req, res) => {
-    
+    if (req.isAuthenticated()) {
+        console.log('In /viewcamps GET');
+        const id = req.params.id;
+        const queryText = `SELECT * FROM "camp" WHERE "id" = $1;`;
+        pool.query(queryText, [id]).then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            res.sendStatus(500);
+            console.log(error);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /**
