@@ -16,6 +16,7 @@ function* fetchSearchCamps(){
 
 
 function* fetchSearchCampsDropDown() {
+    console.log('this is in fetchSearchCampsDropDown');
     try {
         const response = yield axios.get('/api/search/dropdown');
         console.log(response);
