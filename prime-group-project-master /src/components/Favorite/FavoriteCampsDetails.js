@@ -68,7 +68,7 @@ class FavoriteCampsDetails extends Component {
                 {JSON.stringify(this.props.camp)}
                 <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
-                        <Card className={classes.card} className="guest-card">
+                        <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
                                     <Typography className={classes.title}>{this.props.camp.kid}</Typography>
