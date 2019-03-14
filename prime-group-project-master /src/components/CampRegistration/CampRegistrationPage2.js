@@ -140,6 +140,57 @@ class CampRegistrationPage2 extends Component {
             margin="normal"
             variant="standard"
           />
+          <TextField
+            id="outlined-icon"
+            label="Logo URL"
+            className={classes.textField}
+            value={this.state.logoUrl}
+            onChange={this.handleInputChangeFor("logoUrl")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Website URL"
+            className={classes.textField}
+            value={this.state.websiteUrl}
+            onChange={this.handleInputChangeFor("websiteUrl")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            //required
+            id="outlined-type"
+            select
+            label="Camp Type"
+            className={classes.textField}
+            value={this.state.type}
+            onChange={this.handleInputChangeFor("type")}
+            variant="outlined"
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu
+              }
+            }}
+            style={{ width: 175 }}
+            margin="normal"
+          >
+            {this.props.dropDown.campType !== undefined &&
+              this.props.dropDown.campType.map(type => (
+                <MenuItem key={type.id} value={type.id}>
+                  {type.type}
+                </MenuItem>
+              ))}
+          </TextField>
+          <Button
+                className={classes.button}
+                id="submit-btn"
+                onClick={this.handleNext}
+                size="small"
+                variant="contained"
+              >
+                Next
+              </Button>
           </form>
             </div>
         )
@@ -151,7 +202,7 @@ CampRegistrationPage2.propTypes = {
 };
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    dropDown: reduxStore.setSearchCamps.setCampDropDown
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(CampRegistrationPage2));
