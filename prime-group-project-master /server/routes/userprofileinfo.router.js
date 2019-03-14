@@ -7,7 +7,7 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/user', (req, res) => {
     
 });
 
