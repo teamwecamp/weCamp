@@ -2,37 +2,105 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LandingRecentCamps from './LandingRecentCamps';
 import LandingSponsoredCamps from './LandingSponsoredCamps';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    control: {
+        padding: theme.spacing.unit * 2,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
 
 class Landing extends Component {
+    state = {
+        spacing: '16',
+    }
+
+    componentDidMount = () => {
+        this.setRecentCamps();
+        this.setSponsoredCamps();
+    }
+
+    setRecentCamps = () => {
+        const action = { type: 'FETCH_RECENT_CAMPS' };
+        this.props.dispatch(action);
+        console.log('action', action);
+    }
+
+    setSponsoredCamps = () => {
+        const action = { type: 'FETCH_SPONSORED_CAMPS' };
+        this.props.dispatch(action);
+        console.log('action', action);
+
+    }
 
     goToSearch = () => {
         this.props.history.push('/search')
     }
 
+    sponsoredCamps = () => { 
+        return (
+            this.props.sponCamps.map((camp, i) => {
+                return (<LandingSponsoredCamps moveToCamp={this.moveToCamp} key={i} camp={camp} />)
+            })
+        )
+    }
+
+    recentCamps = () => {
+        return (
+            this.props.recentCamps.map((camp, i) => {
+                return (<LandingRecentCamps moveToCamp={this.moveToCamp} key={i} camp={camp} />)
+            })
+        )
+    }
+
+    moveToCamp = (page) => {
+        this.props.history.push(page);
+    }
 
     render() {
+        const { classes } = this.props;
+        const { spacing } = this.state;
         return (
             <div>
-                <div>Landing</div>
-                {JSON.stringify(this.props.reduxStore.LandingReducer)}
-                <LandingRecentCamps />
-                <button onClick={this.goToSearch}>
-                    Find Camps
-                </button>
-                <LandingSponsoredCamps />
+                
+                {JSON.stringify(this.props.sponCamps)}
+                {JSON.stringify(this.props.recentCamps)}
+                <h5>Recent Camps</h5>
+                <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                    {this.recentCamps()}
+                </Grid>
+                <Button variant="contained" color="primary" size="large" onClick={this.goToSearch}>
+                    Search for Camps
+                </Button>
+                <h5>Sponsored Camps</h5>
+                <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                    {this.sponsoredCamps()}
+                </Grid>
+                <LandingSponsoredCamps camp={this.props.sponCamps}/>
             </div>
-
         )
     }
 }
 
 
-
 const mapReduxStoreToProps = (reduxStore) => ({
-    reduxStore
+    sponCamps: reduxStore.Landing.setSponsoredCamps,
+    recentCamps: reduxStore.Landing.setRecentCamps
 });
 
-export default connect(mapReduxStoreToProps)(Landing);
+Landing.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(connect(mapReduxStoreToProps)(Landing));
 
 
