@@ -15,7 +15,8 @@ function* fetchSearchCamps(){
 }
 
 
-function* fetchSearchCampsDropDown(action) {
+function* fetchSearchCampsDropDown() {
+    console.log('this is in fetchSearchCampsDropDown');
     try {
         const response = yield axios.get('/api/search/dropdown');
         const nextAction = { type: 'SET_CAMP_DROP_DOWN', payload:response.data };
