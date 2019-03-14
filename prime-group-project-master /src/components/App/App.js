@@ -23,6 +23,7 @@ import CampRegistration from '../CampRegistration/CampRegistration';
 import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import ViewCamps from '../ViewCamps/ViewCamps';
+import NavBar from '../Nav/NavBar';
 
 
 import './App.css';
@@ -36,7 +37,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          {/* <Nav /> */}
+          <NavBar/>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
