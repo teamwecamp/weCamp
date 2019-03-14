@@ -15,7 +15,7 @@ import sharedSaga from './sharedSaga';
 import userProfileSaga from './userProfileSaga';
 import campRegistrationSaga from './campRegistrationSaga';
 import userRegistrationSaga from './userRegistrationSaga';
-import viewCamp from './viewCamp';
+import viewCamp from './viewCampSaga';
 
 
 

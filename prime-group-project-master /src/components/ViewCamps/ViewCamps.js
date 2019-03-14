@@ -13,14 +13,16 @@ class ViewCamps extends Component {
     }
     render() {
         return (
-            <div>View Camps
+            <div>
             {JSON.stringify(this.props.viewCamp)}
+            <h1>{this.props.viewCamp.Name}</h1>
+            <img src={this.props.viewCamp.photo_url} />
             </div>
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
-    viewCamp: reduxStore.setViewCampsDetails
+    viewCamp: reduxStore.setViewCampsDetails.setViewCampsDetails
 });
 export default connect(mapStateToProps)(ViewCamps);

@@ -6,8 +6,8 @@ function* fetchCampDetails(action) {
     try {
         const response = yield axios.get(`/api/viewcamps/${action.payload}`);
         console.log(response.data[0]);
-        
-        yield put({type: 'SET_VIEW_CAMPS_DETAILS'});
+
+        yield put({ type: 'SET_VIEW_CAMPS_DETAILS', payload: response.data[0] });
     } catch (error) {
         console.log('there is an error in putUserRegistration', error);
     }
