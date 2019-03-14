@@ -55,7 +55,11 @@ const styles = theme => ({
 
 
 class LandingSponsoredCamps extends Component {
-
+    moveToCamp = () => {
+        const camp = this.props.camp.id;
+        console.log(camp);
+        this.props.moveToCamp(`/viewCamp/${camp}`);
+    }
     
     render() {
         const { classes } = this.props;

@@ -56,7 +56,12 @@ const styles = theme => ({
 
 class LandingRecentCamps extends Component {
 
-   
+    moveToCamp = () => {
+        const camp = this.props.camp.id;
+        console.log(camp);
+
+        this.props.moveToCamp(`/viewCamp/${camp}`);
+    }
 
  
     render() {
