@@ -32,11 +32,11 @@ router.get('/', (req, res) => {
                 //create empty array to push data into
                 let itineraryItem = [];
                 for (let item of itinerary) {
+                    let child = item.child_id;
                     let date = item.dates_id;
-                    let kid = item.child_id;
                     let status = item.status;
-                    console.log('date', date);
-                    console.log('kid', kid);
+                    console.log('date', child);
+                    console.log('kid', date);
                     console.log('status', status)
 
                     //selecting camp name & info based on id received from above
@@ -47,13 +47,13 @@ router.get('/', (req, res) => {
                                  JOIN "camp"
                                  ON "camp_program"."camp_id"="camp"."id"
                                  WHERE "program_dates"."id" = $1;`;
-                    const secondPull = await client.query(queryText, [date]);
+                    const secondPull = await client.query(queryText,[item.dates_id]);
                     let result = secondPull.rows[0];
                     //create an empty object for data
                     let info = {};
                     //to push into object
-                    info.date = result;
-                    info.kid= kid;
+                    info.date= result;
+                    info.child= kid;
                     // faves gets pshed into empty array from above
                     itineraryItem.push(info);
                 }
