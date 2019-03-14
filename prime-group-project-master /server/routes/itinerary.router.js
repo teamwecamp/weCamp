@@ -10,18 +10,22 @@ router.get('/', (req, res) => {
                 pool.connect();
             try {
                 await client.query('BEGIN');
-
+                const schedule = {};
                 //user.id is logged in user
                 const user = req.user.id;
+                //grab the children of the user
+                let queryText = `SELECT "child_profile"."id", "child_profile"."name" FROM "child_profile"
+                                JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
+                                WHERE "user_child"."user_id"=$1;`
+                const children = await client.query(queryText, [user]);
                 //Selecting user_child, dates_id, status_id and status name.
-                let queryText = `SELECT "user_child"."child_id", "child_profile"."name", "child_itinerary"."dates_id", "child_itinerary"."status_id", "status"."status"
+                queryText = `SELECT "user_child"."child_id", "child_itinerary"."dates_id", "child_itinerary"."status_id", "status"."status"
                                  FROM "user_child"
                                  JOIN "child_itinerary"
                                  ON "user_child"."id"="child_itinerary"."user_child_id"
                                  JOIN "status"
                                  ON "child_itinerary"."status_id"="status"."id"
-                                 JOIN "child_profile" 
-                                 ON "child_profile"."id" = "user_child"."child_id"
+                                 
                                  WHERE "user_child"."user_id"=$1`;
                 const itineraryList = await client.query(queryText, [user]);
                 // takes the info we get from query above and put them in a list "itinerary"
@@ -32,9 +36,7 @@ router.get('/', (req, res) => {
                 let itineraryItem = [];
                 // loop through all the item in itinerary and create new variables for them
                 for (let item of itinerary) {
-                    let child = {};
-                    child.id = item.child_id;
-                    child.name = item.name
+                    let child = item.child_id;
                     let date = item.dates_id;
                     let status = item.status;
                     console.log('child', child);
@@ -55,13 +57,17 @@ router.get('/', (req, res) => {
                     let info = {};
                     //to push into object
                     //info.date here is diffrent from the date above and it's for the result we got from secondPull.
-                    info.date= result;
-                    info.child= child;
+                    
+                    result.child_id = child;
+                    info.item = result;
                     // "info" gets pushed into empty array from above
-                    itineraryItem.push(info);
+                    console.log('info', info);
+                    itineraryItem.push(result)
                 }
+                schedule.itineraries = itineraryItem;
+                schedule.children = children.rows;
                 await client.query('COMMIT');
-                res.send(itineraryItem);
+                res.send(schedule);
             } catch (error) {
                 console.log('Rollback', error);
                 await client.query('ROLLBACK');

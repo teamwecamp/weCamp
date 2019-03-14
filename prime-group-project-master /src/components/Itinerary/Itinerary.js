@@ -41,9 +41,11 @@ class Itinerary extends Component {
     }
 
     render() {
+         console.log(this.props.itinerary);
+         
         return (
             <div>
-                Rendered by react!
+                <h1>Itinerary</h1>
                 {JSON.stringify(this.props.itinerary)}
     <Timeline
                     groups={groups}
