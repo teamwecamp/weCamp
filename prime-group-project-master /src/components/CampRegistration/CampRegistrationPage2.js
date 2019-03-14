@@ -37,7 +37,7 @@ class CampRegistrationPage2 extends Component {
         phoneNumber:'',
         instagramLink:'',
         facebookLink:'',
-        iconUrl:'',
+        photoUrl:'',
         logoUrl:'',
         websiteUrl:'',
         type:'',
@@ -110,6 +110,33 @@ class CampRegistrationPage2 extends Component {
             className={classes.textField}
             value={this.state.phoneNumber}
             onChange={this.handleInputChangeFor("phoneNumber")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Instagram Link"
+            className={classes.textField}
+            value={this.state.instagramLink}
+            onChange={this.handleInputChangeFor("instagramLink")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Facebook Link"
+            className={classes.textField}
+            value={this.state.facebookLink}
+            onChange={this.handleInputChangeFor("facebookLink")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Photo URL"
+            className={classes.textField}
+            value={this.state.photoUrl}
+            onChange={this.handleInputChangeFor("photoUrl")}
             margin="normal"
             variant="standard"
           />
