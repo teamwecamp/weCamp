@@ -76,9 +76,6 @@ class Landing extends Component {
         const { spacing } = this.state;
         return (
             <div>
-                
-                {JSON.stringify(this.props.sponCamps)}
-                {/* {JSON.stringify(this.props.recentCamps)} */}
                 <h5>Recent Camps</h5>
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.recentCamps()}

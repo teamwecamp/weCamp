@@ -75,6 +75,7 @@ class LandingRecentCamps extends Component {
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
                                     <Typography className={classes.title}>{this.props.camp.Name}</Typography>
+                                    <Typography>{this.props.camp.region}</Typography>
                                     <CardMedia
                                         className={classes.media}
                                         image={this.props.camp.photo_url}

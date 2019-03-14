@@ -46,7 +46,7 @@ const styles = theme => ({
         fontSize: 16,
     },
     title: {
-        fontSize: 16,
+        fontSize: 18,
     },
     CardActions: {
         justifyContent: 'center',
@@ -71,6 +71,7 @@ class LandingSponsoredCamps extends Component {
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
                                     <Typography className={classes.title}>{this.props.camp.Name}</Typography>
+                                    <Typography>{this.props.camp.region}</Typography>
                                     <CardMedia
                                         className={classes.media}
                                         image={this.props.camp.photo_url}

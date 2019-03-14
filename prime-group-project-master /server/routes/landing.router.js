@@ -25,8 +25,8 @@ const router = express.Router();
 router.get('/recentCamps', (req, res) => {
     console.log('this is inside router get camps.');
     //selecting random camp info from camp table
-    const queryText = `SELECT "Name", "photo_url", "address", "id"
-                        FROM "camp"
+    const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region"
+                        FROM "camp" JOIN "regions" ON "camp"."region_id" = "regions"."id" 
                         ORDER BY "date_added"
                         ASC
                         LIMIT 4;`;
@@ -43,8 +43,9 @@ router.get('/recentCamps', (req, res) => {
 })
 router.get('/sponsoredCamps', (req, res) => {
     console.log('this is inside router get camps.');
-    const queryText = `SELECT "Name", "photo_url", "address", "id"
-                        FROM "camp" WHERE "sponsored" = true
+    const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region"
+                        FROM "camp" JOIN "regions" ON "camp"."region_id" = "regions"."id" 
+                        WHERE "sponsored" = true
                         ORDER BY RANDOM()
                         LIMIT 4;`;
     pool.query(queryText)
