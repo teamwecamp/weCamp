@@ -30,9 +30,9 @@ class ViewCampsContact extends Component{
         }
         return (
             <div>
-                <p>facebook: <a href={facebook}>{facebook}</a></p>
-                <p>instagram: <a href={instagram}>{instagram}</a></p>
-                <p>twitter: <a href={twitter}>{twitter}</a></p>
+                <p>facebook: <a target="_blank" href={facebook}>{facebook}</a></p>
+                <p>instagram: <a target="_blank" href={instagram}>{instagram}</a></p>
+                <p>twitter: <a target="_blank" href={twitter}>{twitter}</a></p>
             </div>
         )
     }
@@ -43,7 +43,7 @@ class ViewCampsContact extends Component{
                 <h4>Contact</h4>
                 <p>{this.props.camp.address}</p>
                 <p>Phone: {this.props.camp.phone}</p>
-                <a href={this.props.camp.website}>website</a>
+                <a target="_blank" href={this.props.camp.website}>website</a>
                 {this.socialMedia()}
             </div>
         )

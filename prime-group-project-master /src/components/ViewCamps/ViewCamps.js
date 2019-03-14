@@ -23,6 +23,7 @@ class ViewCamps extends Component {
         return (
             <div className="viewCamps">
                 <h1>{camp.Name}</h1>
+                {/* add logo */}
                 <img className="camp_pic" alt="camp pic" src={this.props.viewCamp.photo_url} />
                 <ViewCampsContact camp={camp} />
                 <Button variant="contained" color="primary" size="large" onClick={this.goToProgram}>
