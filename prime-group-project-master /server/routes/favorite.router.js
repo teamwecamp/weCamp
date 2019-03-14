@@ -19,15 +19,15 @@ router.get('/', (req, res) => {
             let queryText = `SELECT "favorites"."camp_id", "child_profile"."name"
                     FROM "favorites" 
                     JOIN "user_child" 
-                    ON "favorites"."user_kid_id"="user_child"."child_id"
+                    ON "favorites"."user_kid_id"="user_child"."id"
                     JOIN "child_profile"
                     ON "user_child"."child_id"="child_profile"."id"
-                    WHERE "user_child"."user_id"= $1`;
+                    WHERE "user_child"."user_id"= $1;`;
             const favoriteList = await client.query(queryText,[user]);
             //turns favorite into an array
             const favorites = favoriteList.rows;
             
-            console.log('favoritelistr', favorites);
+            console.log('favoritelist', favorites);
             
             console.log('favorite list row', favorites);
             //create empty array to push data into
@@ -48,6 +48,7 @@ router.get('/', (req, res) => {
                 let faves = {};
                 //to push into object
                 faves.camp= result;
+                faves.camp.id = camp;
                 faves.kid=kid;
                 // faves gets pshed into empty array from above
                 favCamps.push(faves);
