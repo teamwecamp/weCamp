@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -55,11 +54,10 @@ const styles = theme => ({
 class FavoriteCampsDetails extends Component {
 
     moveToCamp = () => {
-        console.log(this.props.camp);
         const camp = this.props.camp.camp.id;
         console.log(camp);
         
-        // this.props.history.push(`/viewCamp/${camp}`);
+        this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
 
@@ -70,7 +68,7 @@ class FavoriteCampsDetails extends Component {
                 {JSON.stringify(this.props.camp)}
                 <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
-                        <Card className={classes.card} className="guest-card">
+                        <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
                                     <Typography className={classes.title}>{this.props.camp.kid}</Typography>

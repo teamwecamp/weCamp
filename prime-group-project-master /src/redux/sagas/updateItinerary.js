@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 function* postUpdateItinerary(action){
-    console.log('this is postUpdateItinerary saga');
+    // console.log('this is postUpdateItinerary saga');
     try{
         const itineraryId = action.payload.itineraryId
         yield axios.put(`/api/itinerary/${itineraryId}`);
