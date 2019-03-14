@@ -31,17 +31,17 @@ const styles = theme => ({
 
 class CampRegistrationPage2 extends Component {
     state = {
-        campName:'',
-        campAddress:'',
-        state:'',
-        region:'',
-        startDate:'',
-        endDate:'',
-        minAge:'',
-        maxAge:'',
-        gender:'',
-        religion:'',
-        accessibility:'',
+        costMin:'',
+        costMax:'',
+        regDeadlineDate:'',
+        phoneNumber:'',
+        instagramLink:'',
+        facebookLink:'',
+        photoUrl:'',
+        logoUrl:'',
+        websiteUrl:'',
+        type:'',
+        
     }
     componentDidMount = () => {
         //insert action to get drop down info here.
@@ -51,11 +51,147 @@ class CampRegistrationPage2 extends Component {
         const action = {type: 'FETCH_SEARCH_CAMPS_DROP_DOWN'};
         this.props.dispatch(action);
     }
+    handleInputChangeFor = propertyName => event => {
+        this.setState({
+     [propertyName]:event.target.value
+   });
+ };
+ handleNext = () => {
+    this.props.history.push('/campregistrationpage3');
+}
 
     render() {
+        console.log(this.props.dropDown);
+        const { classes } = this.props;
         return (
             <div>
             <h1>Camp Registration Page 2</h1>
+            <form
+          id="input-form"
+          className={classes.container}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            required
+            id="outlined-icon"
+            label=" Cost Min"
+            className={classes.textField}
+            value={this.state.costMin}
+            onChange={this.handleInputChangeFor("costMin")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            required
+            id="outlined-icon"
+            label=" Cost Max"
+            className={classes.textField}
+            value={this.state.costMax}
+            onChange={this.handleInputChangeFor("costMax")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            required
+            id="outlined-icon"
+            label=" Registration Deadline"
+            type="date"
+            className={classes.textField}
+            value={this.state.regDeadlineDate}
+            onChange={this.handleInputChangeFor("regDeadlineDate")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            required
+            id="outlined-icon"
+            label="Phone Number"
+            className={classes.textField}
+            value={this.state.phoneNumber}
+            onChange={this.handleInputChangeFor("phoneNumber")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Instagram Link"
+            className={classes.textField}
+            value={this.state.instagramLink}
+            onChange={this.handleInputChangeFor("instagramLink")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Facebook Link"
+            className={classes.textField}
+            value={this.state.facebookLink}
+            onChange={this.handleInputChangeFor("facebookLink")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Photo URL"
+            className={classes.textField}
+            value={this.state.photoUrl}
+            onChange={this.handleInputChangeFor("photoUrl")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Logo URL"
+            className={classes.textField}
+            value={this.state.logoUrl}
+            onChange={this.handleInputChangeFor("logoUrl")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            id="outlined-icon"
+            label="Website URL"
+            className={classes.textField}
+            value={this.state.websiteUrl}
+            onChange={this.handleInputChangeFor("websiteUrl")}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            //required
+            id="outlined-type"
+            select
+            label="Camp Type"
+            className={classes.textField}
+            value={this.state.type}
+            onChange={this.handleInputChangeFor("type")}
+            variant="outlined"
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu
+              }
+            }}
+            style={{ width: 175 }}
+            margin="normal"
+          >
+            {this.props.dropDown.campType !== undefined &&
+              this.props.dropDown.campType.map(type => (
+                <MenuItem key={type.id} value={type.id}>
+                  {type.type}
+                </MenuItem>
+              ))}
+          </TextField>
+          <Button
+                className={classes.button}
+                id="submit-btn"
+                onClick={this.handleNext}
+                size="small"
+                variant="contained"
+              >
+                Next
+              </Button>
+          </form>
             </div>
         )
     }
@@ -66,7 +202,7 @@ CampRegistrationPage2.propTypes = {
 };
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    dropDown: reduxStore.setSearchCamps.setCampDropDown
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(CampRegistrationPage2));
