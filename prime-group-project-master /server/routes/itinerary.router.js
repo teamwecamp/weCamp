@@ -14,12 +14,14 @@ router.get('/', (req, res) => {
                 //user.id is logged in user
                 const user = req.user.id;
                 //Selecting user_child, dates_id, status_id and status name.
-                let queryText = `SELECT "user_child"."child_id", "child_itinerary"."dates_id", "child_itinerary"."status_id", "status"."status"
+                let queryText = `SELECT "user_child"."child_id", "child_profile"."name", "child_itinerary"."dates_id", "child_itinerary"."status_id", "status"."status"
                                  FROM "user_child"
                                  JOIN "child_itinerary"
                                  ON "user_child"."id"="child_itinerary"."user_child_id"
                                  JOIN "status"
                                  ON "child_itinerary"."status_id"="status"."id"
+                                 JOIN "child_profile" 
+                                 ON "child_profile"."id" = "user_child"."child_id"
                                  WHERE "user_child"."user_id"=$1`;
                 const itineraryList = await client.query(queryText, [user]);
                 // takes the info we get from query above and put them in a list "itinerary"
@@ -30,7 +32,9 @@ router.get('/', (req, res) => {
                 let itineraryItem = [];
                 // loop through all the item in itinerary and create new variables for them
                 for (let item of itinerary) {
-                    let child = item.child_id;
+                    let child = {};
+                    child.id = item.child_id;
+                    child.name = item.name
                     let date = item.dates_id;
                     let status = item.status;
                     console.log('child', child);
