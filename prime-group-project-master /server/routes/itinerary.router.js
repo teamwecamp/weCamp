@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
                 //user.id is logged in user
                 const user = req.user.id;
                 //grab the children of the user
-                let queryText = `SELECT "child_profile"."id", "child_profile"."name" FROM "child_profile"
+                let queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title FROM "child_profile"
                                 JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
                                 WHERE "user_child"."user_id"=$1;`
                 const children = await client.query(queryText, [user]);
