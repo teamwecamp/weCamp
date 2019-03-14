@@ -2,7 +2,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchCampDetails(action) {
-    console.log('this is fetchCampDetails')
+    // console.log('this is fetchCampDetails')
     try {
         const response = yield axios.get(`/api/viewcamps/${action.payload}`);
         console.log(response.data[0]);
