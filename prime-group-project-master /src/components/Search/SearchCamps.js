@@ -9,7 +9,7 @@ class SearchCamps extends Component {
     }
 
     setSearchCamps = () => {
-        const action = {type: 'SET_SEARCH_CAMPS'}
+        const action = {type: 'FETCH_SEARCH_CAMPS'}
         this.props.dispatch(action);
         console.log('action', action);
     }
