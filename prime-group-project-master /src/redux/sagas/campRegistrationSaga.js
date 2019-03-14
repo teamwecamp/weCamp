@@ -13,7 +13,7 @@ function* addCampRegistration(action){
 }
 
 function* putCampRegistration (action){
-    console.log('this is inside updateCampRegister')
+    // console.log('this is inside updateCampRegister')
     try{
       const campId = action.payload.campId
       yield axios.put(`/api/campRegisrration/${campId}`);

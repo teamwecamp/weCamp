@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 function* deleteFavoriteCamps(action) {
-    console.log('this is inside of deleteFavoriteCamps');
+    // console.log('this is inside of deleteFavoriteCamps');
     try {
         const campId = action.payload.campId
         console.log(campId);
@@ -16,7 +16,7 @@ function* deleteFavoriteCamps(action) {
 }
 
 function* updateFavoriteCamps(action) {
-    console.log('this is updateFavoriteCamps');
+    // console.log('this is updateFavoriteCamps');
     try {
         const campId = action.payload.campId
         yield axios.put(`/api/favorite/${campId}`);
@@ -28,7 +28,7 @@ function* updateFavoriteCamps(action) {
 }
 
 function* fetchFavoriteCamps() {
-    console.log('this is inside fetchFavoriteCamp');
+    // console.log('this is inside fetchFavoriteCamp');
     try {
         const response = yield axios.get(`/api/favorite`);
         console.log(response);
