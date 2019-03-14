@@ -2,9 +2,6 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
 router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('this is inside router get itinerary');
@@ -20,7 +17,7 @@ router.get('/', (req, res) => {
                 let queryText = `SELECT "user_child"."child_id", "child_itinerary"."dates_id", "child_itinerary"."status_id", "status"."status"
                                  FROM "user_child"
                                  JOIN "child_itinerary"
-                                 ON "user_child"."child_id"="child_itinerary"."user_child_id"
+                                 ON "user_child"."id"="child_itinerary"."user_child_id"
                                  JOIN "status"
                                  ON "child_itinerary"."status_id"="status"."id"
                                  WHERE "user_child"."user_id"=$1`;

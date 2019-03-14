@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 
 
 class Itinerary extends Component {
-
     componentDidMount=()=> {
         this.setCampItinerary();
     }
 
     setCampItinerary(){
-        const action = {type:'SET_CAMP_ITINERARY'}
+        const action = {type:'FETCH_CAMP_ITINERARY'}
         this.props.dispatch(action);
     }
+
     render() {
         return (
             <div>Itinerary
-                {JSON.stringify(this.props.reduxStore.setCampItinerary)}
+                {JSON.stringify(this.props.itinerary)}
             </div>
 
         )
@@ -23,6 +23,6 @@ class Itinerary extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    itinerary: reduxStore.setCampItinerary.setCampItinerary
 });
 export default connect(mapStateToProps)(Itinerary);
