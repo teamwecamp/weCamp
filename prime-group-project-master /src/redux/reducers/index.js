@@ -5,7 +5,6 @@ import user from './userReducer';
 
 import setUserProfileInfo from './userReducer';
 import Landing from './LandingReducer';
-import setSponsoredCamps from './LandingReducer';
 import setFavoriteCamps from './favoritesReducer';
 import SearchCamps from './searchCampsReducer';
 import setViewCampsDetails from './viewCampsDetailsReducer';
@@ -24,9 +23,6 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
-
-  // setRecentCamps, // contains recently added camps
-  // setSponsoredCamps, //contains sponsored camps
   setFavoriteCamps, // copntains favorited camps
   Landing,
   SearchCamps, //contains results of user searched camps

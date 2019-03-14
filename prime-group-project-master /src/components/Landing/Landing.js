@@ -17,6 +17,11 @@ const styles = theme => ({
     pos: {
         marginBottom: 12,
     },
+    bigButton: {
+        height: 90,
+        width: 1000,
+        fontSize: 40,
+    },
 });
 
 class Landing extends Component {
@@ -73,19 +78,18 @@ class Landing extends Component {
             <div>
                 
                 {JSON.stringify(this.props.sponCamps)}
-                {JSON.stringify(this.props.recentCamps)}
+                {/* {JSON.stringify(this.props.recentCamps)} */}
                 <h5>Recent Camps</h5>
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.recentCamps()}
                 </Grid>
-                <Button variant="contained" color="primary" size="large" onClick={this.goToSearch}>
+                <Button className={classes.bigButton} variant="contained" color="primary" size="large" onClick={this.goToSearch}>
                     Search for Camps
                 </Button>
                 <h5>Sponsored Camps</h5>
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.sponsoredCamps()}
                 </Grid>
-                <LandingSponsoredCamps camp={this.props.sponCamps}/>
             </div>
         )
     }

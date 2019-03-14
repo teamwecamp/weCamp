@@ -47,7 +47,7 @@ const styles = theme => ({
         fontSize: 16,
     },
     title: {
-        fontSize: 16,
+        fontSize: 18,
     },
     CardActions: {
         justifyContent: 'center',
@@ -75,7 +75,6 @@ class LandingRecentCamps extends Component {
                                         image={this.props.camp.photo_url}
                                         title="Camp Pic"
                                     />
-                                    {/* <Typography>{this.props.camp.camp.Name}</Typography> */}
                                     <CardActions className={classes.CardActions}>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>

@@ -72,7 +72,6 @@ class LandingSponsoredCamps extends Component {
                                         image={this.props.camp.photo_url}
                                         title="Camp Pic"
                                     />
-                                    {/* <Typography>{this.props.camp.camp.Name}</Typography> */}
                                     <CardActions className={classes.CardActions}>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
@@ -89,7 +88,5 @@ class LandingSponsoredCamps extends Component {
 LandingSponsoredCamps.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
-
 
 export default withStyles(styles)(connect()(LandingSponsoredCamps));
