@@ -65,7 +65,6 @@ class FavoriteCampsDetails extends Component {
         const { classes } = this.props;
         return (
             <div>
-                {JSON.stringify(this.props.camp)}
                 <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
