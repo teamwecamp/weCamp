@@ -32,6 +32,8 @@ router.get('/recentCamps', (req, res) => {
                         LIMIT 5;`;
     pool.query(queryText)
     .then(result => {
+        console.log(result.rows);
+        
         res.send(result.rows);
     }).catch(error => {
         console.log('there is error in get camps router', error);
@@ -42,7 +44,7 @@ router.get('/recentCamps', (req, res) => {
 router.get('/sponsoredCamps', (req, res) => {
     console.log('this is inside router get camps.');
     const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."website"
-                        FROM "camp"
+                        FROM "camp" WHERE "sponsored" = true
                         ORDER BY RANDOM()
                         LIMIT 5;;`;
     pool.query(queryText)

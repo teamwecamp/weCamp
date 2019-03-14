@@ -10,21 +10,23 @@ class LandingSponsoredCamps extends Component {
 
  
     setSponsoredCamps = () => {
-        const action = { type: 'SET_SPONSORED_CAMPS' };
+        const action = { type: 'FETCH_SPONSORED_CAMPS' };
         this.props.dispatch(action);
         console.log('action', action);
 
     }
     render() {
         return (
-            <div>Landing Sponsored Camps
-                {JSON.stringify(this.props.reduxStore.setSponsoredCamps)}
+            <div>
+                <h5>Sponsored Camps</h5> 
+
+                {JSON.stringify(this.props.sponCamps)}
             </div>
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    sponCamps: reduxStore.Landing.setSponsoredCamps
 });
 export default connect(mapStateToProps)(LandingSponsoredCamps);

@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import LandingRecentCamps from './LandingRecentCamps';
+import LandingSponsoredCamps from './LandingSponsoredCamps';
 
 
-class Landing extends Component{
+class Landing extends Component {
 
-goToSearch = ()=>{
-    this.props.history.push('/search')
-}
+    goToSearch = () => {
+        this.props.history.push('/search')
+    }
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <div>Landing</div>
-
                 {JSON.stringify(this.props.reduxStore.LandingReducer)}
-
+                <LandingRecentCamps />
                 <button onClick={this.goToSearch}>
-                Find Camps
+                    Find Camps
                 </button>
+                <LandingSponsoredCamps />
             </div>
-           
+
         )
     }
 }

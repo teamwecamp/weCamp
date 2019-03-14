@@ -9,7 +9,7 @@ class LandingRecentCamps extends Component {
     }
 
     setRecentCamps = () => {
-        const action = { type: 'SET_RECENT_CAMPS' };
+        const action = { type: 'FETCH_RECENT_CAMPS' };
         this.props.dispatch(action);
         console.log('action', action);
     }
@@ -19,7 +19,7 @@ class LandingRecentCamps extends Component {
         return (
             
             <div>Landing Recent Camps
-                {JSON.stringify(this.props.reduxStore.setRecentCamps)}
+                {JSON.stringify(this.props.recentCamps)}
             </div>
             
 
@@ -28,6 +28,6 @@ class LandingRecentCamps extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    recentCamps: reduxStore.Landing.setRecentCamps
 });
 export default connect(mapStateToProps)(LandingRecentCamps);
