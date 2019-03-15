@@ -12,7 +12,21 @@ const setViewCampsDetails = (state = [], action) => {
 };
 
 
+const setViewCampsPrograms = (state = [], action) => {
+    console.log('this is in setViewCampProgram');
+
+    switch (action.type) {
+        case 'SET_VIEW_CAMPS_PROGRAM':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
+
+
 
 export default combineReducers({
     setViewCampsDetails,
+    setViewCampsPrograms,
 });

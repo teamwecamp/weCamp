@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
 
 
 // this gets the camp program and information of the programs.
-router.get('/info/:id', (req, res) => {
+router.get('/viewProgram/:id', (req, res) => {
     if(req.isAuthenticated()){
         console.log('this is inside of campInfo/:id');
        
