@@ -34,6 +34,7 @@ router.get('/', (req, res) => {
                 console.log('itinerary list row', itinerary);
                 //create empty array to push data we get above into "itineraryItem"
                 let itineraryItem = [];
+                let id = 1;
                 // loop through all the item in itinerary and create new variables for them
                 for (let item of itinerary) {
                     let child = item.child_id;
@@ -44,7 +45,9 @@ router.get('/', (req, res) => {
                     console.log('status', status);
 
                     //selecting camp name & info based on dates_id received from above
-                    queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."title", "camp"."Name","start_date", "program_dates"."end_date"
+                    queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."title", "camp"."Name", 
+                                 EXTRACT(EPOCH from "program_dates"."start_date") AS "start_date", EXTRACT(EPOCH from "program_dates"."end_date") AS "end_date", 
+                                 EXTRACT(EPOCH from "program_dates"."end_time") AS "end_time", EXTRACT(EPOCH from "program_dates"."start_time") AS "start_time"
                                  FROM "program_dates"
                                  JOIN "camp_program"
                                  ON "program_dates"."program_id"="camp_program"."id"
@@ -53,12 +56,27 @@ router.get('/', (req, res) => {
                                  WHERE "program_dates"."id" = $1;`;
                     const secondPull = await client.query(queryText,[date]);
                     let result = secondPull.rows[0];
+                        
+                    if (result.start_time !== null){
+                        result.start_time = result.start_date + result.start_time;
+                    } else {
+                        result.start_time = result.start_date;
+                    }
+                    console.log('TIME', result.start_time);
+                    if (result.end_time !== null) {
+                        result.end_time = result.end_date + result.end_time;
+                    } else {
+                        result.end_time = result.end_date;
+                    }
+                    
+                    result.id = id;
+                    id ++;
                     //create an empty object for all the new data that we get from the query above
                     let info = {};
                     //to push into object
                     //info.date here is diffrent from the date above and it's for the result we got from secondPull.
                     
-                    result.child_id = child;
+                    result.group = child;
                     info.item = result;
                     // "info" gets pushed into empty array from above
                     console.log('info', info);

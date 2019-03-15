@@ -31,30 +31,30 @@ import Timeline from 'react-calendar-timeline';
 // ]
 
 class Itinerary extends Component {
-    componentDidMount=()=> {
+    componentDidMount = () => {
         this.setCampItinerary();
     }
 
-    setCampItinerary(){
-        const action = {type:'FETCH_CAMP_ITINERARY'}
+    setCampItinerary() {
+        const action = { type: 'FETCH_CAMP_ITINERARY' }
         this.props.dispatch(action);
     }
 
     render() {
-         console.log(this.props.itinerary);
-        let items = this.props.itinerary.itineraries; 
+        console.log(this.props.itinerary);
+        let items = this.props.itinerary.itineraries;
         let groups = this.props.itinerary.children;
         return (
             <div>
                 <h1>Itinerary</h1>
                 {JSON.stringify(this.props.itinerary)}
-                {this.props.itinerary.itineraries !== undefined && 
-    <Timeline
-                    groups={groups}
-                    items={items}
-                    defaultTimeStart={moment().add(-12, 'hour')}
-                    defaultTimeEnd={moment().add(12, 'hour')}
-                />}
+                {this.props.itinerary.itineraries !== undefined &&
+                    <Timeline
+                        groups={groups}
+                        items={items}
+                        defaultTimeStart={moment().add(-12, 'hour')}
+                        defaultTimeEnd={moment().add(12, 'hour')}
+                    />}
             </div>
 
         )

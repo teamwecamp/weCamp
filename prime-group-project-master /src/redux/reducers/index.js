@@ -6,7 +6,7 @@ import user from './userReducer';
 import setUserProfileInfo from './userReducer';
 import Landing from './LandingReducer';
 import setFavoriteCamps from './favoritesReducer';
-import SearchCamps from './searchCampsReducer';
+import setSearchCamps from './searchCampsReducer';
 import setViewCampsDetails from './viewCampsDetailsReducer';
 import setCampItinerary from './itineraryReducer';
 import setSharedAcess from './sharedAccessReducer';
@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   setFavoriteCamps, // copntains favorited camps
   Landing,
-  SearchCamps, //contains results of user searched camps
+  setSearchCamps, //contains results of user searched camps
   setViewCampsDetails, //contains program details of camps
   setCampItinerary, //will contain child's camp itinerary
   setUserProfileInfo, //will contain user's profiel info
