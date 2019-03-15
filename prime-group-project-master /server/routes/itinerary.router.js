@@ -13,8 +13,10 @@ router.get('/', (req, res) => {
                 const schedule = {};
                 //user.id is logged in user
                 const user = req.user.id;
+                let queryText = `SELECT "full_name" FROM "user" WHERE "id" = $1;`;
+                const userName = await client.query(queryText, [user]);
                 //grab the children of the user
-                let queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title FROM "child_profile"
+                queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title FROM "child_profile"
                                 JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
                                 WHERE "user_child"."user_id"=$1;`
                 const children = await client.query(queryText, [user]);
@@ -86,6 +88,9 @@ router.get('/', (req, res) => {
                 }
                 schedule.itineraries = itineraryItem;
                 schedule.children = children.rows;
+                schedule.userName = userName.rows[0];
+                console.log(schedule);
+                
                 await client.query('COMMIT');
                 res.send(schedule);
             } catch (error) {

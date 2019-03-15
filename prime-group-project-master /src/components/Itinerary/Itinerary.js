@@ -35,23 +35,30 @@ class Itinerary extends Component {
         this.setCampItinerary();
     }
 
+    getUserInfo(){
+        this.props.dispatch({ type: 'FETCH_USER_PROFILE_INFO', })
+    }
+
     setCampItinerary() {
         const action = { type: 'FETCH_CAMP_ITINERARY' }
         this.props.dispatch(action);
     }
 
     render() {
-        console.log(this.props.itinerary);
+        console.log(this.props.itinerary.userName);
+        
         let items = this.props.itinerary.itineraries;
         let groups = this.props.itinerary.children;
         return (
             <div>
-                <h1>Itinerary</h1>
+                {this.props.itinerary.userName !== undefined && 
+                <h1>{this.props.itinerary.userName.full_name}'s Itinerary</h1>}
                 {/* {JSON.stringify(this.props.itinerary)} */}
                 {this.props.itinerary.itineraries !== undefined &&
                     <Timeline
                         groups={groups}
                         items={items}
+                        // default time is set to display May through Aug
                         defaultTimeStart="1556723865000"
                         defaultTimeEnd="1567351065000"
                         canMove={false}
@@ -67,7 +74,8 @@ class Itinerary extends Component {
     }
 }
 
-const mapStateToProps = (reduxStore) => ({
-    itinerary: reduxStore.setCampItinerary.setCampItinerary
+const mapReduxStoreToProps = (reduxStore) => ({
+    itinerary: reduxStore.setCampItinerary.setCampItinerary,
 });
-export default connect(mapStateToProps)(Itinerary);
+
+export default connect(mapReduxStoreToProps)(Itinerary);
