@@ -21,11 +21,14 @@ router.get('/:id', (req, res) => {
 });
 
 
+// this gets the camp program and information of the programs.
 router.get('/info/:id', (req, res) => {
     if(req.isAuthenticated()){
         console.log('this is inside of campInfo/:id');
-        const id = req.params.id
-        const queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."type_id", "camp_program"."title", "program_dates"."start_date",
+       
+                const id = req.params.id
+                // const user = req.user.id;
+                const queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."type_id", "camp_program"."title", "program_dates"."start_date",
                            "program_dates"."end_date", "program_dates"."start_time", "program_dates"."end_time", "camp_type"."type"   
                             FROM "program_dates"
                             JOIN "camp_program"
@@ -35,7 +38,6 @@ router.get('/info/:id', (req, res) => {
                             JOIN "camp"
                             ON "camp_program"."camp_id"="camp"."id"
                             WHERE "camp"."id" = $1;`;
-                            
         pool.query(queryText, [id]).then((result) => {
             res.send(result.rows);
         }).catch((error) => {
@@ -44,9 +46,8 @@ router.get('/info/:id', (req, res) => {
         })
     } else {
         res.sendStatus(403);
-                       
-    }
-
+    }                        
+                
 });
 
 /**
