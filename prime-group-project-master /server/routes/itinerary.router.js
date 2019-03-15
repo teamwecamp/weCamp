@@ -13,8 +13,10 @@ router.get('/', (req, res) => {
                 const schedule = {};
                 //user.id is logged in user
                 const user = req.user.id;
+                let queryText = `SELECT "full_name" FROM "user" WHERE "id" = $1;`;
+                const userName = await client.query(queryText, [user]);
                 //grab the children of the user
-                let queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title FROM "child_profile"
+                queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title FROM "child_profile"
                                 JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
                                 WHERE "user_child"."user_id"=$1;`
                 const children = await client.query(queryText, [user]);
@@ -70,6 +72,8 @@ router.get('/', (req, res) => {
                     } else {
                         result.end_time = result.end_date;
                     }
+
+                    result.title = `${result.title} - ${result.Name}`
                     
                     result.id = id;
                     id ++;
@@ -77,7 +81,8 @@ router.get('/', (req, res) => {
                     let info = {};
                     //to push into object
                     //info.date here is diffrent from the date above and it's for the result we got from secondPull.
-                    
+                    result.status = item.status
+                    result.status_id = item.status_id
                     result.group = child;
                     info.item = result;
                     // "info" gets pushed into empty array from above
@@ -86,6 +91,9 @@ router.get('/', (req, res) => {
                 }
                 schedule.itineraries = itineraryItem;
                 schedule.children = children.rows;
+                schedule.userName = userName.rows[0];
+                console.log(schedule);
+                
                 await client.query('COMMIT');
                 res.send(schedule);
             } catch (error) {
