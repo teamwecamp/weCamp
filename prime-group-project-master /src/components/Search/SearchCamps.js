@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const styles = theme => ({
     container: {
@@ -85,10 +85,6 @@ class SearchCamps extends Component {
         return (
 
             <div>
-
-
-        );
-            }
 
                 <h1>Search Camps</h1>
                 <form
@@ -212,10 +208,10 @@ class SearchCamps extends Component {
                     <TextField
                         id="outlined-type"
                         select
-                        label="Primary Focus4"
+                        label="Primary Focus"
                         className={classes.textField}
-                        value={this.state.type}
-                        onChange={this.handleSearchChange("activityType")}
+                        value={this.state.activityCategory}
+                        onChange={this.handleSearchChange("activityCategory")}
                         variant="outlined"
                         SelectProps={{
                             MenuProps: {
@@ -233,26 +229,55 @@ class SearchCamps extends Component {
                             ))}
                     </TextField>
                     <TextField
+                        id="outlined-type"
+                        select
+                        label="Favorite Activity"
+                        className={classes.textField}
+                        value={this.state.activityType}
+                        onChange={this.handleSearchChange("activityType")}
+                        variant="outlined"
+                        SelectProps={{
+                            MenuProps: {
+                                className: classes.menu
+                            }
+                        }}
+                        style={{ width: 175 }}
+                        margin="normal"
+                    >
+                        {this.props.dropDown.activities !== undefined &&
+                            this.props.dropDown.activities.map(type => (
+                                <MenuItem key={type.id} value={type.id}>
+                                    {type.activity}
+                                </MenuItem>
+                            ))}
+                    </TextField>
+                    <TextField
                         id="outlined-startdate"
-                        label="Start Date Required"
+                        label="Start Date"
                         type="date"
                         className={classes.textField}
                         value={this.state.startDate}
                         onChange={this.handleSearchChange("startDate")}
                         margin="normal"
                         variant="outlined"
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start"></InputAdornment>,
+                        }}
                     />
                     <TextField
                         id="outlined-enddate"
-                        label="End Date Required"
+                        label="End Date"
                         type="date"
                         className={classes.textField}
                         value={this.state.endDate}
                         onChange={this.handleSearchChange("endDate")}
                         margin="normal"
                         variant="outlined"
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start"></InputAdornment>,
+                        }}
                     />
-                    {/* <TextField
+                    <TextField
                         id="outlined-number"
                         label="Minimum Cost"
                         value={this.state.minCost}
@@ -261,7 +286,10 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
-                    /> */}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        }}
+                    />
                     <TextField
                         id="outlined-number"
                         label="Maxium Cost"
@@ -271,6 +299,9 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        }}
                     />
                     <TextField
                         id="outlined-type"
@@ -317,6 +348,7 @@ class SearchCamps extends Component {
                                 </MenuItem>
                             ))}
                     </TextField>
+                          
                
                 </form>
             </div>
