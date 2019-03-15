@@ -5,6 +5,8 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/lab": "^3.0.0-alpha.30",
     "axios": "^0.17.1",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.2",
@@ -16,6 +18,7 @@
     "pg": "^7.4.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
+    "react-compound-slider": "^1.2.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",

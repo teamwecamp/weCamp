@@ -24,6 +24,9 @@ import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
+import NavBar from '../Nav/NavBar';
+import Shared from '../Shared/Shared';
+import Itinerary from '../Itinerary/Itinerary';
 
 
 import './App.css';
@@ -37,7 +40,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          {/* <Nav /> */}
+          <NavBar/>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -106,6 +110,17 @@ class App extends Component {
               path="/favorites"
               component={Favorites}
             />
+            <ProtectedRoute
+              exact
+              path="/itinerary"
+              component={Itinerary}
+            />
+            <ProtectedRoute
+              exact
+              path="/shared"
+              component={Shared}
+            />
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

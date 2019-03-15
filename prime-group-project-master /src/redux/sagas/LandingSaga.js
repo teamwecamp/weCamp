@@ -5,7 +5,9 @@ import axios from 'axios';
 function* fetchRecentCamps(){
     try{
         const response = yield axios.get('/api/landing/recentCamps');
-        const nextAction = {type: 'SET_RECENT_CAMPS'}
+        console.log(response.rows);
+        
+        const nextAction = {type: 'SET_RECENT_CAMPS', payload: response.data}
         yield put(nextAction);
     } catch (error) {
         console.log('error in getCamp saga', error);
@@ -15,7 +17,8 @@ function* fetchRecentCamps(){
 function* fetchSponsoredCamps () {
     try{
         const response = yield axios.get('/api/landing/sponsoredCamps');
-        const nextAction = yield {type: 'SET_SPONSORED_CAMPS'}
+        console.log(response.rows);
+        const nextAction = yield {type: 'SET_SPONSORED_CAMPS', payload: response.data}
         yield put(nextAction);
     }catch (error) {
         console.log('error in fetchSponsoredCamps saga', error)
