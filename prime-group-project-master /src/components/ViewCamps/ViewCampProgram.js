@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 // this here is Material UI 
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -19,17 +20,17 @@ const CustomTableCell = withStyles(theme => ({
         color: theme.palette.common.white,
     },
     body: {
-        fontSize: 14,
+        fontSize: 10,
     },
 }))(TableCell);
 
 const styles = theme => ({
     root: {
-        width: '75%',
+        width: '90%',
         marginTop: theme.spacing.unit * 2,
         overflowX: 'auto',
-        marginBottom: '15px',
-        marginLeft: '125px',
+        marginBottom: '10px',
+        marginLeft: '95px',
     },
     table: {
         minWidth: 500,
@@ -40,7 +41,7 @@ const styles = theme => ({
         },
         icon: {
             margin: theme.spacing.unit,
-            fontSize: 32,
+            fontSize: 10,
         },
     },
 });
@@ -74,6 +75,8 @@ class ViewCampProgram extends Component {
                             <CustomTableCell>Start Time</CustomTableCell>
                             <CustomTableCell>End Time</CustomTableCell>
                             <CustomTableCell>Type</CustomTableCell>
+                            <CustomTableCell></CustomTableCell>
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -90,7 +93,7 @@ class ViewCampProgram extends Component {
                                 <TableCell >{schedule.end_time}</TableCell>
                                 <TableCell >{schedule.type}</TableCell>
 
-                                <TableCell><DeleteOutlined className={classes.icon} /></TableCell>
+                                <TableCell><Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button></TableCell>
                             </TableRow>
                         ))}
                         
