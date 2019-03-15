@@ -10,8 +10,7 @@ import ComboSlider from '../ComboSlider/ComboSlider';
 const AboutPage = () => (
   <div>
     <div>
-     <StepSlider/>
-     <ComboSlider/>
+
       <p>
         This about page is for anyone to read!
       </p>
