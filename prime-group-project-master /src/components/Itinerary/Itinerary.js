@@ -47,14 +47,20 @@ class Itinerary extends Component {
         return (
             <div>
                 <h1>Itinerary</h1>
-                {JSON.stringify(this.props.itinerary)}
+                {/* {JSON.stringify(this.props.itinerary)} */}
                 {this.props.itinerary.itineraries !== undefined &&
                     <Timeline
                         groups={groups}
                         items={items}
-                    defaultTimeStart="1556723865000"
-                    defaultTimeEnd="1567351065000"
+                        defaultTimeStart="1556723865000"
+                        defaultTimeEnd="1567351065000"
+                        canMove={false}
+                        canResize={false}
+                        lineHeight={50}
+                        itemHeightRatio={.75}
+                        sidebarContent={<div>Itinerary</div>}
                     />}
+                    <p>To zoom the calendar view out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
             </div>
 
         )
