@@ -9,8 +9,9 @@
 
 .nav {
   overflow: hidden;
-  background-color: #127c96;
+  background-color: #63bcc9;
   font-family: 'Oswald', sans-serif;
+  color: white;
 }
 
 .nav-link {

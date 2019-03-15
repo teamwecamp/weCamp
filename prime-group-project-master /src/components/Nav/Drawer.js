@@ -19,6 +19,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PeopleIcon from '@material-ui/icons/People';
+import './Nav.css';
+import { Link as RouterLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link';
 
 
 
@@ -52,28 +55,43 @@ class NavBar extends Component {
         const sideList = (
             <div className={classes.list}>
                 <List>
-
+                    
                     <ListItem button>
-                        <ListItemIcon><InfoIcon /></ListItemIcon>
-                        <ListItemText inset primary='About' />
+                        <ListItemIcon>
+                            <InfoIcon/>
+                        </ListItemIcon>
+                    <ListItemText inset primary='About' />
                     </ListItem>
-                    <ListItem>
-                        <ListItemIcon><FavoriteIcon /></ListItemIcon>
-                        <ListItemText primary={'Favorite'} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon><SearchIcon /></ListItemIcon>
-                        <ListItemText primary={'Search'} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon><DescriptionIcon /></ListItemIcon>
-                        <ListItemText primary={'Itinerary'} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon><PeopleIcon /></ListItemIcon>
-                        <ListItemText primary={'Friends'} />
-                    </ListItem>
-
+                    <Link component={RouterLink} to="/favorites">
+                        <ListItem>
+                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
+                            <ListItemText primary={'Favorite'} />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/search">
+                        <ListItem>
+                            <ListItemIcon><SearchIcon /></ListItemIcon>
+                            <ListItemText primary={'Search'} />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/itinerary">
+                        <ListItem>
+                            <ListItemIcon><DescriptionIcon /></ListItemIcon>
+                            <ListItemText primary={'Itinerary'} />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/shared">
+                        <ListItem>
+                            <ListItemIcon><PeopleIcon /></ListItemIcon>
+                            <ListItemText primary={'Friends'} />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/campregistration">
+                        <ListItem>
+                            <ListItemIcon><PeopleIcon /></ListItemIcon>
+                            <ListItemText primary={'Camp Administrators'} />
+                        </ListItem>
+                    </Link>
                 </List>
 
 
@@ -81,7 +99,7 @@ class NavBar extends Component {
         );
         return (
             <div>
-                <Button onClick={this.toggleDrawer('left', true)}><MenuIcon /></Button>
+                <Button onClick={this.toggleDrawer('left', true)}><MenuIcon className=".nav"/></Button>
                 <SwipeableDrawer
                     open={this.state.left}
                     onClose={this.toggleDrawer('left', false)}
