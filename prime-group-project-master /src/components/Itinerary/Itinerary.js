@@ -52,8 +52,8 @@ class Itinerary extends Component {
                     <Timeline
                         groups={groups}
                         items={items}
-                        defaultTimeStart={moment().add(-12, 'hour')}
-                        defaultTimeEnd={moment().add(12, 'hour')}
+                    defaultTimeStart="1556723865000"
+                    defaultTimeEnd="1567351065000"
                     />}
             </div>
 

@@ -46,8 +46,10 @@ router.get('/', (req, res) => {
 
                     //selecting camp name & info based on dates_id received from above
                     queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."title", "camp"."Name", 
-                                 EXTRACT(EPOCH from "program_dates"."start_date") AS "start_date", EXTRACT(EPOCH from "program_dates"."end_date") AS "end_date", 
-                                 EXTRACT(EPOCH from "program_dates"."end_time") AS "end_time", EXTRACT(EPOCH from "program_dates"."start_time") AS "start_time"
+                                 EXTRACT(EPOCH from "program_dates"."start_date") * 1000 AS "start_date", 
+                                 EXTRACT(EPOCH from "program_dates"."end_date") * 1000 AS "end_date", 
+                                 EXTRACT(EPOCH from "program_dates"."end_time") * 1000 AS "end_time", 
+                                 EXTRACT(EPOCH from "program_dates"."start_time") * 1000 AS "start_time"
                                  FROM "program_dates"
                                  JOIN "camp_program"
                                  ON "program_dates"."program_id"="camp_program"."id"
