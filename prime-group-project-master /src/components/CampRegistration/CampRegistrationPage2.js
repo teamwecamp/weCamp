@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 const styles = theme => ({
     container: {
@@ -96,6 +97,9 @@ class CampRegistrationPage2 extends Component {
             required
             id="outlined-icon"
             label=" Registration Deadline"
+            InputProps={{
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+            }}
             type="date"
             className={classes.textField}
             value={this.state.regDeadlineDate}

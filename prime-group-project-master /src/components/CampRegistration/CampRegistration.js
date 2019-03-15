@@ -5,6 +5,8 @@ import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { Input } from "@material-ui/core";
 
 const styles = theme => ({
   container: {
@@ -154,6 +156,9 @@ class CampRegistration extends Component {
             required
             id="outlined-startdate"
             label="Start Date Required"
+            InputProps={{
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+            }}
             type="date"
             className={classes.textField}
             value={this.state.startDate}
@@ -165,6 +170,9 @@ class CampRegistration extends Component {
             required
             id="outlined-enddate"
             label="End Date Required"
+            InputProps={{
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+            }}
             type="date"
             className={classes.textField}
             value={this.state.endDate}
