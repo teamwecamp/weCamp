@@ -22,6 +22,7 @@ import Favorites from '../Favorite/FavoriteCamps';
 import CampRegistration from '../CampRegistration/CampRegistration';
 import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
+import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
 import NavBar from '../Nav/NavBar';
 import Shared from '../Shared/Shared';
@@ -77,6 +78,11 @@ class App extends Component {
               exact
               path="/campregistrationpage3"
               component={CampRegistrationPage3}
+            />
+            <Route
+              exact
+              path="/campregistrationpage4"
+              component={CampRegistrationPage4}
             />
             <Route
               exact
