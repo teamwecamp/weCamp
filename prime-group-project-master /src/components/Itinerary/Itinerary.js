@@ -45,7 +45,7 @@ class Itinerary extends Component {
     }
 
     render() {
-        console.log(this.props.itinerary.userName);
+        console.log(this.props.itinerary);
         
         let items = this.props.itinerary.itineraries;
         let groups = this.props.itinerary.children;

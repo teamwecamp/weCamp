@@ -72,6 +72,8 @@ router.get('/', (req, res) => {
                     } else {
                         result.end_time = result.end_date;
                     }
+
+                    result.title = `${result.title} - ${result.Name}`
                     
                     result.id = id;
                     id ++;
@@ -79,7 +81,8 @@ router.get('/', (req, res) => {
                     let info = {};
                     //to push into object
                     //info.date here is diffrent from the date above and it's for the result we got from secondPull.
-                    
+                    result.status = item.status
+                    result.status_id = item.status_id
                     result.group = child;
                     info.item = result;
                     // "info" gets pushed into empty array from above
