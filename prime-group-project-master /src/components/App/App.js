@@ -29,7 +29,9 @@ import Shared from '../Shared/Shared';
 import Itinerary from '../Itinerary/Itinerary';
 
 
+
 import './App.css';
+import ViewCampProgram from '../ViewCamps/ViewCampProgram';
 
 
 class App extends Component {
@@ -111,6 +113,14 @@ class App extends Component {
               path="/favorites"
               component={Favorites}
             />
+
+
+            <ProtectedRoute
+              exact
+              path="/viewProgram/:id"
+              component={ViewCampProgram}
+            />
+
             <ProtectedRoute
               exact
               path="/itinerary"
