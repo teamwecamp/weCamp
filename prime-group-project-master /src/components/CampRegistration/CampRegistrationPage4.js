@@ -53,7 +53,10 @@ class CampRegistrationPage4 extends Component {
     const action = { type: "FETCH_SEARCH_CAMPS_DROP_DOWN" };
     this.props.dispatch(action);
   };
-
+  handleAddProgram = () => {
+      console.log(this.state);
+      this.props.history.push('/landing')
+  }
   handleAddMorePrograms = event => {
     this.setState({
       programs: [
@@ -162,9 +165,85 @@ class CampRegistrationPage4 extends Component {
                 </MenuItem>
               ))}
           </TextField>
+          <TextField
+                required
+                id="outlined-age"
+                label="Required Age"
+                className={classes.textField}
+                value={program.age}
+                onChange={this.handleProgramChange(i, 'age')}
+                margin="normal"
+                style = {{width: 100}}
+                variant="outlined"
+              />
+              <TextField
+            //required
+            id="outlined-type"
+            select
+            label="Gender"
+            className={classes.textField}
+            value={program.gender}
+            onChange={this.handleProgramChange(i,'gender')}
+            variant="outlined"
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu
+              }
+            }}
+            style={{ width: 175 }}
+            margin="normal"
+          >
+            {this.props.dropDown.gender !== undefined &&
+              this.props.dropDown.gender.map(type => (
+                <MenuItem key={type.id} value={type.id}>
+                  {type.gender}
+                </MenuItem>
+              ))}
+          </TextField>
+          <TextField
+            required
+            id="outlined-icon"
+            label=" Start Date"
+            type="date"
+            className={classes.textField}
+            value={program.startDate}
+            onChange={this.handleProgramChange(i,'startDate')}
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            required
+            id="outlined-icon"
+            label=" End Date"
+            type="date"
+            className={classes.textField}
+            value={program.endDate}
+            onChange={this.handleProgramChange(i,'endDate')}
+            margin="normal"
+            variant="standard"
+          />
               </div>);
 
     })}
+
+    <Button
+                className={classes.button}
+                id="add-btn"
+                onClick={this.handleAddMorePrograms}
+                variant="contained"
+              >
+                Add More
+              </Button>
+        
+    
+              <Button
+                className={classes.button}
+                id="submit-btn"
+                onClick={this.handleAddProgram}
+                variant="contained"
+              >
+                Submit
+              </Button>
         </form>
       </div>
     );
