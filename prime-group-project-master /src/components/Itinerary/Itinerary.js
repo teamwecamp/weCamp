@@ -4,32 +4,6 @@ import 'react-calendar-timeline/lib/Timeline.css';
 import moment from 'moment';
 import Timeline from 'react-calendar-timeline';
 
-// const groups = [{ id: 1, title: 'group 1' }, { id: 2, title: 'group 2' }]
-
-// const items = [
-//     {
-//         id: 1,
-//         group: 1,
-//         title: 'item 1',
-//         start_time: moment(),
-//         end_time: moment().add(1, 'hour')
-//     },
-//     {
-//         id: 2,
-//         group: 2,
-//         title: 'item 2',
-//         start_time: moment().add(-0.5, 'hour'),
-//         end_time: moment().add(0.5, 'hour')
-//     },
-//     {
-//         id: 3,
-//         group: 1,
-//         title: 'item 3',
-//         start_time: moment().add(2, 'hour'),
-//         end_time: moment().add(3, 'hour')
-//     }
-// ]
-
 class Itinerary extends Component {
     componentDidMount = () => {
         this.setCampItinerary();
@@ -44,20 +18,6 @@ class Itinerary extends Component {
         this.props.dispatch(action);
     }
 
-    statusColor = () => {
-        let status_id = this.props.itinerary.status_id;
-
-        if (status_id === 1) {
-            return 'rgb(124, 9, 163)';
-        } else if (status_id === 2) {
-            return 'rgb(234, 98, 114)';
-        } else if (status_id === 3) {
-            return 'rgb(124, 9, 163)';
-        } else if (status_id === 4) {
-            return 'rgb(124, 9, 163)';
-        };
-    }
-
     itemRenderer = ({
         item,
         timelineContext,
@@ -67,18 +27,18 @@ class Itinerary extends Component {
     }) => {
         const { left: leftResizeProps, right: rightResizeProps } = getResizeProps();
         const status = item.status_id
-        const backgroundColor = 
+        const backgroundColor =
 
-        status === 1 ?
-             'rgb(124, 9, 163)' :
-        status === 2 ?
-            'rgb(234, 98, 114)' :
-        status === 3 ?
-            'rgb(124, 9, 163)' :
-        status === 4 ?
-            'rgb(124, 9, 163)': 'gray';
-        
-    
+            status === 1 ?
+                'rgb(173, 151, 237)' :
+                status === 2 ?
+                    'rgb(247, 121, 136)' :
+                    status === 3 ?
+                        'rgb(218, 247, 215)' :
+                        status === 4 ?
+                            'rgb(242, 210, 181)' : 'gray';
+
+
         const borderColor = 'black';
         return (
             <div
