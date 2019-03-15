@@ -26,7 +26,9 @@ import ViewCamps from '../ViewCamps/ViewCamps';
 import NavBar from '../Nav/NavBar';
 
 
+
 import './App.css';
+import ViewCampProgram from '../ViewCamps/ViewCampProgram';
 
 class App extends Component {
   componentDidMount () {
@@ -101,6 +103,12 @@ class App extends Component {
               exact
               path="/favorites"
               component={Favorites}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/viewProgram/:id"
+              component={ViewCampProgram}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

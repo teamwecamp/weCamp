@@ -10,6 +10,7 @@ import SearchCamps from './searchCampsReducer';
 import setViewCampsDetails from './viewCampsDetailsReducer';
 import setCampItinerary from './itineraryReducer';
 import setSharedAcess from './sharedAccessReducer';
+// import setViewCampsDetails from './viewCampsDetailsReducer';
 
 
 

@@ -13,8 +13,21 @@ function* fetchCampDetails(action) {
     }
 }
 
+// this funtion gets the camp program/schedual info.
+function* fetchCampProgram(action){
+    try{
+        const response = yield axios.get(`api/viewcamps/viewProgram/${action.payload}`);
+        console.log('this is in fetchCampProgram',response.data[0]);
+        yield put({type: 'SET_VIEW_CAMPS_PROGRAM', payload: response.data});
+    }catch (error){
+        console.log('there is an error in fetchCampProgram')
+    }
+}
+
 function* userRegistrationSaga() {
     yield takeEvery('FETCH_CAMP_DETAILS', fetchCampDetails);
+    // this gets the camp program schedule.
+    yield takeEvery('FETCH_CAMP_PROGRAMS', fetchCampProgram);
 }
 
 export default userRegistrationSaga;
