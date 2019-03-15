@@ -22,13 +22,17 @@ import Favorites from '../Favorite/FavoriteCamps';
 import CampRegistration from '../CampRegistration/CampRegistration';
 import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
+import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
 import NavBar from '../Nav/NavBar';
+import Shared from '../Shared/Shared';
+import Itinerary from '../Itinerary/Itinerary';
 
 
 
 import './App.css';
 import ViewCampProgram from '../ViewCamps/ViewCampProgram';
+
 
 class App extends Component {
   componentDidMount () {
@@ -80,6 +84,11 @@ class App extends Component {
             />
             <Route
               exact
+              path="/campregistrationpage4"
+              component={CampRegistrationPage4}
+            />
+            <Route
+              exact
               path="/viewCamp/:id"
               component={ViewCamps}
               />
@@ -105,11 +114,24 @@ class App extends Component {
               component={Favorites}
             />
 
+
             <ProtectedRoute
               exact
               path="/viewProgram/:id"
               component={ViewCampProgram}
             />
+
+            <ProtectedRoute
+              exact
+              path="/itinerary"
+              component={Itinerary}
+            />
+            <ProtectedRoute
+              exact
+              path="/shared"
+              component={Shared}
+            />
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
