@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'react-calendar-timeline/lib/Timeline.css';
 import Timeline from 'react-calendar-timeline';
+import './Itinerary.css';
 
 class Itinerary extends Component {
     componentDidMount = () => {
@@ -27,7 +28,7 @@ class Itinerary extends Component {
             //ternary to determine background color based on itinerary status
             status === 1 ? 'rgb(173, 151, 237)' :
                 status === 2 ? 'rgb(247, 121, 136)' :
-                    status === 3 ? 'rgb(185, 221, 181)' :
+                    status === 3 ? 'rgb(155, 185, 204)' :
                         status === 4 ? 'rgb(226, 186, 165)' : 'gray';
         // this keeps the background color after the item has been clicked on
         const backgroundColor = itemContext.selected
@@ -97,6 +98,14 @@ class Itinerary extends Component {
                         itemHeightRatio={.75}
                         sidebarContent={<div>Itinerary</div>}
                     />}
+                <table>
+                    <tr>
+                        <td className="tdInt">interested</td>
+                        <td className="tdApp">applied</td>
+                        <td className="tdReg">registered</td>
+                        <td className="tdWait">waitlisted</td>
+                    </tr>
+                </table>
                 <p>Calendar View Instructions: to zoom out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
                 <p>Click and hold on the calendar, then move the mouse to slide the view.</p>
             </div>
