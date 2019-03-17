@@ -76,16 +76,18 @@ class Landing extends Component {
         const { spacing } = this.state;
         return (
             <div>
-                <h5>Recent Camps</h5>
+                {/* Site slogan */}
+                <h1>CONNECTING PARENTS AND CAMPS</h1>
+                <h5>Sponsored Camps</h5>
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
-                    {this.recentCamps()}
+                    {this.sponsoredCamps()}
                 </Grid>
                 <Button className={classes.bigButton} variant="contained" color="primary" size="large" onClick={this.goToSearch}>
                     Search for Camps
                 </Button>
-                <h5>Sponsored Camps</h5>
+                <h5>Newly Added WeCAMPS</h5>
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
-                    {this.sponsoredCamps()}
+                    {this.recentCamps()}
                 </Grid>
             </div>
         )

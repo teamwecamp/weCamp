@@ -32,8 +32,7 @@ function* fetchFavoriteCamps() {
     // console.log('this is inside fetchFavoriteCamp');
     try {
         const response = yield axios.get(`/api/favorite`);
-        console.log(response);
-        
+        console.log(response.data);
         const nextAction = { type: 'SET_FAVORITE_CAMPS', payload: response.data}
         yield put(nextAction);
 
@@ -50,11 +49,6 @@ function* favoriteSaga() {
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
     //
-
-
-
-
-
 
 }
 
