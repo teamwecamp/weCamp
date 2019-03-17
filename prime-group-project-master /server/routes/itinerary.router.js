@@ -47,6 +47,7 @@ router.get('/', (req, res) => {
                     console.log('status', status);
 
                     //selecting camp name & info based on dates_id received from above
+                    //time and dates are in UNIX for timeline-calendar
                     queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."title", "camp"."Name", 
                                  EXTRACT(EPOCH from "program_dates"."start_date") * 1000 AS "start_date", 
                                  EXTRACT(EPOCH from "program_dates"."end_date") * 1000 AS "end_date", 
@@ -72,21 +73,15 @@ router.get('/', (req, res) => {
                     } else {
                         result.end_time = result.end_date;
                     }
-
+                    // add camp name to program title for display
                     result.title = `${result.title} - ${result.Name}`
-                    
                     result.id = id;
+                    // increase id counter by 1
                     id ++;
-                    //create an empty object for all the new data that we get from the query above
-                    let info = {};
-                    //to push into object
-                    //info.date here is diffrent from the date above and it's for the result we got from secondPull.
                     result.status = item.status
                     result.status_id = item.status_id
                     result.group = child;
-                    info.item = result;
-                    // "info" gets pushed into empty array from above
-                    console.log('info', info);
+                    // "info" gets pushed into empty array from above                   
                     itineraryItem.push(result)
                 }
                 schedule.itineraries = itineraryItem;
