@@ -33,6 +33,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     LandingSaga(),
+    FavoriteSaga(),
     searchSaga(),
     updateItinerarySaga(),
     itinerarySaga(),

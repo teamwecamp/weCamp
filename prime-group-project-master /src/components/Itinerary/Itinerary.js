@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'react-calendar-timeline/lib/Timeline.css';
-import moment from 'moment';
 import Timeline from 'react-calendar-timeline';
+import './Itinerary.css';
 
 class Itinerary extends Component {
     componentDidMount = () => {
         this.setCampItinerary();
-    }
-
-    getUserInfo() {
-        this.props.dispatch({ type: 'FETCH_USER_PROFILE_INFO', })
     }
 
     setCampItinerary() {
@@ -18,6 +14,7 @@ class Itinerary extends Component {
         this.props.dispatch(action);
     }
 
+    // function from 'react-calendar-timeline' to customize calendar display
     itemRenderer = ({
         item,
         timelineContext,
@@ -27,18 +24,18 @@ class Itinerary extends Component {
     }) => {
         const { left: leftResizeProps, right: rightResizeProps } = getResizeProps();
         const status = item.status_id
-        const backgroundColor =
-
-            status === 1 ?
-                'rgb(173, 151, 237)' :
-                status === 2 ?
-                    'rgb(247, 121, 136)' :
-                    status === 3 ?
-                        'rgb(218, 247, 215)' :
-                        status === 4 ?
-                            'rgb(242, 210, 181)' : 'gray';
-
-
+        const bgColor =
+            //ternary to determine background color based on itinerary status
+            status === 1 ? 'rgb(173, 151, 237)' :
+                status === 2 ? 'rgb(247, 121, 136)' :
+                    status === 3 ? 'rgb(155, 185, 204)' :
+                        status === 4 ? 'rgb(226, 186, 165)' : 'gray';
+        // this keeps the background color after the item has been clicked on
+        const backgroundColor = itemContext.selected
+            ? itemContext.dragging
+                ? "red"
+                : item.selectedBgColor
+            : bgColor;
         const borderColor = 'black';
         return (
             <div
@@ -48,10 +45,14 @@ class Itinerary extends Component {
                         color: item.color,
                         borderColor,
                         borderStyle: "solid",
-                        borderWidth: 1,
-                        borderRadius: 4,
+                        borderWidth: 2,
+                        borderRadius: 3,
                         borderLeftWidth: itemContext.selected ? 3 : 1,
                         borderRightWidth: itemContext.selected ? 3 : 1
+                    },
+                    onMouseDown: () => {
+                        // could add function to display item details on page 
+                        console.log("on item click", item);
                     }
                 })}
             >
@@ -76,8 +77,6 @@ class Itinerary extends Component {
 
     render() {
         console.log(this.props.itinerary);
-
-
         let items = this.props.itinerary.itineraries;
         let groups = this.props.itinerary.children;
         return (
@@ -89,7 +88,7 @@ class Itinerary extends Component {
                     <Timeline
                         groups={groups}
                         items={items}
-                        // default time is set to display May through Aug
+                        // default time is set to display May 1, 2019 through Aug 31, 2019 (UNIX)
                         defaultTimeStart="1556723865000"
                         defaultTimeEnd="1567351065000"
                         canMove={false}
@@ -99,9 +98,17 @@ class Itinerary extends Component {
                         itemHeightRatio={.75}
                         sidebarContent={<div>Itinerary</div>}
                     />}
-                <p>To zoom the calendar view out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
+                <table>
+                    <tr>
+                        <td className="tdInt">interested</td>
+                        <td className="tdApp">applied</td>
+                        <td className="tdReg">registered</td>
+                        <td className="tdWait">waitlisted</td>
+                    </tr>
+                </table>
+                <p>Calendar View Instructions: to zoom out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
+                <p>Click and hold on the calendar, then move the mouse to slide the view.</p>
             </div>
-
         )
     }
 }
