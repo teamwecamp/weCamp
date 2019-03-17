@@ -28,7 +28,7 @@ router.get('/recentCamps', (req, res) => {
     const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region"
                         FROM "camp" JOIN "regions" ON "camp"."region_id" = "regions"."id" 
                         ORDER BY "date_added"
-                        ASC
+                        DESC
                         LIMIT 4;`;
     pool.query(queryText)
     .then(result => {

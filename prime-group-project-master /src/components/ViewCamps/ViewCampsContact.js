@@ -1,50 +1,63 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class ViewCampsContact extends Component{
-    getphone = () => {
+class ViewCampsContact extends Component {
+    componentDidMount = () => {
         let phone = this.props.camp.phone;
         console.log(phone);
-        // let arr = phone.split('');
     }
 
-    // this is quick and dirty version. would prefer to attach to social media icons, etc. 
-    // will also come back later to fix n/a issue
-    socialMedia = () => {
-        let twitter;
-        if (this.props.camp.twitter === null){
-            twitter = 'n/a';
-        } else {
-            twitter = this.props.camp.twitter;
+    facebook = () => {
+        if (this.props.camp.facebook !== null){
+            return <a target="_blank" href={this.props.camp.facebook}><img className="socialMedia" src='socialMedia/iconfinder_Asset_2_2001646.png' /></a>
         }
-        let instagram; 
-        if (this.props.camp.instagram === null) {
-            instagram = 'n/a';
-        } else {
-            instagram = this.props.camp.instagram;
+    }
+
+    twitter = () => {
+        if (this.props.camp.twitter !== null) {
+            return <a target="_blank" href={this.props.camp.twitter}><img className="socialMedia" src='socialMedia/iconfinder_Asset_3_2001676.png' /></a>
         }
-        let facebook;
-        if (this.props.camp.facebook === null) {
-            facebook = 'n/a';
-        } else {
-            facebook = this.props.camp.facebook;
+    }
+
+    instagram = () => {
+        if (this.props.camp.instagram !== null) {
+            return <a target="_blank" href={this.props.camp.instagram}><img className="socialMedia" src='socialMedia/iconfinder_Asset_16_2001652.png' /></a>
         }
+    }
+
+    //This will work for demo only
+    phone = () => {
+        let phoneArr = this.props.camp.phone.split('');
+        console.log(phoneArr);
+        let newArr = [];
+        newArr.push(phoneArr[0]);
+        newArr.push(phoneArr[1]);
+        newArr.push(phoneArr[2]);
+        newArr.push('-');
+        newArr.push(phoneArr[3]);
+        newArr.push(phoneArr[4]);
+        newArr.push(phoneArr[5]);
+        newArr.push('-');
+        newArr.push(phoneArr[6]);
+        newArr.push(phoneArr[7]);
+        newArr.push(phoneArr[8]);
+        newArr.push(phoneArr[9]);
+        let newPhone = newArr.join('');
+        return newPhone;
+    }
+
+
+    render() {
         return (
-            <div>
-                <p>facebook: <a target="_blank" href={facebook}>{facebook}</a></p>
-                <p>instagram: <a target="_blank" href={instagram}>{instagram}</a></p>
-                <p>twitter: <a target="_blank" href={twitter}>{twitter}</a></p>
-            </div>
-        )
-    }
-
-    render(){
-        return(
             <div className="camp_contacts">
                 <h4>Contact</h4>
                 <p>{this.props.camp.address}</p>
-                <p>Phone: {this.props.camp.phone}</p>
+                {this.props.camp.phone !== undefined &&
+                    <p>Phone: {this.phone()}</p>}
                 <a target="_blank" href={this.props.camp.website}>website</a>
-                {this.socialMedia()}
+                <br/>
+                {this.facebook()}
+                {this.twitter()}
+                {this.instagram()}
             </div>
         )
     }
