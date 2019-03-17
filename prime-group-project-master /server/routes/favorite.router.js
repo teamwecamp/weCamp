@@ -14,6 +14,8 @@ router.get('/', (req, res) => {
             
             //user.id is logged in user
             const user = req.user.id;
+            console.log(user);
+            
             //selecting favorite camp id and child name - joinign favorites to user child and child 
             //porfile to user table
             let queryText = `SELECT "favorites"."camp_id", "child_profile"."name"
