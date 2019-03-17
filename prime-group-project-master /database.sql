@@ -58,7 +58,8 @@ CREATE TABLE "camp" (
 	"logo_url" text,
 	"website" varchar(100),
     "date_added" timestamp without time zone DEFAULT now(),
-	"sponsored" BOOLEAN DEFAULT false
+	"sponsored" BOOLEAN DEFAULT false,
+	"summary" text
 );
 
 

@@ -25,6 +25,7 @@ class ViewCamps extends Component {
                 <h1>{camp.Name}</h1>
                 {/* add logo */}
                 <img className="camp_pic" alt="camp pic" src={this.props.viewCamp.photo_url} />
+                <p>{camp.summary}</p>
                 <ViewCampsContact camp={camp} />
                 <Button variant="contained" color="primary" size="large" onClick={this.goToProgram}>
                     View Program Details
