@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import swal from 'sweetalert';
+
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -80,6 +82,17 @@ class ResultsDetails extends Component {
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
+    updateFavorite = () => {
+        console.log(this.props.camp);
+        if(this.props.user.id){
+            console.log('true');
+            swal('This is a favorite for <insert child>.')
+        } else {
+            swal('Please log in to mark favorites')
+        }
+        
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -99,7 +112,8 @@ class ResultsDetails extends Component {
                                         title="Camp Pic"
                                     />
                                     <CardActions className={classes.actions} disableActionSpacing>
-                                        <IconButton aria-label="Add to favorites">
+                                        <IconButton aria-label="Add to favorites"
+                                                    onClick={this.updateFavorite}>
                                             <FavoriteIcon />
                                         </IconButton>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
@@ -150,7 +164,8 @@ class ResultsDetails extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-    results: reduxStore.setSearchCamps.setSearchCamps
+    results: reduxStore.setSearchCamps.setSearchCamps,
+    user: reduxStore.user.userReducer
 });
 
 ResultsDetails.propTypes = {

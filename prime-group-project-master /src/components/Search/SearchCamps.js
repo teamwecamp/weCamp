@@ -90,7 +90,7 @@ class SearchCamps extends Component {
 
     getResults = () => {
         //for dev only
-        this.props.dispatch({ type: 'FETCH_DEV_RESULTS'})
+        this.props.dispatch({ type: 'FETCH_DEV_RESULTS'});
     }
 
     render() {
