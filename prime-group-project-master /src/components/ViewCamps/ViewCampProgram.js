@@ -181,12 +181,12 @@ class ViewCampProgram extends Component {
 
                 {/* this is materai UI selects */}
 
-                <form className={classes.root} autoComplete="off">
+                <form autoComplete="off">
 
                 
-                
+                 
                 {/* this is for selecting kids */}
-                    <FormControl className={classes.margin}>
+                    <FormControl >
 
                         {/* {JSON.stringify(this.props.itinerary.children)} */}
                         
