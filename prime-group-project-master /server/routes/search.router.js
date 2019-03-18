@@ -65,8 +65,9 @@ router.get('/dropdown', (req, res) => {
   });
 });
 
-router.get('/searchresult/', (req, res) => {
-  console.log('this is in /searchresult', req.params);
+router.get('/searchresult', (req, res) => {
+  // req.query is what we sending from the client.
+  console.log('this is in /searchresult', req.query);
   // const queryText = `SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", "program_dates"."start_date", "program_dates"."end_date", "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
   //                    FROM "camp" 
   //                    JOIN "regions" 
@@ -128,7 +129,6 @@ AND "program_dates"."end_date"= $14;`;
       console.log('there is error in get search result router', error);
       res.sendStatus(500);
     });
-
 
 });
 

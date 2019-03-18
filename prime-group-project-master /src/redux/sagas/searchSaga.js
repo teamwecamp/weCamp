@@ -5,7 +5,7 @@ import axios from 'axios';
 function* fetchSearchCamps(action){
     console.log('this is sate from search',action.payload)
     try{
-        const response = yield axios.get(`/api/search/searchresult/`, action.payload);
+        const response = yield axios.get(`/api/search/searchresult`, {params: action.payload});
         const nextAction = {type: 'SET_SEARCH_CAMPS', payload: response.data}
         yield put(nextAction);
 
