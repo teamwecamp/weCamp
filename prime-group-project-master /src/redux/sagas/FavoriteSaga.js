@@ -20,9 +20,11 @@ function* deleteFavoriteCamps(action) {
 function* updateFavoriteCamps(action) {
     // console.log('this is updateFavoriteCamps');
     try {
-        const campId = action.payload.campId
-        yield axios.post(`/api/favorite/${campId}`);
-        const nextAction = { type: 'SET_FAVORITE_CAMPS' }
+        const favorite = action.payload
+        console.log(favorite);
+        
+        // yield axios.post(`/api/favorite/`);
+        const nextAction = { type: 'FETCH_FAVORITE_CAMPS' }
         yield put(nextAction)
     } catch (error) {
         console.log('error in updateFavorietCamps', error);
@@ -58,7 +60,7 @@ function* favoriteSaga() {
     // delete favorite camps
     yield takeEvery('REMOVE_FAVORITE_CAMP', deleteFavoriteCamps);
     // update camps
-    yield takeEvery('UPDATE_FAVORITE_CAMPS', updateFavoriteCamps);
+    yield takeEvery('ADD_FAVORITE_CAMP', updateFavoriteCamps);
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
     //
