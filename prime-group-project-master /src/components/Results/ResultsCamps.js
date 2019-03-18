@@ -33,13 +33,9 @@ class ResultsCamps extends Component {
     resultsDetails = () => {
         return (
             this.props.devResults.map((camp, i) => {
-                return (<ResultsDetails moveToCamp={this.moveToCamp} key={i} camp={camp} />)
+                return (<ResultsDetails moveToCamp={this.props.moveToCamp} key={i} camp={camp} />)
             })
             )      
-    }
-
-    moveToCamp = (page) => {
-        this.props.history.push(page);
     }
 
 

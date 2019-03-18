@@ -62,6 +62,12 @@ class SearchCamps extends Component {
         this.getDropDowns();
     }
 
+    moveToCamp = (page) => {
+        console.log(page);
+
+        this.props.history.push(page);
+    }
+
     setSearchCamps = () => {
         const action = { type: 'FETCH_SEARCH_CAMPS' }
         this.props.dispatch(action);
@@ -360,7 +366,7 @@ class SearchCamps extends Component {
                     <Button type="submit">Click me!</Button>
                 </form>
                 <div>
-                    <Results />
+                    <Results moveToCamp={this.moveToCamp}/>
                 </div>
             </div>
 

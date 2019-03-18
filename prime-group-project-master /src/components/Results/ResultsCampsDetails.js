@@ -65,14 +65,8 @@ const styles = theme => ({
     title: {
         fontSize: 18,
     },
-    CardActions: {
-        justifyContent: 'center',
-    },
     expandOpen: {
         transform: 'rotate(180deg)',
-    },
-    avatar: {
-        backgroundColor: red[500],
     },
 });
 
@@ -84,14 +78,18 @@ class ResultsDetails extends Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    moveToCamp = () => {
+        const camp = this.props.camp.id;
+        console.log(camp);
+        this.props.moveToCamp(`/viewCamp/${camp}`);
+    }
+
     render() {
         const { classes } = this.props;
         return (
             <div>
                 <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
-
-
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
                                 <CardHeader
@@ -104,8 +102,6 @@ class ResultsDetails extends Component {
                                     subheader={this.props.camp.region_id}
                                 />
                                 <CardContent>
-                                    {/* <Typography className={classes.title}></Typography>
-                                    <Typography>{this.props.camp.region}</Typography> */}
                                     <CardMedia
                                         className={classes.media}
                                         image={this.props.camp.photo_url}
@@ -130,7 +126,6 @@ class ResultsDetails extends Component {
                                             <ExpandMoreIcon />
                                         </IconButton>
                                     </CardActions>
-
                                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                                         <CardContent>
                                             <Typography paragraph>
