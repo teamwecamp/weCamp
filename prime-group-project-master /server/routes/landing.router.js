@@ -21,6 +21,7 @@ router.get('/recentCamps', (req, res) => {
     })
 })
 
+
 router.get('/sponsoredCamps', (req, res) => {
     console.log('this is inside router get camps.');
     const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region"
