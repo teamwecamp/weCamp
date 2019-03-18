@@ -4,7 +4,6 @@ const router = express.Router();
 
 
 router.get('/status', (req, res) => {
-  
         console.log('In /status');
        
         const queryText = `SELECT * FROM "status";`;
@@ -18,9 +17,9 @@ router.get('/status', (req, res) => {
 });
 
 
-//This is for Viewing the camps.
+//This is for Viewing the camps. User does not need to be logged in.
 router.get('/:id', (req, res) => {
-    if (req.isAuthenticated()) {
+    
         console.log('In /viewcamps GET');
         const id = req.params.id;
         const queryText = `SELECT * FROM "camp" WHERE "id" = $1;`;
@@ -30,9 +29,6 @@ router.get('/:id', (req, res) => {
             res.sendStatus(500);
             console.log(error);
         })
-    } else {
-        res.sendStatus(403);
-    }
 });
 
 

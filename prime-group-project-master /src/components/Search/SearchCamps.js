@@ -5,6 +5,8 @@ import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Results from '../Results/ResultsCamps';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     container: {
@@ -56,8 +58,14 @@ class SearchCamps extends Component {
 
 
     componentDidMount = () => {
-        this.setSearchCamps();
+        // this.setSearchCamps();
         this.getDropDowns();
+    }
+
+    moveToCamp = (page) => {
+        console.log(page);
+
+        this.props.history.push(page);
     }
 
     setSearchCamps = () => {
@@ -79,6 +87,12 @@ class SearchCamps extends Component {
         this.props.dispatch(action);
         console.log("GET DROP DOWNS", action);
     };
+
+    getResults = () => {
+        //for dev only
+        this.props.dispatch({ type: 'FETCH_DEV_RESULTS'});
+    }
+
     render() {
         console.log(this.props.dropDown);
         const { classes } = this.props;
@@ -92,6 +106,7 @@ class SearchCamps extends Component {
                     className={classes.container}
                     noValidate
                     autoComplete="off"
+                    onSubmit={this.getResults}
                 >
 
                     <TextField
@@ -348,9 +363,11 @@ class SearchCamps extends Component {
                                 </MenuItem>
                             ))}
                     </TextField>
-                          
-               
+                    <Button type="submit">Click me!</Button>
                 </form>
+                <div>
+                    <Results moveToCamp={this.moveToCamp}/>
+                </div>
             </div>
 
         )

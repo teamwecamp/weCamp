@@ -20,7 +20,7 @@ function* fetchCampDetails(action) {
 
         yield put({ type: 'SET_VIEW_CAMPS_DETAILS', payload: response.data[0] });
     } catch (error) {
-        console.log('there is an error in putUserRegistration', error);
+        console.log('there is an error in fetchCampDetails', error);
     }
 }
 

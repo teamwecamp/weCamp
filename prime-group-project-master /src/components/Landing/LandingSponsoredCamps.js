@@ -31,7 +31,7 @@ const styles = theme => ({
     },
     card: {
         minWidth: 175,
-        height: 250,
+        height: 280,
     },
     control: {
         padding: theme.spacing.unit * 2,
