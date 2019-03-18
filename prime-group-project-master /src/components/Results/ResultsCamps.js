@@ -17,11 +17,6 @@ const styles = theme => ({
     pos: {
         marginBottom: 12,
     },
-    bigButton: {
-        height: 90,
-        width: 1000,
-        fontSize: 40,
-    },
 });
 
 
@@ -45,7 +40,7 @@ class ResultsCamps extends Component {
         return (
             <div>
                 <h1>Results</h1>
-                {JSON.stringify(this.props.devResults)}
+                {/* {JSON.stringify(this.props.devResults)} */}
                 {this.props.devResults !== undefined &&
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.resultsDetails()}

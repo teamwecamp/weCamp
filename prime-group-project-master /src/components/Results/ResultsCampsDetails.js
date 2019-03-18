@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import moment from 'moment';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -16,13 +16,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import classnames from 'classnames';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const theme = createMuiTheme({
     palette: {
@@ -37,10 +33,10 @@ const styles = theme => ({
         flexGrow: 1,
     },
     media: {
-        height: 340,
+        height: 260,
     },
     card: {
-        width: 700,
+        width: 500,
     },
     actions: {
         display: 'flex',
@@ -92,12 +88,7 @@ class ResultsDetails extends Component {
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
-                                <CardHeader
-                                    action={
-                                        <IconButton>
-                                            <MoreVertIcon />
-                                        </IconButton>
-                                    }
+                                <CardHeader    
                                     title={this.props.camp.Name}
                                     subheader={this.props.camp.region_id}
                                 />
@@ -138,7 +129,7 @@ class ResultsDetails extends Component {
                                                 Type: TBD
                                             </Typography>
                                             <Typography>
-                                                Dates: TBD
+                                                Dates: {moment(this.props.camp.date_min).format('MM/DD/YYYY')} - {moment(this.props.camp.date_max).format('MM/DD/YYYY')}
                                             </Typography>
                                             <Typography>
                                                 Gender: {this.props.camp.gender_id}
