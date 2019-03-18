@@ -9,9 +9,9 @@ const setFavoriteCamps = (state = [], action) => {
     }
 }
 
-const defaultCamp = {
+const defaultCamp = [{
     Name: 'Test Camp',
-};
+}];
 
 const setResultsForDev = (state = defaultCamp, action) => {
     switch(action.type) {

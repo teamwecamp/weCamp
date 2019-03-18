@@ -32,10 +32,10 @@ class ResultsCamps extends Component {
 
     resultsDetails = () => {
         return (
-            this.props.results.map((camp, i) => {
+            this.props.devResults.map((camp, i) => {
                 return (<ResultsDetails moveToCamp={this.moveToCamp} key={i} camp={camp} />)
             })
-        )
+            )      
     }
 
     moveToCamp = (page) => {
@@ -50,10 +50,10 @@ class ResultsCamps extends Component {
             <div>
                 <h1>Results</h1>
                 {JSON.stringify(this.props.devResults)}
-                
+                {this.props.devResults !== undefined &&
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.resultsDetails()}
-                </Grid>
+                </Grid>}
             </div>
         )
     }

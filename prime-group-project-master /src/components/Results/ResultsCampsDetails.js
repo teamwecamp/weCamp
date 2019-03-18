@@ -13,6 +13,16 @@ import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { createMuiTheme } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
+import classnames from 'classnames';
+import CardHeader from '@material-ui/core/CardHeader';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import red from '@material-ui/core/colors/red';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const theme = createMuiTheme({
     palette: {
@@ -27,18 +37,25 @@ const styles = theme => ({
         flexGrow: 1,
     },
     media: {
-        height: 140,
+        height: 340,
     },
     card: {
-        minWidth: 175,
-        height: 280,
+        width: 700,
+    },
+    actions: {
+        display: 'flex',
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
     },
     control: {
         padding: theme.spacing.unit * 2,
     },
     paper: {
-        height: 200,
-        width: 260,
         textAlign: 'center',
     },
     pos: {
@@ -50,30 +67,92 @@ const styles = theme => ({
     },
     CardActions: {
         justifyContent: 'center',
-    }
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
+    },
+    avatar: {
+        backgroundColor: red[500],
+    },
 });
 
 
-class ResultsCamps extends Component {
+class ResultsDetails extends Component {
+    state = { expanded: false };
+
+    handleExpandClick = () => {
+        this.setState(state => ({ expanded: !state.expanded }));
+    };
+
     render() {
         const { classes } = this.props;
         return (
             <div>
                 <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
+
+
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
+                                <CardHeader
+                                    action={
+                                        <IconButton>
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                    }
+                                    title={this.props.camp.Name}
+                                    subheader={this.props.camp.region_id}
+                                />
                                 <CardContent>
-                                    <Typography className={classes.title}>{this.props.camp.Name}</Typography>
-                                    <Typography>{this.props.camp.region}</Typography>
+                                    {/* <Typography className={classes.title}></Typography>
+                                    <Typography>{this.props.camp.region}</Typography> */}
                                     <CardMedia
                                         className={classes.media}
                                         image={this.props.camp.photo_url}
                                         title="Camp Pic"
                                     />
-                                    <CardActions className={classes.CardActions}>
+                                    <CardActions className={classes.actions} disableActionSpacing>
+                                        <IconButton aria-label="Add to favorites">
+                                            <FavoriteIcon />
+                                        </IconButton>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
+                                        {/* <IconButton aria-label="Share">
+                                            <ShareIcon />
+                                        </IconButton> */}
+                                        <IconButton
+                                            className={classnames(classes.expand, {
+                                                [classes.expandOpen]: this.state.expanded,
+                                            })}
+                                            onClick={this.handleExpandClick}
+                                            aria-expanded={this.state.expanded}
+                                            aria-label="Show more"
+                                        >
+                                            <ExpandMoreIcon />
+                                        </IconButton>
                                     </CardActions>
+
+                                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                                        <CardContent>
+                                            <Typography paragraph>
+                                                {this.props.camp.summary}
+                                            </Typography>
+                                            <Typography>
+                                                Cost: ${this.props.camp.cost_min} - ${this.props.camp.cost_max}
+                                            </Typography>
+                                            <Typography>
+                                                Type: TBD
+                                            </Typography>
+                                            <Typography>
+                                                Dates: TBD
+                                            </Typography>
+                                            <Typography>
+                                                Gender: {this.props.camp.gender_id}
+                                            </Typography>
+                                            <Typography>
+                                                Activites: TBD
+                                            </Typography>
+                                        </CardContent>
+                                    </Collapse>
                                 </CardContent>
                             </MuiThemeProvider>
                         </Card>
@@ -88,4 +167,8 @@ const mapStateToProps = (reduxStore) => ({
     results: reduxStore.setSearchCamps.setSearchCamps
 });
 
-export default connect(mapStateToProps)(ResultsCamps);
+ResultsDetails.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(connect(mapStateToProps)(ResultsDetails));
