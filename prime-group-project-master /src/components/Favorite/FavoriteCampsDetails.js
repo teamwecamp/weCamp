@@ -29,13 +29,12 @@ const styles = theme => ({
     },
     card: {
         minWidth: 175,
-        height: 250,
+        height: 310,
     },
     control: {
         padding: theme.spacing.unit * 2,
     },
     paper: {
-        height: 200,
         width: 260,
         textAlign: 'center',
     },
@@ -44,7 +43,7 @@ const styles = theme => ({
         fontSize: 16,
     },
     title: {
-        fontSize: 16,
+        fontSize: 18,
     },
     CardActions: {
         justifyContent: 'center',
@@ -56,10 +55,15 @@ class FavoriteCampsDetails extends Component {
     moveToCamp = () => {
         const camp = this.props.camp.camp.id;
         console.log(camp);
-        
+
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
+    removeFavorites = () => {
+        console.log(this.props.camp);
+        
+        // this.props.dispatch({type: 'REMOVE_FAVORITE' })
+    }
 
     render() {
         const { classes } = this.props;
@@ -78,6 +82,7 @@ class FavoriteCampsDetails extends Component {
                                     />
                                     <Typography>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
+                                        <Button className="eventButton" onClick={this.removeFavorites} size="small">Remove From Favorites</Button>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
                                 </CardContent>

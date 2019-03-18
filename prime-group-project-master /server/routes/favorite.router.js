@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
             
             //selecting favorite camp id and child name - joinign favorites to user child and child 
             //porfile to user table
-            let queryText = `SELECT "favorites"."camp_id", "child_profile"."name"
+            let queryText = `SELECT "favorites"."camp_id", "child_profile"."name", "favorites"."id"
                     FROM "favorites" 
                     JOIN "user_child" 
                     ON "favorites"."user_kid_id"="user_child"."id"
@@ -37,6 +37,7 @@ router.get('/', (req, res) => {
             for (let favorite of favorites) {
                 let camp = favorite.camp_id;
                 let kid = favorite.name;
+                let favoriteId = favorite.id;
                 console.log('kid', kid);
                 console.log('camp', camp);
                 
@@ -52,6 +53,7 @@ router.get('/', (req, res) => {
                 faves.camp= result;
                 faves.camp.id = camp;
                 faves.kid=kid;
+                faves.faveId = favoriteId;
                 // faves gets pshed into empty array from above
                 favCamps.push(faves);
             }
