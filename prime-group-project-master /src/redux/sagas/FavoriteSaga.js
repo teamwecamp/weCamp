@@ -6,10 +6,10 @@ import { func } from 'prop-types';
 function* deleteFavoriteCamps(action) {
     // console.log('this is inside of deleteFavoriteCamps');
     try {
-        const campId = action.payload.campId
+        const campId = action.payload
         console.log(campId);
-        yield axios.delete(`/api/favorite/${campId}`);
-        const nextAction = { type: 'SET_FAVORITE_CAMPS' }
+        yield axios.put(`/api/favorite/${campId}`);
+        const nextAction = { type: 'FETCH_FAVORITE_CAMPS' }
         yield put(nextAction)
     } catch (error) {
         console.log('error in deleteFavoriteCamp saga', error);
@@ -21,7 +21,7 @@ function* updateFavoriteCamps(action) {
     // console.log('this is updateFavoriteCamps');
     try {
         const campId = action.payload.campId
-        yield axios.put(`/api/favorite/${campId}`);
+        yield axios.post(`/api/favorite/${campId}`);
         const nextAction = { type: 'SET_FAVORITE_CAMPS' }
         yield put(nextAction)
     } catch (error) {
@@ -56,7 +56,7 @@ function* fetchResultsForDev() {
 
 function* favoriteSaga() {
     // delete favorite camps
-    yield takeEvery('DELETE_FAVORITE_CAMPS', deleteFavoriteCamps);
+    yield takeEvery('REMOVE_FAVORITE_CAMP', deleteFavoriteCamps);
     // update camps
     yield takeEvery('UPDATE_FAVORITE_CAMPS', updateFavoriteCamps);
     // get favorite camps

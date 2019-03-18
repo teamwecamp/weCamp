@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -55,14 +56,12 @@ class FavoriteCampsDetails extends Component {
     moveToCamp = () => {
         const camp = this.props.camp.camp.id;
         console.log(camp);
-
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
-    removeFavorites = () => {
-        console.log(this.props.camp);
-        
-        // this.props.dispatch({type: 'REMOVE_FAVORITE' })
+    removeFavorite = () => {
+        console.log(this.props.camp.faveId);
+        this.props.dispatch({ type: 'REMOVE_FAVORITE_CAMP', payload: this.props.camp.faveId})
     }
 
     render() {
@@ -82,7 +81,7 @@ class FavoriteCampsDetails extends Component {
                                     />
                                     <Typography>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
-                                        <Button className="eventButton" onClick={this.removeFavorites} size="small">Remove From Favorites</Button>
+                                        <Button className="eventButton" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
                                 </CardContent>
@@ -99,4 +98,4 @@ FavoriteCampsDetails.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FavoriteCampsDetails);
+export default withStyles(styles)(connect()(FavoriteCampsDetails));
