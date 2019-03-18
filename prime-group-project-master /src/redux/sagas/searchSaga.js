@@ -2,9 +2,10 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 // import { ServerResponse } from 'http';
 
-function* fetchSearchCamps(){
+function* fetchSearchCamps(action){
+    console.log('this is sate from search',action.payload)
     try{
-        const response = yield axios.get('/api/search');
+        const response = yield axios.get(`/api/search/searchresult/`, action.payload);
         const nextAction = {type: 'SET_SEARCH_CAMPS', payload: response.data}
         yield put(nextAction);
 
