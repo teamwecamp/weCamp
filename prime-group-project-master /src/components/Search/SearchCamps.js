@@ -39,21 +39,20 @@ const accessibility = ["yes", "no"];
 class SearchCamps extends Component {
 
     state = {
-        minAge: "",
-        maxAge: "",
-        gender: "",
-        religion: "",
-        type: "",
-        activityCategory: "",
-        activityType: "",
-        startDate: "",
-        endDate: "",
-        minCost: "",
-        maxCost: "",
-        accessibility: "",
-        state: "",
-        region: "",
-
+        minAge: "0",
+        maxAge: "100",
+        gender: "co-ed",
+        religion: "no",
+        type: "overnight",
+        activityCategory: "outdoor/adventure",
+        activityType: "hiking",
+        startDate: "01/01/2019",
+        endDate: "12/31/2019",
+        minCost: "0",
+        maxCost: "10000",
+        accessibility: "no",
+        state: "Minnesota",
+        region: "Nothern MN",
     };
 
 
@@ -62,6 +61,7 @@ class SearchCamps extends Component {
         this.getDropDowns();
     }
 
+    
     moveToCamp = (page) => {
         console.log(page);
 
@@ -69,7 +69,7 @@ class SearchCamps extends Component {
     }
 
     setSearchCamps = () => {
-        const action = { type: 'FETCH_SEARCH_CAMPS' }
+        const action = { type: 'FETCH_SEARCH_CAMPS', payload: this.state }
         this.props.dispatch(action);
         console.log('action', action);
     }
@@ -79,6 +79,7 @@ class SearchCamps extends Component {
             [propertyName]: event.target.value
         });
         console.log('event.target.value', event.target.value);
+        this.setSearchCamps();
 
     };
 
