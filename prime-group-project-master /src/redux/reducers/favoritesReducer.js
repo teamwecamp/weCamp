@@ -9,6 +9,20 @@ const setFavoriteCamps = (state = [], action) => {
     }
 }
 
+const defaultCamp = {
+    Name: 'Test Camp',
+};
+
+const setResultsForDev = (state = defaultCamp, action) => {
+    switch(action.type) {
+        case 'SET_RESULTS':
+            return action.payload;
+        default: 
+            return state;
+    }
+}
+
 export default combineReducers({
     setFavoriteCamps,
+    setResultsForDev
 });

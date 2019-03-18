@@ -1,5 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import { func } from 'prop-types';
 
 
 function* deleteFavoriteCamps(action) {
@@ -41,6 +42,18 @@ function* fetchFavoriteCamps() {
     }
 }
 
+function* fetchResultsForDev() {
+    try {
+        const response = yield axios.get(`/api/results`);
+        console.log(response.data);
+        const nextAction = { type: 'SET_RESULTS', payload: response.data }
+        yield put(nextAction);
+
+    } catch (error) {
+        console.log('error in fetchResults saga', error);
+    }
+}
+
 function* favoriteSaga() {
     // delete favorite camps
     yield takeEvery('DELETE_FAVORITE_CAMPS', deleteFavoriteCamps);
@@ -49,7 +62,9 @@ function* favoriteSaga() {
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
     //
-
+    yield takeEvery('FETCH_DEV_RESULTS', fetchResultsForDev)
 }
+
+
 
 export default favoriteSaga;

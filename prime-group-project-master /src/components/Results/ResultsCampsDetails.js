@@ -54,17 +54,11 @@ const styles = theme => ({
 });
 
 
-class LandingSponsoredCamps extends Component {
-    moveToCamp = () => {
-        const camp = this.props.camp.id;
-        console.log(camp);
-        this.props.moveToCamp(`/viewCamp/${camp}`);
-    }
-    
+class ResultsCamps extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div>    
+            <div>
                 <Grid className="innerGrid" item xs={12}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
@@ -90,8 +84,8 @@ class LandingSponsoredCamps extends Component {
     }
 }
 
-LandingSponsoredCamps.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+const mapStateToProps = (reduxStore) => ({
+    results: reduxStore.setSearchCamps.setSearchCamps
+});
 
-export default withStyles(styles)(connect()(LandingSponsoredCamps));
+export default connect(mapStateToProps)(ResultsCamps);
