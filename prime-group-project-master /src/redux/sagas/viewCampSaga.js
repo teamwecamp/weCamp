@@ -1,6 +1,17 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+function* fetchStatus() {
+    try {
+        const response = yield axios.get(`api/viewcamps/status`);
+        console.log('this is fetchStatus saga', response.data);
+        yield put({ type: 'SET_STATUS', payload: response.data });
+    } catch (error) {
+        console.log('there is error in fetchStatus');
+    }
+
+}
+
 function* fetchCampDetails(action) {
     // console.log('this is fetchCampDetails')
     try {
@@ -17,17 +28,21 @@ function* fetchCampDetails(action) {
 function* fetchCampProgram(action){
     try{
         const response = yield axios.get(`api/viewcamps/viewProgram/${action.payload}`);
-        console.log('this is in fetchCampProgram',response.data[0]);
+        console.log('this is in fetchCampProgram',response.data);
         yield put({type: 'SET_VIEW_CAMPS_PROGRAM', payload: response.data});
     }catch (error){
-        console.log('there is an error in fetchCampProgram')
+        console.log('there is an error in fetchCampProgram');
     }
 }
+
+
 
 function* userRegistrationSaga() {
     yield takeEvery('FETCH_CAMP_DETAILS', fetchCampDetails);
     // this gets the camp program schedule.
     yield takeEvery('FETCH_CAMP_PROGRAMS', fetchCampProgram);
+    // gets the status of what the parents wants to tag to the child itinerary
+    yield takeEvery('FETCH_STATUS', fetchStatus);
 }
 
 export default userRegistrationSaga;
