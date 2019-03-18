@@ -22,7 +22,7 @@ class ResultsFavorites extends Component {
                 text: 'This is a favorite for <insert child>.',
                 buttons: {
                     edit: {
-                        text: "Edit",
+                        text: "Edit Favorites",
                         value: true,
                     },
                     cancel: "Close",
