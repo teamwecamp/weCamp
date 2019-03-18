@@ -23,10 +23,22 @@ const setViewCampsPrograms = (state = [], action) => {
     }
 };
 
+const setStatus = (state = [], action) => {
+    console.log('this is setStatus reducer');
+    switch (action.type) {
+        case 'SET_STATUS':
+            return action.payload;
+        default:
+            return state;
+    }
+
+} 
+
 
 
 
 export default combineReducers({
     setViewCampsDetails,
     setViewCampsPrograms,
+    setStatus,
 });
