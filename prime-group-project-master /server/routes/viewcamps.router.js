@@ -43,7 +43,7 @@ router.get('/viewProgram/:id', (req, res) => {
        
                 const id = req.params.id
                 // const user = req.user.id;
-                const queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."type_id", "camp_program"."title", "program_dates"."start_date",
+        const queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."type_id", "camp_program"."title", "camp_program"."cost", "program_dates"."start_date",
                            "program_dates"."end_date", "program_dates"."start_time", "program_dates"."end_time", "camp_type"."type"   
                             FROM "program_dates"
                             JOIN "camp_program"

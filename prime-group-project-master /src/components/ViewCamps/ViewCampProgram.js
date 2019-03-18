@@ -12,13 +12,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from "@material-ui/core/TextField";
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 // this is materia UI table
@@ -93,12 +92,16 @@ const BootstrapInput = withStyles(theme => ({
 }))(InputBase);
 
 
+
 // this is where the component starts
 class ViewCampProgram extends Component {
 
 // this is for selects material UI
     state = {
         age: '',
+        checkedA: true,
+        checkedB: true,
+        checkedF: true,
     };
 
 
@@ -128,6 +131,11 @@ class ViewCampProgram extends Component {
         const id = this.props.match.params.id
         this.props.dispatch({ type: 'FETCH_STATUS'});
     }
+    
+    // this is material UI checkbox
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.checked });
+    };
 
     
 
@@ -141,7 +149,7 @@ class ViewCampProgram extends Component {
         console.log('this is status', this.props.status)
         const { classes } = this.props;
         
-        
+        // <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
 
         return(
           
@@ -150,29 +158,39 @@ class ViewCampProgram extends Component {
                     <TableHead>
                         <TableRow>
                             <CustomTableCell>Program</CustomTableCell>
+                            <CustomTableCell>Cost</CustomTableCell>
                             <CustomTableCell>Start Date</CustomTableCell>
                             <CustomTableCell>End Date</CustomTableCell>
                             <CustomTableCell>Start Time</CustomTableCell>
                             <CustomTableCell>End Time</CustomTableCell>
                             <CustomTableCell>Type</CustomTableCell>
-                            <CustomTableCell>* You must be sign in to add to  Itinerary</CustomTableCell>
+                            
+                                
+                            {/* <CustomTableCell>* You must be sign in to add to  Itinerary</CustomTableCell> */}
 
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {/* {JSON.stringify(this.props.campProgram)} */}
+                        {/* {JSON.stringify(this.props.itinerary)}  */}
                         {this.props.campProgram !== undefined && this.props.campProgram.map(schedule => (
                             <TableRow key={schedule.id}>
                                 <TableCell component="th" scope="row">
                                     {schedule.title}
                                 </TableCell>
+                                <TableCell >${schedule.cost}</TableCell>
                                 <TableCell >{moment(schedule.start_date).format("MMMM D YYYY")}</TableCell>
                                 <TableCell >{moment(schedule.end_date).format("MMMM D YYYY")}</TableCell>
                                 <TableCell >{schedule.start_time}</TableCell>
                                 <TableCell >{schedule.end_time}</TableCell>
                                 <TableCell >{schedule.type}</TableCell>
+                                <Checkbox
+                                    checked={this.state.checkedA}
+                                    onChange={this.handleChange('checkedA')}
+                                    value="checkedA"
+                                />
 
-                                <TableCell><Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button></TableCell>
+                               
                             </TableRow>
                         ))}
                         
@@ -218,38 +236,7 @@ class ViewCampProgram extends Component {
 
                  
                  
-                 {/* this is for selecting the program */}
-                    <FormControl className={classes.margin}>
-
-                        {/* {JSON.stringify(this.props.campProgram)} */}
-                        <TextField
-                            id="outlined-type"
-                            select
-                            label="Select a Program"
-                            className={classes.textField}
-                            value={this.state.type}
-                            // onChange={this.handleSearchChange("type")}
-                            variant="outlined"
-                            SelectProps={{
-                                MenuProps: {
-                                    className: classes.menu
-                                }
-                            }}
-                            style={{ width: 175 }}
-                            margin="normal"
-                        >
-                            {this.props.campProgram !== undefined &&      this.props.campProgram.map(programs => (
-                                    <MenuItem key={programs.id} value={programs.id}>
-                                        {programs.title}
-                                    </MenuItem>
-                                ))}
-                        </TextField>
-
-
-                    </FormControl>
-           
-                  
-                  
+                 
                   
                   {/* this is for slecting the status */}
                     <FormControl className={classes.margin}>
@@ -270,23 +257,23 @@ class ViewCampProgram extends Component {
                             }}
                             style={{ width: 175 }}
                             margin="normal"
-                        >statusstatusstastatus
+                        >
                             {this.props.status !== undefined && 
                             this.props.status.map(stas => (
                                 <MenuItem key={stas.id} value={stas.id}>
                                     {stas.status}
                                 </MenuItem>
+                               
                             ))}
+                          
                         </TextField>
-
-                    </FormControl>
+                        
+                        </FormControl>
                 </form>
-
-             
-
-                
+                {/* <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button> */}
             </Paper>
             
+           
            
            
         )
