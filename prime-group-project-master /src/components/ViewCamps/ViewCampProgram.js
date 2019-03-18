@@ -155,7 +155,7 @@ class ViewCampProgram extends Component {
                             <CustomTableCell>Start Time</CustomTableCell>
                             <CustomTableCell>End Time</CustomTableCell>
                             <CustomTableCell>Type</CustomTableCell>
-                            <CustomTableCell>You must be sign in to add to  Itinerary</CustomTableCell>
+                            <CustomTableCell>* You must be sign in to add to  Itinerary</CustomTableCell>
 
                         </TableRow>
                     </TableHead>
