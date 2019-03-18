@@ -3,9 +3,23 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-//This is for Viewing the camps.
+router.get('/status', (req, res) => {
+        console.log('In /status');
+       
+        const queryText = `SELECT * FROM "status";`;
+        pool.query(queryText).then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            res.sendStatus(500);
+            console.log(error);
+        })
+    
+});
+
+
+//This is for Viewing the camps. User does not need to be logged in.
 router.get('/:id', (req, res) => {
-    if (req.isAuthenticated()) {
+    
         console.log('In /viewcamps GET');
         const id = req.params.id;
         const queryText = `SELECT * FROM "camp" WHERE "id" = $1;`;
@@ -15,16 +29,13 @@ router.get('/:id', (req, res) => {
             res.sendStatus(500);
             console.log(error);
         })
-    } else {
-        res.sendStatus(403);
-    }
 });
 
 
 // this gets the camp program and information of the programs.
 router.get('/viewProgram/:id', (req, res) => {
     if(req.isAuthenticated()){
-        console.log('this is inside of campInfo/:id');
+        console.log('this is inside of viewProgram/:id');
        
                 const id = req.params.id
                 // const user = req.user.id;
@@ -49,6 +60,9 @@ router.get('/viewProgram/:id', (req, res) => {
     }                        
                 
 });
+
+
+
 
 /**
  * POST route template
