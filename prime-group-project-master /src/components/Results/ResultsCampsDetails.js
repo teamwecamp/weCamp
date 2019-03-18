@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import swal from 'sweetalert';
+import ResultsFavorites from './ResultsCampsFavorites';
+
 
 
 import Card from '@material-ui/core/Card';
@@ -19,7 +20,6 @@ import classnames from 'classnames';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const theme = createMuiTheme({
@@ -82,17 +82,6 @@ class ResultsDetails extends Component {
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
-    updateFavorite = () => {
-        console.log(this.props.camp);
-        if(this.props.user.id){
-            console.log('true');
-            swal('This is a favorite for <insert child>.')
-        } else {
-            swal('Please log in to mark favorites')
-        }
-        
-    }
-
     render() {
         const { classes } = this.props;
         return (
@@ -112,10 +101,7 @@ class ResultsDetails extends Component {
                                         title="Camp Pic"
                                     />
                                     <CardActions className={classes.actions} disableActionSpacing>
-                                        <IconButton aria-label="Add to favorites"
-                                                    onClick={this.updateFavorite}>
-                                            <FavoriteIcon />
-                                        </IconButton>
+                                        <ResultsFavorites camp={this.props.camp}/>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                         {/* <IconButton aria-label="Share">
                                             <ShareIcon />
