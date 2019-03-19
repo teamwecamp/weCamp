@@ -98,16 +98,7 @@ class UserProfile extends Component {
 
 
                 
-                <div>
-                    {JSON.stringify(this.props.user.setChildProfileInfo)}
-                  
-                </div>
-
-
-                <div>
-                    {JSON.stringify(this.props.user.setUserProfileInfo)}
-                </div>
-
+               
                
             </div>
 

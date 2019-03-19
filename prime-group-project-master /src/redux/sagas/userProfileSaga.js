@@ -18,7 +18,7 @@ function* fetchUserProfileInfo(){
 function* fetchChildProfileInfo() {
     try {
         // const userId = action.payload.userId
-        const response = yield axios.get('/api/userprofileinfo/child');
+        const response = yield axios.get('/api/userprofileinfo/childInfo');
         const nextAction = { type: 'SET_CHILD_PROFILE_INFO', payload: response.data };
         yield put(nextAction);
     } catch (error) {

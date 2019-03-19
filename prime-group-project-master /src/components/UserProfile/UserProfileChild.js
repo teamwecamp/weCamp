@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 // material UI cards
 import PropTypes from 'prop-types';
@@ -24,11 +25,11 @@ const styles = {
 };
 
 
-class UserProfileChild extends Component{
+class UserProfileChild extends Component {
 
 
-    componentDidMount = () =>{
-      this.fetchChildInfo();
+    componentDidMount = () => {
+        this.fetchChildInfo();
     }
 
 
@@ -39,13 +40,13 @@ class UserProfileChild extends Component{
         this.props.dispatch(action)
     }
 
-      
-    render(){
+
+    render() {
 
         const { classes } = this.props;
 
 
-        return(
+        return (
             <Card className={classes.card}>
 
 
@@ -60,15 +61,12 @@ class UserProfileChild extends Component{
                         <CardContent>
 
                             <Typography gutterBottom variant="h5" component="h2">
-                                {}
+                                {child.name}
                             </Typography>
                             <Typography component="p">
-                                {}
+                                {moment(child.DOB).format("MMMM D YYYY")}
                             </Typography>
-                            <Typography component="p">
-                                {}
-                            </Typography>
-                            
+
 
                         </CardContent>
                     ))}
@@ -83,16 +81,16 @@ class UserProfileChild extends Component{
 
 
             </Card>
-          
 
-           
+
+
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
     user: reduxStore.setUserProfileInfo,
-    
+
 });
 
 UserProfileChild.propTypes = {
@@ -101,4 +99,4 @@ UserProfileChild.propTypes = {
 
 
 
-export default withStyles(styles) (connect(mapStateToProps)(UserProfileChild));
+export default withStyles(styles)(connect(mapStateToProps)(UserProfileChild));
