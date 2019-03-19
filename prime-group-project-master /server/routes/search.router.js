@@ -66,8 +66,54 @@ router.get('/dropdown', (req, res) => {
 });
 
 router.get('/searchresult', (req, res) => {
-  // req.query is what we sending from the client.
+  // req.query is what we are receiving from the client.
   console.log('this is in /searchresult', req.query);
+
+  //reassigning req.query to search
+  //added values for the query search
+  
+  let search = req.query;
+
+  //This function will set search.religion to a boolean to match the database
+  function setReligion () {
+    if(search.religion === 'yes'){
+      search.religion = true;
+    }else{
+      search.religion = false;
+    }
+  
+  }
+  //This function will set search.accessiblity to a boolean to match the database
+  function setAccessibility(){
+    if(search.accessibility === 'yes'){
+      search.accessibility = true;
+    }else{
+      search.accessibility = false;
+    }
+
+  }
+
+setAccessibility();
+setReligion();
+  
+  
+  console.log(search);
+  let values = [
+    Number(search.minAge),
+    Number(search.maxAge),
+    search.gender,
+    search.religion,
+    search.type,
+    search.activityCategory,
+    search.activityType,
+    search.startDate,
+    search.endDate,
+    search.minCost,
+    search.maxCost,
+    search.accessibility,
+    search.state,
+    search.region
+  ];
   // const queryText = `SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", "program_dates"."start_date", "program_dates"."end_date", "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
   //                    FROM "camp" 
   //                    JOIN "regions" 
@@ -120,7 +166,7 @@ AND "regions"."region"= $11
 AND "states"."state"= $12
 AND "program_dates"."start_date"= $13
 AND "program_dates"."end_date"= $14;`;
-  pool.query(queryText)
+  pool.query(queryText,values)
     .then(result => {
       console.log('search object', result.rows);
 
