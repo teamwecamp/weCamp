@@ -75,6 +75,8 @@ router.get('/', (req, res) => {
     }
 });
 
+
+//remove favorite in DB by marking as false
 router.put('/:id', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.params.id;
@@ -94,7 +96,6 @@ router.put('/:id', (req, res) => {
 })
 
 router.get('/userChild', (req, res) => {
-    console.log('this is inside router GET userChild');
     const user = req.user.id;
     const queryText = `SELECT "user_child"."id", "child_profile"."name" FROM "user_child" 
                     JOIN "child_profile" ON "user_child"."child_id" = "child_profile"."id"
@@ -108,6 +109,19 @@ router.get('/userChild', (req, res) => {
         })
 
 });
+
+router.post('/', (req, res) => {
+    const favorite = req.body;
+    console.log(favorite);
+    const queryText = `INSERT INTO "favorites" ("user_kid_id", "camp_id") VALUES ($1, $2)`;
+    pool.query(queryText, [parseInt(favorite.child), favorite.camp])
+        .then(result => {
+            res.send(result.rows);
+        }).catch(error => {
+            console.log('there is error in GET userChild router', error);
+            res.sendStatus(500);
+        })
+})
 
 
 

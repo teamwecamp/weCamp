@@ -1,6 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-import { func } from 'prop-types';
 
 
 function* deleteFavoriteCamps(action) {
@@ -23,7 +22,7 @@ function* updateFavoriteCamps(action) {
         const favorite = action.payload
         console.log(favorite);
         
-        // yield axios.post(`/api/favorite/`);
+        yield axios.post(`/api/favorite/`, favorite);
         const nextAction = { type: 'FETCH_FAVORITE_CAMPS' }
         yield put(nextAction)
     } catch (error) {

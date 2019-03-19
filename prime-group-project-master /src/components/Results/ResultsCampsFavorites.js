@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import swal from 'sweetalert';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,6 +18,7 @@ class ResultsFavorites extends Component {
         this.props.dispatch({type: 'FETCH_USER_CHILD'})
     }
 
+    //add children of user to favorites dropdown
     selectOptions = () => {
         let children = this.props.userChild;
         console.log(children);
@@ -27,16 +28,17 @@ class ResultsFavorites extends Component {
             kids[kid] = child.name
         }
         console.log(kids);
-        
         return kids;
     }
 
     updateFavorite = () => {
         console.log(this.props.camp);
         if (this.props.user.id) {
+            //if camp is already marked as favorite
             if (this.props.camp.sponsored) {
                 console.log('true');
                 swal({
+                    //update once search route is complete
                     text: 'This is a favorite for <insert child>.',
                     buttons: {
                         edit: {
@@ -74,6 +76,7 @@ class ResultsFavorites extends Component {
                 })
             }
         } else {
+            //if user is not logged in
             swal({
                 text: 'Please log in to mark favorites',
                 buttons: {
