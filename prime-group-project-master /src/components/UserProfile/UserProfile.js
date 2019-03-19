@@ -12,20 +12,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
-
+// matrial UI styles
 const styles = {
     card: {
-        maxWidth: 100,
+        maxWidth: 345,
     },
     media: {
-        height: 100,
+        height: 145,
     },
 };
-
-
-
-
 
 class UserProfile extends Component {
     componentDidMount = () => {
@@ -52,37 +47,51 @@ class UserProfile extends Component {
     render() {
         // { JSON.stringify(this.props.user) }
         // { JSON.stringify(this.props.child) }
+        const { classes } = this.props;
         
-      
         return (
            
-            
-
-            <Card  >
+            <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
-                        // className={classes.media}
+                        className={classes.media}
                         image="/static/images/cards/contemplative-reptile.jpg"
                         title="Contemplative Reptile"
                     />
+                   
+                    
                     <CardContent>
+                       
                         <Typography gutterBottom variant="h5" component="h2">
-                            Lizard
+                          
                     </Typography>
+                       
+
+                       
                         <Typography component="p">
                             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
                             across all continents except Antarctica
-          </Typography>
+                           
+                    </Typography>
+                      
+                   
+       
+           
                     </CardContent>
+                    
+                     
+                      
+                    
                 </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary">
-                        Share
+                        Update info
         </Button>
                     <Button size="small" color="primary">
                         Learn More
         </Button>
                 </CardActions>
+                 
             </Card>
         
         
@@ -99,10 +108,10 @@ const mapStateToProps = (reduxStore) => ({
     child: reduxStore.setChildProfileInfo
 });
 
-// MediaCard.propTypes = {
-//     classes: PropTypes.object.isRequired,
-// };
+UserProfile.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
 
     
-export default  connect(mapStateToProps)(UserProfile);
+export default withStyles(styles)  (connect(mapStateToProps)(UserProfile));
