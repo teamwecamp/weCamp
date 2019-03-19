@@ -1,11 +1,11 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* fetchUserProfileInfo(action){
+function* fetchUserProfileInfo(){
     try{
         // const userId = action.payload.userId
         // ${ userId }
-        const response = yield axios.get(`/api/userprofileinfo/user`);
+        const response = yield axios.get('/api/userprofileinfo/user');
         const nextAction = { type: 'SET_USER_PROFILE_INFO', payload: response.data};
         yield put(nextAction);
     }catch(error){
@@ -18,7 +18,7 @@ function* fetchUserProfileInfo(action){
 function* fetchChildProfileInfo() {
     try {
         // const userId = action.payload.userId
-        const response = yield axios.get(`/api/userprofileinfo/child`);
+        const response = yield axios.get('/api/userprofileinfo/child');
         const nextAction = { type: 'SET_CHILD_PROFILE_INFO', payload: response.data };
         yield put(nextAction);
     } catch (error) {

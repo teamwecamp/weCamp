@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import UserProfileChild from './UserProfileChild';
 
 // material UI cards
 import PropTypes from 'prop-types';
@@ -18,89 +19,109 @@ const styles = {
         maxWidth: 345,
     },
     media: {
-        height: 145,
+        height: 140,
     },
 };
 
 class UserProfile extends Component {
     componentDidMount = () => {
         this.setUserProfileInfo();
-        this.fetchChildInfo();
+      
     }
 
     // this get user's profile
     setUserProfileInfo() {
         const action = {
-            type: 'FETCH_USER_PROFILE_INFO' }
+            type: 'FETCH_USER_PROFILE_INFO'
+        }
         this.props.dispatch(action);
     }
 
     // this gets child's profile
-    fetchChildInfo() {
-        const action ={
-            type: 'FETCH_CHILD_PROFILE_INFO'}
-        this.props.dispatch(action)
+    
+    handleEdit = (event) => {
+        console.log('this is handleEdit');
+        
     }
 
-     
+
 
     render() {
         // { JSON.stringify(this.props.user) }
         // { JSON.stringify(this.props.child) }
         const { classes } = this.props;
-        
+
         return (
-           
-            <Card className={classes.card}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image="/static/images/cards/contemplative-reptile.jpg"
-                        title="Contemplative Reptile"
-                    />
-                   
-                    
-                    <CardContent>
-                       
-                        <Typography gutterBottom variant="h5" component="h2">
-                          
-                    </Typography>
-                       
+            <div>
+            
 
-                       
-                        <Typography component="p">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
-                           
-                    </Typography>
-                      
-                   
-       
-           
-                    </CardContent>
-                    
-                     
-                      
-                    
-                </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary">
-                        Update info
-        </Button>
-                    <Button size="small" color="primary">
-                        Learn More
-        </Button>
-                </CardActions>
-                 
-            </Card>
-        
-        
-  );
-}
+                <Card className={classes.card}>
+
+
+                    <CardActionArea >
+                        <CardMedia
+                            className={classes.media}
+                            image=""
+                            title=""
+                        />
+
+                        {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
+                            <CardContent>
+
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {member.full_name}
+                                </Typography>
+                                <Typography component="p">
+                                    {member.email}
+                                </Typography>
+                                <Typography component="p">
+                                    {member.street_address}
+                                </Typography>
+                                <Typography component="p">
+                                    {member.city}, {member.state} {member.zip}
+                                </Typography>
+                                
+                            </CardContent>
+                        ))}
+
+                    </CardActionArea>
+
+
+                    <CardActions>
+                        <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
+
+                    </CardActions>
+
+
+                </Card>
+                <UserProfileChild/>
+
+
+                
+                <div>
+                    {JSON.stringify(this.props.user.setChildProfileInfo)}
+                  
+                </div>
+
+
+                <div>
+                    {JSON.stringify(this.props.user.setUserProfileInfo)}
+                </div>
+
+               
+            </div>
+
+
+        );
+    }
 }
 
-        
-    
+
+
+
+
+
+
 
 
 const mapStateToProps = (reduxStore) => ({
@@ -113,5 +134,5 @@ UserProfile.propTypes = {
 };
 
 
-    
-export default withStyles(styles)  (connect(mapStateToProps)(UserProfile));
+
+export default withStyles(styles)(connect(mapStateToProps)(UserProfile));
