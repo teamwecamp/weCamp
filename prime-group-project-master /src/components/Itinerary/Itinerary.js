@@ -8,6 +8,7 @@ import ItineraryShare from './ItineraryShare';
 class Itinerary extends Component {
     componentDidMount = () => {
         this.setCampItinerary();
+        this.props.dispatch({ type: 'FETCH_USER_CHILD' })
     }
 
     setCampItinerary() {
