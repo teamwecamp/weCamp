@@ -1,5 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    control: {
+        padding: theme.spacing.unit * 2,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
+
 
 
 
