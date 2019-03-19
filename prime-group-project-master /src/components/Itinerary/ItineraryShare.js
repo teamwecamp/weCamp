@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 class ItineraryShare extends Component {
     shareItinerary = () => {
-        console.log(this.props.children);
+        console.log(this.props.userChild);
 
         Swal.fire({
             title: 'Choose whose itinerary you want to share.',
@@ -52,12 +52,12 @@ class ItineraryShare extends Component {
     }
 
     selectOptions = () => {
-        let children = this.props.children;
+        let children = this.props.userChild;
         console.log(children);
         let kids = {}
         for (let child of children) {
             let kid = child.id
-            kids[kid] = child.title
+            kids[kid] = child.name
         }
         console.log(kids);
         return kids;
@@ -72,4 +72,9 @@ class ItineraryShare extends Component {
     }
 }
 
-export default connect()(ItineraryShare);
+const mapStateToProps = (reduxStore) => ({
+    user: reduxStore.user.userReducer,
+    userChild: reduxStore.setFavoriteCamps.setUserChild
+});
+
+export default connect(mapStateToProps)(ItineraryShare);

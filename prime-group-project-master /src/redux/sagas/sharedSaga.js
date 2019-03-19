@@ -80,8 +80,8 @@ function* matchUser(action) {
 }
 
 function* sharedSaga(){
-    yield takeEvery('UPDATE_SHARED_ACCESS', updateSharedAcess);
-    yield takeEvery('DELETE_SHARED_ACCESS', deleteSharedAcess);
+    yield takeEvery('UPDATE_SHARED_ACCESS', updateSharedAccess);
+    yield takeEvery('DELETE_SHARED_ACCESS', deleteSharedAccess);
     yield takeEvery('ADD_SHARED_ACCESS', addSharedAccess);
     yield takeEvery('MATCH_USER', matchUser);
     yield takeEvery('FETCH_SHARED_WITH_USER', fetchSharedWithUser);
