@@ -2,9 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// select camps most recently added to display on landing
 router.get('/recentCamps', (req, res) => {
     console.log('this is inside router get camps.');
-    //selecting random camp info from camp table
     const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region"
                         FROM "camp" JOIN "regions" ON "camp"."region_id" = "regions"."id" 
                         ORDER BY "date_added"
@@ -21,7 +21,7 @@ router.get('/recentCamps', (req, res) => {
     })
 })
 
-
+// select camps marked as sponsored to display on landing
 router.get('/sponsoredCamps', (req, res) => {
     console.log('this is inside router get camps.');
     const queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region"
