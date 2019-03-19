@@ -10,6 +10,8 @@ const router = express.Router();
  * GET route template
  */
 router.get('/userSharedWith', (req, res) => {
+    if (req.isAuthenticated()) {
+        const id = req.user.id;
     console.log('this is inside router shared access');
     //selecting 
     const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id"
@@ -28,10 +30,16 @@ router.get('/userSharedWith', (req, res) => {
             console.log('there is error in get camps router', error);
             res.sendStatus(500);
         })
+    } else {
+        res.sendStatus(403);
+    }
+
 
 });
 
 router.get('/sharedWithUser', (req, res) => {
+    if (req.isAuthenticated()) {
+        const id = req.user.id;
     console.log('this is inside router shared access');
     //selecting random camp info from camp table
     const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id"
@@ -50,6 +58,9 @@ router.get('/sharedWithUser', (req, res) => {
             console.log('there is error in get camps router', error);
             res.sendStatus(500);
         })
+    } else {
+        res.sendStatus(403);
+    }
 
 });
 
