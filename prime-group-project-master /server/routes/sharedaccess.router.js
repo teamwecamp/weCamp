@@ -6,9 +6,7 @@ const router = express.Router();
 ///This will contain the requests for the sharedAccess for the users
 //to share their itineraries. 
 
-/**
- * GET route template
- */
+
 router.get('/userSharedWith', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.user.id;
@@ -91,12 +89,7 @@ router.delete('/:id', (req,res)=> {
 })
 
 
-
-    
-
-/**
- * POST route template
- */
+// add itinerary to shared_to 
 router.post('/', (req, res) => {
     console.log(req.body);
     const child_id = parseInt(req.body.child_id);
