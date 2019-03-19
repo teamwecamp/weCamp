@@ -1,5 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function* updateSharedAcess(action){
     console.log('this is inside updateSharedAcess')
@@ -35,10 +36,29 @@ function* addSharedAccess(action){
     }
 }
 
+//match user to share against database and pull user id
+function* matchUser(action) {
+    try {
+        console.log(action.payload);
+        const newShare = action.payload;
+        const email = action.payload.email;
+        const response = yield axios.get(`api/sharedAccess/user/${email}`);
+        console.log(response);
+        newShare.id = response.data[0].id;
+        console.log(newShare);
+        //send new guest with id to reducer
+        yield put({ type: 'ADD_SHARED_ACCESS', payload: newShare })
+    } catch (error) {
+        yield console.log('error in matchGuest', error);
+        Swal.fire('Guest is not a user. Send them an email to suggest they register.')
+    }
+}
+
 function* sharedSaga(){
     yield takeEvery('UPDATE_SHARED_ACCESS', updateSharedAcess);
     yield takeEvery('DELETE_SHARED_ACCESS', deleteSharedAcess);
     yield takeEvery('ADD_SHARED_ACCESS', addSharedAccess);
+    yield takeEvery('MATCH_USER', matchUser)
 }
 
 export default sharedSaga;

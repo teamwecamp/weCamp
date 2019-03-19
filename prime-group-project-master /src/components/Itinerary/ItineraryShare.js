@@ -18,13 +18,35 @@ class ItineraryShare extends Component {
                     return 'Please choose a child'
                 }
             }
-        }).then((assignTo) => {
-            console.log(assignTo);
-            if (assignTo.value) {
-                const type = 'ADD_SHARE';
-                const payload = { child: assignTo.value, camp: this.props.camp.id };
-                this.props.dispatch({ type: type, payload: payload })
+        }).then((selected) => {
+            const child = selected.value;
+            console.log(child);
+            if (selected.value) {
+                Swal.fire({
+                    title: 'Enter the email of the user you want to share with.',
+                    input: 'text',
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                        if (!value) {
+                            return 'Please enter an email.'
+                        }
+                    },
+                }).then((email) => {
+                    console.log(email.value);
+                    let sharedInfo = {}
+                    sharedInfo.email = email.value;
+                    sharedInfo.child_id = child;
+                    this.props.dispatch({type: 'MATCH_USER', payload: sharedInfo});
+
+                }).catch((error) => {
+                    Swal.fire('something went wrong');
+                    console.log(error);
+                })
+                
             }
+        }).catch((error) => {
+            Swal.fire('something went wrong');
+            console.log(error);
         })
 
     }

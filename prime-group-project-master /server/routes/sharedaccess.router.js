@@ -31,6 +31,17 @@ router.get('/userSharedWith', (req, res) => {
 
 });
 
+router.get('/user/:email', (req, res) => {
+    console.log('in user email get', req.params);
+    const queryText = `SELECT "id" FROM "user" WHERE "email" = $1;`;
+    pool.query(queryText, [req.params.email]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    })
+})
+
 router.get('/sharedWithUser', (req, res) => {
     console.log('this is inside router shared access');
     //selecting random camp info from camp table
