@@ -76,7 +76,7 @@ router.get('/searchresult', (req, res) => {
 
   //This function will set search.religion to a boolean to match the database
   function setReligion () {
-    if(search.religion === 'yes'){
+    if(search.religion === 'preferred'){
       search.religion = true;
     }else{
       search.religion = false;
@@ -85,7 +85,7 @@ router.get('/searchresult', (req, res) => {
   }
   //This function will set search.accessiblity to a boolean to match the database
   function setAccessibility(){
-    if(search.accessibility === 'yes'){
+    if(search.accessibility === 'preferred'){
       search.accessibility = true;
     }else{
       search.accessibility = false;
