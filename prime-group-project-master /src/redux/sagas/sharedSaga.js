@@ -26,9 +26,19 @@ function* deleteSharedAcess(action){
     }
 }
 
+function* addSharedAccess(action){
+    try{
+        const shareInfo = action.payload;
+        yield axios.post(`/api/sharedAccess`, shareInfo);
+    } catch (error) {
+        console.log('there is error in addSharedAcess saga', error);
+    }
+}
+
 function* sharedSaga(){
     yield takeEvery('UPDATE_SHARED_ACCESS', updateSharedAcess);
     yield takeEvery('DELETE_SHARED_ACCESS', deleteSharedAcess);
+    yield takeEvery('ADD_SHARED_ACCESS', addSharedAccess);
 }
 
 export default sharedSaga;
