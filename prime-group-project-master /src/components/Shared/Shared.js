@@ -11,6 +11,8 @@ import InputBase from '@material-ui/core/InputBase';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
+import UserSharedWith from './UserSharedWith';
+import SharedWithUser from './SharedWithUser';
 
 function TabContainer(props) {
     return (
@@ -86,8 +88,8 @@ class Shared extends Component {
                 <div className={classes.root}>
                     <AppBar position="static">
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-                            <LinkTab label="Shared Itinerary With" href="page1" />
-                            <LinkTab label="Shared Itinerary With Us" href="page2" />
+                            <LinkTab label="Shared Itineraries" href="page1" />
+                            <LinkTab label="Viewable Itineraries" href="page2" />
                             <LinkTab label="Both" href="page3" />
                         </Tabs>
                     </AppBar>
@@ -98,7 +100,7 @@ class Shared extends Component {
                                 <SearchIcon />
                             </IconButton>
                         </Paper>
-                        Page One
+                        <UserSharedWith />
                           </TabContainer>}
                     {value === 1 && <TabContainer>
                         <Paper className={classes.search} elevation={1}>
@@ -107,7 +109,7 @@ class Shared extends Component {
                                 <SearchIcon />
                             </IconButton>
                         </Paper>
-                        Page Two
+                        <SharedWithUser />
                            
                     </TabContainer>}
                     {value === 2 && <TabContainer>  <Paper className={classes.search} elevation={1}>
@@ -116,7 +118,7 @@ class Shared extends Component {
                             <SearchIcon />
                         </IconButton>
                     </Paper>
-                    Page Three
+                
                          
                     </TabContainer>}
                 </div>

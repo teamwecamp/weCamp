@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 const setSharedAccess = (state = [], action) => {
-    // console.log('in setSharedAcess');
+    // console.log('in setSharedaccess');
 
     switch (action.type) {
         case 'SET_SHARED_ACCESS':
@@ -10,6 +10,8 @@ const setSharedAccess = (state = [], action) => {
             return state;
     }
 };
+
+
 
 
 
