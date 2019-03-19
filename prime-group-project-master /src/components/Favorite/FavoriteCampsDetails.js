@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -29,13 +30,12 @@ const styles = theme => ({
     },
     card: {
         minWidth: 175,
-        height: 250,
+        height: 310,
     },
     control: {
         padding: theme.spacing.unit * 2,
     },
     paper: {
-        height: 200,
         width: 260,
         textAlign: 'center',
     },
@@ -44,7 +44,7 @@ const styles = theme => ({
         fontSize: 16,
     },
     title: {
-        fontSize: 16,
+        fontSize: 18,
     },
     CardActions: {
         justifyContent: 'center',
@@ -56,10 +56,13 @@ class FavoriteCampsDetails extends Component {
     moveToCamp = () => {
         const camp = this.props.camp.camp.id;
         console.log(camp);
-        
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
+    removeFavorite = () => {
+        console.log(this.props.camp.faveId);
+        this.props.dispatch({ type: 'REMOVE_FAVORITE_CAMP', payload: this.props.camp.faveId})
+    }
 
     render() {
         const { classes } = this.props;
@@ -78,6 +81,7 @@ class FavoriteCampsDetails extends Component {
                                     />
                                     <Typography>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
+                                        <Button className="eventButton" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
                                         <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
                                 </CardContent>
@@ -94,4 +98,4 @@ FavoriteCampsDetails.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FavoriteCampsDetails);
+export default withStyles(styles)(connect()(FavoriteCampsDetails));

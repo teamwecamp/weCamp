@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import ResultsFavorites from './ResultsCampsFavorites';
 
-
-
+//materialUI
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
