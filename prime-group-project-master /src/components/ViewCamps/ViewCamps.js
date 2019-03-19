@@ -18,6 +18,10 @@ class ViewCamps extends Component {
         this.props.history.push(`/viewProgram/${this.props.match.params.id}`)
     }
 
+    addFavorite = () => {
+        
+    }
+
     render() {
         let camp = this.props.viewCamp;
         return (
@@ -28,6 +32,7 @@ class ViewCamps extends Component {
                 <p>{camp.summary}</p>
                 <ViewCampsContact camp={camp} />
                 <br />
+                <Button variant="contained" color="primary" size="large" onClick={this.addFavorite}>Add to Favorites</Button>
                 <Button variant="contained" color="primary" size="large" onClick={this.goToProgram}>
                     View Program Details
                 </Button>
