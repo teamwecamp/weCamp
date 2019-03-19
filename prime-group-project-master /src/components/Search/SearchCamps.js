@@ -33,8 +33,8 @@ const styles = theme => ({
     }
 });
 
-const religion = ["yes", "no"];
-const accessibility = ["yes", "no"];
+const religion = ["preferred", "not preferred"];
+const accessibility = ["preferred", "not preferred"];
 
 class SearchCamps extends Component {
 
@@ -156,7 +156,7 @@ class SearchCamps extends Component {
                     <TextField
                         id="outlined-type"
                         select
-                        label="Religion"
+                        label="Religious Emphasis"
                         className={classes.textField}
                         value={this.state.religion}
                         onChange={this.handleSearchChange("religion")}
@@ -322,7 +322,7 @@ class SearchCamps extends Component {
                     <TextField
                         id="outlined-type"
                         select
-                        label="Accessibility"
+                        label="Accessibility Emphasis"
                         className={classes.textField}
                         value={this.state.accessibility}
                         onChange={this.handleSearchChange("accessibility")}
