@@ -42,7 +42,7 @@ router.get('/sharedWithUser', (req, res) => {
         const id = req.user.id;
         console.log('this is inside router shared access');
         //selecting random camp info from camp table
-        const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id"
+        const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id", "user_child"."child_id"
                             FROM "sharing"
                             JOIN "child_profile"
                             ON "sharing"."itinerary_id"="child_profile"."id"
@@ -50,6 +50,8 @@ router.get('/sharedWithUser', (req, res) => {
                             ON "child_profile"."id"="user_child"."child_id"
                             JOIN "user"
                             ON "user_child"."user_id"="user"."id"
+                            JOIN  "child_itinerary"
+                            ON "user_child"."child_id"="child_itinerary"."user_child_id"
                             WHERE "sharing"."shared_to_id"=1;`;
         pool.query(queryText, [id])
             .then(result => {

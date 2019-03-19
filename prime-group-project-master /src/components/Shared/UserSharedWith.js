@@ -48,10 +48,10 @@ class UserSharedWith extends Component {
     }
 
     componentDidMount = () => {
-        this.fetchSharedWithUser();
+        this.fetchUserSharedWith();
     }
 
-    fetchSharedWithUser() {
+    fetchUserSharedWith() {
         const action = { type: 'FETCH_USER_SHARED_WITH' }
         this.props.dispatch(action);
         console.log('shared', action);
@@ -69,7 +69,7 @@ class UserSharedWith extends Component {
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         console.log('action', action);
-        this.fetchSharedWithUser();
+        this.fetchUserSharedWith();
 
 
     }
