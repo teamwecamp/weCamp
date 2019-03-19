@@ -12,24 +12,38 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import { Grid } from '@material-ui/core';
 
 
 
 
 
 // matrial UI styles
-const styles = {
+const styles = theme => ({
     card: {
         maxWidth: 345,
     },
     media: {
         height: 140,
     },
-};
+    // this is grid list
+    root: {
+        flexGrow: 1,
+    },
+    control: {
+        padding: theme.spacing.unit * 2,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
 
 
 class UserProfileChild extends Component {
+
+    state = {
+        spacing: ''
+    }
 
 
     componentDidMount = () => {
@@ -48,15 +62,17 @@ class UserProfileChild extends Component {
     render() {
 
         const { classes } = this.props;
+        const { spacing } = this.state;
 
 
         return (
             <div>
+                
 
 
                 {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
 
-                     
+                    <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     <Card className={classes.card}>
 
 
@@ -69,7 +85,7 @@ class UserProfileChild extends Component {
 
 
                             <CardContent>
-
+                                    
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {child.name}
                                 </Typography>
@@ -91,6 +107,7 @@ class UserProfileChild extends Component {
 
 
                     </Card>
+                    </Grid>
 
                     
                 
