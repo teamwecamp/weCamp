@@ -106,14 +106,15 @@ setReligion();
     search.type,
     search.activityCategory,
     search.activityType,
-    search.startDate,
-    search.endDate,
+    new Date(search.startDate).getTime(),
+    new Date(search.endDate).getTime(),
     search.minCost,
     search.maxCost,
     search.accessibility,
     search.state,
     search.region
   ];
+  console.log('This is after conversion',values);
   // const queryText = `SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", "program_dates"."start_date", "program_dates"."end_date", "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
   //                    FROM "camp" 
   //                    JOIN "regions" 
@@ -134,7 +135,10 @@ setReligion();
   //                    ON "camp_program"."id"="program_dates"."program_id"
   //                    WHERE "camp_type"."id" =$1;`;
 
-const queryText =`Select "camp"."Name"
+const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
+EXTRACT(EPOCH from "program_dates"."start_date") * 1000 AS "start_date", 
+EXTRACT(EPOCH from "program_dates"."end_date") * 1000 AS "end_date",
+ "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
 FROM "camp"
 JOIN "regions"
 ON  "camp"."region_id" = "regions"."id"
@@ -152,6 +156,8 @@ JOIN "camp_type"
 ON "camp_program"."type_id"="camp_type"."id"
 JOIN "program_dates"
 ON "camp_program"."id"="program_dates"."program_id"
+JOIN "states"
+ON "regions"."state_id" = "states"."id"
 WHERE "camp_program"."age_min" >= $1
 AND "camp_program"."age_max" <= $2
 AND "gender"."gender" = $3
@@ -164,8 +170,8 @@ AND "camp"."cost_max" <= $9
 AND "camp"."disabled_friendly" = $10
 AND "regions"."region"= $11
 AND "states"."state"= $12
-AND "program_dates"."start_date"= $13
-AND "program_dates"."end_date"= $14;`;
+AND "start_date" >= $13
+AND "program_dates"."end_date" <= $14;`;
   pool.query(queryText,values)
     .then(result => {
       console.log('search object', result.rows);
