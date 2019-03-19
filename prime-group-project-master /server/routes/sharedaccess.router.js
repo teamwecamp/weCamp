@@ -14,7 +14,7 @@ router.get('/userSharedWith', (req, res) => {
         const id = req.user.id;
     console.log('this is inside router shared access');
     //selecting 
-    const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id"
+        const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id", "user_child"."child_id"
                             FROM "user_child"
                             JOIN "sharing"
                             ON "user_child"."child_id"="sharing"."itinerary_id"
@@ -22,8 +22,8 @@ router.get('/userSharedWith', (req, res) => {
                             ON "sharing"."shared_to_id"="user"."id"
                             JOIN "child_profile"
                             ON "user_child"."child_id"="child_profile"."id"
-                            WHERE "user_child"."user_id"=1;`;
-    pool.query(queryText)
+                            WHERE "user_child"."user_id"=$1;`;
+    pool.query(queryText, [id])
         .then(result => {
             res.send(result.rows);
         }).catch(error => {
@@ -40,9 +40,9 @@ router.get('/userSharedWith', (req, res) => {
 router.get('/sharedWithUser', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.user.id;
-    console.log('this is inside router shared access');
-    //selecting random camp info from camp table
-    const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id"
+        console.log('this is inside router shared access');
+        //selecting random camp info from camp table
+        const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id", "user_child"."child_id"
                             FROM "sharing"
                             JOIN "child_profile"
                             ON "sharing"."itinerary_id"="child_profile"."id"
@@ -50,14 +50,16 @@ router.get('/sharedWithUser', (req, res) => {
                             ON "child_profile"."id"="user_child"."child_id"
                             JOIN "user"
                             ON "user_child"."user_id"="user"."id"
-                            WHERE "sharing"."shared_to_id"=1;`;
-    pool.query(queryText)
-        .then(result => {
-            res.send(result.rows);
-        }).catch(error => {
-            console.log('there is error in get camps router', error);
-            res.sendStatus(500);
-        })
+                            JOIN  "child_itinerary"
+                            ON "user_child"."child_id"="child_itinerary"."user_child_id"
+                            WHERE "sharing"."shared_to_id"=$1;`;
+        pool.query(queryText, [id])
+            .then(result => {
+                res.send(result.rows);
+            }).catch(error => {
+                console.log('there is error in get camps router', error);
+                res.sendStatus(500);
+            })
     } else {
         res.sendStatus(403);
     }
