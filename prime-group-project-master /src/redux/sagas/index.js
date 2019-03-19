@@ -7,7 +7,7 @@ import userSaga from './userSaga';
 
 // Sagas 
 import LandingSaga from './LandingSaga';
-// add Favorie saga
+// add Favorite saga
 import FavoriteSaga from './FavoriteSaga';
 import searchSaga from './searchSaga';
 import updateItinerarySaga from './updateItinerary';
@@ -17,7 +17,7 @@ import userProfileSaga from './userProfileSaga';
 import campRegistrationSaga from './campRegistrationSaga';
 import userRegistrationSaga from './userRegistrationSaga';
 import viewCamp from './viewCampSaga';
-
+ 
 
 
 // rootSaga is the primary saga.
