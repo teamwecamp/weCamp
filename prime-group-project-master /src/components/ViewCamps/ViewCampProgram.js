@@ -18,6 +18,8 @@ import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from "@material-ui/core/TextField";
 import Checkbox from '@material-ui/core/Checkbox';
+import Switch from '@material-ui/core/Switch';
+
 
 
 // this is materia UI table
@@ -51,7 +53,12 @@ const styles = theme => ({
             fontSize: 10,
         },
     },
+
+    // this is for material UI button
+
 });
+
+
 
 // this is selects material UI
 
@@ -98,10 +105,11 @@ class ViewCampProgram extends Component {
 
 // this is for selects material UI
     state = {
-        age: '',
-        checkedA: true,
-        checkedB: true,
-        checkedF: true,
+        kids: "",
+        status: "",
+        // checkedA: true,
+        // checkedB: true,
+        // checkedF: true,
     };
 
 
@@ -132,8 +140,13 @@ class ViewCampProgram extends Component {
         this.props.dispatch({ type: 'FETCH_STATUS'});
     }
     
-    // this is material UI checkbox
+    // select the inputs
     handleChange = name => event => {
+        this.setState({ [name]: event.target.value });
+    };
+
+    // checks the programs 
+    handleCheck = name => event => {
         this.setState({ [name]: event.target.checked });
     };
 
@@ -146,7 +159,7 @@ class ViewCampProgram extends Component {
 
         console.log('this is camp program', this.props.campProgram );
         console.log('this is itinerary', this.props.itinerary)
-        console.log('this is status', this.props.status)
+        console.log('this is state', this.state)
         const { classes } = this.props;
         
         // <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
@@ -164,6 +177,8 @@ class ViewCampProgram extends Component {
                             <CustomTableCell>Start Time</CustomTableCell>
                             <CustomTableCell>End Time</CustomTableCell>
                             <CustomTableCell>Type</CustomTableCell>
+                            <CustomTableCell></CustomTableCell>
+
                             
                                 
                             {/* <CustomTableCell>* You must be sign in to add to  Itinerary</CustomTableCell> */}
@@ -184,15 +199,25 @@ class ViewCampProgram extends Component {
                                 <TableCell >{schedule.start_time}</TableCell>
                                 <TableCell >{schedule.end_time}</TableCell>
                                 <TableCell >{schedule.type}</TableCell>
-                                <Checkbox
-                                    checked={this.state.checkedA}
-                                    onChange={this.handleChange('checkedA')}
-                                    value="checkedA"
-                                />
+                                <div>
+                                    <Checkbox
+                                        checked={this.state.checkedB}
+                                        onChange={this.handleCheck('checkedB')}
+                                        value="checkedB"
+                                        color="primary"
+                                    />
 
-                               
+
+                                </div>
+                                
                             </TableRow>
+
+                           
+
                         ))}
+
+                       
+
                         
                     </TableBody>
                 </Table>
@@ -213,8 +238,8 @@ class ViewCampProgram extends Component {
                             select
                             label="Select a Kid"
                             className={classes.textField}
-                            value={this.state.type}
-                            // onChange={this.handleSearchChange("type")}
+                            value={this.state.kids}
+                            onChange={this.handleChange("kids")}
                             variant="outlined"
                             SelectProps={{
                                 MenuProps: {
@@ -232,13 +257,10 @@ class ViewCampProgram extends Component {
                                 ))}
                         </TextField>
                     </FormControl>
-                     
-
+                    
                  
                  
-                 
-                  
-                  {/* this is for slecting the status */}
+                    {/* this is for slecting the status */}
                     <FormControl className={classes.margin}>
 
                         {/* {JSON.stringify(this.props.status)} */}
@@ -247,8 +269,8 @@ class ViewCampProgram extends Component {
                             select
                             label="Select a Status"
                             className={classes.textField}
-                            value={this.state.type}
-                            // onChange={this.handleSearchChange("type")}
+                            value={this.state.status}
+                            onChange={this.handleChange("status")}
                             variant="outlined"
                             SelectProps={{
                                 MenuProps: {
@@ -269,8 +291,11 @@ class ViewCampProgram extends Component {
                         </TextField>
                         
                         </FormControl>
+                        <div>
+                        <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
+                        </div>
                 </form>
-                {/* <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button> */}
+                
             </Paper>
             
            
