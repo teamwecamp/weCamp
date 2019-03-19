@@ -34,9 +34,6 @@ const setStatus = (state = [], action) => {
 
 } 
 
-
-
-
 export default combineReducers({
     setViewCampsDetails,
     setViewCampsPrograms,
