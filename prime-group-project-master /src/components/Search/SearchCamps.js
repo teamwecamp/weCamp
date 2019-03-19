@@ -322,7 +322,7 @@ class SearchCamps extends Component {
                     <TextField
                         id="outlined-type"
                         select
-                        label="Accessibility Emphasis"
+                        label="Accessibility Accommodations"
                         className={classes.textField}
                         value={this.state.accessibility}
                         onChange={this.handleSearchChange("accessibility")}

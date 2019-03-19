@@ -54,8 +54,8 @@ function* fetchUserSharedWith () {
 function* sharedSaga(){
     yield takeEvery('UPDATE_SHARED_ACCESS', updateSharedAccess);
     yield takeEvery('DELETE_SHARED_ACCESS', deleteSharedAccess);
-    yield takeEvery('SET_SHARED_WITH_USER', fetchSharedWithUser);
-    yield takeEvery('SET_USER_SHARED_WITH', fetchUserSharedWith)
+    yield takeEvery('FETCH_SHARED_WITH_USER', fetchSharedWithUser);
+    yield takeEvery('FETCH_USER_SHARED_WITH', fetchUserSharedWith)
 }
 
 export default sharedSaga;
