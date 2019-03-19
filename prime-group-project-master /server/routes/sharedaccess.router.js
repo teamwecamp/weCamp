@@ -10,9 +10,11 @@ const router = express.Router();
  * GET route template
  */
 router.get('/userSharedWith', (req, res) => {
+    if (req.isAuthenticated()) {
+        const id = req.user.id;
     console.log('this is inside router shared access');
     //selecting 
-    const queryText = `SELECT  "user"."full_name", "child_profile"."name"
+    const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id"
                             FROM "user_child"
                             JOIN "sharing"
                             ON "user_child"."child_id"="sharing"."itinerary_id"
@@ -28,13 +30,19 @@ router.get('/userSharedWith', (req, res) => {
             console.log('there is error in get camps router', error);
             res.sendStatus(500);
         })
+    } else {
+        res.sendStatus(403);
+    }
+
 
 });
 
 router.get('/sharedWithUser', (req, res) => {
+    if (req.isAuthenticated()) {
+        const id = req.user.id;
     console.log('this is inside router shared access');
     //selecting random camp info from camp table
-    const queryText = `SELECT "child_profile"."name", "user"."full_name"
+    const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id"
                             FROM "sharing"
                             JOIN "child_profile"
                             ON "sharing"."itinerary_id"="child_profile"."id"
@@ -50,8 +58,26 @@ router.get('/sharedWithUser', (req, res) => {
             console.log('there is error in get camps router', error);
             res.sendStatus(500);
         })
+    } else {
+        res.sendStatus(403);
+    }
 
 });
+
+router.delete('/:id', (req,res)=> {
+    console.log('in delete router', req.params.id);
+    
+    const id =[req.params.id];
+    const queryText=`DELETE FROM "sharing"
+                    WHERE id=$1`
+        pool.query(queryText, id)
+        .then((response)=> {res.sendStatus(200); })
+        .catch((error)=> {
+            res.sendStatus(500)
+        })
+})
+
+
 
     
 
