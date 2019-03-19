@@ -31,6 +31,8 @@ class FavoriteCamps extends Component {
         this.props.dispatch(action);
     }
 
+
+
     favoriteCamps = () => {
         if (this.props.favoriteCamps.length === 0) {
             return (
