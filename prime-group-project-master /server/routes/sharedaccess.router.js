@@ -52,7 +52,7 @@ router.get('/sharedWithUser', (req, res) => {
                             ON "user_child"."user_id"="user"."id"
                             JOIN  "child_itinerary"
                             ON "user_child"."child_id"="child_itinerary"."user_child_id"
-                            WHERE "sharing"."shared_to_id"=1;`;
+                            WHERE "sharing"."shared_to_id"=$1;`;
         pool.query(queryText, [id])
             .then(result => {
                 res.send(result.rows);
