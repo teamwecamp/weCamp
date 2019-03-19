@@ -93,5 +93,23 @@ router.put('/:id', (req, res) => {
     }
 })
 
+router.get('/userChild', (req, res) => {
+    console.log('this is inside router GET userChild');
+    const user = req.user.id;
+    const queryText = `SELECT "user_child"."id", "child_profile"."name" FROM "user_child" 
+                    JOIN "child_profile" ON "user_child"."child_id" = "child_profile"."id"
+                    WHERE "user_child"."user_id" = $1;`;
+    pool.query(queryText, [user])
+        .then(result => {
+            res.send(result.rows);
+        }).catch(error => {
+            console.log('there is error in GET userChild router', error);
+            res.sendStatus(500);
+        })
+
+});
+
+
+
 
 module.exports = router;

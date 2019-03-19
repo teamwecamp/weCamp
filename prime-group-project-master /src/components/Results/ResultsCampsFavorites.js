@@ -14,6 +14,22 @@ class ResultsFavorites extends Component {
         location: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired
     }
+    componentDidMount = () => {
+        this.props.dispatch({type: 'FETCH_USER_CHILD'})
+    }
+
+    selectOptions = () => {
+        let children = this.props.userChild;
+        console.log(children);
+        let kids = {}
+        for(let child of children) {
+            let kid = child.id
+            kids[kid] = child.name
+        }
+        console.log(kids);
+        
+        return kids;
+    }
 
     updateFavorite = () => {
         console.log(this.props.camp);
@@ -36,11 +52,11 @@ class ResultsFavorites extends Component {
                 })
             } else {
                 //user needs to select a child to assign to favorite
-                console.log(this.props.user)
+                console.log(this.props.userChild)
                 Swal.fire({
                     title: 'Add to Favorites?',
                     input: 'select',
-                    inputOptions: {1:'Tom', 2:'Ronnie'},
+                    inputOptions: this.selectOptions(),
                     inputPlaceholder: 'Select a child',
                     showCancelButton: true,
                     inputValidator: (value) => {
@@ -50,9 +66,11 @@ class ResultsFavorites extends Component {
                     }
                 }).then((assignTo) => {
                     console.log(assignTo);
+                    if (assignTo.value) {
                     const type = 'ADD_FAVORITE_CAMP';
                     const payload = {child: assignTo.value, camp: this.props.camp.id};
                     this.props.dispatch({type: type, payload: payload})
+                    }
                 })
             }
         } else {
@@ -87,7 +105,8 @@ class ResultsFavorites extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-    user: reduxStore.user.userReducer
+    user: reduxStore.user.userReducer,
+    userChild: reduxStore.setFavoriteCamps.setUserChild
 });
 
 

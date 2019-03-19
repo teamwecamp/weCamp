@@ -56,6 +56,17 @@ function* fetchResultsForDev() {
     }
 }
 
+function* fetchUserChild() {
+    try {
+        const response = yield axios.get(`/api/favorite/userChild`);
+        console.log(response.data);
+        const nextAction = { type: 'SET_USER_CHILD', payload: response.data }
+        yield put(nextAction);
+    } catch (error) {
+        console.log('error in fetchUserChild saga', error);
+    }
+}
+
 function* favoriteSaga() {
     // delete favorite camps
     yield takeEvery('REMOVE_FAVORITE_CAMP', deleteFavoriteCamps);
@@ -64,7 +75,8 @@ function* favoriteSaga() {
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
     //
-    yield takeEvery('FETCH_DEV_RESULTS', fetchResultsForDev)
+    yield takeEvery('FETCH_DEV_RESULTS', fetchResultsForDev);
+    yield takeEvery('FETCH_USER_CHILD', fetchUserChild);
 }
 
 
