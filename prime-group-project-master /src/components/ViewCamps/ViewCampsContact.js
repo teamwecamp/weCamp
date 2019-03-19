@@ -24,7 +24,7 @@ class ViewCampsContact extends Component {
         }
     }
 
-    //This will work for demo only
+    //This will work for demo
     phone = () => {
         let phoneArr = this.props.camp.phone.split('');
         console.log(phoneArr);
