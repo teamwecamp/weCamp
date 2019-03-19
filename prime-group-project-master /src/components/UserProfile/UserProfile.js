@@ -16,6 +16,9 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+
+
+
 // matrial UI styles
 const styles = {
     card: {
@@ -57,9 +60,11 @@ class UserProfile extends Component {
         const { classes } = this.props;
 
         return (
+           
             <div>
 
                 {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
+                   
                     <Card className={classes.card}>
 
 
@@ -99,7 +104,10 @@ class UserProfile extends Component {
 
 
                     </Card>
-                ))}
+                      
+               
+                     
+          ))}
                 <UserProfileChild />
 
 
@@ -108,6 +116,7 @@ class UserProfile extends Component {
 
 
             </div>
+           
 
 
         );

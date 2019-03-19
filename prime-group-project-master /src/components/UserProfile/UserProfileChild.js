@@ -14,6 +14,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
+
+
+
+
 // matrial UI styles
 const styles = {
     card: {
@@ -51,6 +55,8 @@ class UserProfileChild extends Component {
 
 
                 {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
+
+                     
                     <Card className={classes.card}>
 
 
@@ -85,7 +91,10 @@ class UserProfileChild extends Component {
 
 
                     </Card>
-                ))}
+
+                    
+                
+            ))}
             </div>
 
 
