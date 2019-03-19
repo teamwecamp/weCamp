@@ -6,8 +6,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { Input } from "@material-ui/core";
 
+// Below are the styles for the form
 const styles = theme => ({
   container: {
     display: "flex",
@@ -33,6 +33,9 @@ const styles = theme => ({
   }
 });
 
+//Below is the local array for  the religion and accessibility dropdowns
+//on the server religion and accessibility will be switched to a boolean
+
 const religion = ["yes", "no"];
 const accessibility = ["yes", "no"];
 
@@ -51,15 +54,13 @@ class CampRegistration extends Component {
     accessibility: ""
   };
   componentDidMount() {
-    //insert action to get drop down info here.
-    console.log("consolelog component did mount");
     this.getDropDowns();
   }
 
+  //this will get all the needed objects for the drops downs.
   getDropDowns = () => {
     const action = { type: "FETCH_SEARCH_CAMPS_DROP_DOWN" };
     this.props.dispatch(action);
-    console.log("GET DROP DOWNS", action);
   };
 
   handleInputChangeFor = propertyName => event => {
@@ -67,6 +68,7 @@ class CampRegistration extends Component {
       [propertyName]:event.target.value
     });
   };
+
   handleNext = () => {
       this.props.history.push('/campregistrationpage2');
   }
@@ -105,7 +107,7 @@ class CampRegistration extends Component {
             variant="standard"
           />
           <TextField
-            //required
+            required
             id="outlined-type"
             select
             label="State"
@@ -128,8 +130,9 @@ class CampRegistration extends Component {
                 </MenuItem>
               ))}
           </TextField>
+          
           <TextField
-            //required
+            required
             id="outlined-type"
             select
             label="Region"
@@ -201,7 +204,7 @@ class CampRegistration extends Component {
             variant="standard"
           />
           <TextField
-            //required
+            required
             id="outlined-type"
             select
             label="Gender"
