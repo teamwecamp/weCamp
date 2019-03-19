@@ -31,7 +31,7 @@ const styles = {
 class UserProfile extends Component {
     componentDidMount = () => {
         this.setUserProfileInfo();
-      
+
     }
 
     // this get user's profile
@@ -43,10 +43,10 @@ class UserProfile extends Component {
     }
 
     // this gets child's profile
-    
+
     handleEdit = (event) => {
         console.log('this is handleEdit');
-        
+
     }
 
 
@@ -58,19 +58,19 @@ class UserProfile extends Component {
 
         return (
             <div>
-            
 
-                <Card className={classes.card}>
+                {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
+                    <Card className={classes.card}>
 
 
-                    <CardActionArea >
-                        <CardMedia
-                            className={classes.media}
-                            image=""
-                            title=""
-                        />
+                        <CardActionArea >
+                            <CardMedia
+                                className={classes.media}
+                                image=""
+                                title=""
+                            />
 
-                        {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
+
                             <CardContent>
 
                                 <Typography gutterBottom variant="h5" component="h2">
@@ -85,26 +85,28 @@ class UserProfile extends Component {
                                 <Typography component="p">
                                     {member.city}, {member.state} {member.zip}
                                 </Typography>
-                                
+
                             </CardContent>
-                        ))}
-
-                    </CardActionArea>
 
 
-                    <CardActions>
-                        <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
-
-                    </CardActions>
+                        </CardActionArea>
 
 
-                </Card>
-                <UserProfileChild/>
+                        <CardActions>
+                            <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
+
+                        </CardActions>
 
 
-                
-               
-               
+                    </Card>
+                ))}
+                <UserProfileChild />
+
+
+
+
+
+
             </div>
 
 

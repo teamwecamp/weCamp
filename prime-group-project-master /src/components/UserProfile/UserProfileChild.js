@@ -47,40 +47,46 @@ class UserProfileChild extends Component {
 
 
         return (
-            <Card className={classes.card}>
+            <div>
 
 
-                <CardActionArea >
-                    <CardMedia
-                        className={classes.media}
-                        image=""
-                        title=""
-                    />
-
-                    {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
-                        <CardContent>
-
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {child.name}
-                            </Typography>
-                            <Typography component="p">
-                                {moment(child.DOB).format("MMMM D YYYY")}
-                            </Typography>
+                {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
+                    <Card className={classes.card}>
 
 
-                        </CardContent>
-                    ))}
-
-                </CardActionArea>
-
-
-                <CardActions>
-                    <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
-
-                </CardActions>
+                        <CardActionArea >
+                            <CardMedia
+                                className={classes.media}
+                                image=""
+                                title=""
+                            />
 
 
-            </Card>
+                            <CardContent>
+
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {child.name}
+                                </Typography>
+                                <Typography component="p">
+                                    {moment(child.DOB).format("MMMM D YYYY")}
+                                </Typography>
+
+
+                            </CardContent>
+
+
+                        </CardActionArea>
+
+
+                        <CardActions>
+                            <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
+
+                        </CardActions>
+
+
+                    </Card>
+                ))}
+            </div>
 
 
 
