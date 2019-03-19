@@ -55,11 +55,18 @@ class NavBar extends Component {
 
         const sideList = (
             <div className={classes.list}>
+               
                 <List>
                     <Link component={RouterLink} to="/about">
                         <ListItem button>
                             <ListItemIcon><InfoIcon /></ListItemIcon>
                             <ListItemText inset primary='About' />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/userprofileinfo/user">
+                        <ListItem>
+                            <ListItemIcon><PeopleIcon /></ListItemIcon>
+                            <ListItemText primary={'User Profile'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/favorites">
@@ -93,6 +100,7 @@ class NavBar extends Component {
                         </ListItem>
                     </Link>
                 </List>
+               
 
 
             </div>

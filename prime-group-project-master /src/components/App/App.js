@@ -24,9 +24,13 @@ import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
+
+import UserProfile from '../UserProfile/UserProfile';
+
 import NavBar from '../Nav/NavBar';
 import Shared from '../Shared/Shared';
 import Itinerary from '../Itinerary/Itinerary';
+
 
 
 
@@ -92,6 +96,14 @@ class App extends Component {
               path="/viewCamp/:id"
               component={ViewCamps}
               />
+
+            <Route
+              exact
+              path="/userprofileinfo/user"
+              component={UserProfile}
+            />
+
+
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

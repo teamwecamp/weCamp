@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
             console.log(user);
             
             //selecting favorite camp id and child name - joinign favorites to user child and child 
-            //porfile to user table
+            //profile to user table
             let queryText = `SELECT "favorites"."camp_id", "child_profile"."name", "favorites"."id"
                     FROM "favorites" 
                     JOIN "user_child" 
@@ -95,6 +95,7 @@ router.put('/:id', (req, res) => {
     }
 })
 
+// get user's children for multiple components
 router.get('/userChild', (req, res) => {
     const user = req.user.id;
     const queryText = `SELECT "user_child"."id", "child_profile"."name" FROM "user_child" 
@@ -110,6 +111,7 @@ router.get('/userChild', (req, res) => {
 
 });
 
+// add favorite to user's child
 router.post('/', (req, res) => {
     const favorite = req.body;
     console.log(favorite);
@@ -122,8 +124,6 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         })
 })
-
-
 
 
 module.exports = router;
