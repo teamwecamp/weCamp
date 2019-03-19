@@ -50,7 +50,7 @@ function* matchUser(action) {
         yield put({ type: 'ADD_SHARED_ACCESS', payload: newShare })
     } catch (error) {
         yield console.log('error in matchGuest', error);
-        Swal.fire('Guest is not a user. Send them an email to suggest they register.')
+        Swal.fire('Email is not tied to a user. Send them an email to suggest they register.')
     }
 }
 

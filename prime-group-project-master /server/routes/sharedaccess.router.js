@@ -64,13 +64,23 @@ router.get('/sharedWithUser', (req, res) => {
 
 });
 
-    
+
 
 /**
  * POST route template
  */
-router.post('/:id', (req, res) => {
-
+router.post('/', (req, res) => {
+    console.log(req.body);
+    const child_id = parseInt(req.body.child_id);
+    const share_id = req.body.id;
+    const queryText = `INSERT INTO "sharing" ("shared_to_id", "user_child_id") VALUES ($1, $2);`;
+    pool.query(queryText, [share_id, child_id])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('error in sharedAccess POST', error);
+            res.sendStatus(500);
+        })
 });
 
 module.exports = router;
