@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
+import './NavBar';
+import NavBar from './NavBar';
 
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
       <h2 className="nav-title">WeCAMP</h2>
+      {/* <NavBar/> */}
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
@@ -19,7 +22,7 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info">
+          <Link className="nav-link" to="/">
             Info Page
           </Link>
           <LogOutButton className="nav-link"/>
