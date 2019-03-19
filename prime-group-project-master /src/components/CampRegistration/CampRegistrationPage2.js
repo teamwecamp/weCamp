@@ -1,73 +1,75 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
+//This adds styling to the form.
 const styles = theme => ({
-    container: {
-      display: "flex",
-      flexWrap: "wrap"
-    },
-    textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-    },
-    description: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-      width: 1000
-    },
-    dense: {
-      marginTop: 16,
-    },
-    menu: {
-      width: 400,
-    }
-  });
-
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
+  },
+  description: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 1000
+  },
+  dense: {
+    marginTop: 16
+  },
+  menu: {
+    width: 400
+  }
+});
 
 class CampRegistrationPage2 extends Component {
-    state = {
-        costMin:'',
-        costMax:'',
-        regDeadlineDate:'',
-        phoneNumber:'',
-        instagramLink:'',
-        facebookLink:'',
-        photoUrl:'',
-        logoUrl:'',
-        websiteUrl:'',
-        type:'',
-        
-    }
-    componentDidMount = () => {
-        //insert action to get drop down info here.
-        this.getDropDowns();
-    }
-    getDropDowns = () => {
-        const action = {type: 'FETCH_SEARCH_CAMPS_DROP_DOWN'};
-        this.props.dispatch(action);
-    }
-    handleInputChangeFor = propertyName => event => {
-        this.setState({
-     [propertyName]:event.target.value
-   });
- };
- handleNext = () => {
-    this.props.history.push('/campregistrationpage3');
-}
+  state = {
+    costMin: "",
+    costMax: "",
+    regDeadlineDate: "",
+    phoneNumber: "",
+    instagramLink: "",
+    facebookLink: "",
+    photoUrl: "",
+    logoUrl: "",
+    websiteUrl: "",
+    type: ""
+  };
 
-    render() {
-        console.log(this.props.dropDown);
-        const { classes } = this.props;
-        return (
-            <div>
-            <h1>Camp Registration Page 2</h1>
-            <form
+  componentDidMount = () => {
+    this.getDropDowns();
+  };
+
+  getDropDowns = () => {
+    const action = { type: "FETCH_SEARCH_CAMPS_DROP_DOWN" };
+    this.props.dispatch(action);
+  };
+
+  handleInputChangeFor = propertyName => event => {
+    this.setState({
+      [propertyName]: event.target.value
+    });
+  };
+
+  handleNext = () => {
+    this.props.history.push("/campregistrationpage3");
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div>
+        <h1>Camp Registration Page 2</h1>
+        <form
           id="input-form"
           className={classes.container}
           noValidate
@@ -98,7 +100,7 @@ class CampRegistrationPage2 extends Component {
             id="outlined-icon"
             label=" Registration Deadline"
             InputProps={{
-                startAdornment: <InputAdornment position="start"></InputAdornment>,
+              startAdornment: <InputAdornment position="start" />
             }}
             type="date"
             className={classes.textField}
@@ -187,26 +189,28 @@ class CampRegistrationPage2 extends Component {
               ))}
           </TextField>
           <Button
-                className={classes.button}
-                id="submit-btn"
-                onClick={this.handleNext}
-                size="small"
-                variant="contained"
-              >
-                Next
-              </Button>
-          </form>
-            </div>
-        )
-    }
+            className={classes.button}
+            id="submit-btn"
+            onClick={this.handleNext}
+            size="small"
+            variant="contained"
+          >
+            Next
+          </Button>
+        </form>
+      </div>
+    );
+  }
 }
 
 CampRegistrationPage2.propTypes = {
-    classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (reduxStore) => ({
-    dropDown: reduxStore.setSearchCamps.setCampDropDown
+const mapStateToProps = reduxStore => ({
+  dropDown: reduxStore.setSearchCamps.setCampDropDown
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(CampRegistrationPage2));
+export default connect(mapStateToProps)(
+  withStyles(styles)(CampRegistrationPage2)
+);
