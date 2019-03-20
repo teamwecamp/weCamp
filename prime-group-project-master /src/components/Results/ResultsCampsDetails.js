@@ -23,7 +23,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const theme = createMuiTheme({
     palette: {
-        primary: { main: '#e5e3f4' }, // Purple and green play nicely together.
+        primary: { main: '#e6e1c5' }, // Purple and green play nicely together.
         secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
     },
     typography: { useNextVariants: true },
@@ -59,6 +59,9 @@ const styles = theme => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
+    eventButton: {
+        margin: 6,
+    }
 });
 
 
@@ -95,10 +98,7 @@ class ResultsDetails extends Component {
                                     />
                                     <CardActions className={classes.actions} disableActionSpacing>
                                         <ResultsFavorites camp={this.props.camp}/>
-                                        <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
-                                        {/* <IconButton aria-label="Share">
-                                            <ShareIcon />
-                                        </IconButton> */}
+                                        <Button variant="outlined" className={classes.eventButton} onClick={this.moveToCamp} backgroundColor="primary" size="small">camp page</Button>
                                         <IconButton
                                             className={classnames(classes.expand, {
                                                 [classes.expandOpen]: this.state.expanded,
