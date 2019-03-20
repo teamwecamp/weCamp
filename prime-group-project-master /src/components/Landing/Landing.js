@@ -19,13 +19,14 @@ const styles = theme => ({
         height: 90,
         width: 1000,
         fontSize: 40,
+        marginTop: 110,
     },
 });
 
 
 const theme = createMuiTheme({
     palette: {
-        primary:  {
+        primary: {
             main: '#127696',
         },
     },
@@ -36,7 +37,7 @@ class Landing extends Component {
         spacing: '32',
     }
 
-    
+
     componentDidMount = () => {
         this.setRecentCamps();
         this.setSponsoredCamps();
@@ -59,7 +60,7 @@ class Landing extends Component {
         this.props.history.push('/search')
     }
 
-    sponsoredCamps = () => { 
+    sponsoredCamps = () => {
         return (
             this.props.sponCamps.map((camp, i) => {
                 return (<LandingSponsoredCamps moveToCamp={this.moveToCamp} key={i} camp={camp} />)
@@ -86,19 +87,20 @@ class Landing extends Component {
             <div>
                 {/* Site slogan */}
                 <h1>CONNECTING PARENTS AND CAMPS</h1>
-                <h5>Sponsored Camps</h5>
-
+                <h5 className="campsGroup">Sponsored Camps</h5>
                 <MuiThemeProvider theme={theme}>
-                <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
-                    {this.sponsoredCamps()}
-                </Grid>
-                <Button className={classes.bigButton} variant="contained" color="primary" size="large" onClick={this.goToSearch}>
-                    Search for Camps
-                </Button>
-                <h5>Newly Added WeCAMPS</h5>
-                <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
-                    {this.recentCamps()}
-                </Grid>
+                    <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                        {this.sponsoredCamps()}
+                    </Grid>
+                    <Grid container className={classes.root} justify="center" >
+                        <Button className={classes.bigButton} variant="contained" color="primary" size="large" onClick={this.goToSearch}>
+                            Search for Camps
+                        </Button>
+                    </Grid>
+                    <h5 className="campsGroup">Newly Added WeCAMPS</h5>
+                    <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                        {this.recentCamps()}
+                    </Grid>
                 </MuiThemeProvider>
             </div>
         )
