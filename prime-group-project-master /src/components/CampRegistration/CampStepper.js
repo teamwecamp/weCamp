@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
-    width: '90%',
+    width: '85%',
   },
   button: {
     marginRight: theme.spacing.unit,
@@ -17,32 +17,40 @@ const styles = theme => ({
   instructions: {
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
+    marginLeft:250,
   },
 });
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Input camp details.', 'Input cost and social media info.', 'Select camp activities','Input camp programs'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Select campaign settings...';
+      return 'Input camp details.';
     case 1:
-      return 'What is an ad group anyways?';
+      return 'Input cost and social media info.';
     case 2:
-      return 'This is the bit I really care about!';
+      return 'Select camp activities';
+    case 3:
+      return 'Input camp programs';
     default:
       return 'Unknown step';
   }
 }
 
 class CampStepper extends React.Component {
-  state = {
-    activeStep: 0,
-    skipped: new Set(),
-  };
-
+    constructor(props){
+        super(props);
+        this.state = {
+            activeStep: this.props.step,
+            skipped: new Set(),
+          };
+        
+    
+  
+}
   isStepOptional = step => step === 1;
 
   handleNext = () => {
