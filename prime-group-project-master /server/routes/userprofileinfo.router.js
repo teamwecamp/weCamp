@@ -20,12 +20,7 @@ router.get('/user', (req, res) => {
         }).catch(error => {
             console.log('there is error in get user router', error);
         })
-
-
-
-    }
-    
-    
+    }  
 });
 
 

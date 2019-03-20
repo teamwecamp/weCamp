@@ -118,10 +118,10 @@ class ViewCamps extends Component {
                 <p>{camp.summary}</p>
                 <ViewCampsContact camp={camp} />
                 <br />
-                <Button variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
+                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
                     Add to Favorites
                 </Button>
-                <Button variant="contained" color="primary" size="large" onClick={this.goToProgram}>
+                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.goToProgram}>
                     View Program Details
                 </Button>
             </div>
