@@ -40,6 +40,9 @@ const styles = theme => ({
     },
     CardActions: {
         justifyContent: 'center',
+    },
+    camp: {
+        fontSize: 16,
     }
 });
 
@@ -71,10 +74,10 @@ class FavoriteCampsDetails extends Component {
                                         image={this.props.camp.camp.photo_url}
                                         title="Camp Pic"
                                     />
-                                    <Typography>{this.props.camp.camp.Name}</Typography>
+                                    <Typography className={classes.camp}>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
-                                        <Button className="eventButton" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
-                                        <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
+                                        <Button className="eventButton" variant="outlined" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
+                                        <Button className="eventButton" variant="outlined" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
                                 </CardContent>
                             </MuiThemeProvider>
