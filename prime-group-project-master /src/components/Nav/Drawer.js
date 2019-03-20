@@ -90,7 +90,7 @@ class NavBar extends Component {
                     <Link component={RouterLink} to="/shared">
                         <ListItem>
                             <ListItemIcon><PeopleIcon /></ListItemIcon>
-                            <ListItemText primary={'Friends'} />
+                            <ListItemText primary={'Network'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/campregistration">
