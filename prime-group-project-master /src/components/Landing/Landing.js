@@ -10,13 +10,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
+        flexGrow: 2,
     },
     control: {
         padding: theme.spacing.unit * 2,
-    },
-    pos: {
-        marginBottom: 12,
     },
     bigButton: {
         height: 90,
@@ -24,7 +21,6 @@ const styles = theme => ({
         fontSize: 40,
     },
 });
-
 
 
 const theme = createMuiTheme({
@@ -37,9 +33,10 @@ const theme = createMuiTheme({
 
 class Landing extends Component {
     state = {
-        spacing: '16',
+        spacing: '32',
     }
 
+    
     componentDidMount = () => {
         this.setRecentCamps();
         this.setSponsoredCamps();

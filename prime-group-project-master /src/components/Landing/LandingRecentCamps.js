@@ -24,9 +24,6 @@ const theme = createMuiTheme({
 });
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
     media: {
         height: 140,
     },
@@ -34,17 +31,11 @@ const styles = theme => ({
         minWidth: 175,
         height: 280,
     },
-    control: {
-        padding: theme.spacing.unit * 2,
-    },
     paper: {
-        height: 200,
+        height: 280,
         width: 260,
         textAlign: 'center',
-    },
-    pos: {
-        marginBottom: 4,
-        fontSize: 16,
+        margin: theme.spacing.unit * 2
     },
     title: {
         fontSize: 18,
@@ -69,7 +60,7 @@ class LandingRecentCamps extends Component {
         return (
             
             <div>
-                <Grid className="innerGrid" item xs={12}>
+                <Grid className="innerGrid" item xs={6}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
