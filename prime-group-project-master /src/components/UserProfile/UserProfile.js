@@ -25,10 +25,11 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 
 // matrial UI styles
 const styles = theme => ({
-    // card: {
-    //     maxWidth: 200,
+    card: {
+        maxWidth: 500,
+        margin: theme.spacing.unit * 2,
         
-    // },
+    },
     // media: {
     //     height: 50,
     //      margin: theme.spacing.unit * 2,
