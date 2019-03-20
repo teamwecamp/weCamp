@@ -75,8 +75,10 @@ class SharedWithUser extends Component {
 
     moveToItinerary = (event) => {
         const childId = event.target.value
-        console.log('event.target.value', event.target.value);
+        console.log('event.target.value', childId);
         this.props.history.push(`/sharedItinerary/${childId}`)
+        console.log('move to itinerary', this.props.history.push(`/sharedItinerary/${childId}`));
+        
         
     }
 

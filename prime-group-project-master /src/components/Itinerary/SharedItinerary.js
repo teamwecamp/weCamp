@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import 'react-calendar-timeline/lib/Timeline.css';
 import Timeline from 'react-calendar-timeline';
 import './Itinerary.css';
-import ItineraryShare from './ItineraryShare';
 
 class SharedItinerary extends Component {
     componentDidMount = () => {
-        this.setCampItinerary();
-        this.props.dispatch({ type: 'FETCH_USER_CHILD' })
+        this.setSharedItinerary();
+     
     }
 
-    setCampItinerary() {
-        const action = { type: 'FETCH_CAMP_ITINERARY' }
+    setSharedItinerary() {
+        const action = { type: 'FETCH_SHARED_ITINERARY' }
         this.props.dispatch(action);
     }
 

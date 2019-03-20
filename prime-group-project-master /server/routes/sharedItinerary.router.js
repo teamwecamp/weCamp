@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     if (req.isAuthenticated()) {
-        console.log('this is inside router shared itinerary');
+        console.log('this is inside router shared itinerary', req.params.id);
         (async () => {
             const client = await
                 pool.connect();
