@@ -3,6 +3,19 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+    },
+});
+
+
+
 class ItineraryShare extends Component {
     shareItinerary = () => {
         console.log(this.props.userChild);
@@ -65,9 +78,11 @@ class ItineraryShare extends Component {
 
     render() {
         return (
+            <MuiThemeProvider theme={theme}>
             <Button variant="contained" color="primary" size="large" onClick={this.shareItinerary}>
                 Share Itinerary
                 </Button>
+            </MuiThemeProvider>
         )
     }
 }
