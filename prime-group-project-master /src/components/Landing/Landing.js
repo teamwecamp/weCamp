@@ -4,8 +4,9 @@ import LandingRecentCamps from './LandingRecentCamps';
 import LandingSponsoredCamps from './LandingSponsoredCamps';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {
@@ -21,6 +22,16 @@ const styles = theme => ({
         height: 90,
         width: 1000,
         fontSize: 40,
+    },
+});
+
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary:  {
+            main: '#127696',
+        },
     },
 });
 
@@ -79,6 +90,8 @@ class Landing extends Component {
                 {/* Site slogan */}
                 <h1>CONNECTING PARENTS AND CAMPS</h1>
                 <h5>Sponsored Camps</h5>
+
+                <MuiThemeProvider theme={theme}>
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.sponsoredCamps()}
                 </Grid>
@@ -89,6 +102,7 @@ class Landing extends Component {
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.recentCamps()}
                 </Grid>
+                </MuiThemeProvider>
             </div>
         )
     }

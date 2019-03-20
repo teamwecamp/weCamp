@@ -108,7 +108,7 @@ class Itinerary extends Component {
                         <td className="tdWait">waitlisted</td>
                     </tr>
                 </table>
-                <p>Calendar View Instructions: to zoom out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
+                <p>Calendar View Instructions: to zoom out, click on the red bar in the itinerary header. To zoom in, click on the date detail bar.</p>
                 <p>Click and hold on the calendar, then move the mouse to slide the view.</p>
                 <ItineraryShare children={groups}/>
             </div>
