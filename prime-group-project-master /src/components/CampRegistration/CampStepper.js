@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
-    width: '85%',
+    width: '95%',
   },
   button: {
     marginRight: theme.spacing.unit,
@@ -17,7 +17,6 @@ const styles = theme => ({
   instructions: {
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
-    marginLeft:250,
   },
 });
 
@@ -112,7 +111,7 @@ class CampStepper extends React.Component {
             const props = {};
             const labelProps = {};
             if (this.isStepOptional(index)) {
-              labelProps.optional = <Typography variant="caption">Optional</Typography>;
+              labelProps.optional = <Typography variant="caption"></Typography>;
             }
             if (this.isStepSkipped(index)) {
               props.completed = false;
@@ -124,7 +123,7 @@ class CampStepper extends React.Component {
             );
           })}
         </Stepper>
-        <div>
+        {/* <div>
           {activeStep === steps.length ? (
             <div>
               <Typography className={classes.instructions}>
@@ -166,7 +165,7 @@ class CampStepper extends React.Component {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     );
   }
