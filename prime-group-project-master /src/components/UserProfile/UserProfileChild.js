@@ -12,7 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Grid, GridList } from '@material-ui/core';
 
 
 
@@ -20,21 +20,28 @@ import { Grid } from '@material-ui/core';
 
 // matrial UI styles
 const styles = theme => ({
-    card: {
-        maxWidth: 345,
-    },
-    media: {
-        height: 140,
-    },
+    // card: {
+    //     maxWidth: 345,
+    // },
+    // media: {
+    //     height: 140,
+    //     margin: theme.spacing.unit * 2,
+    // },
     // this is grid list
     root: {
         flexGrow: 1,
+        justifyContent: 'space-around',
+        display: 'flex',
     },
     control: {
         padding: theme.spacing.unit * 2,
     },
     pos: {
-        marginBottom: 12,
+        marginBottom: 10,
+    },
+    gridList: {
+        width: 500,
+        height: 450,
     },
 });
 
@@ -42,7 +49,7 @@ const styles = theme => ({
 class UserProfileChild extends Component {
 
     state = {
-        spacing: ''
+        spacing: '16'
     }
 
 
@@ -72,7 +79,7 @@ class UserProfileChild extends Component {
 
                 {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
 
-                    <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
+                    <GridList container className={classes.root} justify="center" spacing={Number(spacing)}>
                     <Card className={classes.card}>
 
 
@@ -107,7 +114,7 @@ class UserProfileChild extends Component {
 
 
                     </Card>
-                    </Grid>
+                    </GridList>
 
                     
                 
