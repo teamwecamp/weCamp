@@ -96,7 +96,20 @@ router.get('/searchresult', (req, res) => {
 setAccessibility();
 setReligion();
   
-  
+// WHERE "camp_program"."age_min" >= $1
+// AND "camp_program"."age_max" <= $2
+// AND "gender"."gender" = $3
+// AND "camp"."religion" = $4
+// AND "camp_type"."type" = $5
+// AND "activity_category"."category" = $6
+// AND "activities"."activity" = $7
+// AND "camp"."cost_min" >= $8
+// AND "camp"."cost_max" <= $9
+// AND "camp"."disabled_friendly" = $10
+// AND "regions"."region"= $11
+// AND "states"."state"= $12
+// AND "start_date" >= $13
+// AND "program_dates"."end_date" <= $14;`;
   console.log(search);
   let values = [
     Number(search.minAge),
@@ -106,13 +119,13 @@ setReligion();
     search.type,
     search.activityCategory,
     search.activityType,
-    new Date(search.startDate).getTime(),
-    new Date(search.endDate).getTime(),
     search.minCost,
     search.maxCost,
     search.accessibility,
+    search.region,
     search.state,
-    search.region
+    search.startDate,
+    search.endDate,
   ];
   console.log('This is after conversion',values);
   // const queryText = `SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", "program_dates"."start_date", "program_dates"."end_date", "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
@@ -136,8 +149,8 @@ setReligion();
   //                    WHERE "camp_type"."id" =$1;`;
 
 const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
-EXTRACT(EPOCH from "program_dates"."start_date") * 1000 AS "start_date", 
-EXTRACT(EPOCH from "program_dates"."end_date") * 1000 AS "end_date",
+"program_dates"."start_date" AS "start_date", 
+"program_dates"."end_date" AS "end_date",
  "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
 FROM "camp"
 JOIN "regions"
