@@ -44,18 +44,18 @@ const styles = theme => ({
 class UserSharedWith extends Component {
 
     state = {
-        reload:''
+        reload: ''
     }
 
-      componentDidMount = () => {
-        this.setSharedWithUser();
+    componentDidMount = () => {
+        this.fetchUserSharedWith();
     }
 
-    setSharedWithUser() {
-        const action = { type: 'SET_USER_SHARED_WITH' }
+    fetchUserSharedWith() {
+        const action = { type: 'FETCH_USER_SHARED_WITH' }
         this.props.dispatch(action);
         console.log('shared', action);
-        
+
     }
 
 
@@ -69,27 +69,27 @@ class UserSharedWith extends Component {
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         console.log('action', action);
-        this.setSharedWithUser();
-       
-       
-    } 
+        this.fetchUserSharedWith();
+
+
+    }
 
 
     render() {
 
         const { classes } = this.props;
-      
+
         return (
 
             <Paper className={classes.root}>
-            {JSON.stringify(this.props.sharedaccess)}
+                {JSON.stringify(this.props.sharedaccess)}
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
                             <CustomTableCell>Our Child</CustomTableCell>
                             <CustomTableCell align="right">Guardian(s) Shared With</CustomTableCell>
                             <CustomTableCell align="right">Remove Access</CustomTableCell>
-                          
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -100,13 +100,13 @@ class UserSharedWith extends Component {
                                 </CustomTableCell>
                                 <CustomTableCell align="right">{row.full_name}</CustomTableCell>
                                 <CustomTableCell align="right">
-                                <Button 
-                                variant="contained"
-                                className = {classes.button}
-                                color="primary"
-                                size="small"
-                                value={row.id}
-                                onClick={this.removeAccess}>
+                                    <Button
+                                        variant="contained"
+                                        className={classes.button}
+                                        color="primary"
+                                        size="small"
+                                        value={row.id}
+                                        onClick={this.removeAccess}>
                                         Remove Access
                                 </Button>
                                 </CustomTableCell>
@@ -124,8 +124,8 @@ const mapStateToProps = (reduxStore) => ({
     sharedAccess: reduxStore.setSharedAccess.setSharedAccess
 });
 
-    UserSharedWith.propTypes = {
-        classes: PropTypes.object.isRequired,
-    };
+UserSharedWith.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(connect(mapStateToProps)(UserSharedWith));

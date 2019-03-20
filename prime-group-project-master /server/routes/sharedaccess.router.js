@@ -6,15 +6,13 @@ const router = express.Router();
 ///This will contain the requests for the sharedAccess for the users
 //to share their itineraries. 
 
-/**
- * GET route template
- */
+
 router.get('/userSharedWith', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.user.id;
     console.log('this is inside router shared access');
     //selecting 
-    const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id"
+        const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id", "user_child"."child_id"
                             FROM "user_child"
                             JOIN "sharing"
                             ON "user_child"."child_id"="sharing"."itinerary_id"
@@ -22,8 +20,8 @@ router.get('/userSharedWith', (req, res) => {
                             ON "sharing"."shared_to_id"="user"."id"
                             JOIN "child_profile"
                             ON "user_child"."child_id"="child_profile"."id"
-                            WHERE "user_child"."user_id"=1;`;
-    pool.query(queryText)
+                            WHERE "user_child"."user_id"=$1;`;
+    pool.query(queryText, [id])
         .then(result => {
             res.send(result.rows);
         }).catch(error => {
@@ -37,12 +35,23 @@ router.get('/userSharedWith', (req, res) => {
 
 });
 
+router.get('/user/:email', (req, res) => {
+    console.log('in user email get', req.params);
+    const queryText = `SELECT "id" FROM "user" WHERE "email" = $1;`;
+    pool.query(queryText, [req.params.email]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    })
+})
+
 router.get('/sharedWithUser', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.user.id;
-    console.log('this is inside router shared access');
-    //selecting random camp info from camp table
-    const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id"
+        console.log('this is inside router shared access');
+        //selecting random camp info from camp table
+        const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id", "user_child"."child_id"
                             FROM "sharing"
                             JOIN "child_profile"
                             ON "sharing"."itinerary_id"="child_profile"."id"
@@ -50,14 +59,16 @@ router.get('/sharedWithUser', (req, res) => {
                             ON "child_profile"."id"="user_child"."child_id"
                             JOIN "user"
                             ON "user_child"."user_id"="user"."id"
-                            WHERE "sharing"."shared_to_id"=1;`;
-    pool.query(queryText)
-        .then(result => {
-            res.send(result.rows);
-        }).catch(error => {
-            console.log('there is error in get camps router', error);
-            res.sendStatus(500);
-        })
+                            JOIN  "child_itinerary"
+                            ON "user_child"."child_id"="child_itinerary"."user_child_id"
+                            WHERE "sharing"."shared_to_id"=$1;`;
+        pool.query(queryText, [id])
+            .then(result => {
+                res.send(result.rows);
+            }).catch(error => {
+                console.log('there is error in get camps router', error);
+                res.sendStatus(500);
+            })
     } else {
         res.sendStatus(403);
     }
@@ -78,14 +89,19 @@ router.delete('/:id', (req,res)=> {
 })
 
 
-
-    
-
-/**
- * POST route template
- */
-router.post('/:id', (req, res) => {
-
+// add itinerary to shared_to 
+router.post('/', (req, res) => {
+    console.log(req.body);
+    const child_id = parseInt(req.body.child_id);
+    const share_id = req.body.id;
+    const queryText = `INSERT INTO "sharing" ("shared_to_id", "user_child_id") VALUES ($1, $2);`;
+    pool.query(queryText, [share_id, child_id])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('error in sharedAccess POST', error);
+            res.sendStatus(500);
+        })
 });
 
 module.exports = router;

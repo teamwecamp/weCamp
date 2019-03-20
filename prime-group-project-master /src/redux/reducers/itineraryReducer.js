@@ -12,7 +12,6 @@ const setCampItinerary = (state = [], action) => {
 };
 
 
-
 export default combineReducers({
     setCampItinerary,
 });

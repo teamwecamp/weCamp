@@ -41,11 +41,11 @@ class SharedWithUser extends Component {
 
 
     componentDidMount = () => {
-        this.setSharedWithUser();
+        this.fetchSharedWithUser();
     }
 
-    setSharedWithUser() {
-        const action = { type: 'SET_SHARED_WITH_USER' }
+    fetchSharedWithUser() {
+        const action = { type: 'FETCH_SHARED_WITH_USER' }
         this.props.dispatch(action);
         console.log('shared', action);
 
@@ -56,15 +56,15 @@ class SharedWithUser extends Component {
         this.setState({ value });
     };
 
-   
-    removeFromNetwork= (event) => {
+
+    removeFromNetwork = (event) => {
         console.log('inremove', event.target.value);
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
-        this.setSharedWithUser();
+        this.fetchSharedWithUser();
 
 
-    } 
+    }
 
 
     render() {
@@ -82,7 +82,6 @@ class SharedWithUser extends Component {
                             <CustomTableCell align="right">Guardian(s)</CustomTableCell>
                             <CustomTableCell align="right">View Itinerary</CustomTableCell>
                             <CustomTableCell align="right">Remove From Network</CustomTableCell>
-
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -111,7 +110,6 @@ class SharedWithUser extends Component {
                                         Remove From Network
                                 </Button>
                                 </CustomTableCell>
-
                             </TableRow>
                         ))}
                     </TableBody>
@@ -120,13 +118,10 @@ class SharedWithUser extends Component {
         );
     }
 }
-
 const mapStateToProps = (reduxStore) => ({
     sharedAccess: reduxStore.setSharedAccess.setSharedAccess
 });
-
 SharedWithUser.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
 export default withStyles(styles)(connect(mapStateToProps)(SharedWithUser));

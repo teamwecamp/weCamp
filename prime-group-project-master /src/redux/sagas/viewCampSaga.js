@@ -36,7 +36,6 @@ function* fetchCampProgram(action){
 }
 
 
-
 function* userRegistrationSaga() {
     yield takeEvery('FETCH_CAMP_DETAILS', fetchCampDetails);
     // this gets the camp program schedule.

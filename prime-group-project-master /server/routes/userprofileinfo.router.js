@@ -29,6 +29,33 @@ router.get('/user', (req, res) => {
 });
 
 
+router.get('/childInfo', (req, res) => {
+   
+    console.log('this is inside /childInfo');
+    if (req.isAuthenticated) {
+        const user = req.user.id;
+        const queryText = `SELECT "user_child"."child_id", "child_profile"."DOB", "child_profile"."name", "child_profile"."gender_id"
+                       FROM "child_profile"
+                       JOIN "user_child"
+                       ON "user_child"."child_id"="child_profile"."id"
+                       JOIN "user"
+                       ON "user"."id"="user_child"."user_id"
+                       WHERE "user"."id"= $1;`;
+        pool.query(queryText,[user])
+            .then(result => {
+                res.send(result.rows);
+            }).catch(error => {
+                console.log('there is error in get user router', error);
+            })
+
+
+    }
+    
+
+
+})
+
+
 router.get('/child', (req, res)=> {
     if(req.isAuthenticated()){
         console.log('this is in gets child profile');

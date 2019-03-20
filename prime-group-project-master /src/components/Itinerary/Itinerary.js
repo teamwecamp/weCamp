@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import 'react-calendar-timeline/lib/Timeline.css';
 import Timeline from 'react-calendar-timeline';
 import './Itinerary.css';
+import ItineraryShare from './ItineraryShare';
 
 class Itinerary extends Component {
     componentDidMount = () => {
         this.setCampItinerary();
+        this.props.dispatch({ type: 'FETCH_USER_CHILD' })
     }
 
     setCampItinerary() {
@@ -51,7 +53,7 @@ class Itinerary extends Component {
                         borderRightWidth: itemContext.selected ? 3 : 1
                     },
                     onMouseDown: () => {
-                        // could add function to display item details on page 
+                        // STRETCH add function to display item details on page 
                         console.log("on item click", item);
                     }
                 })}
@@ -106,8 +108,9 @@ class Itinerary extends Component {
                         <td className="tdWait">waitlisted</td>
                     </tr>
                 </table>
-                <p>Calendar View Instructions: to zoom out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
+                <p>Calendar View Instructions: to zoom out, click on the red bar in the itinerary header. To zoom in, click on the date detail bar.</p>
                 <p>Click and hold on the calendar, then move the mouse to slide the view.</p>
+                <ItineraryShare children={groups}/>
             </div>
         )
     }

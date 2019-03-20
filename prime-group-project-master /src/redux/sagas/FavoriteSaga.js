@@ -73,7 +73,7 @@ function* favoriteSaga() {
     yield takeEvery('ADD_FAVORITE_CAMP', updateFavoriteCamps);
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
-    //
+    //for dev only
     yield takeEvery('FETCH_DEV_RESULTS', fetchResultsForDev);
     yield takeEvery('FETCH_USER_CHILD', fetchUserChild);
 }

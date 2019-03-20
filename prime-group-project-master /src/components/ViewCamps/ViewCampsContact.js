@@ -6,6 +6,7 @@ class ViewCampsContact extends Component {
         console.log(phone);
     }
 
+    //social media conditional renders    
     facebook = () => {
         if (this.props.camp.facebook !== null){
             return <a target="_blank" href={this.props.camp.facebook}><img className="socialMedia" src='socialMedia/iconfinder_Asset_2_2001646.png' /></a>
@@ -24,7 +25,7 @@ class ViewCampsContact extends Component {
         }
     }
 
-    //This will work for demo only
+    //This will work for demo - will be an issue if user is able to enter a phone in another format
     phone = () => {
         let phoneArr = this.props.camp.phone.split('');
         console.log(phoneArr);

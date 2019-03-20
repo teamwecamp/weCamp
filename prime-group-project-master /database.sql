@@ -152,7 +152,7 @@ CREATE TABLE "child_itinerary" (
 
 CREATE TABLE "sharing" (
 	"id" serial primary key,
-	"itinerary_id" int NOT NULL REFERENCES "child_itinerary",
+	"user_child_id" int NOT NULL REFERENCES "user_child",
 	"shared_to_id" int NOT NULL REFERENCES "user"
 );
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import UserProfileChild from './UserProfileChild';
+import moment from 'moment';
 
 // material UI cards
 import PropTypes from 'prop-types';
@@ -18,17 +18,15 @@ import { Grid } from '@material-ui/core';
 
 
 
-
-
 // matrial UI styles
 const styles = theme => ({
     card: {
         maxWidth: 345,
     },
     media: {
-        height: 100,
+        height: 140,
     },
-    // grid list
+    // this is grid list
     root: {
         flexGrow: 1,
     },
@@ -41,45 +39,39 @@ const styles = theme => ({
 });
 
 
+class UserProfileChild extends Component {
 
-class UserProfile extends Component {
-    state ={
+    state = {
         spacing: ''
     }
 
-    
+
     componentDidMount = () => {
-        this.setUserProfileInfo();
-
+        this.fetchChildInfo();
     }
 
-    // this get user's profile
-    setUserProfileInfo() {
+
+    fetchChildInfo() {
         const action = {
-            type: 'FETCH_USER_PROFILE_INFO'
+            type: 'FETCH_CHILD_PROFILE_INFO'
         }
-        this.props.dispatch(action);
+        this.props.dispatch(action)
     }
-
-    // this gets child's profile
-
-    handleEdit = (event) => {
-        console.log('this is handleEdit');
-
-    }
-
 
 
     render() {
-        
+
         const { classes } = this.props;
         const { spacing } = this.state;
 
-        return (
-           
-            <div>
 
-                {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
+        return (
+            <div>
+                
+
+
+                {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
+
                     <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     <Card className={classes.card}>
 
@@ -93,19 +85,14 @@ class UserProfile extends Component {
 
 
                             <CardContent>
-
+                                    
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    {member.full_name}
+                                    {child.name}
                                 </Typography>
                                 <Typography component="p">
-                                    {member.email}
+                                    {moment(child.DOB).format("MMMM D YYYY")}
                                 </Typography>
-                                <Typography component="p">
-                                    {member.street_address}
-                                </Typography>
-                                <Typography component="p">
-                                    {member.city}, {member.state} {member.zip}
-                                </Typography>
+
 
                             </CardContent>
 
@@ -121,42 +108,27 @@ class UserProfile extends Component {
 
                     </Card>
                     </Grid>
-                      
-               
-                     
-          ))}
-                <UserProfileChild />
 
-
-
-
-
-
+                    
+                
+            ))}
             </div>
-           
 
 
-        );
+
+        )
     }
 }
 
-
-
-
-
-
-
-
-
 const mapStateToProps = (reduxStore) => ({
     user: reduxStore.setUserProfileInfo,
-    child: reduxStore.setChildProfileInfo
+
 });
 
-UserProfile.propTypes = {
+UserProfileChild.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
 
 
-export default withStyles(styles)(connect(mapStateToProps)(UserProfile));
+export default withStyles(styles)(connect(mapStateToProps)(UserProfileChild));
