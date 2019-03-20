@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
+import CampStepper from './CampStepper';
 
 //this addes styling to only the form.
 const styles = theme => ({
@@ -29,7 +30,9 @@ const styles = theme => ({
 class CampRegistrationPage3 extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+        activeStep: 2,
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
@@ -94,6 +97,7 @@ class CampRegistrationPage3 extends Component {
           {this.mapInfo()}
           <button type="submit">Next</button>
         </form>
+        <CampStepper step = {this.state.activeStep}/>
       </div>
     );
   }

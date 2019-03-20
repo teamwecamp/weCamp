@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import CampStepper from "./CampStepper";
 
 //This is styling for the form only. 
 const styles = theme => ({
@@ -32,6 +33,7 @@ const styles = theme => ({
 
 class CampRegistrationPage4 extends Component {
   state = {
+    activeStep: 3,
     programs: [
       {
         programTitle: "",
@@ -260,6 +262,7 @@ class CampRegistrationPage4 extends Component {
             Submit
           </Button>
         </form>
+        <CampStepper step = {this.state.activeStep}/>
       </div>
     );
   }
