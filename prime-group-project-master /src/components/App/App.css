@@ -56,3 +56,7 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+
+.campsGroup {
+    margin: 15px 30px;
+}

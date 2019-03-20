@@ -23,9 +23,6 @@ const theme = createMuiTheme({
 });
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
     media: {
         height: 140,
     },
@@ -33,17 +30,11 @@ const styles = theme => ({
         minWidth: 175,
         height: 280,
     },
-    control: {
-        padding: theme.spacing.unit * 2,
-    },
     paper: {
         height: 200,
         width: 260,
         textAlign: 'center',
-    },
-    pos: {
-        marginBottom: 4,
-        fontSize: 16,
+        margin: theme.spacing.unit * 2,
     },
     title: {
         fontSize: 18,
