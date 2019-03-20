@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import CampStepper from './CampStepper';
 
 // Below are the styles for the form
 const styles = theme => ({
@@ -284,6 +285,7 @@ class CampRegistration extends Component {
               </Button>
           {/* The above code will be run only when states is not undefined. */}
         </form>
+        <CampStepper />
       </div>
     );
   }
