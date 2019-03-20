@@ -27,6 +27,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 const styles = theme => ({
     // card: {
     //     maxWidth: 200,
+        
     // },
     // media: {
     //     height: 50,
@@ -53,11 +54,13 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2,
     },
     pos: {
-        marginBottom: 12,
+        // marginBottom: 12,
+        margin: theme.spacing.unit * 2,
     },
     gridList: {
         width: 300,
         height: 200,
+        
     },
 
 });

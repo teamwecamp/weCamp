@@ -20,9 +20,10 @@ import { Grid, GridList } from '@material-ui/core';
 
 // matrial UI styles
 const styles = theme => ({
-    // card: {
-    //     maxWidth: 345,
-    // },
+     card: {
+         maxWidth: 345,
+         margin: theme.spacing.unit * 2,
+     },
     // media: {
     //     height: 140,
     //     margin: theme.spacing.unit * 2,
@@ -38,6 +39,7 @@ const styles = theme => ({
     },
     pos: {
         marginBottom: 10,
+        margin: theme.spacing.unit * 2,
     },
     gridList: {
         width: 500,
