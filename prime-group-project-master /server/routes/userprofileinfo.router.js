@@ -3,55 +3,56 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //This will contain all the userprofile info for their profile page.
-
-/**
- * GET route template
- */
 router.get('/user', (req, res) => {
     console.log('this is in gets user profile')
-    if(req.isAuthenticated){
+    if (req.isAuthenticated) {
         //user.id is logged in user
         const user = req.user.id;
         const queryText = `SELECT * FROM "user"
                        WHERE "user"."id" = $1;`;
         pool.query(queryText, [user])
-        .then(result => {
-            res.send(result.rows);
-        }).catch(error => {
-            console.log('there is error in get user router', error);
-        })
-    }  
+            .then(result => {
+                res.send(result.rows);
+            }).catch(error => {
+                console.log('there is error in get user router', error);
+            })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 
 router.get('/childInfo', (req, res) => {
-    console.log('this is inside /childInfo');
-    const queryText = `SELECT "user_child"."child_id", "child_profile"."DOB", "child_profile"."name", "child_profile"."gender_id"
+    if (req.isAuthenticated) {
+        console.log('this is inside /childInfo');
+        const queryText = `SELECT "user_child"."child_id", "child_profile"."DOB", "child_profile"."name", "child_profile"."gender_id"
                        FROM "child_profile"
                        JOIN "user_child"
                        ON "user_child"."child_id"="child_profile"."id"
                        JOIN "user"
                        ON "user"."id"="user_child"."user_id"
                        WHERE "user"."id"= 1;`;
-    pool.query(queryText)
-        .then(result => {
-            res.send(result.rows);
-        }).catch(error => {
-            console.log('there is error in get user router', error);
-        })
-
+        pool.query(queryText)
+            .then(result => {
+                res.send(result.rows);
+            }).catch(error => {
+                console.log('there is error in get user router', error);
+            })
+    } else {
+        res.sendStatus(403);
+    }
 
 
 })
 
 
-router.get('/child', (req, res)=> {
-    if(req.isAuthenticated()){
+router.get('/child', (req, res) => {
+    if (req.isAuthenticated()) {
         console.log('this is in gets child profile');
         (async () => {
             const client = await
-            pool.connect();
-            try{
+                pool.connect();
+            try {
                 await client.query('BEGIN');
                 // user 
                 const user = req.user.id;
@@ -63,9 +64,9 @@ router.get('/child', (req, res)=> {
                 const profileList = await client.query(queryText, [user]);
                 const profile = profileList.rows;
                 console.log('profileList', profile);
-                
+
                 let profileItem = [];
-                for(let item of profile){
+                for (let item of profile) {
                     let parent = item.user_id;
                     let child = item.child_id;
                     // console.log('parent', parent);
@@ -86,12 +87,11 @@ router.get('/child', (req, res)=> {
                     info.child = child;
                     profileItem.push(info);
 
-
                 }
                 await client.query('COMMIT');
                 res.send(profileItem);
 
-            }catch(error){
+            } catch (error) {
                 console.log('ROLLBACK', error);
                 await client.query('ROLLBACK');
                 throw error;
@@ -99,16 +99,13 @@ router.get('/child', (req, res)=> {
             finally {
                 client.release();
             }
-
-        })().catch((error)=>{
+        })().catch((error) => {
             console.log('CATCH', error);
             res.sendStatus(500);
         });
-
-    }else {
+    } else {
         res.sendStatus(403);
     }
-
 });
 
 

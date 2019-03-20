@@ -22,7 +22,8 @@ router.get('/:id', (req, res) => {
     
         console.log('In /viewcamps GET');
         const id = req.params.id;
-    const queryText = `SELECT * FROM "camp" LEFT JOIN "favorites" ON "camp"."id" = "favorites"."camp_id" 
+    const queryText = `SELECT "camp".*, "favorites"."user_kid_id", "favorites"."favorite" 
+                       FROM "camp" LEFT JOIN "favorites" ON "camp"."id" = "favorites"."camp_id" 
                        WHERE "camp"."id" = $1 AND "favorites"."favorite" = true;`;
         pool.query(queryText, [id]).then((result) => {
             res.send(result.rows);
@@ -33,9 +34,8 @@ router.get('/:id', (req, res) => {
 });
 
 
-// this gets the camp program and information of the programs.
+// this gets the camp program and information of the programs. User does not need to be logged in.
 router.get('/viewProgram/:id', (req, res) => {
-    if(req.isAuthenticated()){
         console.log('this is inside of viewProgram/:id');
        
                 const id = req.params.id
@@ -55,11 +55,7 @@ router.get('/viewProgram/:id', (req, res) => {
         }).catch((error) => {
             res.sendStatus(500);
             console.log(error);
-        })
-    } else {
-        res.sendStatus(403);
-    }                        
-                
+        })         
 });
 
 
