@@ -15,16 +15,24 @@ class SharedItinerary extends Component {
     }
 
     componentDidMount = () => {
-        this.setSharedItinerary();
+        this.fetchSharedItinerary();
       
     }
     
-    setSharedItinerary = () => {
+    fetchSharedItinerary = () => {
         const childId = this.props.match.params.id
         console.log('shared itinary parrams', childId);
-        
         this.props.dispatch({ type: 'FETCH_SHARED_ITINERARY', payload: childId });
+        this.setSharedItinerary();
     }
+
+    setSharedItinerary = () => {
+        const action = { type: 'SET_SHARED_ITINERARY' }
+        this.props.dispatch(action);
+        console.log('shared', action);
+
+    }
+   
     
 
     itemRenderer = ({
@@ -88,15 +96,15 @@ class SharedItinerary extends Component {
     };
 
     render() {
-        console.log(this.props.itinerary);
-        let items = this.props.itinerary.itineraries;
-        let groups = this.props.itinerary.children;
+        console.log(this.props.sharedItinerary);
+        let items = this.props.sharedItinerary.itineraries;
+        let groups = this.props.sharedItinerary.children;
         return (
             <div>
-                {this.props.itinerary.userName !== undefined &&
-                    <h1>{this.props.itinerary.userName.full_name}'s Itinerary</h1>}
+                {this.props.sharedItinerary.userName !== undefined &&
+                    <h1>{this.props.sharedItinerary.userName.full_name}'s Itinerary</h1>}
                 {/* {JSON.stringify(this.props.itinerary)} */}
-                {this.props.itinerary.itineraries !== undefined &&
+                {this.props.sharedItinerary.itineraries !== undefined &&
                     <Timeline
                         groups={groups}
                         items={items}
@@ -127,7 +135,7 @@ class SharedItinerary extends Component {
 }
 
 const mapReduxStoreToProps = (reduxStore) => ({
-    itinerary: reduxStore.setCampItinerary.setCampItinerary,
+    sharedItinerary: reduxStore.setSharedItinerary.setSharedItinerary,
 });
 
 export default withRouter(connect(mapReduxStoreToProps)(SharedItinerary));
