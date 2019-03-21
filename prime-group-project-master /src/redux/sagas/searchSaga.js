@@ -1,6 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-// import { ServerResponse } from 'http';
+import Swal from 'sweetalert2';
 
 function* fetchSearchCamps(action){
     console.log('this is sate from search',action.payload)
@@ -11,8 +11,8 @@ function* fetchSearchCamps(action){
 
     }catch(error) {
         console.log('this is inside fetchSearchCamps saga', error)
+        Swal.fire('something went wrong')
     }
-
 }
 
 
@@ -26,7 +26,6 @@ function* fetchSearchCampsDropDown() {
     } catch (error) {
         console.log('this is inside fetchSearchCamps saga', error)
     }
-
 }
 
 function* searchSaga(){
