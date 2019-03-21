@@ -24,6 +24,7 @@ import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
+import SharedItinerary from '../Itinerary/SharedItinerary';
 
 import UserProfile from '../UserProfile/UserProfile';
 
@@ -142,6 +143,11 @@ class App extends Component {
               exact
               path="/shared"
               component={Shared}
+            />
+            <ProtectedRoute
+              exact
+              path="/sharedItinerary/:id"
+              component={SharedItinerary}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

@@ -7,6 +7,20 @@ import Typography from '@material-ui/core/Typography'
 import Drawer from './Drawer';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+// import { unstable_Box as Box } from '@material-ui/core/Box';
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    Link: {
+        textAlign: 'right',
+    
+    },
+});
+
 
 
 const NavBar = (props) => {
@@ -52,4 +66,4 @@ const mapStateToProps = state => ({
     user: state.user,
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default withStyles(styles)(connect(mapStateToProps)(NavBar));
