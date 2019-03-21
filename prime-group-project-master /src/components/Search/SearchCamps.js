@@ -68,18 +68,19 @@ class SearchCamps extends Component {
         this.props.history.push(page);
     }
 
-    setSearchCamps = () => {
-        const action = { type: 'FETCH_SEARCH_CAMPS', payload: this.state }
+    setSearchCamps = (searchObject) => {
+        const action = { type: 'FETCH_SEARCH_CAMPS', payload:searchObject  }
         this.props.dispatch(action);
         console.log('action', action);
     }
 
     handleSearchChange = propertyName => event => {
-        this.setState({
+        this.setState ({
             [propertyName]: event.target.value
-        });
+        })
+        let searchObject = {...this.state,[propertyName]: event.target.value};
         console.log('event.target.value', event.target.value);
-        this.setSearchCamps();
+        setTimeout(() => this.setSearchCamps(searchObject),500);
 
     };
 
@@ -201,6 +202,29 @@ class SearchCamps extends Component {
                     <TextField
                         id="outlined-type"
                         select
+                        label="State"
+                        className={classes.textField}
+                        value={this.state.state}
+                        onChange={this.handleSearchChange("state")}
+                        variant="outlined"
+                        SelectProps={{
+                            MenuProps: {
+                                className: classes.menu
+                            }
+                        }}
+                        style={{ width: 200 }}
+                        margin="normal"
+                    >
+                        {this.props.dropDown.states !== undefined &&
+                            this.props.dropDown.states.map(type => (
+                                <MenuItem key={type.id} value={type.id}>
+                                    {type.state}
+                                </MenuItem>
+                            ))}
+                    </TextField>
+                    <TextField
+                        id="outlined-type"
+                        select
                         label="Region"
                         className={classes.textField}
                         value={this.state.region}
@@ -237,6 +261,9 @@ class SearchCamps extends Component {
                         style={{ width: 175 }}
                         margin="normal"
                     >
+                    <MenuItem key={0} value={0}>
+                                    All
+                                </MenuItem>
                         {this.props.dropDown.activityCategory !== undefined &&
                             this.props.dropDown.activityCategory.map(type => (
                                 <MenuItem key={type.id} value={type.id}>
@@ -340,29 +367,6 @@ class SearchCamps extends Component {
                                 {type}
                             </MenuItem>
                         ))}
-                    </TextField>
-                    <TextField
-                        id="outlined-type"
-                        select
-                        label="State"
-                        className={classes.textField}
-                        value={this.state.state}
-                        onChange={this.handleSearchChange("state")}
-                        variant="outlined"
-                        SelectProps={{
-                            MenuProps: {
-                                className: classes.menu
-                            }
-                        }}
-                        style={{ width: 200 }}
-                        margin="normal"
-                    >
-                        {this.props.dropDown.states !== undefined &&
-                            this.props.dropDown.states.map(type => (
-                                <MenuItem key={type.id} value={type.id}>
-                                    {type.state}
-                                </MenuItem>
-                            ))}
                     </TextField>
                     <Button type="submit">Click me!</Button>
                 </form>
