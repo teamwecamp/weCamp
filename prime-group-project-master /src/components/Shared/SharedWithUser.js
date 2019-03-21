@@ -66,7 +66,7 @@ class SharedWithUser extends Component {
 
 
     removeFromNetwork = (event) => {
-        console.log('inremove', event.target.value);
+        console.log('inremove', event.currentTarget.value);
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         this.fetchSharedWithUser();
@@ -75,7 +75,7 @@ class SharedWithUser extends Component {
     }
 
     moveToItinerary = (event) => {
-        const childId = event.target.value
+        const childId = event.currentTarget.value
         console.log('event.target.value', childId);
         this.props.history.push(`sharedItinerary/${childId}`)
         console.log('move to itinerary', this.props.history.push(`/sharedItinerary/${childId}`));

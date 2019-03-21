@@ -65,7 +65,7 @@ class UserSharedWith extends Component {
     };
 
     removeAccess = (event) => {
-        console.log('inremove', event.target.value);
+        console.log('inremove', event.currentTarget.value);
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         console.log('action', action);
