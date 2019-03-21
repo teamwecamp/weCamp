@@ -133,4 +133,5 @@ const mapStateToProps = (reduxStore) => ({
     user: reduxStore.user.userReducer,
     userChild: reduxStore.setFavoriteCamps.setUserChild,
 });
+
 export default withRouter(connect(mapStateToProps)(ViewCamps));

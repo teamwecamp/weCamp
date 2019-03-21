@@ -91,13 +91,11 @@ class ResultsFavorites extends Component {
                 }
             })
         }
-
     }
 
     render() {
         return (
             <div>
-                
                 <Button className="eventButton" variant="outlined" onClick={this.updateFavorite} size="small">add to favorites</Button>
             </div>
         )
