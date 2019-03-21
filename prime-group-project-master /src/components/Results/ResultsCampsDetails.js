@@ -46,9 +46,6 @@ const styles = theme => ({
             duration: theme.transitions.duration.shortest,
         }),
     },
-    control: {
-        padding: theme.spacing.unit * 2,
-    },
     paper: {
         textAlign: 'center',
         margin: theme.spacing.unit * 2,

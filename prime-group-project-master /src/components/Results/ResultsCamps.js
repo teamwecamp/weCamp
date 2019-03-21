@@ -12,9 +12,6 @@ const styles = theme => ({
     control: {
         padding: theme.spacing.unit * 2,
     },
-    pos: {
-        marginBottom: 12,
-    },
 });
 
 
