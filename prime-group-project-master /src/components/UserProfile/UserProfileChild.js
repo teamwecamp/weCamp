@@ -12,20 +12,47 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { GridList } from '@material-ui/core';
+
+
+
 
 
 // matrial UI styles
-const styles = {
-    card: {
-        maxWidth: 345,
+const styles = theme => ({
+     card: {
+         maxWidth: 345,
+         margin: theme.spacing.unit * 2,
+     },
+    // media: {
+    //     height: 140,
+    //     margin: theme.spacing.unit * 2,
+    // },
+    // this is grid list
+    root: {
+        flexGrow: 1,
+        justifyContent: 'space-around',
+        display: 'flex',
     },
-    media: {
-        height: 140,
+    control: {
+        padding: theme.spacing.unit * 2,
     },
-};
+    pos: {
+        marginBottom: 10,
+        margin: theme.spacing.unit * 2,
+    },
+    gridList: {
+        width: 500,
+        height: 450,
+    },
+});
 
 
 class UserProfileChild extends Component {
+
+    state = {
+        spacing: '16'
+    }
 
 
     componentDidMount = () => {
@@ -44,13 +71,17 @@ class UserProfileChild extends Component {
     render() {
 
         const { classes } = this.props;
+        const { spacing } = this.state;
 
 
         return (
             <div>
+                
 
 
                 {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
+
+                    <GridList container className={classes.root} justify="center" spacing={Number(spacing)}>
                     <Card className={classes.card}>
 
 
@@ -63,7 +94,7 @@ class UserProfileChild extends Component {
 
 
                             <CardContent>
-
+                                    
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {child.name}
                                 </Typography>
@@ -85,7 +116,11 @@ class UserProfileChild extends Component {
 
 
                     </Card>
-                ))}
+                    </GridList>
+
+                    
+                
+            ))}
             </div>
 
 
