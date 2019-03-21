@@ -68,18 +68,16 @@ class SearchCamps extends Component {
         this.props.history.push(page);
     }
 
-    setSearchCamps = () => {
-        const action = { type: 'FETCH_SEARCH_CAMPS', payload: this.state }
+    setSearchCamps = (searchObject) => {
+        const action = { type: 'FETCH_SEARCH_CAMPS', payload: searchObject }
         this.props.dispatch(action);
         console.log('action', action);
     }
 
     handleSearchChange = propertyName => event => {
-        this.setState({
-            [propertyName]: event.target.value
-        });
+        let searchObject = {...this.state,[propertyName]: event.target.value};
         console.log('event.target.value', event.target.value);
-        this.setSearchCamps();
+        setTimeout(this.setSearchCamps,1000);
 
     };
 
