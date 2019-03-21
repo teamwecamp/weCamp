@@ -17,7 +17,7 @@ const styles = theme => ({
     },
     Link: {
         textAlign: 'right',
-    
+
     },
 });
 
@@ -54,7 +54,7 @@ const NavBar = (props) => {
                             About
       </Link>
                     </div>
- 
+
                 </Toolbar>
             </AppBar>
         </div>

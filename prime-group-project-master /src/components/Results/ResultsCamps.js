@@ -25,7 +25,7 @@ class ResultsCamps extends Component {
 
     resultsDetails = () => {
         return (
-            this.props.devResults.map((camp, i) => {
+            this.props.results.map((camp, i) => {
                 return (<ResultsDetails moveToCamp={this.props.moveToCamp} key={i} camp={camp} />)
             })
             )      
@@ -38,7 +38,7 @@ class ResultsCamps extends Component {
         return (
             <div>
                 <h1>Results</h1>
-                {/* {JSON.stringify(this.props.devResults)} */}
+                {JSON.stringify(this.props.results)}
                 {this.props.devResults !== undefined &&
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.resultsDetails()}
