@@ -104,14 +104,17 @@ const BootstrapInput = withStyles(theme => ({
 class ViewCampProgram extends Component {
 
 // this is for selects material UI
-    state = {
-        kids: "",
-        status: "",
-        // checkedA: true,
-        // checkedB: true,
-        // checkedF: true,
-    };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            kids: 0,
+            status: 0,
+            checked: 1,
+
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
     componentDidMount(){
         this.getCampProgram();
@@ -141,14 +144,24 @@ class ViewCampProgram extends Component {
     }
     
     // select the inputs
-    handleChange = name => event => {
+    handleKids = name => event => {
+        this.setState({ [name]: event.target.value });
+    };
+
+    handleStatus = name => event => {
         this.setState({ [name]: event.target.value });
     };
 
     // checks the programs 
-    handleCheck = name => event => {
+    handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
     };
+
+    addItinerary = event => {
+        console.log('this is inside of addItinerary');
+        const action = { type: 'ADD_ITINERARY', payload: this.state }
+        this.props.dispatch(action);
+    }
 
     
 
@@ -202,7 +215,7 @@ class ViewCampProgram extends Component {
                                 <div>
                                     <Checkbox
                                         checked={this.state.checkedB}
-                                        onChange={this.handleCheck('checkedB')}
+                                        onChange={this.handleChange('checked')}
                                         value="checkedB"
                                         color="primary"
                                     />
@@ -239,7 +252,7 @@ class ViewCampProgram extends Component {
                             label="Select a Kid"
                             className={classes.textField}
                             value={this.state.kids}
-                            onChange={this.handleChange("kids")}
+                            onChange={this.handleKids("kids")}
                             variant="outlined"
                             SelectProps={{
                                 MenuProps: {
@@ -270,7 +283,7 @@ class ViewCampProgram extends Component {
                             label="Select a Status"
                             className={classes.textField}
                             value={this.state.status}
-                            onChange={this.handleChange("status")}
+                            onChange={this.handleStatus("status")}
                             variant="outlined"
                             SelectProps={{
                                 MenuProps: {
@@ -292,7 +305,7 @@ class ViewCampProgram extends Component {
                         
                         </FormControl>
                         <div>
-                        <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
+                        <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
                         </div>
                 </form>
                 

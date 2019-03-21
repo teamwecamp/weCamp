@@ -72,4 +72,26 @@ router.get('/viewProgram/:id', (req, res) => {
  * POST route template
  */
 
+router.post('/', (req, res)=> {
+    console.log('this is in router post addItinerary', req.body);
+    const addItinerary = req.body
+    const queryText = `INSERT INTO "child_itinerary" ("user_child_id", dates_id, "status_id") 
+                       VALUES ($1, $2, $3);`;
+    const queryValues = [
+        addItinerary.kids,
+        addItinerary.dates,
+        addItinerary.status
+    ];
+    pool.query(queryText, queryValues)
+    .then(response => {
+        res.sendStatus(210);
+    }).catch(error => {
+        console.log('there is error in post itinerary', error);
+        res.sendStatus(500);
+    });
+
+
+
+});
+
 module.exports = router;
