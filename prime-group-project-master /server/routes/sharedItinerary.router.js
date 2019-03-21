@@ -2,7 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('api/shareditinerary/:id', (req, res) => {
+router.get('/:id', (req, res) => {
+    // router.get('/:id', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('this is inside router shared itinerary', req.params.id);
         (async () => {
@@ -12,8 +13,6 @@ router.get('api/shareditinerary/:id', (req, res) => {
                 await client.query('BEGIN');
                 const schedule = {};
                 //child Id is itinerary to be viewed
-                console.log('childID router', req.params.id);
-                
                 const childId = req.params.id;
                 
                 

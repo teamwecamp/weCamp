@@ -15,7 +15,6 @@ class SharedItinerary extends Component {
     }
 
     componentDidMount = () => {
-        // this.setSharedItinerary();
         this.setSharedItinerary();
       
     }
@@ -28,13 +27,6 @@ class SharedItinerary extends Component {
     }
     
 
-    // setSharedItinerary() {
-        
-    //     const action = { type: 'FETCH_SHARED_ITINERARY' }
-    //     this.props.dispatch(action);
-    // }
-
-    // function from 'react-calendar-timeline' to customize calendar display
     itemRenderer = ({
         item,
         timelineContext,
