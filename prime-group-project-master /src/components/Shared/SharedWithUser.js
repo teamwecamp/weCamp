@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router';
+import Typography from '@material-ui/core/Typography';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -93,8 +94,8 @@ class SharedWithUser extends Component {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <CustomTableCell>Child's Itinerary</CustomTableCell>
-                            <CustomTableCell align="right">Guardian(s)</CustomTableCell>
+                            <CustomTableCell>Guardian(s)</CustomTableCell>
+                            <CustomTableCell align="right">Child's Itinerary</CustomTableCell>
                             <CustomTableCell align="right">View Itinerary</CustomTableCell>
                             <CustomTableCell align="right">Remove From Network</CustomTableCell>
                         </TableRow>
@@ -108,8 +109,8 @@ class SharedWithUser extends Component {
                                 <CustomTableCell align="right">{row.full_name}</CustomTableCell>
                                 <CustomTableCell align="right">
                                     <Button
+                                        className="eventButton"
                                         variant="contained"
-                                        color="primary"
                                         onClick={this.moveToItinerary}
                                         size="small"
                                         value={row.user_child_id}>
@@ -118,8 +119,8 @@ class SharedWithUser extends Component {
                                 </CustomTableCell>
                                 <CustomTableCell align="right">
                                     <Button
-                                        variant="contained"
-                                        color="primary"
+                                        className="eventButton"
+                                        variant=""
                                         size="small"
                                         value={row.id}
                                         onClick={this.removeFromNetwork}>

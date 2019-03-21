@@ -94,21 +94,11 @@ class Shared extends Component {
                         </Tabs>
                     </AppBar>
                     {value === 0 && <TabContainer>
-                        <Paper className={classes.search} elevation={1}>
-                            <InputBase className={classes.input} placeholder="Search By Child" />
-                            <IconButton className={classes.iconButton} aria-label="Search">
-                                <SearchIcon />
-                            </IconButton>
-                        </Paper>
+
                         <UserSharedWith />
                           </TabContainer>}
                     {value === 1 && <TabContainer>
-                        <Paper className={classes.search} elevation={1}>
-                            <InputBase className={classes.input} placeholder="Search By Child" />
-                            <IconButton className={classes.iconButton} aria-label="Search">
-                                <SearchIcon />
-                            </IconButton>
-                        </Paper>
+                      
                         <SharedWithUser />
                            
                     </TabContainer>}
