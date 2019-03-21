@@ -141,7 +141,8 @@ setReligion();
   } else {
     // do nothing, leave out the search query and don't increment i
   }
-
+  values.push(search.gender); // $4
+  i += 1;
   // let values = [
   //   Number(search.minAge),
   //   Number(search.maxAge),
@@ -217,7 +218,7 @@ setReligion();
 // AND "start_date" >= $13
 // AND "program_dates"."end_date" <= $14;`;
 const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
- "camp"."cost_min", "camp"."cost_max"
+ "camp"."cost_min", "camp"."cost_max","camp"."date_min","camp"."date_max"
 FROM "camp"
 JOIN "regions"
 ON  "camp"."region_id" = "regions"."id"
@@ -234,7 +235,7 @@ ON "regions"."state_id" = "states"."id"
 WHERE "camp_program"."age_min" >= $1
 AND "camp_program"."age_max" <= $2
 -- Put fields of camp first
-
+AND "camp_program"."gender_id" = $4
 -- Nested queries second
 ` + primaryFocus + `;`;
 
