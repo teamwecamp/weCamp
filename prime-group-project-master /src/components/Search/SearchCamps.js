@@ -61,7 +61,7 @@ class SearchCamps extends Component {
         this.getDropDowns();
     }
 
-    
+
     moveToCamp = (page) => {
         console.log(page);
 
@@ -92,16 +92,14 @@ class SearchCamps extends Component {
 
     getResults = () => {
         //for dev only
-        this.props.dispatch({ type: 'FETCH_DEV_RESULTS'});
+        this.props.dispatch({ type: 'FETCH_DEV_RESULTS' });
     }
 
     render() {
         console.log(this.props.dropDown);
         const { classes } = this.props;
         return (
-
             <div>
-
                 <h1>Search Camps</h1>
                 <form
                     id="input-form"
@@ -110,7 +108,6 @@ class SearchCamps extends Component {
                     autoComplete="off"
                     onSubmit={this.getResults}
                 >
-
                     <TextField
                         id="outlined-number"
                         label="Minimum Age"
@@ -371,7 +368,7 @@ class SearchCamps extends Component {
                     <Button type="submit">Click me!</Button>
                 </form>
                 <div>
-                    <Results moveToCamp={this.moveToCamp}/>
+                    <Results moveToCamp={this.moveToCamp} />
                 </div>
             </div>
 
@@ -382,4 +379,9 @@ class SearchCamps extends Component {
 const mapStateToProps = (reduxStore) => ({
     dropDown: reduxStore.setSearchCamps.setCampDropDown
 });
+
+SearchCamps.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
 export default connect(mapStateToProps)(withStyles(styles)(SearchCamps));

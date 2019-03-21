@@ -12,9 +12,6 @@ const setSharedAccess = (state = [], action) => {
 };
 
 
-
-
-
 export default combineReducers({
     setSharedAccess,
 });
