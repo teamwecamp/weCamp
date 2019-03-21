@@ -25,8 +25,8 @@ import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
 import SharedItinerary from '../Itinerary/SharedItinerary';
-// import RegisterPage from '../RegisterPage/RegisterPage';
-// import LoginPage from '../LoginPage/LoginPage';
+import RegisterPage from '../RegisterPage/RegisterPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 import UserProfile from '../UserProfile/UserProfile';
 
@@ -63,7 +63,7 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
-            {/* <Route
+            <Route
               exact
               path="/register"
               component={LoginPage}
@@ -73,7 +73,7 @@ class App extends Component {
               exact
               path="/login"
               component={RegisterPage}
-            /> */}
+            />
             <Route
               exact
               path="/search"
