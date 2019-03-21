@@ -110,7 +110,6 @@ class ViewCampProgram extends Component {
         this.state = {
             kids: 0,
             status: 0,
-            checked: 1,
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -154,7 +153,9 @@ class ViewCampProgram extends Component {
 
     // checks the programs 
     handleChange = name => event => {
-        this.setState({ [name]: event.target.checked });
+        let checkId = event.target.name
+        this.setState({ [checkId]: event.target.checked });
+        console.log(checkId);
     };
 
     addItinerary = event => {
@@ -215,8 +216,9 @@ class ViewCampProgram extends Component {
                                 <div>
                                     <Checkbox
                                         checked={this.state.checkedB}
+                                        name={schedule.program_id}
                                         onChange={this.handleChange('checked')}
-                                        value="checkedB"
+                                        value={schedule.program_id}
                                         color="primary"
                                     />
 
