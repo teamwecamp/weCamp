@@ -24,7 +24,7 @@ function* fetchCampDetails(action) {
     }
 }
 
-// this funtion gets the camp program/schedual info.
+// this function gets the camp program/schedule info.
 function* fetchCampProgram(action){
     try{
         const response = yield axios.get(`api/viewcamps/viewProgram/${action.payload}`);

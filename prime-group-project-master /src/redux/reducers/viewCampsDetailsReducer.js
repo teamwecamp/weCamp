@@ -11,7 +11,6 @@ const setViewCampsDetails = (state = [], action) => {
     }
 };
 
-
 const setViewCampsPrograms = (state = [], action) => {
     console.log('this is in setViewCampProgram');
 
@@ -32,7 +31,7 @@ const setStatus = (state = [], action) => {
             return state;
     }
 
-} 
+};
 
 export default combineReducers({
     setViewCampsDetails,
