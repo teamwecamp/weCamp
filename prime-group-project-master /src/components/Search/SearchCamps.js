@@ -69,15 +69,18 @@ class SearchCamps extends Component {
     }
 
     setSearchCamps = (searchObject) => {
-        const action = { type: 'FETCH_SEARCH_CAMPS', payload: searchObject }
+        const action = { type: 'FETCH_SEARCH_CAMPS', payload:searchObject  }
         this.props.dispatch(action);
         console.log('action', action);
     }
 
     handleSearchChange = propertyName => event => {
+        this.setState ({
+            [propertyName]: event.target.value
+        })
         let searchObject = {...this.state,[propertyName]: event.target.value};
         console.log('event.target.value', event.target.value);
-        setTimeout(this.setSearchCamps,1000);
+        setTimeout(() => this.setSearchCamps(searchObject),500);
 
     };
 
@@ -258,6 +261,9 @@ class SearchCamps extends Component {
                         style={{ width: 175 }}
                         margin="normal"
                     >
+                    <MenuItem key={0} value={0}>
+                                    All
+                                </MenuItem>
                         {this.props.dropDown.activityCategory !== undefined &&
                             this.props.dropDown.activityCategory.map(type => (
                                 <MenuItem key={type.id} value={type.id}>
