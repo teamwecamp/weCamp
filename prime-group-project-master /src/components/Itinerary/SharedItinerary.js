@@ -3,17 +3,36 @@ import { connect } from 'react-redux';
 import 'react-calendar-timeline/lib/Timeline.css';
 import Timeline from 'react-calendar-timeline';
 import './Itinerary.css';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 
 class SharedItinerary extends Component {
-    componentDidMount = () => {
-        this.setSharedItinerary();
-     
+
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
     }
 
-    setSharedItinerary() {
-        const action = { type: 'FETCH_SHARED_ITINERARY' }
-        this.props.dispatch(action);
+    componentDidMount = () => {
+        // this.setSharedItinerary();
+        this.setSharedItinerary();
+      
     }
+    
+    setSharedItinerary = () => {
+        const childId = this.props.match.params.id
+        console.log('shared itinary parrams', childId);
+        
+        this.props.dispatch({ type: 'FETCH_SHARED_ITINERARY', payload: childId });
+    }
+    
+
+    // setSharedItinerary() {
+        
+    //     const action = { type: 'FETCH_SHARED_ITINERARY' }
+    //     this.props.dispatch(action);
+    // }
 
     // function from 'react-calendar-timeline' to customize calendar display
     itemRenderer = ({
@@ -119,4 +138,4 @@ const mapReduxStoreToProps = (reduxStore) => ({
     itinerary: reduxStore.setCampItinerary.setCampItinerary,
 });
 
-export default connect(mapReduxStoreToProps)(SharedItinerary);
+export default withRouter(connect(mapReduxStoreToProps)(SharedItinerary));

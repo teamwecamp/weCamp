@@ -5,7 +5,7 @@ function* fetchSharedItinerary(action) {
     
     try {
         console.log('in fetch shared itinerary saga', action.payload);
-        const response = yield axios.get(`/sharedItinerary/${action.payload}`);
+        const response = yield axios.get(`api/sharedItinerary/${action.payload}`);
         const nextAction = { type: 'SET_SHARED_ITINERARY', payload: response.data }
         console.log('shared payload', response.data);
         
