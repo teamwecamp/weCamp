@@ -90,7 +90,7 @@ class Shared extends Component {
                         <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
                             <LinkTab label="Shared Itineraries" href="page1" />
                             <LinkTab label="Viewable Itineraries" href="page2" />
-                            <LinkTab label="Both" href="page3" />
+                            {/* <LinkTab label="Both" href="page3" /> */}
                         </Tabs>
                     </AppBar>
                     {value === 0 && <TabContainer>
