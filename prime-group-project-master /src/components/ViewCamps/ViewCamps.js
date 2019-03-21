@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './viewCamps.css';
 import ViewCampsContact from './ViewCampsContact';
 import Button from '@material-ui/core/Button';
-import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
@@ -49,7 +48,7 @@ class ViewCamps extends Component {
             //if camp is already marked as favorite
             if (this.props.viewCamp.sponsored) {
                 console.log('true');
-                swal({
+                Swal.fire({
                     //update once search route is complete
                     text: 'This is a favorite for <insert child>.',
                     buttons: {
@@ -90,7 +89,7 @@ class ViewCamps extends Component {
             }
         } else {
             //if user is not logged in
-            swal({
+            Swal.fire({
                 text: 'Please log in to mark favorites',
                 buttons: {
                     login: {

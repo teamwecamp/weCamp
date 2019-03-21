@@ -10,8 +10,8 @@ const router = express.Router();
 router.get('/userSharedWith', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.user.id;
-    console.log('this is inside router shared access');
-    //selecting 
+        console.log('this is inside router shared access');
+        //selecting 
         const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id", "user_child"."child_id"
                             FROM "user_child"
                             JOIN "sharing"
@@ -21,29 +21,31 @@ router.get('/userSharedWith', (req, res) => {
                             JOIN "child_profile"
                             ON "user_child"."child_id"="child_profile"."id"
                             WHERE "user_child"."user_id"=$1;`;
-    pool.query(queryText, [id])
-        .then(result => {
+        pool.query(queryText, [id])
+            .then(result => {
+                res.send(result.rows);
+            }).catch(error => {
+                console.log('there is error in get camps router', error);
+                res.sendStatus(500);
+            })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
+router.get('/user/:email', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('in user email get', req.params);
+        const queryText = `SELECT "id" FROM "user" WHERE "email" = $1;`;
+        pool.query(queryText, [req.params.email]).then((result) => {
             res.send(result.rows);
-        }).catch(error => {
-            console.log('there is error in get camps router', error);
+        }).catch((error) => {
             res.sendStatus(500);
+            console.log(error);
         })
     } else {
         res.sendStatus(403);
     }
-
-
-});
-
-router.get('/user/:email', (req, res) => {
-    console.log('in user email get', req.params);
-    const queryText = `SELECT "id" FROM "user" WHERE "email" = $1;`;
-    pool.query(queryText, [req.params.email]).then((result) => {
-        res.send(result.rows);
-    }).catch((error) => {
-        res.sendStatus(500);
-        console.log(error);
-    })
 })
 
 router.get('/sharedWithUser', (req, res) => {
@@ -72,36 +74,42 @@ router.get('/sharedWithUser', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-
 });
 
-router.delete('/:id', (req,res)=> {
-    console.log('in delete router', req.params.id);
-    
-    const id =[req.params.id];
-    const queryText=`DELETE FROM "sharing"
+router.delete('/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('in delete router', req.params.id);
+        const id = [req.params.id];
+        const queryText = `DELETE FROM "sharing"
                     WHERE id=$1`
         pool.query(queryText, id)
-        .then((response)=> {res.sendStatus(200); })
-        .catch((error)=> {
-            res.sendStatus(500)
-        })
+            .then((response) => { res.sendStatus(200); })
+            .catch((error) => {
+                res.sendStatus(500)
+            })
+    } else {
+        res.sendStatus(403);
+    }
 })
 
 
 // add itinerary to shared_to 
 router.post('/', (req, res) => {
-    console.log(req.body);
-    const child_id = parseInt(req.body.child_id);
-    const share_id = req.body.id;
-    const queryText = `INSERT INTO "sharing" ("shared_to_id", "user_child_id") VALUES ($1, $2);`;
-    pool.query(queryText, [share_id, child_id])
-        .then(result => {
-            res.sendStatus(201);
-        }).catch(error => {
-            console.log('error in sharedAccess POST', error);
-            res.sendStatus(500);
-        })
+    if (req.isAuthenticated()) {
+        console.log(req.body);
+        const child_id = parseInt(req.body.child_id);
+        const share_id = req.body.id;
+        const queryText = `INSERT INTO "sharing" ("shared_to_id", "user_child_id") VALUES ($1, $2);`;
+        pool.query(queryText, [share_id, child_id])
+            .then(result => {
+                res.sendStatus(201);
+            }).catch(error => {
+                console.log('error in sharedAccess POST', error);
+                res.sendStatus(500);
+            })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 module.exports = router;

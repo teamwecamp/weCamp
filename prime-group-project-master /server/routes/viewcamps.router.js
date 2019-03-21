@@ -19,7 +19,6 @@ router.get('/status', (req, res) => {
 
 //This is for Viewing the camps. User does not need to be logged in.
 router.get('/:id', (req, res) => {
-    
         console.log('In /viewcamps GET');
         const id = req.params.id;
         const queryText = `SELECT * FROM "camp" WHERE "id" = $1;`;
@@ -34,7 +33,6 @@ router.get('/:id', (req, res) => {
 
 // this gets the camp program and information of the programs.
 router.get('/viewProgram/:id', (req, res) => {
-    if(req.isAuthenticated()){
         console.log('this is inside of viewProgram/:id');
        
                 const id = req.params.id
@@ -54,13 +52,8 @@ router.get('/viewProgram/:id', (req, res) => {
         }).catch((error) => {
             res.sendStatus(500);
             console.log(error);
-        })
-    } else {
-        res.sendStatus(403);
-    }                        
-                
+        })           
 });
-
 
 
 
