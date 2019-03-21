@@ -20,6 +20,7 @@ const itineraryRouter = require('./routes/itinerary.router');
 const sharedAccessRouter = require('./routes/sharedaccess.router');
 const userProfileInfoRouter = require('./routes/userprofileinfo.router');
 const campRegistrationRouter = require('./routes/campregistration.router');
+const sharedItineraryRouter = require('./routes/shareditinerary.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -44,6 +45,7 @@ app.use('/api/itinerary', itineraryRouter);
 app.use('/api/sharedaccess', sharedAccessRouter);
 app.use('/api/userprofileinfo', userProfileInfoRouter);
 app.use('/api/campregistration', campRegistrationRouter);
+app.use('/api/sharedItinerary', sharedItineraryRouter);
 
 
 

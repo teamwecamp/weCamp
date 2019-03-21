@@ -23,16 +23,17 @@ router.get('/user', (req, res) => {
 
 
 router.get('/childInfo', (req, res) => {
+    console.log('this is inside /childInfo');
     if (req.isAuthenticated) {
-        console.log('this is inside /childInfo');
+        const user = req.user.id;
         const queryText = `SELECT "user_child"."child_id", "child_profile"."DOB", "child_profile"."name", "child_profile"."gender_id"
                        FROM "child_profile"
                        JOIN "user_child"
                        ON "user_child"."child_id"="child_profile"."id"
                        JOIN "user"
                        ON "user"."id"="user_child"."user_id"
-                       WHERE "user"."id"= 1;`;
-        pool.query(queryText)
+                       WHERE "user"."id"= $1;`;
+        pool.query(queryText,[user])
             .then(result => {
                 res.send(result.rows);
             }).catch(error => {
@@ -41,8 +42,6 @@ router.get('/childInfo', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-
-
 })
 
 

@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import CampStepper from './CampStepper';
 
 // Below are the styles for the form
 const styles = theme => ({
@@ -89,7 +90,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Camp Name Required"
+            label=" Camp Name"
             className={classes.textField}
             value={this.state.campName}
             onChange={this.handleInputChangeFor("campName")}
@@ -99,7 +100,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Address Required"
+            label=" Address"
             className={classes.textField}
             value={this.state.campAddress}
             onChange={this.handleInputChangeFor("campAddress")}
@@ -158,7 +159,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-startdate"
-            label="Start Date Required"
+            label="Start Date"
             InputProps={{
                 startAdornment: <InputAdornment position="start"></InputAdornment>,
             }}
@@ -172,7 +173,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-enddate"
-            label="End Date Required"
+            label="End Date"
             InputProps={{
                 startAdornment: <InputAdornment position="start"></InputAdornment>,
             }}
@@ -186,7 +187,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Min Age Required"
+            label=" Min Age"
             className={classes.textField}
             value={this.state.minAge}
             onChange={this.handleInputChangeFor("minAge")}
@@ -196,7 +197,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Max Age Required"
+            label=" Max Age "
             className={classes.textField}
             value={this.state.maxAge}
             onChange={this.handleInputChangeFor("maxAge")}
@@ -284,6 +285,7 @@ class CampRegistration extends Component {
               </Button>
           {/* The above code will be run only when states is not undefined. */}
         </form>
+        <CampStepper />
       </div>
     );
   }
