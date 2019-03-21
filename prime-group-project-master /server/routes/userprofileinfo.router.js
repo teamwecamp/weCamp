@@ -107,11 +107,8 @@ router.get('/child', (req, res) => {
 });
 
 
-/**
- * POST route template
- */
 router.post('/', (req, res) => {
-
+// add child to user profile
 });
 
 module.exports = router;
