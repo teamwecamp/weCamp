@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
-
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -16,10 +14,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 
 const theme = createMuiTheme({
-    palette: {
-        primary: { main: '#e5e3f4' }, // Purple and green play nicely together.
-        secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
-    },
     typography: { useNextVariants: true },
 });
 

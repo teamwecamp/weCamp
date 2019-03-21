@@ -47,14 +47,14 @@ class ViewCamps extends Component {
         console.log(this.props.viewCamp);
         if (this.props.user.id) {
             //if camp is already marked as favorite
-            if (this.props.viewCamp.sponsored) {
+            if (this.props.viewCamp.favorite) {
                 console.log('true');
                 swal({
                     //update once search route is complete
-                    text: 'This is a favorite for <insert child>.',
+                    text: 'This is already in your favorites.',
                     buttons: {
                         edit: {
-                            text: "Edit Favorites",
+                            text: "Go to Favorites",
                             value: true,
                         },
                         cancel: "Close",
@@ -118,10 +118,10 @@ class ViewCamps extends Component {
                 <p>{camp.summary}</p>
                 <ViewCampsContact camp={camp} />
                 <br />
-                <Button variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
+                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
                     Add to Favorites
                 </Button>
-                <Button variant="contained" color="primary" size="large" onClick={this.goToProgram}>
+                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.goToProgram}>
                     View Program Details
                 </Button>
             </div>

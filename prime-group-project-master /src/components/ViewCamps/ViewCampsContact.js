@@ -28,7 +28,6 @@ class ViewCampsContact extends Component {
     //This will work for demo - will be an issue if user is able to enter a phone in another format
     phone = () => {
         let phoneArr = this.props.camp.phone.split('');
-        console.log(phoneArr);
         let newArr = [];
         newArr.push(phoneArr[0]);
         newArr.push(phoneArr[1]);
