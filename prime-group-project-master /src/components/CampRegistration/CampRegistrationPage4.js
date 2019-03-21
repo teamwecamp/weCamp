@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import CampStepper from "./CampStepper";
 
 //This is styling for the form only. 
 const styles = theme => ({
@@ -32,6 +33,7 @@ const styles = theme => ({
 
 class CampRegistrationPage4 extends Component {
   state = {
+    activeStep: 3,
     programs: [
       {
         programTitle: "",
@@ -105,7 +107,7 @@ class CampRegistrationPage4 extends Component {
                 <TextField
                   required
                   id="outlined-programTitle"
-                  label="Required Program Title"
+                  label="Program Title"
                   className={classes.textField}
                   value={program.programTitle}
                   onChange={this.handleProgramChange(i, "programTitle")}
@@ -116,7 +118,7 @@ class CampRegistrationPage4 extends Component {
                 <TextField
                   required
                   id="outlined-cost"
-                  label="Required Cost"
+                  label="Cost"
                   className={classes.textField}
                   value={program.cost}
                   onChange={this.handleProgramChange(i, "cost")}
@@ -127,6 +129,9 @@ class CampRegistrationPage4 extends Component {
                 <TextField
                   id="outlined-startTime"
                   label="Start Time"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start" />
+                  }}
                   type="time"
                   className={classes.textField}
                   value={program.startTime}
@@ -139,6 +144,9 @@ class CampRegistrationPage4 extends Component {
                   id="outlined-endTime"
                   label="End Time"
                   type="time"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start" />
+                  }}
                   className={classes.textField}
                   value={program.endTime}
                   onChange={this.handleProgramChange(i, "startTime")}
@@ -147,7 +155,6 @@ class CampRegistrationPage4 extends Component {
                   variant="outlined"
                 />
                 <TextField
-                  //required
                   id="outlined-type"
                   select
                   label="Camp Type"
@@ -173,7 +180,7 @@ class CampRegistrationPage4 extends Component {
                 <TextField
                   required
                   id="outlined-age"
-                  label="Required Age"
+                  label="Age"
                   className={classes.textField}
                   value={program.age}
                   onChange={this.handleProgramChange(i, "age")}
@@ -255,6 +262,7 @@ class CampRegistrationPage4 extends Component {
             Submit
           </Button>
         </form>
+        <CampStepper step = {this.state.activeStep}/>
       </div>
     );
   }

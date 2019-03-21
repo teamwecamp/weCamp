@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -39,6 +40,12 @@ const styles = theme => ({
 
 class SharedWithUser extends Component {
 
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+    }
+
 
     componentDidMount = () => {
         this.fetchSharedWithUser();
@@ -66,15 +73,23 @@ class SharedWithUser extends Component {
 
     }
 
+    moveToItinerary = (event) => {
+        const childId = event.target.value
+        console.log('event.target.value', childId);
+        this.props.history.push(`sharedItinerary/${childId}`)
+        console.log('move to itinerary', this.props.history.push(`/sharedItinerary/${childId}`));
+        
+        
+    }
 
     render() {
 
         const { classes } = this.props;
 
         return (
-
+            
             <Paper className={classes.root}>
-                {JSON.stringify(this.props.sharedaccess)}
+                {JSON.stringify(this.props.sharedAccess.user_child_id)}
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
@@ -96,7 +111,8 @@ class SharedWithUser extends Component {
                                         variant="contained"
                                         color="primary"
                                         onClick={this.moveToItinerary}
-                                        size="small">
+                                        size="small"
+                                        value={row.user_child_id}>
                                         View Itinerary
                                 </Button>
                                 </CustomTableCell>
@@ -124,4 +140,4 @@ const mapStateToProps = (reduxStore) => ({
 SharedWithUser.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(connect(mapStateToProps)(SharedWithUser));
+export default withRouter(withStyles(styles)(connect(mapStateToProps)(SharedWithUser)));

@@ -12,23 +12,68 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Grid, GridList } from '@material-ui/core';
+import GridListTile from '@material-ui/core/GridListTile';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
+
+
+
 
 
 
 
 // matrial UI styles
-const styles = {
+const styles = theme => ({
     card: {
-        maxWidth: 345,
+        maxWidth: 500,
+        margin: theme.spacing.unit * 2,
+        
     },
-    media: {
-        height: 140,
+    // media: {
+    //     height: 50,
+    //      margin: theme.spacing.unit * 2,
+    // },
+    // grid list
+
+    // flexGrow: 1,
+    // justifyContent: 'space-around',
+    // display: 'flex',
+    // overflow: 'hidden',
+
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // justifyContent: 'space-around',
+    // overflow: 'hidden',
+    root: {
+        display: '1',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
     },
-};
+    control: {
+        padding: theme.spacing.unit * 2,
+    },
+    pos: {
+        // marginBottom: 12,
+        margin: theme.spacing.unit * 2,
+    },
+    gridList: {
+        width: 300,
+        height: 200,
+        
+    },
+
+});
 
 
 
 class UserProfile extends Component {
+    state ={
+        spacing: '16'
+    }
+
+    
     componentDidMount = () => {
         this.setUserProfileInfo();
 
@@ -52,14 +97,19 @@ class UserProfile extends Component {
 
 
     render() {
-        // { JSON.stringify(this.props.user) }
-        // { JSON.stringify(this.props.child) }
+        
         const { classes } = this.props;
+        const { spacing } = this.state;
 
         return (
+           
             <div>
 
                 {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
+                    <GridList container className={classes.root} justify="center"  spacing={Number(spacing)}>
+                        <GridListTile key="Subheader"  cols={2} style={{ height: 'auto' }}>
+                            {/* <ListSubheader component="hearder"></ListSubheader> */}
+                        </GridListTile>
                     <Card className={classes.card}>
 
 
@@ -99,7 +149,11 @@ class UserProfile extends Component {
 
 
                     </Card>
-                ))}
+                    </GridList>
+                      
+               
+                     
+          ))}
                 <UserProfileChild />
 
 
@@ -108,6 +162,7 @@ class UserProfile extends Component {
 
 
             </div>
+           
 
 
         );

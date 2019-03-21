@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import CampStepper from './CampStepper';
 
 //This adds styling to the form.
 const styles = theme => ({
@@ -32,6 +33,7 @@ const styles = theme => ({
 
 class CampRegistrationPage2 extends Component {
   state = {
+    activeStep: 1,
     costMin: "",
     costMax: "",
     regDeadlineDate: "",
@@ -198,6 +200,7 @@ class CampRegistrationPage2 extends Component {
             Next
           </Button>
         </form>
+        <CampStepper step = {this.state.activeStep} />
       </div>
     );
   }

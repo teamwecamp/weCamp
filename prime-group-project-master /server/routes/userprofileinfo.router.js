@@ -3,7 +3,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //This will contain all the userprofile info for their profile page.
-
 router.get('/user', (req, res) => {
     console.log('this is in gets user profile')
     if (req.isAuthenticated) {
@@ -24,16 +23,17 @@ router.get('/user', (req, res) => {
 
 
 router.get('/childInfo', (req, res) => {
+    console.log('this is inside /childInfo');
     if (req.isAuthenticated) {
-        console.log('this is inside /childInfo');
+        const user = req.user.id;
         const queryText = `SELECT "user_child"."child_id", "child_profile"."DOB", "child_profile"."name", "child_profile"."gender_id"
                        FROM "child_profile"
                        JOIN "user_child"
                        ON "user_child"."child_id"="child_profile"."id"
                        JOIN "user"
                        ON "user"."id"="user_child"."user_id"
-                       WHERE "user"."id"= 1;`;
-        pool.query(queryText)
+                       WHERE "user"."id"= $1;`;
+        pool.query(queryText,[user])
             .then(result => {
                 res.send(result.rows);
             }).catch(error => {
@@ -97,7 +97,6 @@ router.get('/child', (req, res) => {
             finally {
                 client.release();
             }
-
         })().catch((error) => {
             console.log('CATCH', error);
             res.sendStatus(500);
