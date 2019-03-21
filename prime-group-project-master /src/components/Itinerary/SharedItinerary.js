@@ -23,15 +23,15 @@ class SharedItinerary extends Component {
         const childId = this.props.match.params.id
         console.log('shared itinary parrams', childId);
         this.props.dispatch({ type: 'FETCH_SHARED_ITINERARY', payload: childId });
-        this.setSharedItinerary();
+        // this.setSharedItinerary();
     }
 
-    setSharedItinerary = () => {
-        const action = { type: 'SET_SHARED_ITINERARY' }
-        this.props.dispatch(action);
-        console.log('shared', action);
+    // setSharedItinerary = () => {
+    //     const action = { type: 'SET_SHARED_ITINERARY' }
+    //     this.props.dispatch(action);
+    //     console.log('shared', action);
 
-    }
+    // }
    
     
 
@@ -102,7 +102,7 @@ class SharedItinerary extends Component {
         return (
             <div>
                 {this.props.sharedItinerary.userName !== undefined &&
-                    <h1>{this.props.sharedItinerary.userName.full_name}'s Itinerary</h1>}
+                    <h1>{this.props.sharedItinerary.userName.name}'s Itinerary</h1>}
                 {/* {JSON.stringify(this.props.itinerary)} */}
                 {this.props.sharedItinerary.itineraries !== undefined &&
                     <Timeline
