@@ -199,6 +199,29 @@ class SearchCamps extends Component {
                     <TextField
                         id="outlined-type"
                         select
+                        label="State"
+                        className={classes.textField}
+                        value={this.state.state}
+                        onChange={this.handleSearchChange("state")}
+                        variant="outlined"
+                        SelectProps={{
+                            MenuProps: {
+                                className: classes.menu
+                            }
+                        }}
+                        style={{ width: 200 }}
+                        margin="normal"
+                    >
+                        {this.props.dropDown.states !== undefined &&
+                            this.props.dropDown.states.map(type => (
+                                <MenuItem key={type.id} value={type.id}>
+                                    {type.state}
+                                </MenuItem>
+                            ))}
+                    </TextField>
+                    <TextField
+                        id="outlined-type"
+                        select
                         label="Region"
                         className={classes.textField}
                         value={this.state.region}
@@ -338,29 +361,6 @@ class SearchCamps extends Component {
                                 {type}
                             </MenuItem>
                         ))}
-                    </TextField>
-                    <TextField
-                        id="outlined-type"
-                        select
-                        label="State"
-                        className={classes.textField}
-                        value={this.state.state}
-                        onChange={this.handleSearchChange("state")}
-                        variant="outlined"
-                        SelectProps={{
-                            MenuProps: {
-                                className: classes.menu
-                            }
-                        }}
-                        style={{ width: 200 }}
-                        margin="normal"
-                    >
-                        {this.props.dropDown.states !== undefined &&
-                            this.props.dropDown.states.map(type => (
-                                <MenuItem key={type.id} value={type.id}>
-                                    {type.state}
-                                </MenuItem>
-                            ))}
                     </TextField>
                     <Button type="submit">Click me!</Button>
                 </form>
