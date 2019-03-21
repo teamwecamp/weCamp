@@ -59,6 +59,9 @@ const styles = theme => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
+    expandInfo: {
+        fontSize: 20,
+    },
     eventButton: {
         margin: 6,
     }
@@ -111,7 +114,7 @@ class ResultsDetails extends Component {
                                         </IconButton>
                                     </CardActions>
                                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                                        <CardContent>
+                                        <CardContent className={classes.expandInfo}>
                                             <Typography paragraph>
                                                 {this.props.camp.summary}
                                             </Typography>

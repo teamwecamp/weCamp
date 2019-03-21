@@ -57,10 +57,9 @@ class SearchCamps extends Component {
 
 
     componentDidMount = () => {
-        // this.setSearchCamps();
+        this.setSearchCamps();
         this.getDropDowns();
     }
-
 
     moveToCamp = (page) => {
         console.log(page);
