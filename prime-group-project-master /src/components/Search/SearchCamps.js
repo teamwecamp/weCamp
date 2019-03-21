@@ -52,7 +52,7 @@ class SearchCamps extends Component {
         maxCost: "10000",
         accessibility: "no",
         state: "Minnesota",
-        region: "Nothern MN",
+        region: "Northern MN",
     };
 
 
