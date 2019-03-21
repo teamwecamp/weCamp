@@ -22,7 +22,7 @@ function* fetchChildProfileInfo() {
         const nextAction = { type: 'SET_CHILD_PROFILE_INFO', payload: response.data };
         yield put(nextAction);
     } catch (error) {
-        console.log('there is error in fetchUserProfileInfo', error);
+        console.log('there is error in fetchChildProfileInfo', error);
     }
 
 }

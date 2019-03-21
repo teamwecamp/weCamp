@@ -85,7 +85,6 @@ router.get('/child', (req, res) => {
                     console.log('this is info.profile', info.profile)
                     info.child = child;
                     profileItem.push(info);
-
                 }
                 await client.query('COMMIT');
                 res.send(profileItem);
@@ -108,11 +107,8 @@ router.get('/child', (req, res) => {
 });
 
 
-/**
- * POST route template
- */
 router.post('/', (req, res) => {
-
+// add child to user profile
 });
 
 module.exports = router;

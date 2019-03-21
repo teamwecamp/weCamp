@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Material-ui
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -44,7 +45,6 @@ class LandingRecentCamps extends Component {
     moveToCamp = () => {
         const camp = this.props.camp.id;
         console.log(camp);
-
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
@@ -52,7 +52,6 @@ class LandingRecentCamps extends Component {
     render() {
         const { classes } = this.props;
         return (
-            
             <div>
                 <Grid className="innerGrid" item xs={6}>
                     <Paper className={classes.paper}>
@@ -75,8 +74,6 @@ class LandingRecentCamps extends Component {
                     </Paper>
                 </Grid>
             </div>
-            
-
         )
     }
 }

@@ -97,7 +97,6 @@ router.get('/', (req, res) => {
             finally {
                 client.release();
             }
-
         })().catch((error) => {
             console.log('CATCH', error);
             res.sendStatus(500);
@@ -105,9 +104,6 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-
-   
-    
 });
 
 /**
