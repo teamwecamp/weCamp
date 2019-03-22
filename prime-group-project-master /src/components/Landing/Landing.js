@@ -19,7 +19,8 @@ const styles = theme => ({
         height: 90,
         width: 1000,
         fontSize: 40,
-        marginTop: 110,
+        marginTop: 40,
+        marginBottom: 20,
     },
 });
 

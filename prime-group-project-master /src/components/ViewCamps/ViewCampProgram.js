@@ -295,12 +295,7 @@ class ViewCampProgram extends Component {
                         <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
                         </div>
                 </form>
-                
             </Paper>
-            
-           
-           
-           
         )
     }
 }
@@ -312,8 +307,7 @@ const mapReduxStoreToProps = (reduxStore) => ({
 });
 
 ViewCampProgram.propTypes = {
-    classes: PropTypes.object.isRequired,
-   
+    classes: PropTypes.object.isRequired, 
 };
 
 
