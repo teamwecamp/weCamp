@@ -16,23 +16,15 @@ import UserSharedWith from './UserSharedWith';
 import SharedWithUser from './SharedWithUser';
 import { ListItemSecondaryAction } from '@material-ui/core';
 
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#127696',
-        },
-        secondary: {
-            main: '#f44336',
-        },
+const CustomTabs = withStyles(theme => ({
+    MuiAppBar: {
+        backgroundColor: 'rgb(57, 92, 104)',
+        color: theme.palette.common.white,
     },
-    overrides: {
-        MuiButton: { // Name of the component ⚛️ / style sheet
-            text: { // Name of the rule
-                color: 'white', // Some CSS
-            },
-        },
+    body: {
+        fontSize: 14,
     },
-});
+}))(Tabs);
 
 
 
@@ -116,7 +108,7 @@ class Shared extends Component {
                 
                 <div className={classes.root}>
                     <AppBar  position="static">
-                        <Tabs 
+                        <CustomTabs 
                         className="tabs"
                         variant="fullWidth" 
                         value={value} 
@@ -124,7 +116,7 @@ class Shared extends Component {
                             <LinkTab label="Shared Itineraries" href="page1" />
                             <LinkTab label="Viewable Itineraries" href="page2" />
                             {/* <LinkTab label="Both" href="page3" /> */}
-                        </Tabs>
+                        </CustomTabs>
                     </AppBar>
                     {value === 0 && <TabContainer>
 
