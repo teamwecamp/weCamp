@@ -1,26 +1,38 @@
 -- camp #1, w/o insta
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
 "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", "twitter", "photo_url", "logo_url", 
-"website") VALUES ('Laketrails Base Camp', 'P.O. Box 25 Oak Island, MN, 56741', 1, '05/24/2019', 
+"website", "summary") VALUES ('Laketrails Base Camp', 'P.O. Box 25 Oak Island, MN, 56741', 1, '05/24/2019', 
 '09-08-2019', 3, false, 550, 750, false, 8004506460, 'https://www.facebook.com/laketrailsbasecamp', 
 'https://twitter.com/laketrailscamp', 'http://laketrails.org/wp-content/uploads/2015/01/About-Programs.jpg', 
-'http://laketrails.org/wp-content/uploads/2015/01/laketrails-base-camp.png', 'http://laketrails.org/');
+'http://laketrails.org/wp-content/uploads/2015/01/laketrails-base-camp.png', 'http://laketrails.org/', 
+'Laketrails program is designed with the teenage camper in mind. While there is plenty of adventure as 
+well as physical challenge, there is also a more relaxed atmosphere than you will find at many camps. We 
+feel it is important for young people to have time to build relationships with other youth and to grow in 
+understanding of their own giftedness. Because of this, we don’t adhere to rigid schedules, but try to live 
+life to the fullest as our Creator presents it to us each day.');
 
 -- camp #2, with insta, no twitter
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
 "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", "instagram", "photo_url", "logo_url", 
-"website") VALUES ('Camp Mishawaka', 'P.O. Box 368 / 21525 Mishawaka Rd. Grand Rapids, MN 55744', 1, 
+"website", "summary") VALUES ('Camp Mishawaka', 'P.O. Box 368 / 21525 Mishawaka Rd. Grand Rapids, MN 55744', 1, 
 '6/16/2019', '8/9/2019', 3, false, 3025, 9450, false, 2183265011, 'https://www.facebook.com/campmishawaka/', 
 'https://www.instagram.com/campmishawaka/', 'https://www.campmishawaka.com/wp-content/uploads/2018/10/gaga-ball-core-values.jpg', 
-'https://www.campmishawaka.com/wp-content/uploads/2018/05/logo.svg', 'https://www.campmishawaka.com'); 
+'https://www.campmishawaka.com/wp-content/uploads/2018/05/logo.svg', 'https://www.campmishawaka.com', 'Summer 
+camp is a formative experience and Camp Mishawaka is proud to provide kids with the activities, role-models, 
+environment and community that will enrich their lives. Located in northern Minnesota, Camp Mishawaka offers 
+two, four, six and eight week sessions for boys and girls ages 8 to 16. We believe that a traditional residential 
+summer camp experience develops skills, friendships and memories that last a lifetime.'); 
 
 -- camp #3, with insta, no twitter
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
 "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", "instagram", "photo_url", "logo_url", 
-"website") VALUES ('Shetek Lutheran Ministeries', '14 Keeley Island Drive, Slayton, MN 56172', 2, '6/9/2019', '8/9/2019', 3, 
+"website", "summary") VALUES ('Shetek Lutheran Ministeries', '14 Keeley Island Drive, Slayton, MN 56172', 2, '6/9/2019', '8/9/2019', 3, 
 true, 25, 515, false, 5077633567, 'https://www.facebook.com/pages/sheteklutheranministries', 
 'https://www.instagram.com/sheteklutheranministries/', 'http://shetek.org/wp-content/uploads/2016/12/10914834_10153302359333081_2510963860018673748_o.jpg', 
-'https://shetek.org/wp-content/uploads/2016/12/Shetek-Horiz-2000x400.png', 'https://shetek.org/');
+'https://shetek.org/wp-content/uploads/2016/12/Shetek-Horiz-2000x400.png', 'https://shetek.org/', 'Shetek Lutheran 
+Ministries is a year-round camp on Keeley Island on Lake Shetek. We offer summer camp for children and youth, 
+year-round retreats and meeting spaces, and environmental education. We are a Christian camp and an ideal location 
+for your retreats, conferences, church group meetings, business & board meetings, family events, weddings, class reunions, and more.');
 
 -- camp #4 without insta and twitter
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
@@ -32,50 +44,67 @@ which we have been doing since 1968. ​We are situated in the beautiful Winneba
 
 -- camp #5 without social media (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
-"phone", "photo_url", "logo_url", "website") VALUES ('Camp Koronis', '15752 County Road 181  Paynesville, MN 56362-9377', 3, '6/12/2019', '8/3/2019', 3, true, 
+"phone", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Koronis', '15752 County Road 181  Paynesville, MN 56362-9377', 3, '6/12/2019', '8/3/2019', 3, true, 
 195, 680, false, 8556221973, 'https://www.koronisministries.org/files/tables/content/10569568/fields/primaryimage/00b97725562041e9b41f85945eb655a3/kayak+01.jpg?width=400&height=300&mode=crop', 
-'https://www.koronisministries.org/files/content/camps/images/koronis/newlogo_koronis.png', 'https://www.koronisministries.org/');
+'https://www.koronisministries.org/files/content/camps/images/koronis/newlogo_koronis.png', 'https://www.koronisministries.org/', E'Camp Koronis, has been 
+a place of fun and adventure for over six dacades!  Campers live in rustic cabins immersed in our 185-acre woodlands. The days are filled with activities 
+kids love like archery, fishing, swimming, nature arts & crafts, boating, fishing, sports, campfires, sleep-outs, s\'mores, horseback riding, and much more, 
+led by our highly trained staff committed to safety, faith, and the individual worth of each camper.');
 
 -- camp #6 without insta and twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
-"phone", "facebook", "photo_url", "logo_url", "website") VALUES ('Reinbows Inc of Windom', '43341 480th Ave Windom, MN 56101-3326', 2, '6/10/19', '6/14/19', 
+"phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Reinbows Inc of Windom', '43341 480th Ave Windom, MN 56101-3326', 2, '6/10/19', '6/14/19', 
 3, false, 300, 300, false, 5078220526, 'https://www.facebook.com/ReinbowsInc/', 'https://www.reinbowsinc.org/wp-content/uploads/2018/11/IMG_8094.jpg', 
-'https://www.reinbowsinc.org/wp-content/uploads/2018/03/Reinbows-Logo-1.jpg', 'https://www.reinbowsinc.org/programs/summer-horse-camps/');
+'https://www.reinbowsinc.org/wp-content/uploads/2018/03/Reinbows-Logo-1.jpg', 'https://www.reinbowsinc.org/programs/summer-horse-camps/', 'Horse camp 
+includes a lot of hands on horse time including safety, grooming, leading, riding, and other fun horse educational activities! There are also fun horse 
+related camp crafts! For kids’ ages 7-14 years old who want to have fun learning about, caring for, and riding horses! Participants enjoy the experience 
+of feeling like they own their own horse during horse camp!');
 
 -- camp #7 with insta, fb and twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
-"phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website") VALUES ('ASI Summer Day Camps', '2600 Park Avenue Minneapolis MN 55407', 4, 
+"phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('ASI Summer Day Camps', '2600 Park Avenue Minneapolis MN 55407', 4, 
 '6/24/2019', '8/15/19', 3, false, 60, 125, true, 6128714907, 'https://www.facebook.com/AmericanSwedishInstitute', 'https://twitter.com/AmSwedInstitute', 
 'https://www.instagram.com/amswedinstitute/', 'https://www.asimn.org/sites/default/files/styles/oc_picture_header_desk_narrow/public/vikings_1.jpg?itok=h7aH25ir&timestamp=1405627522', 
-'https://www.asimn.org/sites/all/themes/oc_child/logo.png', 'https://www.asimn.org/programs-education/youth-and-family-programs/summer-day-camps/summer-day-camps');
+'https://www.asimn.org/sites/all/themes/oc_child/logo.png', 'https://www.asimn.org/programs-education/youth-and-family-programs/summer-day-camps/summer-day-camps', 
+'Join us for the Summer Day Camp program at the American Swedish Institute! Through story-telling, cooking, art and imaginative play, children will have fun exploring 
+Minneapolis’ only castle while learning about Nordic history and culture. Camps are tailored for young minds entering grades 1-5.');
 
 -- camp #8 with insta, fb and twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
-"facebook", "twitter", "instagram", "photo_url", "logo_url", "website") VALUES ('Camp Como', '1225 Estabrook Drive, Saint Paul, MN 55103', 4, '6/10/19', '8/30/19', 
+"facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Como', '1225 Estabrook Drive, Saint Paul, MN 55103', 4, '6/10/19', '8/30/19', 
 3, false, 135, 330, true, 6514878272, 'https://www.facebook.com/ComoZooConservatory', 'https://twitter.com/ComoZoo', 'https://www.instagram.com/comozooconservatory/', 
 'http://www.comozooconservatory.org/wp-content/uploads/2019/01/01.-giraffe-feeding-6.jpg', 'http://www.comozooconservatory.org/wp-content/uploads/2019/02/2019-camp-como.jpg', 
-'http://www.comozooconservatory.org/education/kids/camps/#/general');
+'http://www.comozooconservatory.org/education/kids/camps/#/general', 'Spend some time Monkeying Around with your primate pals, go for the gold in Animal Olympics, take
+ an African Adventure without leaving Como, or try on the hat of a zookeeper or gardener in Behind-the-Scenes! Como’s camps focus on developing children’s appreciation 
+ for the natural world through play and exploration, behind-the-scenes experiences, interactions with zookeepers and gardeners, and up-close encounters with plant and animal 
+ ambassadors. Qualified and enthusiastic instructors teach camps for children in preschool through eighth grade.');
 
 -- camp #9 without twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
-"facebook", "instagram", "photo_url", "logo_url", "website") VALUES ('Mpls Bouldering Project Summer Camps', '1433 W. River Rd N. Minneapolis, MN 55411', 4, 
+"facebook", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Mpls Bouldering Project Summer Camps', '1433 W. River Rd N. Minneapolis, MN 55411', 4, 
 '6/10/19', '8/23/19', 3, false, 200, 250, false, 6123082800, 'https://www.facebook.com/minneapolisboulderingproject', 'https://www.instagram.com/minneapolisboulderingproject/', 
 'https://static1.squarespace.com/static/58b0821a86e6c0c83ba97a07/5c3cc9d221c67c086c3b0427/5c3cd1c9b8a04593c30186e5/1547493889763/Youth+1.jpg?format=2500w', 
-'https://static1.squarespace.com/static/58b0821a86e6c0c83ba97a07/t/59cc8df064b05f23fa454581/1552336470786/?format=1500w', 'https://minneapolisboulderingproject.com/summer-camps');
+'https://static1.squarespace.com/static/58b0821a86e6c0c83ba97a07/t/59cc8df064b05f23fa454581/1552336470786/?format=1500w', 'https://minneapolisboulderingproject.com/summer-camps', 
+'MBP summer camps are a great way to spend summer days! We dive deep into a sport whose physical and mental benefits are tangible and diverse, and we have a dependable, caring 
+staff whose focus is youth development.');
 
 -- camp #10 without twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
-"facebook", "instagram", "photo_url", "logo_url", "website") VALUES ('Camp Lake Hubert for Girls', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/21/19', 2, false, 725, 
+"facebook", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Lake Hubert for Girls', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/21/19', 2, false, 725, 
 9775, false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
 'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/PaddleboardGirls3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
-'https://www.lincoln-lakehubert.com/girls-camp/');
+'https://www.lincoln-lakehubert.com/girls-camp/', 'Camp Lake Hubert opened its gates in 1927, just across the lake from Camp Lincoln for Boys. Throughout the years 
+we have continued to provide campers the opportunity to learn valuable life-skills while empowering them to grow as leaders and friends. On over 120 acres and more 
+than 40 different land and water activities to choose from, Camp Lake Hubert is the perfect playground for your child’s summer adventure.');
 
 -- camp #11 without twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", 
-"instagram", "photo_url", "logo_url", "website") VALUES ('Camp Lincoln for Boys', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/15/19', 1, false, 725, 9775, 
+"instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Lincoln for Boys', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/15/19', 1, false, 725, 9775, 
 false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
 'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/HighRopesBoys3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
-'https://www.lincoln-lakehubert.com/boys-camp/');
+'https://www.lincoln-lakehubert.com/boys-camp/', 'For over 100 years, Camp Lincoln has been providing campers the opportunity to learn valuable life-skills, while creating 
+lifelong friendships, and memories. Throughout the years we have continued to provide campers the opportunity to learn valuable life-skills while empowering them to grow as 
+leaders and friends. On over 400 acres and more than 40 different land and water activities to choose from, Camp Lincoln is the perfect playground for anyone’s summer adventure.');
 
 -- camp #12 without insta or twitter (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
@@ -85,6 +114,17 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 is a unique Summer Horse Camp that offers a rich experience for youngsters ages 7 through 17. The Circle R Ranch is an 800-plus acre working ranch.Crops are grown 
 consisting of corn, oats and hay. Besides the 200 plus horses, there are many other animals for the children’s enjoyment. Dogs, kittens, rabbits, cats, ducks, turkey, two goats, 
 three llamas, potbelly pig and Pawnee the buffalo just to name a few of the animals around the ranch.');
+
+-- camp #13 with insta, fb and twitter (no programs) 
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+"phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Birchwood for Boys', '12586 Gunflint Trl Slip 85 
+Grand Marais, MN 55604-4501', 1, '6/10/2019', '8/4/2019', 1, false, 450, 5350, false, 2183884402, 'https://www.facebook.com/gwc.bwb', 
+'https://twitter.com/CampBirchwood', 'https://www.instagram.com/campbirchwood/', 
+'https://static.wixstatic.com/media/112e06_d689720a014c461e8cbc909d3f71bfd3~mv2_d_5152_3864_s_4_2.jpg/v1/fill/w_654,h_465,al_c,q_80,usm_0.66_1.00_0.01/112e06_d689720a014c461e8cbc909d3f71bfd3~mv2_d_5152_3864_s_4_2.webp', 
+'https://static.wixstatic.com/media/112e06_a4fbec9b20ba47d088ec4cd49b0545ca.png/v1/fill/w_310,h_161,al_c,q_80,usm_0.66_1.00_0.01/112e06_a4fbec9b20ba47d088ec4cd49b0545ca.webp', 'http://www.campbirchwoodforboys.com/', 
+'Only at Camp Birchwood for Boys are you able to paddle from one of the Camp docks into what many come from around the Country to experience: the Boundary 
+Waters Canoe Area Wilderness. In fact, camps from all over the midwest drive for hours by van just to start their camping adventures at our doorstep, and we 
+do not blame them one bit. Between adventures, campers live in cabins of six boys and two counselors.');
 
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 
