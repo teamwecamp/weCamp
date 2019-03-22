@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
+import CampStepper from './CampStepper';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+
 
 //this addes styling to only the form.
 const styles = theme => ({
@@ -26,10 +30,25 @@ const styles = theme => ({
   }
 });
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#127696',
+    },
+    secondary: {
+      main: '#d5cb92',
+    }
+  },
+});
+
+
+
 class CampRegistrationPage3 extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+        activeStep: 2,
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
@@ -88,12 +107,20 @@ class CampRegistrationPage3 extends Component {
     console.log(this.state);
     return (
       <div>
+        <MuiThemeProvider theme={theme}>
         <h1>Camp Registration Page 3</h1>
         <h2>Select Activities Provided by your camp</h2>
         <form onSubmit={this.setOptions}>
           {this.mapInfo()}
-          <button type="submit">Next</button>
+          <br></br>
+          <Button 
+          type="submit"
+          color="primary"
+          variant="contained"
+          size="small">Next</Button>
         </form>
+        <CampStepper step = {this.state.activeStep}/>
+        </MuiThemeProvider>
       </div>
     );
   }

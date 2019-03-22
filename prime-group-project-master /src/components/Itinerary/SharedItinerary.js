@@ -3,20 +3,38 @@ import { connect } from 'react-redux';
 import 'react-calendar-timeline/lib/Timeline.css';
 import Timeline from 'react-calendar-timeline';
 import './Itinerary.css';
-import ItineraryShare from './ItineraryShare';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 
-class Itinerary extends Component {
+class SharedItinerary extends Component {
+
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+    }
+
     componentDidMount = () => {
-        this.setCampItinerary();
-        this.props.dispatch({ type: 'FETCH_USER_CHILD' })
+        this.fetchSharedItinerary();
+      
+    }
+    
+    fetchSharedItinerary = () => {
+        const childId = this.props.match.params.id
+        console.log('shared itinary parrams', childId);
+        this.props.dispatch({ type: 'FETCH_SHARED_ITINERARY', payload: childId });
+        // this.setSharedItinerary();
     }
 
-    setCampItinerary() {
-        const action = { type: 'FETCH_CAMP_ITINERARY' }
-        this.props.dispatch(action);
-    }
+    // setSharedItinerary = () => {
+    //     const action = { type: 'SET_SHARED_ITINERARY' }
+    //     this.props.dispatch(action);
+    //     console.log('shared', action);
 
-    // function from 'react-calendar-timeline' to customize calendar display
+    // }
+   
+    
+
     itemRenderer = ({
         item,
         timelineContext,
@@ -78,14 +96,15 @@ class Itinerary extends Component {
     };
 
     render() {
-        console.log(this.props.itinerary);
-        let items = this.props.itinerary.itineraries;
-        let groups = this.props.itinerary.children;
+        console.log(this.props.sharedItinerary);
+        let items = this.props.sharedItinerary.itineraries;
+        let groups = this.props.sharedItinerary.children;
         return (
             <div>
-                {this.props.itinerary.userName !== undefined &&
-                    <h1>{this.props.itinerary.userName.full_name}'s Itinerary</h1>}
-                {this.props.itinerary.itineraries !== undefined &&
+                {this.props.sharedItinerary.userName !== undefined &&
+                    <h1>{this.props.sharedItinerary.userName.name}'s Itinerary</h1>}
+                {/* {JSON.stringify(this.props.itinerary)} */}
+                {this.props.sharedItinerary.itineraries !== undefined &&
                     <Timeline
                         groups={groups}
                         items={items}
@@ -107,16 +126,16 @@ class Itinerary extends Component {
                         <td className="tdWait">waitlisted</td>
                     </tr>
                 </table>
-                <p>Calendar View Instructions: to zoom out, click on the teal bar in the itinerary header. To zoom in, click on the date detail bar.</p>
+                <p>Calendar View Instructions: to zoom out, click on the red bar in the header. To zoom in, click on the date detail bar.</p>
                 <p>Click and hold on the calendar, then move the mouse to slide the view.</p>
-                <ItineraryShare children={groups}/>
+                {/* <ItineraryShare children={groups} /> */}
             </div>
         )
     }
 }
 
 const mapReduxStoreToProps = (reduxStore) => ({
-    itinerary: reduxStore.setCampItinerary.setCampItinerary,
+    sharedItinerary: reduxStore.setSharedItinerary.setSharedItinerary,
 });
 
-export default connect(mapReduxStoreToProps)(Itinerary);
+export default withRouter(connect(mapReduxStoreToProps)(SharedItinerary));

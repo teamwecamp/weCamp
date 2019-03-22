@@ -9,6 +9,7 @@ const setFavoriteCamps = (state = [], action) => {
     }
 }
 
+//for Dev
 const defaultCamp = [{
     Name: 'Test Camp',
 }];

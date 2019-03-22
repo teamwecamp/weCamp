@@ -2,34 +2,40 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+    // router.get('/:id', (req, res) => {
     if (req.isAuthenticated()) {
-        console.log('this is inside router get itinerary');
+        console.log('this is inside router shared itinerary', req.params.id);
         (async () => {
             const client = await
                 pool.connect();
             try {
                 await client.query('BEGIN');
                 const schedule = {};
-                //user.id is logged in user
-                const user = req.user.id;
+                //child Id is itinerary to be viewed
+                const childId = req.params.id;
+                
+                
                 //grab user's name for display
-                let queryText = `SELECT "full_name" FROM "user" WHERE "id" = $1;`;
-                const userName = await client.query(queryText, [user]);
+                let queryText = `SELECT "name" FROM "child_profile" WHERE "id" = $1`;
+                const userName = await client.query(queryText, [childId]);
+                console.log('childid', req.params.id);
                 //grab the children of the user
-                queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title FROM "child_profile"
-                                JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
-                                WHERE "user_child"."user_id"=$1;`
-                const children = await client.query(queryText, [user]);
+                queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title 
+	                            FROM "child_profile"
+	                            JOIN "child_itinerary"
+	                            ON "child_profile"."id"="child_itinerary"."user_child_id"
+	                            WHERE "child_itinerary"."user_child_id"=$1;`
+                const children = await client.query(queryText, [childId]);
+                console.log('childid - after select', req.params.id);
                 //Selecting child_id, dates_id, status_id and status.
-                queryText = `SELECT "user_child"."child_id", "child_itinerary"."dates_id", "child_itinerary"."status_id", "status"."status"
-                                 FROM "user_child"
-                                 JOIN "child_itinerary"
-                                 ON "user_child"."id"="child_itinerary"."user_child_id"
-                                 JOIN "status"
-                                 ON "child_itinerary"."status_id"="status"."id"
-                                 WHERE "user_child"."user_id"=$1`;
-                const itineraryList = await client.query(queryText, [user]);
+                queryText = `SELECT "child_profile"."id", "child_profile"."name", "child_itinerary"."user_child_id", 
+                "child_itinerary"."dates_id", "child_itinerary"."status_id"
+	FROM "child_profile"
+	JOIN "child_itinerary"
+	ON "child_profile"."id"="child_itinerary"."user_child_id"
+	WHERE "child_itinerary"."user_child_id"=$1`;
+                const itineraryList = await client.query(queryText, [childId]);
                 // takes the info we get from query above and put them in a list "itinerary"
                 const itinerary = itineraryList.rows;
 
@@ -40,7 +46,7 @@ router.get('/', (req, res) => {
                 let id = 1;
                 // loop through all the item in itinerary and create new variables for them
                 for (let item of itinerary) {
-                    let child = item.child_id;
+                    let child = item.id;
                     let date = item.dates_id;
                     console.log('child', child);
                     console.log('date', date);
@@ -57,10 +63,10 @@ router.get('/', (req, res) => {
                                  JOIN "camp"
                                  ON "camp_program"."camp_id"="camp"."id"
                                  WHERE "program_dates"."id" = $1;`;
-                    const secondPull = await client.query(queryText,[date]);
+                    const secondPull = await client.query(queryText, [date]);
                     let result = secondPull.rows[0];
                     // add dates and time to get actual start time of program (in UNIX)
-                    if (result.start_time !== null){
+                    if (result.start_time !== null) {
                         result.start_time = result.start_date + result.start_time;
                     } else {
                         result.start_time = result.start_date;
@@ -74,7 +80,7 @@ router.get('/', (req, res) => {
                     result.title = `${result.title} - ${result.Name}`
                     result.id = id;
                     // increase id counter by 1
-                    id ++;
+                    id++;
                     result.status = item.status
                     result.status_id = item.status_id
                     result.group = child;
@@ -97,6 +103,7 @@ router.get('/', (req, res) => {
             finally {
                 client.release();
             }
+
         })().catch((error) => {
             console.log('CATCH', error);
             res.sendStatus(500);
@@ -104,6 +111,9 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
+
+
+
 });
 
 /**

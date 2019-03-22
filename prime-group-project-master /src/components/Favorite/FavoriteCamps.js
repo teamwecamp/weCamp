@@ -12,9 +12,6 @@ const styles = theme => ({
     control: {
         padding: theme.spacing.unit * 2,
     },
-    pos: {
-        marginBottom: 12,
-    },
 });
 
 class FavoriteCamps extends Component {
@@ -59,7 +56,7 @@ class FavoriteCamps extends Component {
         return (
             <div>
                 <h1>Favorite Camps</h1>
-                
+              
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.favoriteCamps()}
                 </Grid>

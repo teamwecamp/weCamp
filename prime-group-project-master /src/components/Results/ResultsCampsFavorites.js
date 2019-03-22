@@ -4,8 +4,7 @@ import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import Button from '@material-ui/core/Button'
 
 
 class ResultsFavorites extends Component {
@@ -92,16 +91,12 @@ class ResultsFavorites extends Component {
                 }
             })
         }
-
     }
 
     render() {
         return (
             <div>
-                <IconButton aria-label="Add to favorites"
-                    onClick={this.updateFavorite}>
-                    <FavoriteIcon />
-                </IconButton>
+                <Button className="eventButton" variant="outlined" onClick={this.updateFavorite} size="small">add to favorites</Button>
             </div>
         )
     }

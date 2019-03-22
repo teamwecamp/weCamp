@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import CampStepper from './CampStepper';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 // Below are the styles for the form
 const styles = theme => ({
@@ -33,6 +35,18 @@ const styles = theme => ({
   }
 });
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#127696',
+    },
+    secondary: {
+      main: '#d5cb92',
+    }
+  },
+});
+
+
 //Below is the local array for  the religion and accessibility dropdowns
 //on the server religion and accessibility will be switched to a boolean
 
@@ -53,6 +67,7 @@ class CampRegistration extends Component {
     religion: "",
     accessibility: ""
   };
+ 
   componentDidMount() {
     this.getDropDowns();
   }
@@ -73,11 +88,33 @@ class CampRegistration extends Component {
       this.props.history.push('/campregistrationpage2');
   }
 
+  autoFill = ()=>{
+    this.setState({
+      
+        campName: "Northern Waters",
+        campAddress: "3532 S Lake Blvd.",
+        state: "23",
+        region: "1",
+        startDate: "2019-05-01",
+        endDate: "2019-08-31",
+        minAge: "9",
+        maxAge: "15",
+        gender: "3",
+        religion: "no",
+        accessibility: "no",
+       
+    })
+  }
+  
+
+ 
+
   render() {
     console.log(this.props.dropDown);
     const { classes } = this.props;
     return (
       <div>
+        <MuiThemeProvider theme={theme}>
         <h1>Camp Registration Page 1</h1>
 
         <form
@@ -89,7 +126,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Camp Name Required"
+            label=" Camp Name"
             className={classes.textField}
             value={this.state.campName}
             onChange={this.handleInputChangeFor("campName")}
@@ -99,7 +136,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Address Required"
+            label=" Address"
             className={classes.textField}
             value={this.state.campAddress}
             onChange={this.handleInputChangeFor("campAddress")}
@@ -158,7 +195,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-startdate"
-            label="Start Date Required"
+            label="Start Date"
             InputProps={{
                 startAdornment: <InputAdornment position="start"></InputAdornment>,
             }}
@@ -172,7 +209,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-enddate"
-            label="End Date Required"
+            label="End Date"
             InputProps={{
                 startAdornment: <InputAdornment position="start"></InputAdornment>,
             }}
@@ -186,7 +223,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Min Age Required"
+            label=" Min Age"
             className={classes.textField}
             value={this.state.minAge}
             onChange={this.handleInputChangeFor("minAge")}
@@ -196,7 +233,7 @@ class CampRegistration extends Component {
           <TextField
             required
             id="outlined-icon"
-            label=" Max Age Required"
+            label=" Max Age "
             className={classes.textField}
             value={this.state.maxAge}
             onChange={this.handleInputChangeFor("maxAge")}
@@ -279,11 +316,17 @@ class CampRegistration extends Component {
                 onClick={this.handleNext}
                 size="small"
                 variant="contained"
+                color="primary"
               >
                 Next
               </Button>
+          <Button
+            onClick={this.autoFill}>
+          </Button>
           {/* The above code will be run only when states is not undefined. */}
         </form>
+        <CampStepper />
+        </MuiThemeProvider>
       </div>
     );
   }

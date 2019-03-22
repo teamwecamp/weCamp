@@ -9,7 +9,7 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
+    background-color: #E6E1c5;
     width: 70%;
     height: auto;
     margin: 20px auto;
@@ -18,7 +18,7 @@ form {
 }
 
 .userRegistrationForm {
-    background-color: #dbd5d5;
+    background-color: #E6E1c5;
     width: 30%;
     height: auto;
     margin: 20px auto;
@@ -56,3 +56,13 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+
+.campsGroup {
+    margin: 15px 30px;
+}
+
+.aboutText {
+    margin: 20px 40px 0px 40px;
+}
+
+

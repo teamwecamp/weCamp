@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -22,9 +23,6 @@ const theme = createMuiTheme({
 });
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
     media: {
         height: 140,
     },
@@ -32,22 +30,19 @@ const styles = theme => ({
         minWidth: 175,
         height: 310,
     },
-    control: {
-        padding: theme.spacing.unit * 2,
-    },
     paper: {
         width: 260,
         textAlign: 'center',
-    },
-    pos: {
-        marginBottom: 4,
-        fontSize: 16,
+        margin: theme.spacing.unit * 2,
     },
     title: {
         fontSize: 18,
     },
     CardActions: {
         justifyContent: 'center',
+    },
+    camp: {
+        fontSize: 16,
     }
 });
 
@@ -79,10 +74,10 @@ class FavoriteCampsDetails extends Component {
                                         image={this.props.camp.camp.photo_url}
                                         title="Camp Pic"
                                     />
-                                    <Typography>{this.props.camp.camp.Name}</Typography>
+                                    <Typography className={classes.camp}>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
-                                        <Button className="eventButton" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
-                                        <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
+                                        <Button className="eventButton" variant="outlined" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
+                                        <Button className="eventButton" variant="outlined" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
                                 </CardContent>
                             </MuiThemeProvider>

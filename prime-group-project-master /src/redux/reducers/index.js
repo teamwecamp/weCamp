@@ -10,6 +10,7 @@ import setSearchCamps from './searchCampsReducer';
 import setViewCampsDetails from './viewCampsDetailsReducer';
 import setCampItinerary from './itineraryReducer';
 import setSharedAccess from './sharedAccessReducer';
+import setSharedItinerary from './sharedItineraryReducer';
 
 
 
@@ -31,7 +32,7 @@ const rootReducer = combineReducers({
   setCampItinerary, //will contain child's camp itinerary
   setUserProfileInfo, //will contain user's profiel info
   setSharedAccess, //will contain member's who user has shared access with 
-  
+  setSharedItinerary, //will contain itinary of child shared with user
 });
 
 export default rootReducer;

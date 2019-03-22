@@ -24,14 +24,22 @@ import CampRegistrationPage2 from '../CampRegistration/CampRegistrationPage2';
 import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
+import SharedItinerary from '../Itinerary/SharedItinerary';
+import RegisterPage from '../RegisterPage/RegisterPage';
+import LoginPage from '../LoginPage/LoginPage';
+
+import UserProfile from '../UserProfile/UserProfile';
+
 import NavBar from '../Nav/NavBar';
 import Shared from '../Shared/Shared';
 import Itinerary from '../Itinerary/Itinerary';
 
 
 
+
 import './App.css';
 import ViewCampProgram from '../ViewCamps/ViewCampProgram';
+
 
 
 class App extends Component {
@@ -55,7 +63,17 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
+            <Route
+              exact
+              path="/register"
+              component={RegisterPage}
+            />
 
+            <Route
+              exact
+              path="/login"
+              component={LoginPage}
+            />
             <Route
               exact
               path="/search"
@@ -92,6 +110,14 @@ class App extends Component {
               path="/viewCamp/:id"
               component={ViewCamps}
               />
+
+            <Route
+              exact
+              path="/userprofileinfo/user"
+              component={UserProfile}
+            />
+
+
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -130,6 +156,11 @@ class App extends Component {
               exact
               path="/shared"
               component={Shared}
+            />
+            <ProtectedRoute
+              exact
+              path="/sharedItinerary/:id"
+              component={SharedItinerary}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
