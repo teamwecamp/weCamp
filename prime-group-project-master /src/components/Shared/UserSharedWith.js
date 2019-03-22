@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,16 +8,27 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: 'rgb(57, 92, 104)',
         color: theme.palette.common.white,
     },
     body: {
         fontSize: 14,
     },
 }))(TableCell);
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+    },
+});
+
 
 const styles = theme => ({
     root: {
@@ -35,6 +45,7 @@ const styles = theme => ({
         },
         button: {
             margin: theme.spacing.unit,
+            color: 'rgb(99,188,201)'
         },
     },
 });
@@ -65,7 +76,7 @@ class UserSharedWith extends Component {
     };
 
     removeAccess = (event) => {
-        console.log('inremove', event.target.value);
+        console.log('inremove', event.currentTarget.value);
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         console.log('action', action);
@@ -83,6 +94,7 @@ class UserSharedWith extends Component {
 
             <Paper className={classes.root}>
                 {JSON.stringify(this.props.sharedaccess)}
+                <MuiThemeProvider theme={theme}>
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
@@ -115,6 +127,7 @@ class UserSharedWith extends Component {
                         ))}
                     </TableBody>
                 </Table>
+                </MuiThemeProvider>
             </Paper>
         );
     }
