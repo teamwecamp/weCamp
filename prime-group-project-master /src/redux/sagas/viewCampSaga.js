@@ -44,7 +44,8 @@ function* addItinerary (action){
 
     }catch(error){
         console.log('there is error in addItinerary saga', error)
-        alert('error in addItinerary saga');
+        Swal('something went wrong');
+       
     }
 
 }
@@ -55,6 +56,7 @@ function* userRegistrationSaga() {
     yield takeEvery('FETCH_CAMP_PROGRAMS', fetchCampProgram);
     // gets the status of what the parents wants to tag to the child itinerary
     yield takeEvery('FETCH_STATUS', fetchStatus);
+    // adding program to kids
     yield takeEvery('ADD_ITINERARY', addItinerary);
 }
 
