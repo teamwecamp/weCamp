@@ -43,11 +43,9 @@ class SearchCamps extends Component {
         minAge: "0",
         maxAge: "100",
         gender: "3",
-
         minAge: 0,
         maxAge: 99,
         gender: 3,
-        master
         religion: "no",
         type: "overnight",
         activityCategory: 3,
