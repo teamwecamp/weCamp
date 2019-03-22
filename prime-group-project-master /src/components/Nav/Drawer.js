@@ -25,6 +25,7 @@ import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import FaceIcon from '@material-ui/icons/Face';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 
@@ -59,10 +60,10 @@ class NavBar extends Component {
             <div className={classes.list}>
                
                 <List>
-                    <Link component={RouterLink} to="/about">
+                    <Link component={RouterLink} to="/landing">
                         <ListItem button>
-                            <ListItemIcon><InfoIcon /></ListItemIcon>
-                            <ListItemText inset primary='About' />
+                            <ListItemIcon><HomeIcon /></ListItemIcon>
+                            <ListItemText inset primary='Home' />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/userprofileinfo/user">
