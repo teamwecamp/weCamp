@@ -71,7 +71,7 @@ const styles = theme => ({
         flex: 1,
     },
     iconButton: {
-        padding: 10,
+        padding: 10, 
     },
     divider: {
         width: 1,

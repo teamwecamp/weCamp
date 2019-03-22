@@ -46,6 +46,28 @@ class CampRegistrationPage2 extends Component {
     type: ""
   };
 
+  
+  autoFill = () => {
+    this.setState({
+      activeStep: 1,
+      costMin: "$475.00",
+      costMax: "$1500.00",
+      regDeadlineDate: "2019-04-01",
+      phoneNumber: "555-555-5555",
+      instagramLink: "www.instagram.com/nothernwaters",
+      facebookLink: "www.instagram.com/nothernwaters",
+      photoUrl: "http://bbcamp.org/wp-content/flagallery/bb-camp-facilities/2010-04-15-11-10-15.jpg",
+      logoUrl: "https://png.icons8.com/windows/1600/0063B1/log-cabin",
+      websiteUrl: "www.northernwaters.com",
+      type: "1"
+    })
+    console.log('state', this.state);
+    
+  }
+
+
+
+
   componentDidMount = () => {
     this.getDropDowns();
   };
@@ -198,6 +220,9 @@ class CampRegistrationPage2 extends Component {
             variant="contained"
           >
             Next
+          </Button>
+          <Button
+            onClick={this.autoFill}>
           </Button>
         </form>
         <CampStepper step = {this.state.activeStep} />

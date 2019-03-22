@@ -54,6 +54,7 @@ class CampRegistration extends Component {
     religion: "",
     accessibility: ""
   };
+ 
   componentDidMount() {
     this.getDropDowns();
   }
@@ -73,6 +74,27 @@ class CampRegistration extends Component {
   handleNext = () => {
       this.props.history.push('/campregistrationpage2');
   }
+
+  autoFill = ()=>{
+    this.setState({
+      
+        campName: "Nothern Waters",
+        campAddress: "3532 S Lake Blvd.",
+        state: "23",
+        region: "1",
+        startDate: "2019-05-01",
+        endDate: "2019-08-31",
+        minAge: "9",
+        maxAge: "15",
+        gender: "3",
+        religion: "no",
+        accessibility: "no",
+       
+    })
+  }
+  
+
+ 
 
   render() {
     console.log(this.props.dropDown);
@@ -283,6 +305,9 @@ class CampRegistration extends Component {
               >
                 Next
               </Button>
+          <Button
+            onClick={this.autoFill}>
+          </Button>
           {/* The above code will be run only when states is not undefined. */}
         </form>
         <CampStepper />
