@@ -297,6 +297,7 @@ class CampRegistrationPage4 extends Component {
             id="submit-btn"
             onClick={this.handleAddProgram}
             variant="contained"
+            color="primary"
           >
             Submit
           </Button>
