@@ -51,11 +51,7 @@ const NavBar = (props) => {
                     </Link>
                         </Grid>
                         {/* Always show this link since the about page is not protected */}
-                        <Grid item xs={1}>
-                            <Link className="nav-link" to="/about">
-                                About
-      </Link>
-                        </Grid>
+                     
                     {/* <div className="nav-right"> */}
                     <Grid item xs={1}>
                         <Link className="nav-link" to="/login">
@@ -63,7 +59,7 @@ const NavBar = (props) => {
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
         
-                            {props.user.id ? 'Home' : 'Login / Register'}
+                            {props.user.id ? '' : 'Login / Register'}
                             
                         </Link>
                             </Grid>
