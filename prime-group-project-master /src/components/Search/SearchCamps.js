@@ -41,7 +41,7 @@ class SearchCamps extends Component {
     state = {
         minAge: "0",
         maxAge: "100",
-        gender: "co-ed",
+        gender: "3",
         religion: "no",
         type: "overnight",
         activityCategory: "outdoor/adventure",

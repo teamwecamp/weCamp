@@ -120,13 +120,16 @@ setReligion();
   i += 1;
   values.push(Number(search.maxAge)); // $2
   i += 1;
+
   values.push(parseInt(search.gender)); // $3
+  i += 1;
+  values.push(search.religion); // $4
   i += 1;
 
   let primaryFocus = '';
   if(search.activityCategory > 0) {
     // push the value and increment i
-    values.push(parseInt(search.activityCategory)); //$4
+    values.push(parseInt(search.activityCategory)); //$5
     
     // include the search
     primaryFocus = `AND \$${i} IN (
@@ -238,6 +241,7 @@ WHERE "camp_program"."age_min" >= $1
 AND "camp_program"."age_max" <= $2
 -- Put fields of camp first
 AND "camp_program"."gender_id" = $3
+AND "camp"."religion" = $4
 -- Nested queries second
 ` + primaryFocus + `;`;
 
