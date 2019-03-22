@@ -82,7 +82,7 @@ class ResultsDetails extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <Grid className="innerGrid" item xs={12}>
+                <Grid className="innerGrid" item xs={16}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
