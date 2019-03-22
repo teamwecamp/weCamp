@@ -115,6 +115,17 @@ is a unique Summer Horse Camp that offers a rich experience for youngsters ages 
 consisting of corn, oats and hay. Besides the 200 plus horses, there are many other animals for the children’s enjoyment. Dogs, kittens, rabbits, cats, ducks, turkey, two goats, 
 three llamas, potbelly pig and Pawnee the buffalo just to name a few of the animals around the ranch.');
 
+-- camp #13 with insta, fb and twitter (no programs) 
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+"phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Birchwood for Boys', '12586 Gunflint Trl Slip 85 
+Grand Marais, MN 55604-4501', 1, '6/10/2019', '8/4/2019', 1, false, 450, 5350, false, 2183884402, 'https://www.facebook.com/gwc.bwb', 
+'https://twitter.com/CampBirchwood', 'https://www.instagram.com/campbirchwood/', 
+'https://static.wixstatic.com/media/112e06_d689720a014c461e8cbc909d3f71bfd3~mv2_d_5152_3864_s_4_2.jpg/v1/fill/w_654,h_465,al_c,q_80,usm_0.66_1.00_0.01/112e06_d689720a014c461e8cbc909d3f71bfd3~mv2_d_5152_3864_s_4_2.webp', 
+'https://static.wixstatic.com/media/112e06_a4fbec9b20ba47d088ec4cd49b0545ca.png/v1/fill/w_310,h_161,al_c,q_80,usm_0.66_1.00_0.01/112e06_a4fbec9b20ba47d088ec4cd49b0545ca.webp', 'http://www.campbirchwoodforboys.com/', 
+'Only at Camp Birchwood for Boys are you able to paddle from one of the Camp docks into what many come from around the Country to experience: the Boundary 
+Waters Canoe Area Wilderness. In fact, camps from all over the midwest drive for hours by van just to start their camping adventures at our doorstep, and we 
+do not blame them one bit. Between adventures, campers live in cabins of six boys and two counselors.');
+
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 
 ('Womens Way Canoe Trip', 2, 1, 500, 18, 99, 1), ('Two Weeks', 3, 1, 3025, 8, 16, 2), ('Four Weeks', 3, 1, 5775, 8, 16, 2), 
