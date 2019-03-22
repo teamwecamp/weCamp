@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './LogOutButton.css';
+import Button from "@material-ui/core/Button";
 
 const LogOutButton = props => (
-   <button
+   <Button className="nav-link"
   
     // This button shows up in multiple locations and is styled differently
     // because it's styled differently depending on where it is used, the className
@@ -13,7 +14,7 @@ const LogOutButton = props => (
   >
       Log Out
     
-   </button>
+   </Button>
 );
 
 // This component doesn't need 'mapStateToProps'

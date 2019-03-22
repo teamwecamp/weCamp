@@ -231,6 +231,7 @@ class CampRegistrationPage2 extends Component {
             onClick={this.handleNext}
             size="small"
             variant="contained"
+            color="primary"
           >
             Next
           </Button>
