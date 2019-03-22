@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CampStepper from './CampStepper';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
 
 
 //this addes styling to only the form.
@@ -111,7 +112,12 @@ class CampRegistrationPage3 extends Component {
         <h2>Select Activities Provided by your camp</h2>
         <form onSubmit={this.setOptions}>
           {this.mapInfo()}
-          <button type="submit">Next</button>
+          <br></br>
+          <Button 
+          type="submit"
+          color="primary"
+          variant="contained"
+          size="small">Next</Button>
         </form>
         <CampStepper step = {this.state.activeStep}/>
         </MuiThemeProvider>
