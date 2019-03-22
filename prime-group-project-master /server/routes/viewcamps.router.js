@@ -74,49 +74,42 @@ router.get('/viewProgram/:id', (req, res) => {
 
 router.post('/', (req, res)=> {
     console.log('this is in router post addItinerary', req.body);
-    const addItinerary = req.body
-    //     (async () => {
-    //         const client = await
-    //             pool.connect();
-    //         try {
-    // for (itinerary of addItinerary) {
+    if (req.isAuthenticated()) {
+        (async () => {
+            const client = await pool.connect();
+            try {
+                await client.query('BEGIN');
+    const program = req.body.camps;
+    const kid = req.body.kids;
+    const status = req.body.status;
+    console.log('this is req.body', req.body);
+    for(let info of program){
+        const queryText = `INSERT INTO "child_itinerary" ("user_child_id", "dates_id", "status_id") 
+                           VALUES ($1, $2, $3);`;
+        await client.query(queryText, [kid, info, status]);               
 
-
-    // const queryValues = [
-    // let child = itinerary.kids;
-    // // let dates = itinerary.true;
-    // let status = itinerary.status
-    // console.log(child)
-    // console.log(true)
-    // console.log(status)
-    // ];
-    
-    const queryText = `INSERT INTO "child_itinerary" ("user_child_id", dates_id, "status_id") 
-                       VALUES ($1, $2, $3);`;
-    // for(itinerary of addItinerary) {
-
-                      
-    // const queryValues = [
-    //     let child = itinerary.kids;
-    //     // let dates = itinerary.true;
-    //     let status =itinerary.status
-    //     console.log('this is child', child)
-    //     console.log(true)
-    //     console.log('this is status',status)
-    // ];
-//  }
-    // queryValues
-    pool.query(queryText, [addItinerary.kids, addItinerary.dates, addItinerary.status] )
-    .then(response => {
-        res.sendStatus(210);
-    }).catch(error => {
-        console.log('there is error in post itinerary', error);
-        res.sendStatus(500);
-    });
-
-
-
-
+    }
+        await client.query('COMMIT');
+        res.sendStatus(200);
+            } catch (error) {
+                console.log('Rollback', error);
+                await client.query('ROLLBACK');
+                throw error;
+            } finally {
+                client.release();
+            }
+        })().catch((error) => {
+            console.log('CATCH', error);
+            res.sendStatus(500);
+        });
+    } else {
+        res.sendStatus(403);
+    }
 });
+
+
+
+
+
 
 module.exports = router;
