@@ -1,5 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function* fetchCampItinerary (){
     try{
@@ -8,6 +9,7 @@ function* fetchCampItinerary (){
         yield put(nextAction);
     }catch(error){
         console.log('there is error in fetchCampItinerary saga', error );
+        Swal.fire('something went wrong')
     }
 }
 

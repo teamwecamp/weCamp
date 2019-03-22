@@ -15,10 +15,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 
 const theme = createMuiTheme({
-    palette: {
-        primary: { main: '#e5e3f4' }, // Purple and green play nicely together.
-        secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
-    },
     typography: { useNextVariants: true },
 });
 
@@ -31,7 +27,7 @@ const styles = theme => ({
         height: 280,
     },
     paper: {
-        height: 200,
+        height: 280,
         width: 260,
         textAlign: 'center',
         margin: theme.spacing.unit * 2,
@@ -56,7 +52,7 @@ class LandingSponsoredCamps extends Component {
         const { classes } = this.props;
         return (
             <div>    
-                <Grid className="innerGrid" item xs={12}>
+                <Grid className="innerGrid" item xs={6}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>

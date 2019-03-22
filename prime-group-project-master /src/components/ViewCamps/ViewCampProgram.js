@@ -104,14 +104,18 @@ const BootstrapInput = withStyles(theme => ({
 class ViewCampProgram extends Component {
 
 // this is for selects material UI
-    state = {
-        kids: "",
-        status: "",
-        // checkedA: true,
-        // checkedB: true,
-        // checkedF: true,
-    };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            kids: 0,
+            status: 0,
+            
+            
+
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
     componentDidMount(){
         this.getCampProgram();
@@ -141,14 +145,45 @@ class ViewCampProgram extends Component {
     }
     
     // select the inputs
-    handleChange = name => event => {
+    handleKids = name => event => {
+        this.setState({ [name]: event.target.value });
+    };
+
+    handleStatus = name => event => {
         this.setState({ [name]: event.target.value });
     };
 
     // checks the programs 
-    handleCheck = name => event => {
-        this.setState({ [name]: event.target.checked });
+    handleChange = name => event => {
+        // let checkId = event.target.name
+        // this.setState({ [checkId]: event.target.checked });
+        // console.log(checkId);
+
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const activity = target.name;
+
+        this.setState({
+            [activity]: value
+        })
+
     };
+
+
+    addItinerary = event => {
+        console.log('this is inside of addItinerary');
+        // const newState = [];
+        // for (let key in this.state) {
+        //     if (this.state[key] === true) {
+        //         newState.push(parseInt(key));
+        //     }
+        // }
+        // console.log('This is newState', newState);
+        // newState.push(this.state);
+        // const action = { type: 'ADD_ITINERARY', payload: newState }
+        // this.props.dispatch(action);
+        this.props.history.push('/itinerary');
+    }
 
     
 
@@ -160,6 +195,7 @@ class ViewCampProgram extends Component {
         console.log('this is camp program', this.props.campProgram );
         console.log('this is itinerary', this.props.itinerary)
         console.log('this is state', this.state)
+       
         const { classes } = this.props;
         
         // <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
@@ -202,8 +238,9 @@ class ViewCampProgram extends Component {
                                 <div>
                                     <Checkbox
                                         checked={this.state.checkedB}
-                                        onChange={this.handleCheck('checkedB')}
-                                        value="checkedB"
+                                        name={schedule.program_id}
+                                        onChange={this.handleChange('checked')}
+                                        value={schedule.program_id}
                                         color="primary"
                                     />
 
@@ -239,7 +276,7 @@ class ViewCampProgram extends Component {
                             label="Select a Kid"
                             className={classes.textField}
                             value={this.state.kids}
-                            onChange={this.handleChange("kids")}
+                            onChange={this.handleKids("kids")}
                             variant="outlined"
                             SelectProps={{
                                 MenuProps: {
@@ -270,7 +307,7 @@ class ViewCampProgram extends Component {
                             label="Select a Status"
                             className={classes.textField}
                             value={this.state.status}
-                            onChange={this.handleChange("status")}
+                            onChange={this.handleStatus("status")}
                             variant="outlined"
                             SelectProps={{
                                 MenuProps: {
@@ -292,15 +329,10 @@ class ViewCampProgram extends Component {
                         
                         </FormControl>
                         <div>
-                        <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
+                        <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
                         </div>
                 </form>
-                
             </Paper>
-            
-           
-           
-           
         )
     }
 }
@@ -312,8 +344,7 @@ const mapReduxStoreToProps = (reduxStore) => ({
 });
 
 ViewCampProgram.propTypes = {
-    classes: PropTypes.object.isRequired,
-   
+    classes: PropTypes.object.isRequired, 
 };
 
 

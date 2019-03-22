@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './viewCamps.css';
 import ViewCampsContact from './ViewCampsContact';
 import Button from '@material-ui/core/Button';
-import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
@@ -47,14 +46,14 @@ class ViewCamps extends Component {
         console.log(this.props.viewCamp);
         if (this.props.user.id) {
             //if camp is already marked as favorite
-            if (this.props.viewCamp.sponsored) {
+            if (this.props.viewCamp.favorite) {
                 console.log('true');
-                swal({
+                Swal.fire({
                     //update once search route is complete
-                    text: 'This is a favorite for <insert child>.',
+                    text: 'This is already in your favorites.',
                     buttons: {
                         edit: {
-                            text: "Edit Favorites",
+                            text: "Go to Favorites",
                             value: true,
                         },
                         cancel: "Close",
@@ -90,7 +89,7 @@ class ViewCamps extends Component {
             }
         } else {
             //if user is not logged in
-            swal({
+            Swal.fire({
                 text: 'Please log in to mark favorites',
                 buttons: {
                     login: {
@@ -118,10 +117,10 @@ class ViewCamps extends Component {
                 <p>{camp.summary}</p>
                 <ViewCampsContact camp={camp} />
                 <br />
-                <Button variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
+                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
                     Add to Favorites
                 </Button>
-                <Button variant="contained" color="primary" size="large" onClick={this.goToProgram}>
+                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.goToProgram}>
                     View Program Details
                 </Button>
             </div>
@@ -134,4 +133,5 @@ const mapStateToProps = (reduxStore) => ({
     user: reduxStore.user.userReducer,
     userChild: reduxStore.setFavoriteCamps.setUserChild,
 });
+
 export default withRouter(connect(mapStateToProps)(ViewCamps));

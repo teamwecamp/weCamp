@@ -110,23 +110,60 @@ setReligion();
 // AND "states"."state"= $12
 // AND "start_date" >= $13
 // AND "program_dates"."end_date" <= $14;`;
+
+  let i = 1;
+
   console.log(search);
-  let values = [
-    Number(search.minAge),
-    Number(search.maxAge),
-    search.gender,
-    search.religion,
-    search.type,
-    search.activityCategory,
-    search.activityType,
-    search.minCost,
-    search.maxCost,
-    search.accessibility,
-    search.region,
-    search.state,
-    search.startDate,
-    search.endDate,
-  ];
+  let values = [];
+
+  values.push(Number(search.minAge)); // $1
+  i += 1;
+  values.push(Number(search.maxAge)); // $2
+  i += 1;
+
+  values.push(parseInt(search.gender)); // $3
+  i += 1;
+  values.push(search.religion); // $4
+  i += 1;
+
+  let primaryFocus = '';
+  if(search.activityCategory > 0) {
+    // push the value and increment i
+    values.push(parseInt(search.activityCategory)); //$5
+    
+    // include the search
+    primaryFocus = `AND \$${i} IN (
+      SELECT "activity_category"."id" FROM "camp" as "c"
+      JOIN "camps_activities"
+      ON "camp"."id"="camps_activities"."camp_id"
+      JOIN "activities"
+      ON "activities"."id"="camps_activities"."activity_id"
+      JOIN "activity_category"
+      ON "activities"."category_id"="activity_category"."id"
+      WHERE "c"."id" = "camp"."id"
+    )`;
+    i += 1;
+  } else {
+    // do nothing, leave out the search query and don't increment i
+  }
+  console.log(i);
+
+  // let values = [
+  //   Number(search.minAge),
+  //   Number(search.maxAge),
+  //   search.gender,
+  //   search.religion,
+  //   search.type,
+  //   search.activityCategory,
+  //   search.activityType,
+  //   search.minCost,
+  //   search.maxCost,
+  //   search.accessibility,
+  //   search.region,
+  //   search.state,
+  //   search.startDate,
+  //   search.endDate,
+  // ];
   console.log('This is after conversion',values);
   // const queryText = `SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", "program_dates"."start_date", "program_dates"."end_date", "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
   //                    FROM "camp" 
@@ -148,43 +185,68 @@ setReligion();
   //                    ON "camp_program"."id"="program_dates"."program_id"
   //                    WHERE "camp_type"."id" =$1;`;
 
+// const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
+// "program_dates"."start_date" AS "start_date", 
+// "program_dates"."end_date" AS "end_date",
+//  "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
+// FROM "camp"
+// JOIN "regions"
+// ON  "camp"."region_id" = "regions"."id"
+// JOIN "camps_activities"
+// ON "camp"."id"="camps_activities"."camp_id"
+// JOIN "activities"
+// ON "activities"."id"="camps_activities"."activity_id"
+// JOIN "activity_category"
+// ON "activities"."category_id"="activity_category"."id"
+// JOIN "camp_program"
+// ON "camp"."id"="camp_program"."camp_id"
+// JOIN "gender"
+// ON "camp_program"."gender_id"="gender"."id"
+// JOIN "camp_type"
+// ON "camp_program"."type_id"="camp_type"."id"
+// JOIN "program_dates"
+// ON "camp_program"."id"="program_dates"."program_id"
+// JOIN "states"
+// ON "regions"."state_id" = "states"."id"
+// WHERE "camp_program"."age_min" >= $1
+// AND "camp_program"."age_max" <= $2
+// AND "gender"."gender" = $3
+// AND "camp"."religion" = $4
+// AND "camp_type"."type" = $5
+// AND "activity_category"."category" = $6
+// AND "activities"."activity" = $7
+// AND "camp"."cost_min" >= $8
+// AND "camp"."cost_max" <= $9
+// AND "camp"."disabled_friendly" = $10
+// AND "regions"."region"= $11
+// AND "states"."state"= $12
+// AND "start_date" >= $13
+// AND "program_dates"."end_date" <= $14;`;
 const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
-"program_dates"."start_date" AS "start_date", 
-"program_dates"."end_date" AS "end_date",
- "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
+ "camp"."cost_min", "camp"."cost_max","camp"."date_min","camp"."date_max"
 FROM "camp"
 JOIN "regions"
 ON  "camp"."region_id" = "regions"."id"
 JOIN "camps_activities"
 ON "camp"."id"="camps_activities"."camp_id"
-JOIN "activities"
-ON "activities"."id"="camps_activities"."activity_id"
-JOIN "activity_category"
-ON "activities"."category_id"="activity_category"."id"
-JOIN "camp_program"
+LEFT JOIN "camp_program"
 ON "camp"."id"="camp_program"."camp_id"
 JOIN "gender"
 ON "camp_program"."gender_id"="gender"."id"
 JOIN "camp_type"
 ON "camp_program"."type_id"="camp_type"."id"
-JOIN "program_dates"
-ON "camp_program"."id"="program_dates"."program_id"
 JOIN "states"
-ON "regions"."state_id" = "states"."id"
+ON "regions"."state_id" = "states"."id" 
 WHERE "camp_program"."age_min" >= $1
 AND "camp_program"."age_max" <= $2
-AND "gender"."gender" = $3
+-- Put fields of camp first
+AND "camp_program"."gender_id" = $3
 AND "camp"."religion" = $4
-AND "camp_type"."type" = $5
-AND "activity_category"."category" = $6
-AND "activities"."activity" = $7
-AND "camp"."cost_min" >= $8
-AND "camp"."cost_max" <= $9
-AND "camp"."disabled_friendly" = $10
-AND "regions"."region"= $11
-AND "states"."state"= $12
-AND "start_date" >= $13
-AND "program_dates"."end_date" <= $14;`;
+-- Nested queries second
+` + primaryFocus + `;`;
+
+console.log(queryText);
+
   pool.query(queryText,values)
     .then(result => {
       console.log('search object', result.rows);

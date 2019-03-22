@@ -46,9 +46,6 @@ const styles = theme => ({
             duration: theme.transitions.duration.shortest,
         }),
     },
-    control: {
-        padding: theme.spacing.unit * 2,
-    },
     paper: {
         textAlign: 'center',
         margin: theme.spacing.unit * 2,
@@ -58,6 +55,9 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: 'rotate(180deg)',
+    },
+    expandInfo: {
+        fontSize: 16,
     },
     eventButton: {
         margin: 6,
@@ -88,7 +88,7 @@ class ResultsDetails extends Component {
                             <MuiThemeProvider theme={theme}>
                                 <CardHeader    
                                     title={this.props.camp.Name}
-                                    subheader={this.props.camp.region_id}
+                                    subheader={this.props.camp.region}
                                 />
                                 <CardContent>
                                     <CardMedia
@@ -111,7 +111,7 @@ class ResultsDetails extends Component {
                                         </IconButton>
                                     </CardActions>
                                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                                        <CardContent>
+                                        <CardContent className={classes.expandInfo}>
                                             <Typography paragraph>
                                                 {this.props.camp.summary}
                                             </Typography>
@@ -119,13 +119,13 @@ class ResultsDetails extends Component {
                                                 Cost: ${this.props.camp.cost_min} - ${this.props.camp.cost_max}
                                             </Typography>
                                             <Typography>
-                                                Type: TBD
+                                                Type: {this.props.camp.type}
                                             </Typography>
                                             <Typography>
                                                 Dates: {moment(this.props.camp.date_min).format('MM/DD/YYYY')} - {moment(this.props.camp.date_max).format('MM/DD/YYYY')}
                                             </Typography>
                                             <Typography>
-                                                Gender: {this.props.camp.gender_id}
+                                                Gender: {this.props.camp.gender}
                                             </Typography>
                                             <Typography>
                                                 Activites: TBD
