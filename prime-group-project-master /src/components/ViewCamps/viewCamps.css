@@ -1,13 +1,13 @@
 .viewCamps {
     justify-content: center;
     display: grid;
-    grid-template-columns: 450px 80px 200px  140px;
+    grid-template-columns: 450px 80px 160px  160px;
     grid-template-rows: auto;
     grid-template-areas: 
         "header header  header header"
         "main main  sidebar sidebar"
         "body body  . ."
-        "body body footer footer"
+        "body body footer1 footer2"
 }
 
 .camp_pic {
@@ -34,8 +34,13 @@
     padding: 6px;
 }
 
-.campButton {
+.viewButton {
     margin: 8px !important;
-    grid-area: footer;
+    grid-area: footer1;
+}
+
+.faveButton {
+    margin: 8px !important;
+    grid-area: footer2;
 }
 
