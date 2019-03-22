@@ -31,7 +31,7 @@ const styles = {
         flexGrow: 1,
     },
     menuButton: {
-        marginLeft: -12,
+        marginLeft: 0,
         marginRight: 20,
     },
 };
@@ -40,7 +40,7 @@ const styles = {
 const NavBar = (props) => {
     return (
         <div >
-            <Grid container spacing={24}>
+            <Grid container spacing={12}>
             <AppBar position="static">
                 <Toolbar className="nav">
                     <Drawer />
