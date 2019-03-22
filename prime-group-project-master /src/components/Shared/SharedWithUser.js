@@ -117,9 +117,9 @@ class SharedWithUser extends Component {
                         {this.props.sharedAccess.map(row => (
                             <TableRow className={classes.row} key={row.id}>
                                 <CustomTableCell component="th" scope="row">
-                                    {row.name}
+                                    {row.full_name}
                                 </CustomTableCell>
-                                <CustomTableCell align="right">{row.full_name}</CustomTableCell>
+                                <CustomTableCell align="right">{row.name}</CustomTableCell>
                                 <CustomTableCell align="right">
                                     <Button
                                         className="eventButton"

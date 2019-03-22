@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CampStepper from './CampStepper';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 //This adds styling to the form.
 const styles = theme => ({
@@ -29,6 +30,17 @@ const styles = theme => ({
   menu: {
     width: 400
   }
+});
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#127696',
+    },
+    secondary: {
+      main: '#d5cb92',
+    }
+  },
 });
 
 class CampRegistrationPage2 extends Component {
@@ -92,6 +104,7 @@ class CampRegistrationPage2 extends Component {
 
     return (
       <div>
+        <MuiThemeProvider theme={theme}>
         <h1>Camp Registration Page 2</h1>
         <form
           id="input-form"
@@ -226,6 +239,7 @@ class CampRegistrationPage2 extends Component {
           </Button>
         </form>
         <CampStepper step = {this.state.activeStep} />
+        </MuiThemeProvider>
       </div>
     );
   }

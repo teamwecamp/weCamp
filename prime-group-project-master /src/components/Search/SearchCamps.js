@@ -15,7 +15,7 @@ const styles = theme => ({
     },
     textField: {
         marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit
+        marginRight: theme.spacing.unit,
     },
     description: {
         marginLeft: theme.spacing.unit,
@@ -145,7 +145,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 75 }}
+                        style={{ width: 90 }}
                         margin="normal"
                     >
                         {this.props.dropDown.gender !== undefined &&
@@ -168,7 +168,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 100 }}
+                        style={{ width: 140 }}
                         margin="normal"
                     >
                         {religion.map(type => (
@@ -192,7 +192,7 @@ class SearchCamps extends Component {
                         }}
                         style={{ width: 175 }}
                         margin="normal"
-                        style={{ width: 100, padding: 0 }}
+                        style={{ width: 120, padding: 0 }}
                     >
                         {this.props.dropDown.campType !== undefined &&
                             this.props.dropDown.campType.map(type => (
@@ -214,7 +214,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 100, padding: 0 }}
+                        style={{ width: 141, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.regions !== undefined &&
@@ -237,7 +237,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 115, padding: 0 }}
+                        style={{ width: 178, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.activityCategory !== undefined &&
@@ -260,7 +260,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 115, padding: 0 }}
+                        style={{ width: 170, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.activities !== undefined &&
@@ -282,7 +282,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
                         }}
-                        style={{ width: 175, padding: 0 }}
+                        style={{ width: 179, padding: 0 }}
                     />
                     <TextField
                         id="outlined-enddate"
@@ -296,7 +296,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
                         }}
-                        style={{ width: 175, padding: 0 }}
+                        style={{ width: 179, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -339,7 +339,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 145 }}
                         margin="normal"
                     >
                         {accessibility.map(type => (
