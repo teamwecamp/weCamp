@@ -110,6 +110,8 @@ class ViewCampProgram extends Component {
         this.state = {
             kids: 0,
             status: 0,
+            
+            
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -153,15 +155,34 @@ class ViewCampProgram extends Component {
 
     // checks the programs 
     handleChange = name => event => {
-        let checkId = event.target.name
-        this.setState({ [checkId]: event.target.checked });
-        console.log(checkId);
+        // let checkId = event.target.name
+        // this.setState({ [checkId]: event.target.checked });
+        // console.log(checkId);
+
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const activity = target.name;
+
+        this.setState({
+            [activity]: value
+        })
+
     };
+
 
     addItinerary = event => {
         console.log('this is inside of addItinerary');
-        const action = { type: 'ADD_ITINERARY', payload: this.state }
-        this.props.dispatch(action);
+        // const newState = [];
+        // for (let key in this.state) {
+        //     if (this.state[key] === true) {
+        //         newState.push(parseInt(key));
+        //     }
+        // }
+        // console.log('This is newState', newState);
+        // newState.push(this.state);
+        // const action = { type: 'ADD_ITINERARY', payload: newState }
+        // this.props.dispatch(action);
+        this.props.history.push('/itinerary');
     }
 
     
@@ -174,6 +195,7 @@ class ViewCampProgram extends Component {
         console.log('this is camp program', this.props.campProgram );
         console.log('this is itinerary', this.props.itinerary)
         console.log('this is state', this.state)
+       
         const { classes } = this.props;
         
         // <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>

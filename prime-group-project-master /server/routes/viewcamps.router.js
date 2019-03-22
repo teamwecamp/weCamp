@@ -75,20 +75,45 @@ router.get('/viewProgram/:id', (req, res) => {
 router.post('/', (req, res)=> {
     console.log('this is in router post addItinerary', req.body);
     const addItinerary = req.body
+    //     (async () => {
+    //         const client = await
+    //             pool.connect();
+    //         try {
+    // for (itinerary of addItinerary) {
+
+
+    // const queryValues = [
+    // let child = itinerary.kids;
+    // // let dates = itinerary.true;
+    // let status = itinerary.status
+    // console.log(child)
+    // console.log(true)
+    // console.log(status)
+    // ];
+    
     const queryText = `INSERT INTO "child_itinerary" ("user_child_id", dates_id, "status_id") 
                        VALUES ($1, $2, $3);`;
-    const queryValues = [
-        addItinerary.kids,
-        addItinerary.dates,
-        addItinerary.status
-    ];
-    pool.query(queryText, queryValues)
+    // for(itinerary of addItinerary) {
+
+                      
+    // const queryValues = [
+    //     let child = itinerary.kids;
+    //     // let dates = itinerary.true;
+    //     let status =itinerary.status
+    //     console.log('this is child', child)
+    //     console.log(true)
+    //     console.log('this is status',status)
+    // ];
+//  }
+    // queryValues
+    pool.query(queryText, [addItinerary.kids, addItinerary.dates, addItinerary.status] )
     .then(response => {
         res.sendStatus(210);
     }).catch(error => {
         console.log('there is error in post itinerary', error);
         res.sendStatus(500);
     });
+
 
 
 
