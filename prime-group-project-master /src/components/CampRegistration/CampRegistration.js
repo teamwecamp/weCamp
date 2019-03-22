@@ -91,7 +91,7 @@ class CampRegistration extends Component {
   autoFill = ()=>{
     this.setState({
       
-        campName: "Nothern Waters",
+        campName: "Northern Waters",
         campAddress: "3532 S Lake Blvd.",
         state: "23",
         region: "1",
@@ -316,6 +316,7 @@ class CampRegistration extends Component {
                 onClick={this.handleNext}
                 size="small"
                 variant="contained"
+                color="primary"
               >
                 Next
               </Button>

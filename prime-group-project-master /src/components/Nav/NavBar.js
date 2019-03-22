@@ -44,38 +44,42 @@ const NavBar = (props) => {
             <AppBar position="static">
                 <Toolbar className="nav">
                     <Drawer />
-                    <Grid item xs={10}>
+                    <Grid item xs={9}>
                     <Link to="/landing">
                         <h2 className="nav-title">WeCAMP</h2>
                         {/* <NavBar/> */}
                     </Link>
                         </Grid>
+                        {/* Always show this link since the about page is not protected */}
+                        <Grid item xs={1}>
+                            <Link className="nav-link" to="/about">
+                                About
+      </Link>
+                        </Grid>
                     {/* <div className="nav-right"> */}
                     <Grid item xs={1}>
-                        <Link className="nav-link" to="/landing">
+                        <Link className="nav-link" to="/login">
                             {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {JSON.stringify(props.user.id)}
+        
                             {props.user.id ? 'Home' : 'Login / Register'}
                             
                         </Link>
                             </Grid>
                         {/* Show the link to the info page and the logout button if the user is logged in */}
+                       
                         {props.user.id && (
                             <>
+                                <Grid item xs={1}>
                                 <Link className="nav-link" to="/info">
-                                        <LogOutButton className="nav-link" />
+                                        <LogOutButton className="nav-title" />
           </Link>
+                                </Grid>
                                 
                             </>
                         )}
-                        {/* Always show this link since the about page is not protected */}
-                        <Grid item xs={1}>
-                        <Link className="nav-link" to="/about">
-                            About
-      </Link>
-                            </Grid>
+          
                     {/* </div> */}
 
                 </Toolbar>
@@ -87,7 +91,7 @@ const NavBar = (props) => {
 }
 
 const mapStateToProps = state => ({
-    user: state.user,
+    user: state.user.userReducer
 });
 
 export default withStyles(styles)(connect(mapStateToProps)(NavBar));

@@ -66,13 +66,13 @@ class App extends Component {
             <Route
               exact
               path="/register"
-              component={LoginPage}
+              component={RegisterPage}
             />
 
             <Route
               exact
               path="/login"
-              component={RegisterPage}
+              component={LoginPage}
             />
             <Route
               exact
