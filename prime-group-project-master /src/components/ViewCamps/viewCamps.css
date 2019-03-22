@@ -1,14 +1,32 @@
+.viewCamps {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 450px 80px 200px  140px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header  header header"
+        "main main  sidebar sidebar"
+        "body body  . ."
+        "body body footer footer"
+}
+
 .camp_pic {
     height: 300px;
     width: auto;
+    grid-area: main;
 }
 
 .camp_contacts {
     padding: 0px 8px;
+    grid-area: body;
 }
 
-h1 {
-    text-align: center;
+.summary {
+    grid-area: sidebar;
+}
+
+.campName {
+    grid-area: header;
 }
 
 .socialMedia {
@@ -18,4 +36,6 @@ h1 {
 
 .campButton {
     margin: 8px !important;
+    grid-area: footer;
 }
+

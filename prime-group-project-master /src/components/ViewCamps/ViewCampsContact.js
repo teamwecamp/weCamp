@@ -55,9 +55,11 @@ class ViewCampsContact extends Component {
                     <p>Phone: {this.phone()}</p>}
                 <a target="_blank" href={this.props.camp.website}>website</a>
                 <br/>
+                <div className="social">
                 {this.facebook()}
                 {this.twitter()}
                 {this.instagram()}
+                </div>
             </div>
         )
     }
