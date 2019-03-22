@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CampStepper from "./CampStepper";
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 //This is styling for the form only. 
 const styles = theme => ({
@@ -29,6 +30,17 @@ const styles = theme => ({
   menu: {
     width: 400
   }
+});
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#127696',
+    },
+    secondary: {
+      main: '#d5cb92',
+    }
+  },
 });
 
 class CampRegistrationPage4 extends Component {
@@ -76,11 +88,28 @@ class CampRegistrationPage4 extends Component {
           gender: "",
           startDate: "",
           endDate: ""
+        
         }
       ]
     });
   };
   
+  autoFill = () => {
+    this.setState({
+      programTitle: "Horse and Hike",
+      cost: "$750.00",
+      startTime: "08:00",
+      endTime: "01:00",
+      type: "1",
+      age: "12",
+      gender: "1",
+      startDate: "2019-06-01",
+      endDate: "2019-06-08"
+    })
+    console.log('state', this.state);
+
+  }
+
 // This will add the current programs to the state array and make new dropdowns.
   handleProgramChange = (index, key) => event => {
     let programs = [...this.state.programs];
@@ -99,6 +128,7 @@ class CampRegistrationPage4 extends Component {
    
     return (
       <div>
+        <MuiThemeProvider theme={theme}>
         <h1>Camp Registration Page 4</h1>
         <form>
           {this.state.programs.map((program, i) => {
@@ -109,7 +139,8 @@ class CampRegistrationPage4 extends Component {
                   id="outlined-programTitle"
                   label="Program Title"
                   className={classes.textField}
-                  value={program.programTitle}
+                  // value={program.programTitle}
+                  value={this.state.programTitle}
                   onChange={this.handleProgramChange(i, "programTitle")}
                   margin="normal"
                   style={{ width: 300 }}
@@ -120,7 +151,8 @@ class CampRegistrationPage4 extends Component {
                   id="outlined-cost"
                   label="Cost"
                   className={classes.textField}
-                  value={program.cost}
+                  // value={program.cost}
+                  value={this.state.cost}
                   onChange={this.handleProgramChange(i, "cost")}
                   margin="normal"
                   style={{ width: 300 }}
@@ -134,7 +166,8 @@ class CampRegistrationPage4 extends Component {
                   }}
                   type="time"
                   className={classes.textField}
-                  value={program.startTime}
+                  // value={program.startTime}
+                  value={this.state.startTime}
                   onChange={this.handleProgramChange(i, "startTime")}
                   margin="normal"
                   style={{ width: 300 }}
@@ -148,7 +181,8 @@ class CampRegistrationPage4 extends Component {
                     startAdornment: <InputAdornment position="start" />
                   }}
                   className={classes.textField}
-                  value={program.endTime}
+                  // value={program.endTime}
+                  value={this.state.endTime}
                   onChange={this.handleProgramChange(i, "startTime")}
                   margin="normal"
                   style={{ width: 300 }}
@@ -159,7 +193,8 @@ class CampRegistrationPage4 extends Component {
                   select
                   label="Camp Type"
                   className={classes.textField}
-                  value={program.type}
+                  // value={program.type}
+                  value={this.state.type}
                   onChange={this.handleProgramChange(i, "type")}
                   variant="outlined"
                   SelectProps={{
@@ -182,7 +217,8 @@ class CampRegistrationPage4 extends Component {
                   id="outlined-age"
                   label="Age"
                   className={classes.textField}
-                  value={program.age}
+                  // value={program.age}
+                  value={this.state.age}
                   onChange={this.handleProgramChange(i, "age")}
                   margin="normal"
                   style={{ width: 100 }}
@@ -194,7 +230,8 @@ class CampRegistrationPage4 extends Component {
                   select
                   label="Gender"
                   className={classes.textField}
-                  value={program.gender}
+                  // value={program.gender}
+                  value={this.state.gender}
                   onChange={this.handleProgramChange(i, "gender")}
                   variant="outlined"
                   SelectProps={{
@@ -221,7 +258,8 @@ class CampRegistrationPage4 extends Component {
                   }}
                   type="date"
                   className={classes.textField}
-                  value={program.startDate}
+                  // value={program.startDate}
+                  value={this.state.startDate}
                   onChange={this.handleProgramChange(i, "startDate")}
                   margin="normal"
                   variant="standard"
@@ -235,7 +273,8 @@ class CampRegistrationPage4 extends Component {
                   }}
                   type="date"
                   className={classes.textField}
-                  value={program.endDate}
+                  // value={program.endDate}
+                  value={this.state.endDate}
                   onChange={this.handleProgramChange(i, "endDate")}
                   margin="normal"
                   variant="standard"
@@ -261,8 +300,12 @@ class CampRegistrationPage4 extends Component {
           >
             Submit
           </Button>
+          <Button
+            onClick={this.autoFill}>
+          </Button>
         </form>
         <CampStepper step = {this.state.activeStep}/>
+        </MuiThemeProvider>
       </div>
     );
   }

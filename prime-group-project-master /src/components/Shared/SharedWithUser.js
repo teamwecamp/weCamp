@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,16 +9,30 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router';
+import Typography from '@material-ui/core/Typography';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: 'rgb(57, 92, 104)',
         color: theme.palette.common.white,
     },
     body: {
         fontSize: 14,
     },
 }))(TableCell);
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+        secondary: {
+            main:'#d5cb92',
+        }
+    },
+});
 
 const styles = theme => ({
     root: {
@@ -65,7 +78,7 @@ class SharedWithUser extends Component {
 
 
     removeFromNetwork = (event) => {
-        console.log('inremove', event.target.value);
+        console.log('inremove', event.currentTarget.value);
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         this.fetchSharedWithUser();
@@ -74,7 +87,7 @@ class SharedWithUser extends Component {
     }
 
     moveToItinerary = (event) => {
-        const childId = event.target.value
+        const childId = event.currentTarget.value
         console.log('event.target.value', childId);
         this.props.history.push(`sharedItinerary/${childId}`)
         console.log('move to itinerary', this.props.history.push(`/sharedItinerary/${childId}`));
@@ -90,11 +103,12 @@ class SharedWithUser extends Component {
             
             <Paper className={classes.root}>
                 {JSON.stringify(this.props.sharedAccess.user_child_id)}
+                <MuiThemeProvider theme={theme}>
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <CustomTableCell>Child's Itinerary</CustomTableCell>
-                            <CustomTableCell align="right">Guardian(s)</CustomTableCell>
+                            <CustomTableCell>Guardian(s)</CustomTableCell>
+                            <CustomTableCell align="right">Child's Itinerary</CustomTableCell>
                             <CustomTableCell align="right">View Itinerary</CustomTableCell>
                             <CustomTableCell align="right">Remove From Network</CustomTableCell>
                         </TableRow>
@@ -103,14 +117,15 @@ class SharedWithUser extends Component {
                         {this.props.sharedAccess.map(row => (
                             <TableRow className={classes.row} key={row.id}>
                                 <CustomTableCell component="th" scope="row">
-                                    {row.name}
+                                    {row.full_name}
                                 </CustomTableCell>
-                                <CustomTableCell align="right">{row.full_name}</CustomTableCell>
+                                <CustomTableCell align="right">{row.name}</CustomTableCell>
                                 <CustomTableCell align="right">
                                     <Button
+                                        className="eventButton"
                                         variant="contained"
-                                        color="primary"
                                         onClick={this.moveToItinerary}
+                                        color="secondary"
                                         size="small"
                                         value={row.user_child_id}>
                                         View Itinerary
@@ -118,9 +133,10 @@ class SharedWithUser extends Component {
                                 </CustomTableCell>
                                 <CustomTableCell align="right">
                                     <Button
+                                        className="eventButton"
                                         variant="contained"
-                                        color="primary"
                                         size="small"
+                                        color="primary"
                                         value={row.id}
                                         onClick={this.removeFromNetwork}>
                                         Remove From Network
@@ -130,6 +146,7 @@ class SharedWithUser extends Component {
                         ))}
                     </TableBody>
                 </Table>
+                </MuiThemeProvider>
             </Paper>
         );
     }
