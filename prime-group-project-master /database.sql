@@ -58,7 +58,8 @@ CREATE TABLE "camp" (
 	"logo_url" text,
 	"website" varchar(100),
     "date_added" timestamp without time zone DEFAULT now(),
-	"sponsored" BOOLEAN DEFAULT false
+	"sponsored" BOOLEAN DEFAULT false,
+	"summary" text
 );
 
 
@@ -151,7 +152,7 @@ CREATE TABLE "child_itinerary" (
 
 CREATE TABLE "sharing" (
 	"id" serial primary key,
-	"itinerary_id" int NOT NULL REFERENCES "child_itinerary",
+	"user_child_id" int NOT NULL REFERENCES "user_child",
 	"shared_to_id" int NOT NULL REFERENCES "user"
 );
 

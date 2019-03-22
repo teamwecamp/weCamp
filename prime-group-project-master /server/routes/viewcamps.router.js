@@ -4,46 +4,40 @@ const router = express.Router();
 
 
 router.get('/status', (req, res) => {
-  
-        console.log('In /status');
-       
-        const queryText = `SELECT * FROM "status";`;
-        pool.query(queryText).then((result) => {
-            res.send(result.rows);
-        }).catch((error) => {
-            res.sendStatus(500);
-            console.log(error);
-        })
-    
+    console.log('In /status');
+
+    const queryText = `SELECT * FROM "status";`;
+    pool.query(queryText).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    })
+
 });
 
 
-//This is for Viewing the camps.
+//This is for Viewing the camps. User does not need to be logged in.
 router.get('/:id', (req, res) => {
-    if (req.isAuthenticated()) {
-        console.log('In /viewcamps GET');
-        const id = req.params.id;
-        const queryText = `SELECT * FROM "camp" WHERE "id" = $1;`;
-        pool.query(queryText, [id]).then((result) => {
-            res.send(result.rows);
-        }).catch((error) => {
-            res.sendStatus(500);
-            console.log(error);
-        })
-    } else {
-        res.sendStatus(403);
-    }
+    console.log('In /viewcamps GET');
+    const id = req.params.id;
+    const queryText = `SELECT * FROM "camp" WHERE "id" = $1;`;
+    pool.query(queryText, [id]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    })
 });
 
 
-// this gets the camp program and information of the programs.
+// this gets the camp program and information of the programs. User does not need to be logged in.
 router.get('/viewProgram/:id', (req, res) => {
-    if(req.isAuthenticated()){
-        console.log('this is inside of viewProgram/:id');
-       
-                const id = req.params.id
-                // const user = req.user.id;
-        const queryText = `SELECT "program_dates"."id" as "program_id", "camp_program"."camp_id", "camp_program"."type_id", "camp_program"."title", "camp_program"."cost", "program_dates"."start_date",
+    console.log('this is inside of viewProgram/:id');
+
+    const id = req.params.id
+    // const user = req.user.id;
+    const queryText = `SELECT "program_dates"."id" as "program_id", "camp_program"."camp_id", "camp_program"."type_id", "camp_program"."title", "camp_program"."cost", "program_dates"."start_date",
                            "program_dates"."end_date", "program_dates"."start_time", "program_dates"."end_time", "camp_type"."type"   
                             FROM "program_dates"
                             JOIN "camp_program"
@@ -53,18 +47,13 @@ router.get('/viewProgram/:id', (req, res) => {
                             JOIN "camp"
                             ON "camp_program"."camp_id"="camp"."id"
                             WHERE "camp"."id" = $1;`;
-        pool.query(queryText, [id]).then((result) => {
-            res.send(result.rows);
-        }).catch((error) => {
-            res.sendStatus(500);
-            console.log(error);
-        })
-    } else {
-        res.sendStatus(403);
-    }                        
-                
+    pool.query(queryText, [id]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    })
 });
-
 
 
 
@@ -72,7 +61,7 @@ router.get('/viewProgram/:id', (req, res) => {
  * POST route template
  */
 
-router.post('/', (req, res)=> {
+router.post('/', (req, res) => {
     console.log('this is in router post addItinerary', req.body);
     if (req.isAuthenticated()) {
         (async () => {
@@ -108,7 +97,7 @@ router.post('/', (req, res)=> {
 });
 
 
-
+   
 
 
 

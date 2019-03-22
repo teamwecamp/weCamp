@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
@@ -11,10 +12,29 @@ import InputBase from '@material-ui/core/InputBase';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
+import UserSharedWith from './UserSharedWith';
+import SharedWithUser from './SharedWithUser';
+import { ListItemSecondaryAction } from '@material-ui/core';
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#e6e1cf',
+            
+        },
+        secondary: {
+            main: '#af9818',
+        }
+    },
+});
+
+
+
 
 function TabContainer(props) {
     return (
-        <Typography component="div" style={{ padding: 8 * 3 }}>
+        <Typography component="div" style={{ padding: 8 * 3, color: 'rgb(57, 92, 104)'  }}>
             {props.children}
         </Typography>
     );
@@ -31,7 +51,9 @@ function LinkTab(props) {
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        width: "100%",
         backgroundColor: theme.palette.background.paper,
+        
     },
     search:{
         padding: '2px 4px',
@@ -45,7 +67,7 @@ const styles = theme => ({
         flex: 1,
     },
     iconButton: {
-        padding: 10,
+        padding: 10, 
     },
     divider: {
         width: 1,
@@ -53,7 +75,11 @@ const styles = theme => ({
         margin: 4,
     },
 
+    labelContainer: {
+        color: 'rgb(155, 185, 204)',
+    }
 });
+
 
 
 class Shared extends Component {
@@ -83,43 +109,34 @@ class Shared extends Component {
         const { value } = this.state;
         return (
             <NoSsr>
+                <MuiThemeProvider theme={theme}>
                 <div className={classes.root}>
-                    <AppBar position="static">
-                        <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-                            <LinkTab label="Shared Itinerary With" href="page1" />
-                            <LinkTab label="Shared Itinerary With Us" href="page2" />
-                            <LinkTab label="Both" href="page3" />
+                    <AppBar  position="static">
+                        <Tabs 
+                        className="tabs"
+                        variant="fullWidth" 
+                        value={value} 
+                        onChange={this.handleChange}>
+                            <LinkTab label="Shared Itineraries" href="page1" />
+                            <LinkTab label="Viewable Itineraries" href="page2" />
+                            {/* <LinkTab label="Both" href="page3" /> */}
                         </Tabs>
                     </AppBar>
                     {value === 0 && <TabContainer>
-                        <Paper className={classes.search} elevation={1}>
-                            <InputBase className={classes.input} placeholder="Search By Child" />
-                            <IconButton className={classes.iconButton} aria-label="Search">
-                                <SearchIcon />
-                            </IconButton>
-                        </Paper>
-                        Page One
+
+                        <UserSharedWith />
                           </TabContainer>}
                     {value === 1 && <TabContainer>
-                        <Paper className={classes.search} elevation={1}>
-                            <InputBase className={classes.input} placeholder="Search By Child" />
-                            <IconButton className={classes.iconButton} aria-label="Search">
-                                <SearchIcon />
-                            </IconButton>
-                        </Paper>
-                        Page Two
+                      
+                        <SharedWithUser />
                            
-                    </TabContainer>}
-                    {value === 2 && <TabContainer>  <Paper className={classes.search} elevation={1}>
-                        <InputBase className={classes.input} placeholder="Search By Child" />
-                        <IconButton className={classes.iconButton} aria-label="Search">
-                            <SearchIcon />
-                        </IconButton>
-                    </Paper>
-                    Page Three
+                    
+                
                          
                     </TabContainer>}
+              
                 </div>
+                </MuiThemeProvider>
             </NoSsr>
         );
     }

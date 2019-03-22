@@ -17,11 +17,15 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import InfoIcon from '@material-ui/icons/Info';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
-import DescriptionIcon from '@material-ui/icons/Description';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import PeopleIcon from '@material-ui/icons/People';
 import './Nav.css';
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
+import PropTypes from 'prop-types';
+import FaceIcon from '@material-ui/icons/Face';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 
@@ -54,18 +58,18 @@ class NavBar extends Component {
 
         const sideList = (
             <div className={classes.list}>
+               
                 <List>
-                    
-                    <ListItem button>
-                        <ListItemIcon>
-                            <InfoIcon/>
-                        </ListItemIcon>
-                    <ListItemText inset primary='About' />
-                    </ListItem>
-                    <Link component={RouterLink} to="/favorites">
+                    <Link component={RouterLink} to="/landing">
+                        <ListItem button>
+                            <ListItemIcon><HomeIcon /></ListItemIcon>
+                            <ListItemText inset primary='Home' />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/userprofileinfo/user">
                         <ListItem>
-                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
-                            <ListItemText primary={'Favorite'} />
+                            <ListItemIcon><FaceIcon /></ListItemIcon>
+                            <ListItemText primary={'User Profile'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/search">
@@ -74,32 +78,39 @@ class NavBar extends Component {
                             <ListItemText primary={'Search'} />
                         </ListItem>
                     </Link>
+                    <Link component={RouterLink} to="/favorites">
+                        <ListItem>
+                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
+                            <ListItemText primary={'Favorite'} />
+                        </ListItem>
+                    </Link>
                     <Link component={RouterLink} to="/itinerary">
                         <ListItem>
-                            <ListItemIcon><DescriptionIcon /></ListItemIcon>
+                            <ListItemIcon><CalendarTodayIcon /></ListItemIcon>
                             <ListItemText primary={'Itinerary'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/shared">
                         <ListItem>
                             <ListItemIcon><PeopleIcon /></ListItemIcon>
-                            <ListItemText primary={'Friends'} />
+                            <ListItemText primary={'Network'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/campregistration">
                         <ListItem>
-                            <ListItemIcon><PeopleIcon /></ListItemIcon>
+                            <ListItemIcon><AssignmentIcon /></ListItemIcon>
                             <ListItemText primary={'Camp Administrators'} />
                         </ListItem>
                     </Link>
                 </List>
+               
 
 
             </div>
         );
         return (
             <div>
-                <Button onClick={this.toggleDrawer('left', true)}><MenuIcon className=".nav"/></Button>
+                <Button onClick={this.toggleDrawer('left', true)}><MenuIcon className=".nav" /></Button>
                 <SwipeableDrawer
                     open={this.state.left}
                     onClose={this.toggleDrawer('left', false)}
@@ -114,11 +125,15 @@ class NavBar extends Component {
                         {sideList}
                     </div>
                 </SwipeableDrawer>
-               
+
             </div>
 
         );
     }
 }
+
+NavBar.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
 export default connect()(withStyles(styles)(NavBar));

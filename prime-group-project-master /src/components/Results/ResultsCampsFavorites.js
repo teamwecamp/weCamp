@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './viewCamps.css';
-import ViewCampsContact from './ViewCampsContact';
-import Button from '@material-ui/core/Button';
+import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import Button from '@material-ui/core/Button'
 
-class ViewCamps extends Component {
+
+class ResultsFavorites extends Component {
     static propTypes = {
         match: PropTypes.object.isRequired,
         location: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired
     }
-
     componentDidMount = () => {
-        this.setViewCamps();
-        this.props.dispatch({ type: 'FETCH_FAVORITE_CAMPS' });
-        this.props.dispatch({ type: 'FETCH_USER_CHILD' });
+        this.props.dispatch({type: 'FETCH_USER_CHILD'})
     }
 
     //add children of user to favorites dropdown
@@ -25,7 +22,7 @@ class ViewCamps extends Component {
         let children = this.props.userChild;
         console.log(children);
         let kids = {}
-        for (let child of children) {
+        for(let child of children) {
             let kid = child.id
             kids[kid] = child.name
         }
@@ -33,27 +30,18 @@ class ViewCamps extends Component {
         return kids;
     }
 
-    setViewCamps = () => {
-        const camp = this.props.match.params.id
-        this.props.dispatch({ type: 'FETCH_CAMP_DETAILS', payload: camp });
-    }
-
-    goToProgram = () => {
-        this.props.history.push(`/viewProgram/${this.props.match.params.id}`)
-    }
-
     updateFavorite = () => {
-        console.log(this.props.viewCamp);
+        console.log(this.props.camp);
         if (this.props.user.id) {
             //if camp is already marked as favorite
-            if (this.props.viewCamp.favorite) {
+            if (this.props.camp.sponsored) {
                 console.log('true');
-                Swal.fire({
+                swal({
                     //update once search route is complete
-                    text: 'This is already in your favorites.',
+                    text: 'This is a favorite for <insert child>.',
                     buttons: {
                         edit: {
-                            text: "Go to Favorites",
+                            text: "Edit Favorites",
                             value: true,
                         },
                         cancel: "Close",
@@ -80,16 +68,15 @@ class ViewCamps extends Component {
                 }).then((assignTo) => {
                     console.log(assignTo);
                     if (assignTo.value) {
-                        const type = 'ADD_FAVORITE_CAMP';
-                        const payload = { child: assignTo.value, camp: this.props.viewCamp.id };
-                        this.props.dispatch({ type: type, payload: payload });
-                        Swal.fire('Added to favorites');
+                    const type = 'ADD_FAVORITE_CAMP';
+                    const payload = {child: assignTo.value, camp: this.props.camp.id};
+                    this.props.dispatch({type: type, payload: payload})
                     }
                 })
             }
         } else {
             //if user is not logged in
-            Swal.fire({
+            swal({
                 text: 'Please log in to mark favorites',
                 buttons: {
                     login: {
@@ -104,34 +91,21 @@ class ViewCamps extends Component {
                 }
             })
         }
-
     }
 
     render() {
-        let camp = this.props.viewCamp;
         return (
-            <div className="viewCamps">
-                <h1>{camp.Name}</h1>
-                {/* add logo */}
-                <img className="camp_pic" alt="camp pic" src={this.props.viewCamp.photo_url} />
-                <p>{camp.summary}</p>
-                <ViewCampsContact camp={camp} />
-                <br />
-                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
-                    Add to Favorites
-                </Button>
-                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.goToProgram}>
-                    View Program Details
-                </Button>
+            <div>
+                <Button className="eventButton" variant="outlined" onClick={this.updateFavorite} size="small">add to favorites</Button>
             </div>
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
-    viewCamp: reduxStore.setViewCampsDetails.setViewCampsDetails,
     user: reduxStore.user.userReducer,
-    userChild: reduxStore.setFavoriteCamps.setUserChild,
+    userChild: reduxStore.setFavoriteCamps.setUserChild
 });
 
-export default withRouter(connect(mapStateToProps)(ViewCamps));
+
+export default withRouter(connect(mapStateToProps)(ResultsFavorites));

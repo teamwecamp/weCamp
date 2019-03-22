@@ -17,6 +17,7 @@ import userProfileSaga from './userProfileSaga';
 import campRegistrationSaga from './campRegistrationSaga';
 import userRegistrationSaga from './userRegistrationSaga';
 import viewCamp from './viewCampSaga';
+import SharedItinerarySaga from './sharedItinerarySaga';
  
 
 
@@ -33,6 +34,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     LandingSaga(),
+    FavoriteSaga(),
     searchSaga(),
     updateItinerarySaga(),
     itinerarySaga(),
@@ -41,5 +43,6 @@ export default function* rootSaga() {
     campRegistrationSaga(),
     userRegistrationSaga(),
     viewCamp(),
+    SharedItinerarySaga(),
   ]);
 }

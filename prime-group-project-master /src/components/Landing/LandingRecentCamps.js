@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
-
+// Material-ui
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -16,35 +15,22 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 
 const theme = createMuiTheme({
-    palette: {
-        primary: { main: '#e5e3f4' }, // Purple and green play nicely together.
-        secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
-    },
     typography: { useNextVariants: true },
 });
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
     media: {
         height: 140,
     },
     card: {
         minWidth: 175,
-        height: 250,
-    },
-    control: {
-        padding: theme.spacing.unit * 2,
+        height: 280,
     },
     paper: {
-        height: 200,
+        height: 280,
         width: 260,
         textAlign: 'center',
-    },
-    pos: {
-        marginBottom: 4,
-        fontSize: 16,
+        margin: theme.spacing.unit * 2
     },
     title: {
         fontSize: 18,
@@ -59,7 +45,6 @@ class LandingRecentCamps extends Component {
     moveToCamp = () => {
         const camp = this.props.camp.id;
         console.log(camp);
-
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
@@ -67,9 +52,8 @@ class LandingRecentCamps extends Component {
     render() {
         const { classes } = this.props;
         return (
-            
             <div>
-                <Grid className="innerGrid" item xs={12}>
+                <Grid className="innerGrid" item xs={6}>
                     <Paper className={classes.paper}>
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
@@ -90,8 +74,6 @@ class LandingRecentCamps extends Component {
                     </Paper>
                 </Grid>
             </div>
-            
-
         )
     }
 }

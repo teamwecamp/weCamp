@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-const setSharedAccess = (state = [], action) => {
-    // console.log('in setSharedaccess');
+const setSharedItinerary = (state = [], action) => {
+    console.log('in setSharedItinerary', action.payload);
 
     switch (action.type) {
-        case 'SET_SHARED_ACCESS':
+        case 'SET_SHARED_ITINERARY':
             return action.payload;
         default:
             return state;
@@ -13,5 +13,5 @@ const setSharedAccess = (state = [], action) => {
 
 
 export default combineReducers({
-    setSharedAccess,
+    setSharedItinerary,
 });

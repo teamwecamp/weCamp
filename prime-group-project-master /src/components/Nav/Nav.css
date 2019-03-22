@@ -3,26 +3,33 @@
     font-weight: 700;
     display: inline-block;
     color: #f2f2f2;
-    padding-left: 10px;
+    padding-left: 25px;
+    /* padding-bottom: 0px;
+    padding-top: 0px; */
     font-family: 'Oswald', sans-serif;
 }
 
 .nav {
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #63bcc9;
   font-family: 'Oswald', sans-serif;
   color: white;
+  float: right;
 }
 
 .nav-link {
   font-size: 20px;
-  display: inline-block;
+  /* display: inline-block; */
   color: #f2f2f2;
   text-align: right;
-  padding: 24px 10px;
-  padding-right: 10px;
-  text-decoration: none;
-  font-size: 15px;
+  /* padding: 24px 10px;
+  padding-right: 10px; */
+ text-decoration: none; 
+ float: right;
+  /* font-size: 15px;  */
+
+
+
   
 
   /* these last two make the logout button in
@@ -30,6 +37,7 @@
   border:none;
   cursor: pointer;
   outline:0;
+ 
 }
 
 .nav-link:hover {

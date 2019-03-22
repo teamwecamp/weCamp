@@ -24,10 +24,11 @@ true, 25, 515, false, 5077633567, 'https://www.facebook.com/pages/sheteklutheran
 
 -- camp #4 without insta and twitter
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
-"disabled_friendly", "phone", "facebook", "photo_url", "logo_url", "website") VALUES ('Camp Winnebago', '19708 Camp Winnebago Road Caledonia, MN 55921', 
+"disabled_friendly", "phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Winnebago', '19708 Camp Winnebago Road Caledonia, MN 55921', 
 2, '6/12/2019', '8/4/2019', 3, false, 950, 1350, true, 5077242351, 'https://www.facebook.com/campwinnebagocaledonia?fref=ts', 
 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/2183326.jpg', 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/published/1465936858.png', 
-'http://www.campwinnebago.org');
+'http://www.campwinnebago.org', E'Camp Winnebago\'s mission is to provide recreational opportunities for people of ALL abilities in a scenic natural environment, 
+which we have been doing since 1968. ​We are situated in the beautiful Winnebago Valley in the globally rare blufflands of the famed driftless area.');
 
 -- camp #5 without social media (no programs)
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
@@ -75,6 +76,15 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
 'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/HighRopesBoys3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
 'https://www.lincoln-lakehubert.com/boys-camp/');
+
+-- camp #12 without insta or twitter (no programs)
+INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
+"disabled_friendly", "phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Circle R Ranch', '32549 State 27 Long Prairie, Minnesota 56347', 
+3, '6/2/19', '8/24/19', 3, false, 550, 650, false, 3205330322, 'https://www.facebook.com/circlerranchcamp/', 'http://circlerranch.com/wp-content/uploads/2017/03/trailride2.jpg', 
+'http://circlerranch.com/wp-content/themes/circleranch/images/logo.png',  'http://circlerranch.com/', E'Located in beautiful central Minnesota, the Circle R Ranch 
+is a unique Summer Horse Camp that offers a rich experience for youngsters ages 7 through 17. The Circle R Ranch is an 800-plus acre working ranch.Crops are grown 
+consisting of corn, oats and hay. Besides the 200 plus horses, there are many other animals for the children’s enjoyment. Dogs, kittens, rabbits, cats, ducks, turkey, two goats, 
+three llamas, potbelly pig and Pawnee the buffalo just to name a few of the animals around the ranch.');
 
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 

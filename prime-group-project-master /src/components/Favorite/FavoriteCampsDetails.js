@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -21,33 +23,26 @@ const theme = createMuiTheme({
 });
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
     media: {
         height: 140,
     },
     card: {
         minWidth: 175,
-        height: 250,
-    },
-    control: {
-        padding: theme.spacing.unit * 2,
+        height: 310,
     },
     paper: {
-        height: 200,
         width: 260,
         textAlign: 'center',
-    },
-    pos: {
-        marginBottom: 4,
-        fontSize: 16,
+        margin: theme.spacing.unit * 2,
     },
     title: {
-        fontSize: 16,
+        fontSize: 18,
     },
     CardActions: {
         justifyContent: 'center',
+    },
+    camp: {
+        fontSize: 16,
     }
 });
 
@@ -56,10 +51,13 @@ class FavoriteCampsDetails extends Component {
     moveToCamp = () => {
         const camp = this.props.camp.camp.id;
         console.log(camp);
-        
         this.props.moveToCamp(`/viewCamp/${camp}`);
     }
 
+    removeFavorite = () => {
+        console.log(this.props.camp.faveId);
+        this.props.dispatch({ type: 'REMOVE_FAVORITE_CAMP', payload: this.props.camp.faveId})
+    }
 
     render() {
         const { classes } = this.props;
@@ -76,9 +74,10 @@ class FavoriteCampsDetails extends Component {
                                         image={this.props.camp.camp.photo_url}
                                         title="Camp Pic"
                                     />
-                                    <Typography>{this.props.camp.camp.Name}</Typography>
+                                    <Typography className={classes.camp}>{this.props.camp.camp.Name}</Typography>
                                     <CardActions className={classes.CardActions}>
-                                        <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
+                                        <Button className="eventButton" variant="outlined" onClick={this.removeFavorite} size="small">Remove From Favorites</Button>
+                                        <Button className="eventButton" variant="outlined" onClick={this.moveToCamp} size="small">camp page</Button>
                                     </CardActions>
                                 </CardContent>
                             </MuiThemeProvider>
@@ -94,4 +93,4 @@ FavoriteCampsDetails.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FavoriteCampsDetails);
+export default withStyles(styles)(connect()(FavoriteCampsDetails));
