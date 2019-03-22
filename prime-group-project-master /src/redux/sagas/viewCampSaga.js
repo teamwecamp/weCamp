@@ -36,6 +36,18 @@ function* fetchCampProgram(action){
     }
 }
 
+function* addItinerary (action){
+    try{
+        yield axios.post('api/viewcamps', action.payload);
+        const nextAction = { type: 'SET_VIEW_CAMPS_PROGRAM'};
+        yield put(nextAction);
+
+    }catch(error){
+        console.log('there is error in addItinerary saga', error)
+        alert('error in addItinerary saga');
+    }
+
+}
 
 function* userRegistrationSaga() {
     yield takeEvery('FETCH_CAMP_DETAILS', fetchCampDetails);
@@ -43,6 +55,7 @@ function* userRegistrationSaga() {
     yield takeEvery('FETCH_CAMP_PROGRAMS', fetchCampProgram);
     // gets the status of what the parents wants to tag to the child itinerary
     yield takeEvery('FETCH_STATUS', fetchStatus);
+    yield takeEvery('ADD_ITINERARY', addItinerary);
 }
 
 export default userRegistrationSaga;
