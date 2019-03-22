@@ -119,6 +119,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
+                        style={{ width: 100, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -129,6 +130,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
+                        style={{ width: 100, padding: 0 }}
                     />
                     <TextField
                         id="outlined-type"
@@ -143,7 +145,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 75 }}
                         margin="normal"
                     >
                         {this.props.dropDown.gender !== undefined &&
@@ -166,7 +168,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 100 }}
                         margin="normal"
                     >
                         {religion.map(type => (
@@ -190,6 +192,7 @@ class SearchCamps extends Component {
                         }}
                         style={{ width: 175 }}
                         margin="normal"
+                        style={{ width: 100, padding: 0 }}
                     >
                         {this.props.dropDown.campType !== undefined &&
                             this.props.dropDown.campType.map(type => (
@@ -211,7 +214,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 100, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.regions !== undefined &&
@@ -234,7 +237,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 115, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.activityCategory !== undefined &&
@@ -257,7 +260,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 115, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.activities !== undefined &&
@@ -279,6 +282,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
                         }}
+                        style={{ width: 175, padding: 0 }}
                     />
                     <TextField
                         id="outlined-enddate"
@@ -292,6 +296,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
                         }}
+                        style={{ width: 175, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -305,6 +310,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                         }}
+                        style={{ width: 110, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -318,6 +324,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                         }}
+                        style={{ width: 110, padding: 0 }}
                     />
                     <TextField
                         id="outlined-type"
@@ -354,7 +361,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 200 }}
+                        style={{ width: 160, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.states !== undefined &&

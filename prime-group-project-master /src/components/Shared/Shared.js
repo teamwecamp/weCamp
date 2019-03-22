@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
@@ -13,10 +14,31 @@ import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import UserSharedWith from './UserSharedWith';
 import SharedWithUser from './SharedWithUser';
+import { ListItemSecondaryAction } from '@material-ui/core';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+        secondary: {
+            main: '#f44336',
+        },
+    },
+    overrides: {
+        MuiButton: { // Name of the component ⚛️ / style sheet
+            text: { // Name of the rule
+                color: 'white', // Some CSS
+            },
+        },
+    },
+});
+
+
 
 function TabContainer(props) {
     return (
-        <Typography component="div" style={{ padding: 8 * 3 }}>
+        <Typography component="div" style={{ padding: 8 * 3, color: 'rgb(57, 92, 104)'  }}>
             {props.children}
         </Typography>
     );
@@ -33,7 +55,9 @@ function LinkTab(props) {
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        width: "100%",
         backgroundColor: theme.palette.background.paper,
+        
     },
     search:{
         padding: '2px 4px',
@@ -55,7 +79,11 @@ const styles = theme => ({
         margin: 4,
     },
 
+    labelContainer: {
+        color: 'rgb(155, 185, 204)',
+    }
 });
+
 
 
 class Shared extends Component {
@@ -85,9 +113,14 @@ class Shared extends Component {
         const { value } = this.state;
         return (
             <NoSsr>
+                
                 <div className={classes.root}>
-                    <AppBar position="static">
-                        <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
+                    <AppBar  position="static">
+                        <Tabs 
+                        className="tabs"
+                        variant="fullWidth" 
+                        value={value} 
+                        onChange={this.handleChange}>
                             <LinkTab label="Shared Itineraries" href="page1" />
                             <LinkTab label="Viewable Itineraries" href="page2" />
                             {/* <LinkTab label="Both" href="page3" /> */}
@@ -101,16 +134,11 @@ class Shared extends Component {
                       
                         <SharedWithUser />
                            
-                    </TabContainer>}
-                    {value === 2 && <TabContainer>  <Paper className={classes.search} elevation={1}>
-                        <InputBase className={classes.input} placeholder="Search By Child" />
-                        <IconButton className={classes.iconButton} aria-label="Search">
-                            <SearchIcon />
-                        </IconButton>
-                    </Paper>
+                    
                 
                          
                     </TabContainer>}
+              
                 </div>
             </NoSsr>
         );

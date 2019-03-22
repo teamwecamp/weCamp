@@ -91,6 +91,9 @@ class SharedWithUser extends Component {
             
             <Paper className={classes.root}>
                 {JSON.stringify(this.props.sharedAccess.user_child_id)}
+                <button tabindex="0" class="MuiButtonBase-root-123 MuiButton-root-101 MuiButton-textSecondary-104 MuiButton-flat-105 MuiButton-flatSecondary-107 MuiButton-outlined-108" type="button">
+                    ...
+</button>
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>

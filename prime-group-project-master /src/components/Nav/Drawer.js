@@ -71,16 +71,16 @@ class NavBar extends Component {
                             <ListItemText primary={'User Profile'} />
                         </ListItem>
                     </Link>
-                    <Link component={RouterLink} to="/favorites">
-                        <ListItem>
-                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
-                            <ListItemText primary={'Favorite'} />
-                        </ListItem>
-                    </Link>
                     <Link component={RouterLink} to="/search">
                         <ListItem>
                             <ListItemIcon><SearchIcon /></ListItemIcon>
                             <ListItemText primary={'Search'} />
+                        </ListItem>
+                    </Link>
+                    <Link component={RouterLink} to="/favorites">
+                        <ListItem>
+                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
+                            <ListItemText primary={'Favorite'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/itinerary">
