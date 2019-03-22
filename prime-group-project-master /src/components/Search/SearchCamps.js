@@ -39,17 +39,17 @@ const accessibility = ["preferred", "not preferred"];
 class SearchCamps extends Component {
 
     state = {
-        minAge: "0",
-        maxAge: "100",
+        minAge: 0,
+        maxAge: 99,
         gender: 3,
         religion: "no",
         type: "overnight",
-        activityCategory: "outdoor/adventure",
-        activityType: "hiking",
-        startDate: "01/01/2019",
-        endDate: "12/31/2019",
-        minCost: "0",
-        maxCost: "10000",
+        activityCategory: 3,
+        activityType: 17,
+        startDate: '01/01/2019',
+        endDate: '12/31/2019',
+        minCost: 0,
+        maxCost: 10000,
         accessibility: "no",
         state: "Minnesota",
         region: "Northern MN",
@@ -68,18 +68,25 @@ class SearchCamps extends Component {
     }
 
     setSearchCamps = (searchObject) => {
-        const action = { type: 'FETCH_SEARCH_CAMPS', payload:searchObject  }
+        let action;
+        if (searchObject) {
+            action = {
+                type: 'FETCH_SEARCH_CAMPS', payload: searchObject
+            }
+        } else {
+            action = { type: 'FETCH_SEARCH_CAMPS', payload: this.state }
+        }
         this.props.dispatch(action);
         console.log('action', action);
     }
 
     handleSearchChange = propertyName => event => {
-        this.setState ({
+        this.setState({
             [propertyName]: event.target.value
         })
-        let searchObject = {...this.state,[propertyName]: event.target.value};
+        let searchObject = { ...this.state, [propertyName]: event.target.value };
         console.log('event.target.value', event.target.value);
-        setTimeout(() => this.setSearchCamps(searchObject),500);
+        setTimeout(() => this.setSearchCamps(searchObject), 500);
 
     };
 
@@ -257,8 +264,8 @@ class SearchCamps extends Component {
                         style={{ width: 175 }}
                         margin="normal"
                     >
-                    <MenuItem key={0} value={0}>
-                                    All
+                        <MenuItem key={0} value={0}>
+                            All
                                 </MenuItem>
                         {this.props.dropDown.activityCategory !== undefined &&
                             this.props.dropDown.activityCategory.map(type => (

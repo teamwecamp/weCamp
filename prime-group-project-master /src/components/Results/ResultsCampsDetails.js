@@ -57,7 +57,7 @@ const styles = theme => ({
         transform: 'rotate(180deg)',
     },
     expandInfo: {
-        fontSize: 20,
+        fontSize: 16,
     },
     eventButton: {
         margin: 6,
