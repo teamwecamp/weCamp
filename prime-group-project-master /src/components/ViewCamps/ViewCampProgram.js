@@ -5,7 +5,8 @@ import moment from 'moment';
 // this here is Material UI 
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+// import { withStyles,  } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,14 +19,15 @@ import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from "@material-ui/core/TextField";
 import Checkbox from '@material-ui/core/Checkbox';
-import Switch from '@material-ui/core/Switch';
+// import Switch from '@material-ui/core/Switch';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 
 
 // this is materia UI table
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: '#127696', 
         color: theme.palette.common.white,
     },
     body: {
@@ -54,8 +56,17 @@ const styles = theme => ({
         },
     },
 
-    // this is for material UI button
+    
 
+});
+
+// material UI table heading color
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+    },
 });
 
 
@@ -102,8 +113,6 @@ const BootstrapInput = withStyles(theme => ({
 
 // this is where the component starts
 class ViewCampProgram extends Component {
-
-// this is for selects material UI
 
     constructor(props) {
         super(props);
@@ -204,8 +213,10 @@ class ViewCampProgram extends Component {
         return(
           
             <Paper className={classes.root}>
+             <MuiThemeProvider theme={theme}>
                 <Table className={classes.table}>
-                    <TableHead>
+                   
+                        <TableHead color="primary"  >
                         <TableRow>
                             <CustomTableCell>Program</CustomTableCell>
                             <CustomTableCell>Cost</CustomTableCell>
@@ -222,6 +233,7 @@ class ViewCampProgram extends Component {
 
                         </TableRow>
                     </TableHead>
+                    
                     <TableBody>
                         {/* {JSON.stringify(this.props.campProgram)} */}
                         {/* {JSON.stringify(this.props.itinerary)}  */}
@@ -259,6 +271,7 @@ class ViewCampProgram extends Component {
                         
                     </TableBody>
                 </Table>
+                 </MuiThemeProvider>
 
                 {/* this is materai UI selects */}
 
@@ -330,7 +343,9 @@ class ViewCampProgram extends Component {
                         
                         </FormControl>
                         <div>
+                        <MuiThemeProvider theme={theme}>
                         <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
+                        </MuiThemeProvider>
                         </div>
                 </form>
             </Paper>
