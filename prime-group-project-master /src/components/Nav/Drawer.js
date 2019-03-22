@@ -17,12 +17,15 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import InfoIcon from '@material-ui/icons/Info';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
-import DescriptionIcon from '@material-ui/icons/Description';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import PeopleIcon from '@material-ui/icons/People';
 import './Nav.css';
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
+import FaceIcon from '@material-ui/icons/Face';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 
@@ -57,22 +60,16 @@ class NavBar extends Component {
             <div className={classes.list}>
                
                 <List>
-                    <Link component={RouterLink} to="/about">
+                    <Link component={RouterLink} to="/landing">
                         <ListItem button>
-                            <ListItemIcon><InfoIcon /></ListItemIcon>
-                            <ListItemText inset primary='About' />
+                            <ListItemIcon><HomeIcon /></ListItemIcon>
+                            <ListItemText inset primary='Home' />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/userprofileinfo/user">
                         <ListItem>
-                            <ListItemIcon><PeopleIcon /></ListItemIcon>
+                            <ListItemIcon><FaceIcon /></ListItemIcon>
                             <ListItemText primary={'User Profile'} />
-                        </ListItem>
-                    </Link>
-                    <Link component={RouterLink} to="/favorites">
-                        <ListItem>
-                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
-                            <ListItemText primary={'Favorite'} />
                         </ListItem>
                     </Link>
                     <Link component={RouterLink} to="/search">
@@ -81,9 +78,15 @@ class NavBar extends Component {
                             <ListItemText primary={'Search'} />
                         </ListItem>
                     </Link>
+                    <Link component={RouterLink} to="/favorites">
+                        <ListItem>
+                            <ListItemIcon><FavoriteIcon /></ListItemIcon>
+                            <ListItemText primary={'Favorite'} />
+                        </ListItem>
+                    </Link>
                     <Link component={RouterLink} to="/itinerary">
                         <ListItem>
-                            <ListItemIcon><DescriptionIcon /></ListItemIcon>
+                            <ListItemIcon><CalendarTodayIcon /></ListItemIcon>
                             <ListItemText primary={'Itinerary'} />
                         </ListItem>
                     </Link>
@@ -95,7 +98,7 @@ class NavBar extends Component {
                     </Link>
                     <Link component={RouterLink} to="/campregistration">
                         <ListItem>
-                            <ListItemIcon><PeopleIcon /></ListItemIcon>
+                            <ListItemIcon><AssignmentIcon /></ListItemIcon>
                             <ListItemText primary={'Camp Administrators'} />
                         </ListItem>
                     </Link>

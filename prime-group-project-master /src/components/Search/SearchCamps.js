@@ -15,7 +15,7 @@ const styles = theme => ({
     },
     textField: {
         marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit
+        marginRight: theme.spacing.unit,
     },
     description: {
         marginLeft: theme.spacing.unit,
@@ -39,17 +39,23 @@ const accessibility = ["preferred", "not preferred"];
 class SearchCamps extends Component {
 
     state = {
+         
         minAge: "0",
         maxAge: "100",
         gender: "3",
+
+        minAge: 0,
+        maxAge: 99,
+        gender: 3,
+        master
         religion: "no",
         type: "overnight",
-        activityCategory: "outdoor/adventure",
-        activityType: "hiking",
-        startDate: "01/01/2019",
-        endDate: "12/31/2019",
-        minCost: "0",
-        maxCost: "10000",
+        activityCategory: 3,
+        activityType: 17,
+        startDate: '01/01/2019',
+        endDate: '12/31/2019',
+        minCost: 0,
+        maxCost: 10000,
         accessibility: "no",
         state: "Minnesota",
         region: "Northern MN",
@@ -57,10 +63,9 @@ class SearchCamps extends Component {
 
 
     componentDidMount = () => {
-        // this.setSearchCamps();
+        this.setSearchCamps();
         this.getDropDowns();
     }
-
 
     moveToCamp = (page) => {
         console.log(page);
@@ -69,18 +74,25 @@ class SearchCamps extends Component {
     }
 
     setSearchCamps = (searchObject) => {
-        const action = { type: 'FETCH_SEARCH_CAMPS', payload:searchObject  }
+        let action;
+        if (searchObject) {
+            action = {
+                type: 'FETCH_SEARCH_CAMPS', payload: searchObject
+            }
+        } else {
+            action = { type: 'FETCH_SEARCH_CAMPS', payload: this.state }
+        }
         this.props.dispatch(action);
         console.log('action', action);
     }
 
     handleSearchChange = propertyName => event => {
-        this.setState ({
+        this.setState({
             [propertyName]: event.target.value
         })
-        let searchObject = {...this.state,[propertyName]: event.target.value};
+        let searchObject = { ...this.state, [propertyName]: event.target.value };
         console.log('event.target.value', event.target.value);
-        setTimeout(() => this.setSearchCamps(searchObject),500);
+        setTimeout(() => this.setSearchCamps(searchObject), 500);
 
     };
 
@@ -117,6 +129,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
+                        style={{ width: 100, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -127,6 +140,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
+                        style={{ width: 100, padding: 0 }}
                     />
                     <TextField
                         id="outlined-type"
@@ -141,7 +155,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 90 }}
                         margin="normal"
                     >
                         {this.props.dropDown.gender !== undefined &&
@@ -164,7 +178,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 140 }}
                         margin="normal"
                     >
                         {religion.map(type => (
@@ -188,6 +202,7 @@ class SearchCamps extends Component {
                         }}
                         style={{ width: 175 }}
                         margin="normal"
+                        style={{ width: 120, padding: 0 }}
                     >
                         {this.props.dropDown.campType !== undefined &&
                             this.props.dropDown.campType.map(type => (
@@ -232,7 +247,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 141, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.regions !== undefined &&
@@ -255,11 +270,11 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 178, padding: 0 }}
                         margin="normal"
                     >
-                    <MenuItem key={0} value={0}>
-                                    All
+                        <MenuItem key={0} value={0}>
+                            All
                                 </MenuItem>
                         {this.props.dropDown.activityCategory !== undefined &&
                             this.props.dropDown.activityCategory.map(type => (
@@ -281,7 +296,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 170, padding: 0 }}
                         margin="normal"
                     >
                         {this.props.dropDown.activities !== undefined &&
@@ -303,6 +318,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
                         }}
+                        style={{ width: 179, padding: 0 }}
                     />
                     <TextField
                         id="outlined-enddate"
@@ -316,6 +332,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
                         }}
+                        style={{ width: 179, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -329,6 +346,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                         }}
+                        style={{ width: 110, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
@@ -342,6 +360,7 @@ class SearchCamps extends Component {
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                         }}
+                        style={{ width: 110, padding: 0 }}
                     />
                     <TextField
                         id="outlined-type"
@@ -356,7 +375,7 @@ class SearchCamps extends Component {
                                 className: classes.menu
                             }
                         }}
-                        style={{ width: 175 }}
+                        style={{ width: 145 }}
                         margin="normal"
                     >
                         {accessibility.map(type => (
@@ -365,13 +384,37 @@ class SearchCamps extends Component {
                             </MenuItem>
                         ))}
                     </TextField>
+
+                    <TextField
+                        id="outlined-type"
+                        select
+                        label="State"
+                        className={classes.textField}
+                        value={this.state.state}
+                        onChange={this.handleSearchChange("state")}
+                        variant="outlined"
+                        SelectProps={{
+                            MenuProps: {
+                                className: classes.menu
+                            }
+                        }}
+                        style={{ width: 160, padding: 0 }}
+                        margin="normal"
+                    >
+                        {this.props.dropDown.states !== undefined &&
+                            this.props.dropDown.states.map(type => (
+                                <MenuItem key={type.id} value={type.id}>
+                                    {type.state}
+                                </MenuItem>
+                            ))}
+                    </TextField>
+
                     <Button type="submit">Click me!</Button>
                 </form>
                 <div>
                     <Results moveToCamp={this.moveToCamp} />
                 </div>
             </div>
-
         )
     }
 }

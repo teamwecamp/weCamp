@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function* fetchSearchCamps(action){
-    console.log('this is sate from search',action.payload)
+    console.log('this is state from search', action.payload)
     try{
         const response = yield axios.get(`/api/search/searchresult`, {params: action.payload});
         const nextAction = {type: 'SET_SEARCH_CAMPS', payload: response.data}
