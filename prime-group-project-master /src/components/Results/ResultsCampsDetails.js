@@ -31,10 +31,10 @@ const theme = createMuiTheme({
 
 const styles = theme => ({
     media: {
-        height: 260,
+        height: 220,
     },
     card: {
-        width: 500,
+        width: 400,
     },
     actions: {
         display: 'flex',
