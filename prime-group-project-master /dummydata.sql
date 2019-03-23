@@ -42,7 +42,7 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 'http://www.campwinnebago.org', E'Camp Winnebago\'s mission is to provide recreational opportunities for people of ALL abilities in a scenic natural environment, 
 which we have been doing since 1968. ​We are situated in the beautiful Winnebago Valley in the globally rare blufflands of the famed driftless area.');
 
--- camp #5 without social media (no programs)
+-- camp #5 without social media 
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Koronis', '15752 County Road 181  Paynesville, MN 56362-9377', 3, '6/12/2019', '8/3/2019', 3, true, 
 195, 680, false, 8556221973, 'https://www.koronisministries.org/files/tables/content/10569568/fields/primaryimage/00b97725562041e9b41f85945eb655a3/kayak+01.jpg?width=400&height=300&mode=crop', 
@@ -126,12 +126,14 @@ Grand Marais, MN 55604-4501', 1, '6/10/2019', '8/4/2019', 1, false, 450, 5350,
 Waters Canoe Area Wilderness. In fact, camps from all over the midwest drive for hours by van just to start their camping adventures at our doorstep, and we 
 do not blame them one bit. Between adventures, campers live in cabins of six boys and two counselors.');
 
+-- programs
 INSERT INTO "camp_program" ("title", "gender_id", "type_id", "cost", "age_min", "age_max", "camp_id") 
 VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1, 750, 13, 18, 1), 
 ('Womens Way Canoe Trip', 2, 1, 500, 18, 99, 1), ('Two Weeks', 3, 1, 3025, 8, 16, 2), ('Four Weeks', 3, 1, 5775, 8, 16, 2), 
 ('Six Weeks', 3, 1, 8450, 8, 16, 2), ('Day Play', 3, 2, 25, 7, 8, 3), ('Explorer Camp', 3, 1, 440, 9, 14, 3), 
 ('Confirmation Camp', 3, 1, 440, 12, 16, 3), ('Kids & Teens low care', 3, 1, 950, 5, 19, 4), ('Kids & Teens medium care', 3, 1, 1250, 5, 19, 4), 
-('Kids & Teens high care', 3, 1, 1350, 5, 19, 4);
+('Kids & Teens high care', 3, 1, 1350, 5, 19, 4), ('Trailblazer', 3, 1, 270, 8, 12, 5), ('Teddy Bear Camp', 3, 1, 195, 6, 9, 5), ('Pathway Camp', 3, 1, 450, 9, 13, 5),
+('Ultimate Challenge', 3, 1, 460, 12, 17, 5);
 
 -- program dates without start times
 INSERT INTO "program_dates" ("start_date", "end_date", "program_id", "registration_start_date", "registration_deadline") 
@@ -139,7 +141,9 @@ VALUES ('5/24/2019', '5/27/2019', 1, '3/1/2019', '5/23/2019'), ('6/16/2019', '6/
 ('7/5/2019', '7/13/2019', 2, '3/1/2019', '5/31/2019'), ('7/14/2019', '7/22/2019', 2, '3/1/2019', '5/31/2019'), 
 ('7/24/2019', '8/1/2019', 2, '3/1/2019', '5/31/2019'), ('7/14/2019', '7/20/2019', 3, '3/1/2019', '5/31/2019'), ('7/10/2019', 
 '7/14/2019', 10, '3/1/2019', '6/1/2019'), ('7/10/2019', '7/14/2019', 11, '3/1/2019', '6/1/2019'), ('7/10/2019', '7/14/2019', 12, 
-'3/1/2019', '6/1/2019');
+'3/1/2019', '6/1/2019'), ('6/12/19', '6/15/19', 13, '2/15/19', '6/1/19'), ('7/28/19', '7/31/19', 13, '2/15/19', '6/1/19'), ('6/30/19', '7/2/19',
+14, '2/15/19', '6/1/19'), ('7/11/19', '7/13/19', 14, '2/15/19', '6/1/19'), ('6/23/19', '6/28/19', 15, '2/15/19', '6/1/19'), 
+('7/14/19', '7/19/19', 15, '2/15/19', '6/1/19'), ('7/14/19', '7/20/19', 16, '2/15/19', '6/1/19');
 
 -- program dates with start times
 INSERT INTO "program_dates" ("start_date", "end_date", "start_time", "end_time", "program_id", "registration_start_date", 
@@ -149,14 +153,17 @@ INSERT INTO "program_dates" ("start_date", "end_date", "start_time", "end_time",
 ('6/9/2019', '6/14/2019', '3:00', '13:00', 9, '2/15/2019', '6/1/2019'), ('7/28/2019', '8/2/2019', '3:00', '13:00', 9, '2/15/2019', 
 '6/1/2019');
 
-
+-- camp activities
 INSERT INTO "camps_activities" ("activity_id", "camp_id") VALUES (17, 1), (19, 1), (5, 2), (3, 2), (13, 2), (19, 2), (17, 2), 
-(9, 2), (6, 2), (11, 2), (20, 3), (21, 3), (17, 3), (19, 3), (5, 3), (6, 3), (5,4), (6,4), (22,4), (17,4), (21,4), (20,4), (19,4);
+(9, 2), (6, 2), (11, 2), (20, 3), (21, 3), (17, 3), (19, 3), (5, 3), (6, 3), (5,4), (6,4), (22,4), (17,4), (21,4), (20,4), (19,4),
+(5,5), (6,5), (17, 5), (19, 5), (20, 5), (11, 5), (21, 5), (14, 5), (22, 5);
 
-INSERT INTO "program_activities" ("activity_id", "program_id") 
-VALUES (17, 1), (19, 2), (17, 2), (17, 3), (19, 3), (5, 4), (3, 4), (13, 4), (19, 4), (17, 4), (9, 4), (6, 4), (11, 4), 
-(5, 5), (3, 5), (13, 5), (19, 5), (17, 5), (9, 5), (6, 5), (11, 5), (5, 6), (3, 6), (13, 6), (19, 6), (17, 6), (9, 6), 
-(6, 6), (11, 6), (20, 7), (21, 7), (20, 8), (21, 8), (17, 8), (19, 8), (5, 8), (6, 8), (20, 9), (21, 9), (17, 9), (19, 9), 
-(5, 9), (6, 9), (5,10), (6,10), (22,10), (17,10), (21,10), (20,10), (19,10), (5,11), (6,11), (22,11), (17,11), (21,11), 
-(20,11), (19,11), (5,12), (6,12), (22,12), (17,12), (21,12), (20,12), (19,12);
+-- program activites
+INSERT INTO "program_activities" ("activity_id", "program_id") VALUES (17, 1), (19, 2), (17, 2), (17, 3), (19, 3), (5, 4), (3, 4), 
+(13, 4), (19, 4), (17, 4), (9, 4), (6, 4), (11, 4), (5, 5), (3, 5), (13, 5), (19, 5), (17, 5), (9, 5), (6, 5), (11, 5), (5, 6), 
+(3, 6), (13, 6), (19, 6), (17, 6), (9, 6), (6, 6), (11, 6), (20, 7), (21, 7), (20, 8), (21, 8), (17, 8), (19, 8), (5, 8), (6, 8), 
+(20, 9), (21, 9), (17, 9), (19, 9), (5, 9), (6, 9), (5,10), (6,10), (22,10), (17,10), (21,10), (20,10), (19,10), (5,11), (6,11), 
+(22,11), (17,11), (21,11), (20,11), (19,11), (5,12), (6,12), (22,12), (17,12), (21,12), (20,12), (19,12), (5,13), (6, 13), 
+(17, 13), (19, 13), (20, 13), (21, 13), (14, 13), (20, 14), (21, 14), (22, 14), (5, 15), (6, 15), (17, 15), (19, 15), (20, 15), 
+(11, 15), (19, 16), (20, 16), (22, 16), (17, 16);
 
