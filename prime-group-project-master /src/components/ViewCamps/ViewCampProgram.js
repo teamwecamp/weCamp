@@ -5,8 +5,7 @@ import moment from 'moment';
 // this here is Material UI 
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
-// import { withStyles,  } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -19,15 +18,14 @@ import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from "@material-ui/core/TextField";
 import Checkbox from '@material-ui/core/Checkbox';
-// import Switch from '@material-ui/core/Switch';
-import { createMuiTheme } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
 
 
 
 // this is materia UI table
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: '#127696', 
+        backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
     },
     body: {
@@ -56,17 +54,8 @@ const styles = theme => ({
         },
     },
 
-    
+    // this is for material UI button
 
-});
-
-// material UI table heading color
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#127696',
-        },
-    },
 });
 
 
@@ -114,13 +103,17 @@ const BootstrapInput = withStyles(theme => ({
 // this is where the component starts
 class ViewCampProgram extends Component {
 
+// this is for selects material UI
+
     constructor(props) {
         super(props);
         this.state = {
             kids: 0,
             status: 0,
-        };
+            
+            
 
+        };
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -179,19 +172,16 @@ class ViewCampProgram extends Component {
 
     addItinerary = event => {
         console.log('this is inside of addItinerary');
-        const newState = [];
-        for (let key in this.state) {
-            if (this.state[key] === true) {
-                newState.push(parseInt(key));
-            }
-        }
-        console.log('This is newState', newState);
-        let itinerary = {};
-        itinerary.kids = this.state.kids;
-        itinerary.status = this.state.status;
-        itinerary.camps = newState;
-        const action = { type: 'ADD_ITINERARY', payload: itinerary }
-        this.props.dispatch(action);
+        // const newState = [];
+        // for (let key in this.state) {
+        //     if (this.state[key] === true) {
+        //         newState.push(parseInt(key));
+        //     }
+        // }
+        // console.log('This is newState', newState);
+        // newState.push(this.state);
+        // const action = { type: 'ADD_ITINERARY', payload: newState }
+        // this.props.dispatch(action);
         this.props.history.push('/itinerary');
     }
 
@@ -213,10 +203,8 @@ class ViewCampProgram extends Component {
         return(
           
             <Paper className={classes.root}>
-             <MuiThemeProvider theme={theme}>
                 <Table className={classes.table}>
-                   
-                        <TableHead color="primary"  >
+                    <TableHead>
                         <TableRow>
                             <CustomTableCell>Program</CustomTableCell>
                             <CustomTableCell>Cost</CustomTableCell>
@@ -233,7 +221,6 @@ class ViewCampProgram extends Component {
 
                         </TableRow>
                     </TableHead>
-                    
                     <TableBody>
                         {/* {JSON.stringify(this.props.campProgram)} */}
                         {/* {JSON.stringify(this.props.itinerary)}  */}
@@ -271,7 +258,6 @@ class ViewCampProgram extends Component {
                         
                     </TableBody>
                 </Table>
-                 </MuiThemeProvider>
 
                 {/* this is materai UI selects */}
 
@@ -343,9 +329,7 @@ class ViewCampProgram extends Component {
                         
                         </FormControl>
                         <div>
-                        <MuiThemeProvider theme={theme}>
                         <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
-                        </MuiThemeProvider>
                         </div>
                 </form>
             </Paper>

@@ -6,6 +6,16 @@ import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+    },
+});
 
 class ViewCamps extends Component {
     static propTypes = {
@@ -117,12 +127,14 @@ class ViewCamps extends Component {
                 <p className="summary">{camp.summary}</p>
                 <ViewCampsContact camp={camp} />
                 <br />
-                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
-                    Add to Favorites
-                </Button>
-                <Button className="campButton" variant="contained" color="primary" size="large" onClick={this.goToProgram}>
-                    View Program Details
-                </Button>
+                <MuiThemeProvider them={theme}>
+                    <Button className="faveButton" variant="contained" color="primary" size="large" onClick={this.updateFavorite}>
+                        Add to Favorites
+                    </Button>
+                    <Button className="viewButton" variant="contained" color="primary" size="large" onClick={this.goToProgram}>
+                        View Program Details
+                    </Button>
+                </MuiThemeProvider>
             </div>
         )
     }

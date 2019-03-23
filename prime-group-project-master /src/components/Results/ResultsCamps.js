@@ -35,7 +35,7 @@ class ResultsCamps extends Component {
         return (
             <div>
                 <h1>Results</h1>
-                {JSON.stringify(this.props.results)}
+                {/* {JSON.stringify(this.props.results)} */}
                 {this.props.devResults !== undefined &&
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.resultsDetails()}

@@ -21,7 +21,7 @@ const theme = createMuiTheme({
     palette: {
         primary: {
             main: '#e6e1cf',
-            
+
         },
         secondary: {
             main: '#af9818',
@@ -34,7 +34,7 @@ const theme = createMuiTheme({
 
 function TabContainer(props) {
     return (
-        <Typography component="div" style={{ padding: 8 * 3, color: 'rgb(57, 92, 104)'  }}>
+        <Typography component="div" style={{ padding: 8 * 3, color: 'rgb(57, 92, 104)' }}>
             {props.children}
         </Typography>
     );
@@ -53,9 +53,9 @@ const styles = theme => ({
         flexGrow: 1,
         width: "100%",
         backgroundColor: theme.palette.background.paper,
-        
+
     },
-    search:{
+    search: {
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
@@ -67,7 +67,7 @@ const styles = theme => ({
         flex: 1,
     },
     iconButton: {
-        padding: 10, 
+        padding: 10,
     },
     divider: {
         width: 1,
@@ -108,36 +108,39 @@ class Shared extends Component {
         const { classes } = this.props;
         const { value } = this.state;
         return (
-            <NoSsr>
-                <MuiThemeProvider theme={theme}>
-                <div className={classes.root}>
-                    <AppBar  position="static">
-                        <Tabs 
-                        className="tabs"
-                        variant="fullWidth" 
-                        value={value} 
-                        onChange={this.handleChange}>
-                            <LinkTab label="Shared Itineraries" href="page1" />
-                            <LinkTab label="Viewable Itineraries" href="page2" />
-                            {/* <LinkTab label="Both" href="page3" /> */}
-                        </Tabs>
-                    </AppBar>
-                    {value === 0 && <TabContainer>
+            <div>
+                <h1>Network</h1>
+                <NoSsr>
+                    <MuiThemeProvider theme={theme}>
+                        <div className={classes.root}>
+                            <AppBar position="static">
+                                <Tabs
+                                    className="tabs"
+                                    variant="fullWidth"
+                                    value={value}
+                                    onChange={this.handleChange}>
+                                    <LinkTab label="Shared Itineraries" href="page1" />
+                                    <LinkTab label="Viewable Itineraries" href="page2" />
+                                    {/* <LinkTab label="Both" href="page3" /> */}
+                                </Tabs>
+                            </AppBar>
+                            {value === 0 && <TabContainer>
 
-                        <UserSharedWith />
-                          </TabContainer>}
-                    {value === 1 && <TabContainer>
-                      
-                        <SharedWithUser />
-                           
-                    
-                
-                         
-                    </TabContainer>}
-              
-                </div>
-                </MuiThemeProvider>
-            </NoSsr>
+                                <UserSharedWith />
+                            </TabContainer>}
+                            {value === 1 && <TabContainer>
+
+                                <SharedWithUser />
+
+
+
+
+                            </TabContainer>}
+
+                        </div>
+                    </MuiThemeProvider>
+                </NoSsr>
+            </div>
         );
     }
 }
