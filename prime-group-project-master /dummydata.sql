@@ -51,7 +51,7 @@ a place of fun and adventure for over six dacades!  Campers live in rustic cabin
 kids love like archery, fishing, swimming, nature arts & crafts, boating, fishing, sports, campfires, sleep-outs, s\'mores, horseback riding, and much more, 
 led by our highly trained staff committed to safety, faith, and the individual worth of each camper.');
 
--- camp #6 without insta and twitter (no programs)
+-- camp #6 without insta and twitter 
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Reinbows Inc of Windom', '43341 480th Ave Windom, MN 56101-3326', 2, '6/10/19', '6/14/19', 
 3, false, 300, 300, false, 5078220526, 'https://www.facebook.com/ReinbowsInc/', 'https://www.reinbowsinc.org/wp-content/uploads/2018/11/IMG_8094.jpg', 
@@ -132,8 +132,10 @@ VALUES ('Memorial Day Work Weekend', 3, 1, 0, 13, 99, 1), ('Main Sessions', 3, 1
 ('Womens Way Canoe Trip', 2, 1, 500, 18, 99, 1), ('Two Weeks', 3, 1, 3025, 8, 16, 2), ('Four Weeks', 3, 1, 5775, 8, 16, 2), 
 ('Six Weeks', 3, 1, 8450, 8, 16, 2), ('Day Play', 3, 2, 25, 7, 8, 3), ('Explorer Camp', 3, 1, 440, 9, 14, 3), 
 ('Confirmation Camp', 3, 1, 440, 12, 16, 3), ('Kids & Teens low care', 3, 1, 950, 5, 19, 4), ('Kids & Teens medium care', 3, 1, 1250, 5, 19, 4), 
-('Kids & Teens high care', 3, 1, 1350, 5, 19, 4), ('Trailblazer', 3, 1, 270, 8, 12, 5), ('Teddy Bear Camp', 3, 1, 195, 6, 9, 5), ('Pathway Camp', 3, 1, 450, 9, 13, 5),
-('Ultimate Challenge', 3, 1, 460, 12, 17, 5), ('Horse Camp', 3, 2, 300, 7, 14, 6), ('Advanced Horse Camp', 3, 2, 300, 7, 14, 6);
+('Kids & Teens high care', 3, 1, 1350, 5, 19, 4), ('Trailblazer', 3, 1, 270, 8, 12, 5), ('Teddy Bear Camp', 3, 1, 195, 6, 9, 5), 
+('Pathway Camp', 3, 1, 450, 9, 13, 5), ('Ultimate Challenge', 3, 1, 460, 12, 17, 5), ('Horse Camp', 3, 2, 300, 7, 14, 6), 
+('Advanced Horse Camp', 3, 2, 300, 7, 14, 6), ('Nordic Cooking and Culture', 3, 2, 60, 6, 11, 7), ('Viking Day Camp', 3, 2, 60, 
+6, 11, 7), ('Sommar På Slottet', 3, 2, 250, 7, 13, 7);
 
 -- program dates without start times
 INSERT INTO "program_dates" ("start_date", "end_date", "program_id", "registration_start_date", "registration_deadline") 
@@ -153,12 +155,14 @@ INSERT INTO "program_dates" ("start_date", "end_date", "start_time", "end_time",
 ('6/9/2019', '6/14/2019', '3:00', '13:00', 9, '2/15/2019', '6/1/2019'), ('7/28/2019', '8/2/2019', '3:00', '13:00', 9, '2/15/2019', 
 '6/1/2019'), ('6/10/19', '6/14/19', '9:00', '13:00', 17, '3/3/19', '5/31/19'), ('7/8/19', '7/12/19', '9:00', '13:00', 17, '3/3/19', 
 '5/31/19'), ('7/29/19', '8/2/19', '9:00', '13:00', 18, '3/3/19', '5/31/19'), ('8/5/19', '8/9/19', '9:00', '13:00', 18, '3/3/19', 
-'5/31/19');
+'5/31/19'), ('7/18/19', '7/18/19', '9:00', '15:00', 19, '3/1/19', '7/1/19'), ('7/11/19', '7/11/19', '9:00', '15:00', 20, '3/1/19', 
+'7/1/19'), ('8/8/19', '8/8/19', '9:00', '15:00', 20, '3/1/19', '7/1/19'), ('6/24/19', '6/27/19', '9:00', '15:00', 21, '3/1/19', 
+'7/1/19');
 
 -- camp activities
 INSERT INTO "camps_activities" ("activity_id", "camp_id") VALUES (17, 1), (19, 1), (5, 2), (3, 2), (13, 2), (19, 2), (17, 2), 
 (9, 2), (6, 2), (11, 2), (20, 3), (21, 3), (17, 3), (19, 3), (5, 3), (6, 3), (5,4), (6,4), (22,4), (17,4), (21,4), (20,4), (19,4),
-(5,5), (6,5), (17, 5), (19, 5), (20, 5), (11, 5), (21, 5), (14, 5), (22, 5), (9,6);
+(5,5), (6,5), (17, 5), (19, 5), (20, 5), (11, 5), (21, 5), (14, 5), (22, 5), (9,6), (4, 7), (21, 7), (1, 7), (23,7);
 
 -- program activites
 INSERT INTO "program_activities" ("activity_id", "program_id") VALUES (17, 1), (19, 2), (17, 2), (17, 3), (19, 3), (5, 4), (3, 4), 
@@ -167,5 +171,5 @@ INSERT INTO "program_activities" ("activity_id", "program_id") VALUES (17, 1), (
 (20, 9), (21, 9), (17, 9), (19, 9), (5, 9), (6, 9), (5,10), (6,10), (22,10), (17,10), (21,10), (20,10), (19,10), (5,11), (6,11), 
 (22,11), (17,11), (21,11), (20,11), (19,11), (5,12), (6,12), (22,12), (17,12), (21,12), (20,12), (19,12), (5,13), (6, 13), 
 (17, 13), (19, 13), (20, 13), (21, 13), (14, 13), (20, 14), (21, 14), (22, 14), (5, 15), (6, 15), (17, 15), (19, 15), (20, 15), 
-(11, 15), (19, 16), (20, 16), (22, 16), (17, 16), (9,17), (9,18);
+(11, 15), (19, 16), (20, 16), (22, 16), (17, 16), (9,17), (9,18), (4,19), (21,19), (1,20), (21,20), (21,21), (23,21), (1,21);
 
