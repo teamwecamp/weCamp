@@ -60,7 +60,7 @@ includes a lot of hands on horse time including safety, grooming, leading, ridin
 related camp crafts! For kids’ ages 7-14 years old who want to have fun learning about, caring for, and riding horses! Participants enjoy the experience 
 of feeling like they own their own horse during horse camp!');
 
--- camp #7 with insta, fb and twitter (no programs)
+-- camp #7 with insta, fb and twitter
 INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('ASI Summer Day Camps', '2600 Park Avenue Minneapolis MN 55407', 4, 
 '6/24/2019', '8/15/19', 3, false, 60, 125, true, 6128714907, 'https://www.facebook.com/AmericanSwedishInstitute', 'https://twitter.com/AmSwedInstitute', 
