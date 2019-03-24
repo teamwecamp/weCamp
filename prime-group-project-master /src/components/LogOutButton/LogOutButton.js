@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 
 const LogOutButton = props => (
-   <Button className="nav-link" color="white"
+   <button className="log-out" color="white"
   
     // This button shows up in multiple locations and is styled differently
     // because it's styled differently depending on where it is used, the className
@@ -14,7 +14,7 @@ const LogOutButton = props => (
   >
       Log Out
     
-   </Button>
+   </button>
 );
 
 // This component doesn't need 'mapStateToProps'
