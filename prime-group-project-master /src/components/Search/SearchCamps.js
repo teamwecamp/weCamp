@@ -11,7 +11,8 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
     container: {
         display: "flex",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        margin: "dense",
     },
     textField: {
         marginLeft: theme.spacing.unit,
@@ -127,7 +128,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
-                        style={{ width: 100, padding: 0 }}
+                        style={{ width: 175, padding: 0 }}
                     />
                     <TextField
                         id="outlined-number"
