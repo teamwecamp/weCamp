@@ -65,7 +65,7 @@ class LandingSponsoredCamps extends Component {
                                         title="Camp Pic"
                                     />
                                     <CardActions className={classes.CardActions}>
-                                        <Button className="eventButton" onClick={this.moveToCamp} size="small">camp page</Button>
+                                        <Button variant="outlined" className="eventButton" onClick={this.moveToCamp} size="small">camp details</Button>
                                     </CardActions>
                                 </CardContent>
                             </MuiThemeProvider>

@@ -31,10 +31,10 @@ const theme = createMuiTheme({
 
 const styles = theme => ({
     media: {
-        height: 260,
+        height: 220,
     },
     card: {
-        width: 500,
+        width: 400,
     },
     actions: {
         display: 'flex',
@@ -98,7 +98,7 @@ class ResultsDetails extends Component {
                                     />
                                     <CardActions className={classes.actions} disableActionSpacing>
                                         <ResultsFavorites camp={this.props.camp}/>
-                                        <Button variant="outlined" className={classes.eventButton} onClick={this.moveToCamp} backgroundColor="primary" size="small">camp page</Button>
+                                        <Button variant="outlined" className={classes.eventButton} onClick={this.moveToCamp} backgroundColor="primary" size="small">camp details</Button>
                                         <IconButton
                                             className={classnames(classes.expand, {
                                                 [classes.expandOpen]: this.state.expanded,

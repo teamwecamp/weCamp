@@ -67,5 +67,15 @@ input {
 
 h1 {
     text-align: center;
+    /* font-family: 'Oswald', sans-serif; */
 }
 
+.wecamp {
+    font-family: 'Oswald', sans-serif;
+    color: #395c68;
+}
+
+.slogan {
+    text-align: center;
+    
+}
