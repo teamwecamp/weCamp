@@ -90,7 +90,7 @@ class Itinerary extends Component {
                         groups={groups}
                         items={items}
                         // default time is set to display May 1, 2019 through Aug 31, 2019 (UNIX)
-                        defaultTimeStart="1556723865000"
+                        defaultTimeStart="1559407540000"
                         defaultTimeEnd="1567351065000"
                         canMove={false}
                         canResize={false}
@@ -109,7 +109,7 @@ class Itinerary extends Component {
                 </table>
                 <p>Calendar View Instructions: to zoom out, click on the teal bar in the itinerary header. To zoom in, click on the date detail bar.</p>
                 <p>Click and hold on the calendar, then move the mouse to slide the view.</p>
-                <ItineraryShare children={groups}/>
+                <ItineraryShare children={groups} />
             </div>
         )
     }

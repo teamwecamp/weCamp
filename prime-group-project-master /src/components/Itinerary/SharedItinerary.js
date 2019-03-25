@@ -16,17 +16,17 @@ class SharedItinerary extends Component {
 
     componentDidMount = () => {
         this.fetchSharedItinerary();
-      
+
     }
-    
+
     fetchSharedItinerary = () => {
         const childId = this.props.match.params.id
         console.log('shared itinary parrams', childId);
         this.props.dispatch({ type: 'FETCH_SHARED_ITINERARY', payload: childId });
         // this.setSharedItinerary();
     }
-   
-    
+
+
 
     itemRenderer = ({
         item,
@@ -102,7 +102,7 @@ class SharedItinerary extends Component {
                         groups={groups}
                         items={items}
                         // default time is set to display May 1, 2019 through Aug 31, 2019 (UNIX)
-                        defaultTimeStart="1556723865000"
+                        defaultTimeStart="1559407540000"
                         defaultTimeEnd="1567351065000"
                         canMove={false}
                         canResize={false}
