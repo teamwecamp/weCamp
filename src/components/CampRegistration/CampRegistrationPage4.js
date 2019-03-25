@@ -72,7 +72,8 @@ class CampRegistrationPage4 extends Component {
 
   handleAddProgram = () => {
     console.log(this.state);
-    Swal.fire('Your information has been received and will be reviewed by our team before be added to the website.')
+    Swal.fire({title: 'Your information has been received and will be reviewed by our team before it is added to the website.',
+    type: 'success'})
     this.props.history.push("/landing");
   };
 

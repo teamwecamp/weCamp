@@ -87,8 +87,8 @@ class Landing extends Component {
         return (
             <div>
                 {/* Site slogan */}
-                <h1 className="wecamp">WeCAMP</h1>
-                <h3 className="slogan">Making summer simple for parents. Fun for kids.</h3>
+                {/* <h1 className="wecamp">WeCAMP</h1> */}
+                <h2 className="slogan">Making summer simple for parents. Fun for kids.</h2>
                 <h5 className="campsGroup">Sponsored Camps</h5>
                 <MuiThemeProvider theme={theme}>
                     <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>

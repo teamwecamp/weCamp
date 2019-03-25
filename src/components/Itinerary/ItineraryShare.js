@@ -50,7 +50,8 @@ class ItineraryShare extends Component {
                     sharedInfo.email = email.value;
                     sharedInfo.child_id = child;
                     this.props.dispatch({type: 'MATCH_USER', payload: sharedInfo});
-
+                    Swal.fire({title: 'Network successfully updated.',
+                            type: 'success'});
                 }).catch((error) => {
                     Swal.fire('something went wrong');
                     console.log(error);
