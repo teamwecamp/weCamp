@@ -131,7 +131,7 @@ class CampRegistration extends Component {
             value={this.state.campName}
             onChange={this.handleInputChangeFor("campName")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required
@@ -141,7 +141,7 @@ class CampRegistration extends Component {
             value={this.state.campAddress}
             onChange={this.handleInputChangeFor("campAddress")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required
@@ -228,7 +228,7 @@ class CampRegistration extends Component {
             value={this.state.minAge}
             onChange={this.handleInputChangeFor("minAge")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required
@@ -238,7 +238,7 @@ class CampRegistration extends Component {
             value={this.state.maxAge}
             onChange={this.handleInputChangeFor("maxAge")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required

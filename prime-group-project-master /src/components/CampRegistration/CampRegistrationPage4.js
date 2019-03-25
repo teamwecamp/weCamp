@@ -262,7 +262,7 @@ class CampRegistrationPage4 extends Component {
                   value={this.state.startDate}
                   onChange={this.handleProgramChange(i, "startDate")}
                   margin="normal"
-                  variant="standard"
+                  variant="outlined"
                 />
                 <TextField
                   required
@@ -277,7 +277,7 @@ class CampRegistrationPage4 extends Component {
                   value={this.state.endDate}
                   onChange={this.handleProgramChange(i, "endDate")}
                   margin="normal"
-                  variant="standard"
+                  variant="outlined"
                 />
               </div>
             );
