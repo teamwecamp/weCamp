@@ -25,13 +25,6 @@ class SharedItinerary extends Component {
         this.props.dispatch({ type: 'FETCH_SHARED_ITINERARY', payload: childId });
         // this.setSharedItinerary();
     }
-
-    // setSharedItinerary = () => {
-    //     const action = { type: 'SET_SHARED_ITINERARY' }
-    //     this.props.dispatch(action);
-    //     console.log('shared', action);
-
-    // }
    
     
 

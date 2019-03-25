@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
 
 
                 //grab user's name for display
-                let queryText = `SELECT "name" FROM "child_profile" 
+                let queryText = `SELECT "child_profile"."name" AS "title", "child_profile"."id" FROM "child_profile"     
                                 JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
                                 WHERE "user_child"."id" = $1`;
                 const childName = await client.query(queryText, [childId]);
@@ -31,8 +31,8 @@ router.get('/:id', (req, res) => {
                 const children = await client.query(queryText, [childId]);
                 console.log('childid - after select', req.params.id);
                 //Selecting child_id, dates_id, status_id and status.
-                queryText = `SELECT "child_profile"."id", "child_profile"."name", "child_itinerary"."user_child_id",
-                            "child_itinerary"."dates_id", "child_itinerary"."status_id" 
+                queryText = `SELECT "child_profile"."id" AS "id", "child_profile"."name", "child_itinerary"."user_child_id",
+                            "child_itinerary"."dates_id" AS "dates_id", "child_itinerary"."status_id" AS "status_id"
                             FROM "child_profile" JOIN "user_child" 
                             ON "child_profile"."id" = "user_child"."child_id"
                             JOIN "child_itinerary" ON "user_child"."id" = "child_itinerary"."user_child_id"
