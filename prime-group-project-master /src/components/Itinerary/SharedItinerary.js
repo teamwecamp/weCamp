@@ -95,7 +95,7 @@ class SharedItinerary extends Component {
         return (
             <div>
                 {this.props.sharedItinerary.userName !== undefined &&
-                    <h1>{this.props.sharedItinerary.userName.name}'s Itinerary</h1>}
+                    <h1>{this.props.sharedItinerary.userName.title}'s Itinerary</h1>}
                 {/* {JSON.stringify(this.props.itinerary)} */}
                 {this.props.sharedItinerary.itineraries !== undefined &&
                     <Timeline
