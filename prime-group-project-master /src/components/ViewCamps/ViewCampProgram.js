@@ -5,7 +5,7 @@ import moment from 'moment';
 // this here is Material UI 
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,24 +14,35 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from "@material-ui/core/TextField";
 import Checkbox from '@material-ui/core/Checkbox';
+import { createMuiTheme } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
+
+
 
 
 
 // this is materia UI table
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: '#127696',
         color: theme.palette.common.white,
     },
     body: {
         fontSize: 10,
     },
 }))(TableCell);
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+    },
+});
 
 const styles = theme => ({
     root: {
@@ -192,14 +203,8 @@ class ViewCampProgram extends Component {
 
     render(){
 
-        console.log('this is camp program', this.props.campProgram );
-        console.log('this is itinerary', this.props.itinerary)
-        console.log('this is state', this.state)
-       
         const { classes } = this.props;
         
-        // <Button variant="contained" color="primary" className={classes.button}>Add To Itinerary</Button>
-
         return(
           
             <Paper className={classes.root}>
@@ -215,15 +220,10 @@ class ViewCampProgram extends Component {
                             <CustomTableCell>Type</CustomTableCell>
                             <CustomTableCell></CustomTableCell>
 
-                            
-                                
-                            {/* <CustomTableCell>* You must be sign in to add to  Itinerary</CustomTableCell> */}
-
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {/* {JSON.stringify(this.props.campProgram)} */}
-                        {/* {JSON.stringify(this.props.itinerary)}  */}
+                        
                         {this.props.campProgram !== undefined && this.props.campProgram.map(schedule => (
                             <TableRow key={schedule.id}>
                                 <TableCell component="th" scope="row">
@@ -260,15 +260,10 @@ class ViewCampProgram extends Component {
                 </Table>
 
                 {/* this is materai UI selects */}
-
                 <form autoComplete="off">
 
-                
-                 
                 {/* this is for selecting kids */}
                     <FormControl >
-
-                        {/* {JSON.stringify(this.props.itinerary.children)} */}
                         
                         <TextField
                             id="outlined-type"
@@ -300,7 +295,6 @@ class ViewCampProgram extends Component {
                     {/* this is for slecting the status */}
                     <FormControl className={classes.margin}>
 
-                        {/* {JSON.stringify(this.props.status)} */}
                         <TextField
                             id="outlined-type"
                             select
@@ -328,9 +322,12 @@ class ViewCampProgram extends Component {
                         </TextField>
                         
                         </FormControl>
-                        <div>
+                    <div>
+                    <MuiThemeProvider theme={theme}>
                         <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
-                        </div>
+                    </MuiThemeProvider>
+                    </div>
+                    
                 </form>
             </Paper>
         )

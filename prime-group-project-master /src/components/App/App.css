@@ -14,7 +14,7 @@ form {
     height: auto;
     margin: 20px auto;
     padding: 25px;
-    border-radius: 2px;
+    border-radius: 7px;
 }
 
 .userRegistrationForm {
@@ -31,7 +31,7 @@ input {
     margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-in, .register {
   background-color: #127c96;
   border-radius: 4px;
   color: #f8f8f8;
@@ -39,6 +39,18 @@ input {
   min-width: 100px;
   outline:0;
   cursor: pointer;
+}
+
+.log-out  {
+  background-color: #63bcc9;
+  border-radius: 3px;
+  color: #f8f8f8;
+  min-height: 50px;
+  min-width: 100px;
+  outline:none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
