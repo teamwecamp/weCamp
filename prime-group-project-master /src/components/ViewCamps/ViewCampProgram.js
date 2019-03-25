@@ -183,17 +183,24 @@ class ViewCampProgram extends Component {
 
     addItinerary = event => {
         console.log('this is inside of addItinerary');
-        // const newState = [];
-        // for (let key in this.state) {
-        //     if (this.state[key] === true) {
-        //         newState.push(parseInt(key));
-        //     }
-        // }
-        // console.log('This is newState', newState);
-        // newState.push(this.state);
-        // const action = { type: 'ADD_ITINERARY', payload: newState }
-        // this.props.dispatch(action);
+        const newState = [];
+        for (let key in this.state) {
+            if (this.state[key] === true) {
+                newState.push(parseInt(key));
+            }
+        }
+        console.log('This is newState', newState);
+        let itinerary = {};
+        itinerary.kids = this.state.kids;
+        itinerary.status = this.state.status;
+        itinerary.camps = newState;
+        const action = { type: 'ADD_ITINERARY', payload: itinerary }
+        this.props.dispatch(action);
         this.props.history.push('/itinerary');
+        
+        
+        
+       
     }
 
     
