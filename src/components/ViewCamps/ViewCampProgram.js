@@ -71,7 +71,7 @@ const styles = theme => ({
 
 
 
-// this is selects material UI
+// this selects material UI
 
 const BootstrapInput = withStyles(theme => ({
     root: {
@@ -114,28 +114,25 @@ const BootstrapInput = withStyles(theme => ({
 // this is where the component starts
 class ViewCampProgram extends Component {
 
-// this is for selects material UI
+    // this is for selects material UI
 
     constructor(props) {
         super(props);
         this.state = {
             kids: 0,
             status: 0,
-            
-            
-
         };
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getCampProgram();
         this.getItinerary();
         this.getStatus();
     }
-    
-   
-    
+
+
+
     // get camp program from reducer
     getCampProgram = () => {
         console.log('this is inside getCampProgram');
@@ -152,9 +149,9 @@ class ViewCampProgram extends Component {
     getStatus = () => {
         console.log('this is gets status');
         const id = this.props.match.params.id
-        this.props.dispatch({ type: 'FETCH_STATUS'});
+        this.props.dispatch({ type: 'FETCH_STATUS' });
     }
-    
+
     // select the inputs
     handleKids = name => event => {
         this.setState({ [name]: event.target.value });
@@ -197,146 +194,129 @@ class ViewCampProgram extends Component {
         const action = { type: 'ADD_ITINERARY', payload: itinerary }
         this.props.dispatch(action);
         this.props.history.push('/itinerary');
-        
-        
-        
-       
+
     }
 
-    
 
-    
-       
 
-    render(){
+
+    render() {
 
         const { classes } = this.props;
-        
-        return(
-          
-            <Paper className={classes.root}>
-                <Table className={classes.table}>
-                    <TableHead>
-                        <TableRow>
-                            <CustomTableCell>Program</CustomTableCell>
-                            <CustomTableCell>Cost</CustomTableCell>
-                            <CustomTableCell>Start Date</CustomTableCell>
-                            <CustomTableCell>End Date</CustomTableCell>
-                            <CustomTableCell>Start Time</CustomTableCell>
-                            <CustomTableCell>End Time</CustomTableCell>
-                            <CustomTableCell>Type</CustomTableCell>
-                            <CustomTableCell></CustomTableCell>
 
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        
-                        {this.props.campProgram !== undefined && this.props.campProgram.map(schedule => (
-                            <TableRow key={schedule.id}>
-                                <TableCell component="th" scope="row">
-                                    {schedule.title}
-                                </TableCell>
-                                <TableCell >${schedule.cost}</TableCell>
-                                <TableCell >{moment(schedule.start_date).format("MMMM D YYYY")}</TableCell>
-                                <TableCell >{moment(schedule.end_date).format("MMMM D YYYY")}</TableCell>
-                                <TableCell >{schedule.start_time}</TableCell>
-                                <TableCell >{schedule.end_time}</TableCell>
-                                <TableCell >{schedule.type}</TableCell>
-                                <div>
-                                    <Checkbox
-                                        checked={this.state.checkedB}
-                                        name={schedule.program_id}
-                                        onChange={this.handleChange('checked')}
-                                        value={schedule.program_id}
-                                        color="primary"
-                                    />
+        return (
+            <div>
+                <h1>Camp Programs</h1>
+                <Paper className={classes.root}>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <CustomTableCell>Program</CustomTableCell>
+                                <CustomTableCell>Cost</CustomTableCell>
+                                <CustomTableCell>Start Date</CustomTableCell>
+                                <CustomTableCell>End Date</CustomTableCell>
+                                <CustomTableCell>Start Time</CustomTableCell>
+                                <CustomTableCell>End Time</CustomTableCell>
+                                <CustomTableCell>Type</CustomTableCell>
+                                <CustomTableCell></CustomTableCell>
 
-
-                                </div>
-                                
                             </TableRow>
+                        </TableHead>
+                        <TableBody>
 
-                           
-
-                        ))}
-
-                       
-
-                        
-                    </TableBody>
-                </Table>
-
-                {/* this is materai UI selects */}
-                <form autoComplete="off">
-
-                {/* this is for selecting kids */}
-                    <FormControl >
-                        
-                        <TextField
-                            id="outlined-type"
-                            select
-                            label="Select a Kid"
-                            className={classes.textField}
-                            value={this.state.kids}
-                            onChange={this.handleKids("kids")}
-                            variant="outlined"
-                            SelectProps={{
-                                MenuProps: {
-                                    className: classes.menu
-                                }
-                            }}
-                            style={{ width: 175 }}
-                            margin="normal"
-                        >
-                            {this.props.itinerary.children !== undefined &&
-                                this.props.itinerary.children.map(kids => (
-                                <MenuItem key={kids.id} value={kids.id}>
-                                    {kids.title}
-                                </MenuItem>
-                                ))}
-                        </TextField>
-                    </FormControl>
-                    
-                 
-                 
-                    {/* this is for slecting the status */}
-                    <FormControl className={classes.margin}>
-
-                        <TextField
-                            id="outlined-type"
-                            select
-                            label="Select a Status"
-                            className={classes.textField}
-                            value={this.state.status}
-                            onChange={this.handleStatus("status")}
-                            variant="outlined"
-                            SelectProps={{
-                                MenuProps: {
-                                    className: classes.menu
-                                }
-                            }}
-                            style={{ width: 175 }}
-                            margin="normal"
-                        >
-                            {this.props.status !== undefined && 
-                            this.props.status.map(stas => (
-                                <MenuItem key={stas.id} value={stas.id}>
-                                    {stas.status}
-                                </MenuItem>
-                               
+                            {this.props.campProgram !== undefined && this.props.campProgram.map(schedule => (
+                                <TableRow key={schedule.id}>
+                                    <TableCell component="th" scope="row">
+                                        {schedule.title}
+                                    </TableCell>
+                                    <TableCell >${schedule.cost}</TableCell>
+                                    <TableCell >{moment(schedule.start_date).format("MMMM D YYYY")}</TableCell>
+                                    <TableCell >{moment(schedule.end_date).format("MMMM D YYYY")}</TableCell>
+                                    <TableCell >{schedule.start_time}</TableCell>
+                                    <TableCell >{schedule.end_time}</TableCell>
+                                    <TableCell >{schedule.type}</TableCell>
+                                    <div>
+                                        <Checkbox
+                                            checked={this.state.checkedB}
+                                            name={schedule.program_id}
+                                            onChange={this.handleChange('checked')}
+                                            value={schedule.program_id}
+                                            color="primary"
+                                        />
+                                    </div>
+                                </TableRow>
                             ))}
-                          
-                        </TextField>
-                        
+                        </TableBody>
+                    </Table>
+
+                    {/* this is materai UI selects */}
+                    <form autoComplete="off">
+
+                        {/* this is for selecting kids */}
+                        <FormControl >
+                            <TextField
+                                id="outlined-type"
+                                select
+                                label="Select a Kid"
+                                className={classes.textField}
+                                value={this.state.kids}
+                                onChange={this.handleKids("kids")}
+                                variant="outlined"
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: classes.menu
+                                    }
+                                }}
+                                style={{ width: 175 }}
+                                margin="normal"
+                            >
+                                {this.props.itinerary.children !== undefined &&
+                                    this.props.itinerary.children.map(kids => (
+                                        <MenuItem key={kids.id} value={kids.id}>
+                                            {kids.title}
+                                        </MenuItem>
+                                    ))}
+                            </TextField>
                         </FormControl>
-                    <div>
-                    <MuiThemeProvider theme={theme}>
-                        <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
-                    </MuiThemeProvider>
-                    </div>
-                    
-                </form>
-            </Paper>
+                        {/* this is for slecting the status */}
+                        <FormControl className={classes.margin}>
+
+                            <TextField
+                                id="outlined-type"
+                                select
+                                label="Select a Status"
+                                className={classes.textField}
+                                value={this.state.status}
+                                onChange={this.handleStatus("status")}
+                                variant="outlined"
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: classes.menu
+                                    }
+                                }}
+                                style={{ width: 175 }}
+                                margin="normal"
+                            >
+                                {this.props.status !== undefined &&
+                                    this.props.status.map(stas => (
+                                        <MenuItem key={stas.id} value={stas.id}>
+                                            {stas.status}
+                                        </MenuItem>
+
+                                    ))}
+
+                            </TextField>
+
+                        </FormControl>
+                        <div>
+                            <MuiThemeProvider theme={theme}>
+                                <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
+                            </MuiThemeProvider>
+                        </div>
+
+                    </form>
+                </Paper>
+            </div>
         )
     }
 }
@@ -348,11 +328,11 @@ const mapReduxStoreToProps = (reduxStore) => ({
 });
 
 ViewCampProgram.propTypes = {
-    classes: PropTypes.object.isRequired, 
+    classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles) (connect(mapReduxStoreToProps) (ViewCampProgram));
+export default withStyles(styles)(connect(mapReduxStoreToProps)(ViewCampProgram));
 
 
 

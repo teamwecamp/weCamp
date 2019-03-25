@@ -127,9 +127,6 @@ class ResultsDetails extends Component {
                                             <Typography>
                                                 Gender: {this.props.camp.gender}
                                             </Typography>
-                                            <Typography>
-                                                Activites: TBD
-                                            </Typography>
                                         </CardContent>
                                     </Collapse>
                                 </CardContent>
