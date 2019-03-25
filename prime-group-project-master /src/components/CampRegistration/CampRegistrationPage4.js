@@ -93,6 +93,12 @@ class CampRegistrationPage4 extends Component {
       ]
     });
   };
+
+  handleInputChangeFor = propertyName => event => {
+    this.setState({
+      [propertyName]: event.target.value
+    });
+  };
   
   autoFill = () => {
     this.setState({
