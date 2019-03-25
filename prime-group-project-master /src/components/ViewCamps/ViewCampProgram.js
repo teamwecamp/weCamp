@@ -27,13 +27,22 @@ import Switch from '@material-ui/core/Switch';
 // this is materia UI table
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: '#127696',
         color: theme.palette.common.white,
     },
     body: {
         fontSize: 10,
     },
 }))(TableCell);
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#127696',
+        },
+    },
+});
 
 const styles = theme => ({
     root: {
@@ -313,9 +322,12 @@ class ViewCampProgram extends Component {
                         </TextField>
                         
                         </FormControl>
-                        <div>
+                    <div>
+                    <MuiThemeProvider theme={theme}>
                         <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
-                        </div>
+                    </MuiThemeProvider>
+                    </div>
+                    
                 </form>
             </Paper>
         )
