@@ -16,9 +16,9 @@ class SharedItinerary extends Component {
 
     componentDidMount = () => {
         this.fetchSharedItinerary();
-      
+
     }
-    
+
     fetchSharedItinerary = () => {
         const childId = this.props.match.params.id
         console.log('shared itinary parrams', childId);
@@ -26,14 +26,7 @@ class SharedItinerary extends Component {
         // this.setSharedItinerary();
     }
 
-    // setSharedItinerary = () => {
-    //     const action = { type: 'SET_SHARED_ITINERARY' }
-    //     this.props.dispatch(action);
-    //     console.log('shared', action);
 
-    // }
-   
-    
 
     itemRenderer = ({
         item,
@@ -102,14 +95,14 @@ class SharedItinerary extends Component {
         return (
             <div>
                 {this.props.sharedItinerary.userName !== undefined &&
-                    <h1>{this.props.sharedItinerary.userName.name}'s Itinerary</h1>}
+                    <h1>{this.props.sharedItinerary.userName.title}'s Itinerary</h1>}
                 {/* {JSON.stringify(this.props.itinerary)} */}
                 {this.props.sharedItinerary.itineraries !== undefined &&
                     <Timeline
                         groups={groups}
                         items={items}
-                        // default time is set to display May 1, 2019 through Aug 31, 2019 (UNIX)
-                        defaultTimeStart="1556723865000"
+                        // default time is set to display June 1, 2019 through Aug 31, 2019 (UNIX)
+                        defaultTimeStart="1559407540000"
                         defaultTimeEnd="1567351065000"
                         canMove={false}
                         canResize={false}

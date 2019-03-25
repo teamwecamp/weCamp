@@ -121,7 +121,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.costMin}
             onChange={this.handleInputChangeFor("costMin")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required
@@ -131,7 +131,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.costMax}
             onChange={this.handleInputChangeFor("costMax")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required
@@ -145,7 +145,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.regDeadlineDate}
             onChange={this.handleInputChangeFor("regDeadlineDate")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             required
@@ -155,7 +155,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.phoneNumber}
             onChange={this.handleInputChangeFor("phoneNumber")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             id="outlined-icon"
@@ -164,7 +164,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.instagramLink}
             onChange={this.handleInputChangeFor("instagramLink")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             id="outlined-icon"
@@ -173,7 +173,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.facebookLink}
             onChange={this.handleInputChangeFor("facebookLink")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             id="outlined-icon"
@@ -182,7 +182,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.photoUrl}
             onChange={this.handleInputChangeFor("photoUrl")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             id="outlined-icon"
@@ -191,7 +191,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.logoUrl}
             onChange={this.handleInputChangeFor("logoUrl")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             id="outlined-icon"
@@ -200,7 +200,7 @@ class CampRegistrationPage2 extends Component {
             value={this.state.websiteUrl}
             onChange={this.handleInputChangeFor("websiteUrl")}
             margin="normal"
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             //required
