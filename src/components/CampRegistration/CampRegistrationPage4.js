@@ -8,6 +8,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import CampStepper from "./CampStepper";
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import Swal from "sweetalert2";
 
 //This is styling for the form only. 
 const styles = theme => ({
@@ -71,6 +72,7 @@ class CampRegistrationPage4 extends Component {
 
   handleAddProgram = () => {
     console.log(this.state);
+    Swal.fire('Your information has been received and will be reviewed by our team before be added to the website.')
     this.props.history.push("/landing");
   };
 
