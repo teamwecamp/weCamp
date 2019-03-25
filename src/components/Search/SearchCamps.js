@@ -121,7 +121,7 @@ class SearchCamps extends Component {
                         onChange={this.handleSearchChange('minAge')}
                         type="number"
                         className={classes.textField}
-                        margin="normal"
+                        margin="dense"
                         variant="outlined"
                         style={{ width: 175, padding: 0 }}
                     />
@@ -132,7 +132,7 @@ class SearchCamps extends Component {
                         onChange={this.handleSearchChange('maxAge')}
                         type="number"
                         className={classes.textField}
-                        margin="normal"
+                        margin="dense"
                         variant="outlined"
                         style={{ width: 100, padding: 0 }}
                     />
@@ -150,7 +150,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 90 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {this.props.dropDown.gender !== undefined &&
                             this.props.dropDown.gender.map(type => (
@@ -173,7 +173,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 140 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {religion.map(type => (
                             <MenuItem key={type} value={type}>
@@ -195,7 +195,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 175 }}
-                        margin="normal"
+                        margin="dense"
                         style={{ width: 120, padding: 0 }}
                     >
                         {this.props.dropDown.campType !== undefined &&
@@ -219,7 +219,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 200 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {this.props.dropDown.states !== undefined &&
                             this.props.dropDown.states.map(type => (
@@ -242,7 +242,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 141, padding: 0 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {this.props.dropDown.regions !== undefined &&
                             this.props.dropDown.regions.map(type => (
@@ -265,7 +265,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 178, padding: 0 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         <MenuItem key={0} value={0}>
                             All
@@ -291,7 +291,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 170, padding: 0 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {this.props.dropDown.activities !== undefined &&
                             this.props.dropDown.activities.map(type => (
@@ -307,7 +307,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         value={this.state.startDate}
                         onChange={this.handleSearchChange("startDate")}
-                        margin="normal"
+                        margin="dense"
                         variant="outlined"
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
@@ -321,7 +321,7 @@ class SearchCamps extends Component {
                         className={classes.textField}
                         value={this.state.endDate}
                         onChange={this.handleSearchChange("endDate")}
-                        margin="normal"
+                        margin="dense"
                         variant="outlined"
                         InputProps={{
                             startAdornment: <InputAdornment position="start"></InputAdornment>,
@@ -335,7 +335,7 @@ class SearchCamps extends Component {
                         onChange={this.handleSearchChange('minCost')}
                         type="number"
                         className={classes.textField}
-                        margin="normal"
+                        margin="dense"
                         variant="outlined"
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -349,7 +349,7 @@ class SearchCamps extends Component {
                         onChange={this.handleSearchChange('maxCost')}
                         type="number"
                         className={classes.textField}
-                        margin="normal"
+                        margin="dense"
                         variant="outlined"
                         InputProps={{
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -370,7 +370,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 145 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {accessibility.map(type => (
                             <MenuItem key={type} value={type}>
@@ -393,7 +393,7 @@ class SearchCamps extends Component {
                             }
                         }}
                         style={{ width: 160, padding: 0 }}
-                        margin="normal"
+                        margin="dense"
                     >
                         {this.props.dropDown.states !== undefined &&
                             this.props.dropDown.states.map(type => (
