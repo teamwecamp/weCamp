@@ -151,6 +151,9 @@ class CampRegistrationPage4 extends Component {
                   margin="normal"
                   style={{ width: 300 }}
                   variant="outlined"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                  }}
                 />
                 <TextField
                   required
@@ -163,6 +166,9 @@ class CampRegistrationPage4 extends Component {
                   margin="normal"
                   style={{ width: 300 }}
                   variant="outlined"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                  }}
                 />
                 <TextField
                   id="outlined-startTime"
@@ -210,6 +216,9 @@ class CampRegistrationPage4 extends Component {
                   }}
                   style={{ width: 175 }}
                   margin="normal"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                  }}
                 >
                   {this.props.dropDown.campType !== undefined &&
                     this.props.dropDown.campType.map(type => (
@@ -229,6 +238,9 @@ class CampRegistrationPage4 extends Component {
                   margin="normal"
                   style={{ width: 100 }}
                   variant="outlined"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                  }}
                 />
                 <TextField
                   //required
@@ -247,6 +259,9 @@ class CampRegistrationPage4 extends Component {
                   }}
                   style={{ width: 175 }}
                   margin="normal"
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start"></InputAdornment>,
+                  }}
                 >
                   {this.props.dropDown.gender !== undefined &&
                     this.props.dropDown.gender.map(type => (
