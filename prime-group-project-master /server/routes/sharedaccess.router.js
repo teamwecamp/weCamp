@@ -55,9 +55,9 @@ router.get('/sharedWithUser', (req, res) => {
         //selecting random camp info from camp table
         const queryText = `SELECT "child_profile"."name", "user"."full_name", "sharing"."id", "user_child"."child_id", "child_itinerary"."user_child_id"
                             FROM "sharing"
-                            JOIN "child_profile"
-                            ON "sharing"."user_child_id"="child_profile"."id"
                             JOIN "user_child"
+                            ON "sharing"."user_child_id"="user_child"."id"
+                            JOIN "child_profile"
                             ON "child_profile"."id"="user_child"."child_id"
                             JOIN "user"
                             ON "user_child"."user_id"="user"."id"
