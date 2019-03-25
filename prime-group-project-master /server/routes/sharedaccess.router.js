@@ -15,7 +15,7 @@ router.get('/userSharedWith', (req, res) => {
         const queryText = `SELECT  "user"."full_name", "child_profile"."name", "sharing"."id", "user_child"."child_id"
                             FROM "user_child"
                             JOIN "sharing"
-                            ON "user_child"."child_id"="sharing"."user_child_id"
+                            ON "user_child"."id"="sharing"."user_child_id"
                             JOIN "user"
                             ON "sharing"."shared_to_id"="user"."id"
                             JOIN "child_profile"
@@ -62,7 +62,7 @@ router.get('/sharedWithUser', (req, res) => {
                             JOIN "user"
                             ON "user_child"."user_id"="user"."id"
                             JOIN  "child_itinerary"
-                            ON "user_child"."child_id"="child_itinerary"."user_child_id"
+                            ON "user_child"."id"="child_itinerary"."user_child_id"
                             WHERE "sharing"."shared_to_id"=$1;`;
         pool.query(queryText, [id])
             .then(result => {
