@@ -108,7 +108,7 @@ class CampRegistrationPage3 extends Component {
     return (
       <div>
         <MuiThemeProvider theme={theme}>
-        <h1>Camp Registration Page 3</h1>
+        <h1>Camp Registration</h1>
         <h2>Select Activities Provided by your camp</h2>
         <form onSubmit={this.setOptions}>
           {this.mapInfo()}
