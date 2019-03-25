@@ -14,11 +14,13 @@ router.get('/:id', (req, res) => {
                 const schedule = {};
                 //child Id is itinerary to be viewed
                 const childId = req.params.id;
-                
-                
+
+
                 //grab user's name for display
-                let queryText = `SELECT "name" FROM "child_profile" WHERE "id" = $1`;
-                const userName = await client.query(queryText, [childId]);
+                let queryText = `SELECT "name" FROM "child_profile" 
+                                JOIN "user_child" ON "user_child"."child_id" = "child_profile"."id"
+                                WHERE "user_child"."id" = $1`;
+                const childName = await client.query(queryText, [childId]);
                 console.log('childid', req.params.id);
                 //grab the children of the user
                 queryText = `SELECT "child_profile"."id", "child_profile"."name" AS title 
@@ -29,12 +31,13 @@ router.get('/:id', (req, res) => {
                 const children = await client.query(queryText, [childId]);
                 console.log('childid - after select', req.params.id);
                 //Selecting child_id, dates_id, status_id and status.
-                queryText = `SELECT "child_profile"."id", "child_profile"."name", "child_itinerary"."user_child_id", 
-                "child_itinerary"."dates_id", "child_itinerary"."status_id"
-	FROM "child_profile"
-	JOIN "child_itinerary"
-	ON "child_profile"."id"="child_itinerary"."user_child_id"
-	WHERE "child_itinerary"."user_child_id"=$1`;
+                queryText = `SELECT "child_profile"."id", "child_profile"."name", "child_itinerary"."user_child_id",
+                            "child_itinerary"."dates_id", "child_itinerary"."status_id" 
+                            FROM "child_profile" JOIN "user_child" 
+                            ON "child_profile"."id" = "user_child"."child_id"
+                            JOIN "child_itinerary" ON "user_child"."id" = "child_itinerary"."user_child_id"
+                            WHERE "child_itinerary"."user_child_id"=$1;`;
+
                 const itineraryList = await client.query(queryText, [childId]);
                 // takes the info we get from query above and put them in a list "itinerary"
                 const itinerary = itineraryList.rows;
@@ -89,8 +92,8 @@ router.get('/:id', (req, res) => {
                 }
                 //add itinerary, children and user info to schedule as separate key/values
                 schedule.itineraries = itineraryItem;
-                schedule.children = children.rows;
-                schedule.userName = userName.rows[0];
+                schedule.children = childName.rows;
+                schedule.userName = childName.rows[0];
                 console.log(schedule);
                 //end async-await
                 await client.query('COMMIT');
