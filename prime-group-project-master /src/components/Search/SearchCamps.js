@@ -6,7 +6,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Results from '../Results/ResultsCamps';
-import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     container: {
@@ -39,17 +38,13 @@ const accessibility = ["preferred", "not preferred"];
 class SearchCamps extends Component {
 
     state = {
-         
-        minAge: "0",
-        maxAge: "100",
-        gender: "3",
         minAge: 0,
         maxAge: 99,
         gender: 3,
         religion: "no",
         type: "overnight",
-        activityCategory: 3,
-        activityType: 17,
+        activityCategory: 0,
+        activityType: 0,
         startDate: '01/01/2019',
         endDate: '12/31/2019',
         minCost: 0,
@@ -406,8 +401,6 @@ class SearchCamps extends Component {
                                 </MenuItem>
                             ))}
                     </TextField>
-
-                    <Button type="submit">Click me!</Button>
                 </form>
                 <div>
                     <Results moveToCamp={this.moveToCamp} />
