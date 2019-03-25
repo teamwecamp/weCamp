@@ -115,7 +115,7 @@ class CampRegistration extends Component {
     return (
       <div>
         <MuiThemeProvider theme={theme}>
-        <h1>Camp Registration Page 1</h1>
+        <h1>Camp Registration</h1>
 
         <form
           id="input-form"

@@ -135,7 +135,7 @@ class CampRegistrationPage4 extends Component {
     return (
       <div>
         <MuiThemeProvider theme={theme}>
-        <h1>Camp Registration Page 4</h1>
+        <h1>Camp Registration</h1>
         <form>
           {this.state.programs.map((program, i) => {
             return (
