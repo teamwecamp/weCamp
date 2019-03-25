@@ -41,6 +41,10 @@ input {
   cursor: pointer;
 }
 
+button {
+    border: none;
+}
+
 .log-out  {
   background-color: #63bcc9;
   border-radius: 3px;
