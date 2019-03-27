@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import Drawer from './Drawer';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import Grid from '@material-ui/core/Grid';
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 
 const styles = theme => ({
@@ -46,13 +45,11 @@ const NavBar = (props) => {
                                 {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-
                                 {props.user.id ? '' : 'Login / Register'}
 
                             </Link>
                         </Grid>
                         {/* Show the link to the info page and the logout button if the user is logged in */}
-
                         {props.user.id && (
                             <>
                                 <Grid item xs={1}>
@@ -60,17 +57,12 @@ const NavBar = (props) => {
                                         <LogOutButton className="nav-title" />
                                     </Link>
                                 </Grid>
-
                             </>
                         )}
-
-                        {/* </div> */}
-
                     </Toolbar>
                 </AppBar>
             </Grid>
         </div>
-
     );
 }
 

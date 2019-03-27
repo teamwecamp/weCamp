@@ -12,39 +12,16 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Grid, GridList } from '@material-ui/core';
+import { GridList } from '@material-ui/core';
 import GridListTile from '@material-ui/core/GridListTile';
-import ListSubheader from '@material-ui/core/ListSubheader';
-
-
-
-
-
-
 
 
 // matrial UI styles
 const styles = theme => ({
     card: {
         maxWidth: 500,
-        margin: theme.spacing.unit * 2,
-        
+        margin: theme.spacing.unit * 2,     
     },
-    // media: {
-    //     height: 50,
-    //      margin: theme.spacing.unit * 2,
-    // },
-    // grid list
-
-    // flexGrow: 1,
-    // justifyContent: 'space-around',
-    // display: 'flex',
-    // overflow: 'hidden',
-
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    // justifyContent: 'space-around',
-    // overflow: 'hidden',
     root: {
         display: '1',
         flexWrap: 'wrap',
@@ -55,15 +32,12 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2,
     },
     pos: {
-        // marginBottom: 12,
         margin: theme.spacing.unit * 2,
     },
     gridList: {
         width: 300,
         height: 200,
-        
     },
-
 });
 
 
@@ -73,7 +47,6 @@ class UserProfile extends Component {
         spacing: '16'
     }
 
-    
     componentDidMount = () => {
         this.setUserProfileInfo();
 
@@ -88,41 +61,31 @@ class UserProfile extends Component {
     }
 
     // this gets child's profile
-
     handleEdit = (event) => {
         console.log('this is handleEdit');
-
     }
 
 
 
     render() {
-        
         const { classes } = this.props;
         const { spacing } = this.state;
 
         return (
-           
             <div>
-
                 {this.props.user.setUserProfileInfo !== undefined && this.props.user.setUserProfileInfo.map(member => (
                     <GridList container className={classes.root} justify="center"  spacing={Number(spacing)}>
                         <GridListTile key="Subheader"  cols={2} style={{ height: 'auto' }}>
                             {/* <ListSubheader component="hearder"></ListSubheader> */}
                         </GridListTile>
                     <Card className={classes.card}>
-
-
                         <CardActionArea >
                             <CardMedia
                                 className={classes.media}
                                 image=""
                                 title=""
                             />
-
-
                             <CardContent>
-
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {member.full_name}
                                 </Typography>
@@ -135,46 +98,19 @@ class UserProfile extends Component {
                                 <Typography component="p">
                                     {member.city}, {member.state} {member.zip}
                                 </Typography>
-
                             </CardContent>
-
-
                         </CardActionArea>
-
-
                         <CardActions>
                             <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
-
                         </CardActions>
-
-
                     </Card>
                     </GridList>
-                      
-               
-                     
           ))}
                 <UserProfileChild />
-
-
-
-
-
-
             </div>
-           
-
-
         );
     }
 }
-
-
-
-
-
-
-
 
 
 const mapStateToProps = (reduxStore) => ({
@@ -185,7 +121,6 @@ const mapStateToProps = (reduxStore) => ({
 UserProfile.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
 
 
 export default withStyles(styles)(connect(mapStateToProps)(UserProfile));

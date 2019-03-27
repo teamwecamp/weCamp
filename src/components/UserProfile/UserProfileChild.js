@@ -15,20 +15,12 @@ import Typography from '@material-ui/core/Typography';
 import { GridList } from '@material-ui/core';
 
 
-
-
-
-// matrial UI styles
+// material UI styles
 const styles = theme => ({
      card: {
          maxWidth: 345,
          margin: theme.spacing.unit * 2,
      },
-    // media: {
-    //     height: 140,
-    //     margin: theme.spacing.unit * 2,
-    // },
-    // this is grid list
     root: {
         flexGrow: 1,
         justifyContent: 'space-around',
@@ -69,75 +61,47 @@ class UserProfileChild extends Component {
 
 
     render() {
-
         const { classes } = this.props;
         const { spacing } = this.state;
 
 
         return (
             <div>
-                
-
-
                 {this.props.user.setChildProfileInfo !== undefined && this.props.user.setChildProfileInfo.map(child => (
-
                     <GridList container className={classes.root} justify="center" spacing={Number(spacing)}>
                     <Card className={classes.card}>
-
-
                         <CardActionArea >
                             <CardMedia
                                 className={classes.media}
                                 image=""
                                 title=""
                             />
-
-
-                            <CardContent>
-                                    
+                            <CardContent>                                    
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {child.name}
                                 </Typography>
                                 <Typography component="p">
                                     {moment(child.DOB).format("MMMM D YYYY")}
                                 </Typography>
-
-
                             </CardContent>
-
-
                         </CardActionArea>
-
-
                         <CardActions>
                             <Button size="small" color="primary" onClick={this.handleEdit}>Edit</Button>
-
                         </CardActions>
-
-
                     </Card>
-                    </GridList>
-
-                    
-                
+                    </GridList>               
             ))}
             </div>
-
-
-
         )
     }
 }
 
 const mapStateToProps = (reduxStore) => ({
     user: reduxStore.setUserProfileInfo,
-
 });
 
 UserProfileChild.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
-
 
 export default withStyles(styles)(connect(mapStateToProps)(UserProfileChild));

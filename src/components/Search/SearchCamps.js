@@ -373,30 +373,6 @@ class SearchCamps extends Component {
                             </MenuItem>
                         ))}
                     </TextField>
-
-                    <TextField
-                        id="outlined-type"
-                        select
-                        label="State"
-                        className={classes.textField}
-                        value={this.state.state}
-                        onChange={this.handleSearchChange("state")}
-                        variant="outlined"
-                        SelectProps={{
-                            MenuProps: {
-                                className: classes.menu
-                            }
-                        }}
-                        style={{ width: 160, padding: 0 }}
-                        margin="dense"
-                    >
-                        {this.props.dropDown.states !== undefined &&
-                            this.props.dropDown.states.map(type => (
-                                <MenuItem key={type.id} value={type.id}>
-                                    {type.state}
-                                </MenuItem>
-                            ))}
-                    </TextField>
                 </form>
                 <div>
                     <Results moveToCamp={this.moveToCamp} />

@@ -114,7 +114,6 @@ class ViewCamps extends Component {
                 }
             })
         }
-
     }
 
     render() {

@@ -86,7 +86,6 @@ class Landing extends Component {
         const { spacing } = this.state;
         return (
             <div>
-                {/* Site slogan */}
                 {/* <h1 className="wecamp">WeCAMP</h1> */}
                 <h2 className="slogan">Making summer simple for parents. Fun for kids.</h2>
                 <h5 className="campsGroup">Sponsored Camps</h5>

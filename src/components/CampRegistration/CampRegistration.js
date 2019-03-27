@@ -90,7 +90,6 @@ class CampRegistration extends Component {
 
   autoFill = ()=>{
     this.setState({
-      
         campName: "Northern Waters",
         campAddress: "3532 S Lake Blvd.",
         state: "23",
@@ -101,13 +100,10 @@ class CampRegistration extends Component {
         maxAge: "15",
         gender: "3",
         religion: "no",
-        accessibility: "no",
-       
+        accessibility: "no",      
     })
   }
-  
 
- 
 
   render() {
     console.log(this.props.dropDown);

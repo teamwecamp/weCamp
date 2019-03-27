@@ -9,7 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router';
-import Typography from '@material-ui/core/Typography';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -29,7 +28,7 @@ const theme = createMuiTheme({
             main: '#127696',
         },
         secondary: {
-            main:'#d5cb92',
+            main: '#d5cb92',
         }
     },
 });
@@ -82,8 +81,6 @@ class SharedWithUser extends Component {
         const action = { type: 'DELETE_SHARED_ACCESS', payload: event.target.value }
         this.props.dispatch(action);
         this.fetchSharedWithUser();
-
-
     }
 
     moveToItinerary = (event) => {
@@ -91,61 +88,57 @@ class SharedWithUser extends Component {
         console.log('event.target.value', childId);
         this.props.history.push(`sharedItinerary/${childId}`)
         console.log('move to itinerary', this.props.history.push(`/sharedItinerary/${childId}`));
-        
-        
     }
 
     render() {
-
         const { classes } = this.props;
 
         return (
-            
             <Paper className={classes.root}>
                 {JSON.stringify(this.props.sharedAccess.user_child_id)}
                 <MuiThemeProvider theme={theme}>
-                <Table className={classes.table}>
-                    <TableHead>
-                        <TableRow>
-                            <CustomTableCell>Guardian(s)</CustomTableCell>
-                            <CustomTableCell align="right">Child's Itinerary</CustomTableCell>
-                            <CustomTableCell align="right">View Itinerary</CustomTableCell>
-                            <CustomTableCell align="right">Remove From Network</CustomTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.props.sharedAccess.map(row => (
-                            <TableRow className={classes.row} key={row.id}>
-                                <CustomTableCell component="th" scope="row">
-                                    {row.full_name}
-                                </CustomTableCell>
-                                <CustomTableCell align="right">{row.name}</CustomTableCell>
-                                <CustomTableCell align="right">
-                                    <Button
-                                        className="eventButton"
-                                        variant="contained"
-                                        onClick={this.moveToItinerary}
-                                        color="secondary"
-                                        size="small"
-                                        value={row.user_child_id}>
-                                        View Itinerary
-                                </Button>
-                                </CustomTableCell>
-                                <CustomTableCell align="right">
-                                    <Button
-                                        className="eventButton"
-                                        variant="contained"
-                                        size="small"
-                                        color="primary"
-                                        value={row.id}
-                                        onClick={this.removeFromNetwork}>
-                                        Remove From Network
-                                </Button>
-                                </CustomTableCell>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <CustomTableCell>Guardian(s)</CustomTableCell>
+                                <CustomTableCell align="right">Child's Itinerary</CustomTableCell>
+                                <CustomTableCell align="right">View Itinerary</CustomTableCell>
+                                <CustomTableCell align="right">Remove From Network</CustomTableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.sharedAccess.map(row => (
+                                <TableRow className={classes.row} key={row.id}>
+                                    <CustomTableCell component="th" scope="row">
+                                        {row.full_name}
+                                    </CustomTableCell>
+                                    <CustomTableCell align="right">{row.name}</CustomTableCell>
+                                    <CustomTableCell align="right">
+                                        <Button
+                                            className="eventButton"
+                                            variant="contained"
+                                            onClick={this.moveToItinerary}
+                                            color="secondary"
+                                            size="small"
+                                            value={row.user_child_id}>
+                                            View Itinerary
+                                </Button>
+                                    </CustomTableCell>
+                                    <CustomTableCell align="right">
+                                        <Button
+                                            className="eventButton"
+                                            variant="contained"
+                                            size="small"
+                                            color="primary"
+                                            value={row.id}
+                                            onClick={this.removeFromNetwork}>
+                                            Remove From Network
+                                </Button>
+                                    </CustomTableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
                 </MuiThemeProvider>
             </Paper>
         );
@@ -154,7 +147,9 @@ class SharedWithUser extends Component {
 const mapStateToProps = (reduxStore) => ({
     sharedAccess: reduxStore.setSharedAccess.setSharedAccess
 });
+
 SharedWithUser.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 export default withRouter(withStyles(styles)(connect(mapStateToProps)(SharedWithUser)));

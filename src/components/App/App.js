@@ -129,14 +129,11 @@ class App extends Component {
               path="/favorites"
               component={Favorites}
             />
-
-
             <ProtectedRoute
               exact
               path="/viewProgram/:id"
               component={ViewCampProgram}
             />
-
             <ProtectedRoute
               exact
               path="/itinerary"
@@ -152,7 +149,6 @@ class App extends Component {
               path="/sharedItinerary/:id"
               component={SharedItinerary}
             />
-
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

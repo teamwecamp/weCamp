@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import InfoIcon from '@material-ui/icons/Info';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -58,7 +51,6 @@ class NavBar extends Component {
 
         const sideList = (
             <div className={classes.list}>
-               
                 <List>
                     <Link component={RouterLink} to="/landing">
                         <ListItem button>
@@ -103,9 +95,6 @@ class NavBar extends Component {
                         </ListItem>
                     </Link>
                 </List>
-               
-
-
             </div>
         );
         return (
@@ -125,9 +114,7 @@ class NavBar extends Component {
                         {sideList}
                     </div>
                 </SwipeableDrawer>
-
             </div>
-
         );
     }
 }

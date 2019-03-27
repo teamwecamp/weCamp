@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import './NavBar';
-import NavBar from './NavBar';
 
 const Nav = (props) => (
-
+//Replaced by NavBar
   
   <div className="nav">
     <Link to="/home">
