@@ -57,7 +57,7 @@ class LandingSponsoredCamps extends Component {
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
-                                    <Typography className={classes.title}>{this.props.camp.Name}</Typography>
+                                    <Typography className={classes.title}>{this.props.camp.name}</Typography>
                                     <Typography>{this.props.camp.region}</Typography>
                                     <CardMedia
                                         className={classes.media}

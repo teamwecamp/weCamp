@@ -8,14 +8,11 @@ import {
 
 import {connect} from 'react-redux';
 
-import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import Landing from '../Landing/Landing';
 import SearchCamps from '../Search/SearchCamps';
 import Favorites from '../Favorite/FavoriteCamps';
@@ -25,9 +22,7 @@ import CampRegistrationPage3 from '../CampRegistration/CampRegistrationPage3';
 import CampRegistrationPage4 from '../CampRegistration/CampRegistrationPage4';
 import ViewCamps from '../ViewCamps/ViewCamps';
 import SharedItinerary from '../Itinerary/SharedItinerary';
-import RegisterPage from '../RegisterPage/RegisterPage';
 import LoginPage from '../LoginPage/LoginPage';
-
 import UserProfile from '../UserProfile/UserProfile';
 
 import NavBar from '../Nav/NavBar';

@@ -121,7 +121,7 @@ class ViewCamps extends Component {
         let camp = this.props.viewCamp;
         return (
             <div className="viewCamps">
-                <h1 className="campName">{camp.Name}</h1>
+                <h1 className="campName">{camp.name}</h1>
                 {/* add logo */}
                 <img className="camp_pic" alt="camp pic" src={this.props.viewCamp.photo_url} />
                 <p className="summary">{camp.summary}</p>
