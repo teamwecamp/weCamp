@@ -28,8 +28,6 @@ class FavoriteCamps extends Component {
         this.props.dispatch(action);
     }
 
-
-
     favoriteCamps = () => {
         if (this.props.favoriteCamps.length === 0) {
             return (
@@ -55,8 +53,7 @@ class FavoriteCamps extends Component {
         const { spacing } = this.state;
         return (
             <div>
-                <h1>Favorite Camps</h1>
-              
+                <h1>Favorite Camps</h1>             
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.favoriteCamps()}
                 </Grid>

@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
                 let queryText = `SELECT "favorites"."camp_id", "child_profile"."name", "favorites"."id"
                     FROM "favorites" 
                     JOIN "user_child" 
-                    ON "favorites"."user_kid_id"="user_child"."id"
+                    ON "favorites"."user_child_id"="user_child"."id"
                     JOIN "child_profile"
                     ON "user_child"."child_id"="child_profile"."id"
                     WHERE "user_child"."user_id"= $1 AND "favorites"."favorite" = TRUE;`;
@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
                     console.log('kid', kid);
                     console.log('camp', camp);
                     //selecting camp name & info based on id received from above
-                    queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."website"
+                    queryText = `SELECT "camp"."name", "camp"."photo_url", "camp"."website"
                                 FROM "camp" 
                                 WHERE "camp"."id" =$1`;
                     const secondPull = await client.query(queryText, [favorite.camp_id]);
@@ -114,7 +114,7 @@ router.post('/', (req, res) => {
     if (req.isAuthenticated()) {
         const favorite = req.body;
         console.log(favorite);
-        const queryText = `INSERT INTO "favorites" ("user_kid_id", "camp_id") VALUES ($1, $2)`;
+        const queryText = `INSERT INTO "favorites" ("user_child_id", "camp_id") VALUES ($1, $2)`;
         pool.query(queryText, [parseInt(favorite.child), favorite.camp])
             .then(result => {
                 res.send(result.rows);

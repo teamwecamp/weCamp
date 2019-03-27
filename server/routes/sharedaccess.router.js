@@ -6,7 +6,6 @@ const router = express.Router();
 ///This will contain the requests for the sharedAccess for the users
 //to share their itineraries. 
 
-
 router.get('/userSharedWith', (req, res) => {
     if (req.isAuthenticated()) {
         const id = req.user.id;

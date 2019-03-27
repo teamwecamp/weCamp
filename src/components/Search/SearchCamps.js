@@ -46,8 +46,8 @@ class SearchCamps extends Component {
         type: "overnight",
         activityCategory: 0,
         activityType: 0,
-        startDate: '01/01/2019',
-        endDate: '12/31/2019',
+        startDate: '2019-05-01',
+        endDate: '2019-08-31',
         minCost: 0,
         maxCost: 10000,
         accessibility: "no",
@@ -95,11 +95,6 @@ class SearchCamps extends Component {
         this.props.dispatch(action);
         console.log("GET DROP DOWNS", action);
     };
-
-    getResults = () => {
-        //for dev only
-        this.props.dispatch({ type: 'FETCH_DEV_RESULTS' });
-    }
 
     render() {
         console.log(this.props.dropDown);
@@ -377,30 +372,6 @@ class SearchCamps extends Component {
                                 {type}
                             </MenuItem>
                         ))}
-                    </TextField>
-
-                    <TextField
-                        id="outlined-type"
-                        select
-                        label="State"
-                        className={classes.textField}
-                        value={this.state.state}
-                        onChange={this.handleSearchChange("state")}
-                        variant="outlined"
-                        SelectProps={{
-                            MenuProps: {
-                                className: classes.menu
-                            }
-                        }}
-                        style={{ width: 160, padding: 0 }}
-                        margin="dense"
-                    >
-                        {this.props.dropDown.states !== undefined &&
-                            this.props.dropDown.states.map(type => (
-                                <MenuItem key={type.id} value={type.id}>
-                                    {type.state}
-                                </MenuItem>
-                            ))}
                     </TextField>
                 </form>
                 <div>

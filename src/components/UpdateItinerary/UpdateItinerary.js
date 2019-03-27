@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-
+//component for stretch goal of updating itinerary
 class UpdateItinerary extends Component {
     render() {
         return (

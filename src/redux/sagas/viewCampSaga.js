@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 function* fetchStatus() {
     try {
         const response = yield axios.get(`api/viewcamps/status`);
-        console.log('this is fetchStatus saga', response.data);
         yield put({ type: 'SET_STATUS', payload: response.data });
     } catch (error) {
         console.log('there is error in fetchStatus');
@@ -13,10 +12,8 @@ function* fetchStatus() {
 }
 
 function* fetchCampDetails(action) {
-    // console.log('this is fetchCampDetails')
     try {
         const response = yield axios.get(`/api/viewcamps/${action.payload}`);
-        console.log(response.data[0]);
         yield put({ type: 'SET_VIEW_CAMPS_DETAILS', payload: response.data[0] });
     } catch (error) {
         console.log('there is an error in fetchCampDetails', error);
@@ -28,7 +25,6 @@ function* fetchCampDetails(action) {
 function* fetchCampProgram(action){
     try{
         const response = yield axios.get(`api/viewcamps/viewProgram/${action.payload}`);
-        console.log('this is in fetchCampProgram',response.data);
         yield put({type: 'SET_VIEW_CAMPS_PROGRAM', payload: response.data});
     }catch (error){
         console.log('there is an error in fetchCampProgram');
@@ -41,13 +37,10 @@ function* addItinerary (action){
         yield axios.post('api/viewcamps', action.payload);
         const nextAction = { type: 'SET_VIEW_CAMPS_PROGRAM'};
         yield put(nextAction);
-
     }catch(error){
         console.log('there is error in addItinerary saga', error)
         Swal('something went wrong');
-       
     }
-
 }
 
 function* userRegistrationSaga() {

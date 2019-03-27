@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -57,7 +56,7 @@ class LandingSponsoredCamps extends Component {
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
                                 <CardContent>
-                                    <Typography className={classes.title}>{this.props.camp.Name}</Typography>
+                                    <Typography className={classes.title}>{this.props.camp.name}</Typography>
                                     <Typography>{this.props.camp.region}</Typography>
                                     <CardMedia
                                         className={classes.media}

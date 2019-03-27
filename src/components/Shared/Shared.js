@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -8,13 +7,8 @@ import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Paper from '@material-ui/core/Paper';
-import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
 import UserSharedWith from './UserSharedWith';
 import SharedWithUser from './SharedWithUser';
-import { ListItemSecondaryAction } from '@material-ui/core';
 
 
 const theme = createMuiTheme({
@@ -28,7 +22,6 @@ const theme = createMuiTheme({
         }
     },
 });
-
 
 
 
@@ -92,17 +85,6 @@ class Shared extends Component {
         this.setState({ value });
     };
 
-
-    // componentDidMount = () => {
-    //     this.setSharedAccess();
-    // }
-
-    // setSharedAccess() {
-    //     const action = { type: 'SET_SHARED_ACCESS' }
-    //     this.props.dispatch(action);
-    // }
-
-
     render() {
 
         const { classes } = this.props;
@@ -125,18 +107,11 @@ class Shared extends Component {
                                 </Tabs>
                             </AppBar>
                             {value === 0 && <TabContainer>
-
                                 <UserSharedWith />
                             </TabContainer>}
                             {value === 1 && <TabContainer>
-
                                 <SharedWithUser />
-
-
-
-
                             </TabContainer>}
-
                         </div>
                     </MuiThemeProvider>
                 </NoSsr>

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 
 function* deleteFavoriteCamps(action) {
-    // console.log('this is inside of deleteFavoriteCamps');
     try {
         const campId = action.payload
         console.log(campId);
@@ -17,7 +16,6 @@ function* deleteFavoriteCamps(action) {
 
 
 function* updateFavoriteCamps(action) {
-    // console.log('this is updateFavoriteCamps');
     try {
         const favorite = action.payload
         console.log(favorite);
@@ -31,7 +29,6 @@ function* updateFavoriteCamps(action) {
 }
 
 function* fetchFavoriteCamps() {
-    // console.log('this is inside fetchFavoriteCamp');
     try {
         const response = yield axios.get(`/api/favorite`);
         console.log(response.data);
@@ -49,7 +46,6 @@ function* fetchResultsForDev() {
         console.log(response.data);
         const nextAction = { type: 'SET_RESULTS', payload: response.data }
         yield put(nextAction);
-
     } catch (error) {
         console.log('error in fetchResults saga', error);
     }
@@ -73,8 +69,6 @@ function* favoriteSaga() {
     yield takeEvery('ADD_FAVORITE_CAMP', updateFavoriteCamps);
     // get favorite camps
     yield takeEvery('FETCH_FAVORITE_CAMPS', fetchFavoriteCamps);
-    //for dev only
-    yield takeEvery('FETCH_DEV_RESULTS', fetchResultsForDev);
     yield takeEvery('FETCH_USER_CHILD', fetchUserChild);
 }
 

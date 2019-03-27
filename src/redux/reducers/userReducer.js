@@ -12,8 +12,6 @@ const userReducer = (state = {}, action) => {
 };
 
 const setUserProfileInfo = (state=[], action)=>{
-  // console.log('in setUserProfileInfo');
-
   switch (action.type) {
     case 'SET_USER_PROFILE_INFO':
       return action.payload;
@@ -24,8 +22,6 @@ const setUserProfileInfo = (state=[], action)=>{
 
 
 const setChildProfileInfo = (state = [], action) => {
-  // console.log('in setUserProfileInfo');
-
   switch (action.type) {
     case 'SET_CHILD_PROFILE_INFO':
       return action.payload;
@@ -34,8 +30,7 @@ const setChildProfileInfo = (state = [], action) => {
   }
 };
 
-// user will be on the redux state at:
-// state.user
+
 export default combineReducers({
   userReducer,
   setUserProfileInfo,

@@ -56,11 +56,6 @@ router.get('/viewProgram/:id', (req, res) => {
 });
 
 
-
-/**
- * POST route template
- */
-
 router.post('/', (req, res) => {
     console.log('this is in router post addItinerary', req.body);
     if (req.isAuthenticated()) {

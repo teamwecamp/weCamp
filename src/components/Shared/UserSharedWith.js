@@ -69,8 +69,6 @@ class UserSharedWith extends Component {
 
     }
 
-
-
     handleChange = (event, value) => {
         this.setState({ value });
     };
@@ -87,11 +85,9 @@ class UserSharedWith extends Component {
 
 
     render() {
-
         const { classes } = this.props;
 
         return (
-
             <Paper className={classes.root}>
                 {JSON.stringify(this.props.sharedaccess)}
                 <MuiThemeProvider theme={theme}>
@@ -122,7 +118,6 @@ class UserSharedWith extends Component {
                                         Remove Access
                                 </Button>
                                 </CustomTableCell>
-
                             </TableRow>
                         ))}
                     </TableBody>

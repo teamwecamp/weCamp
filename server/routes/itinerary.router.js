@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
                     console.log('date', date);
                     //selecting camp name & info based on dates_id received from above
                     //time and dates are in UNIX for timeline-calendar
-                    queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."title", "camp"."Name", 
+                    queryText = `SELECT "program_dates"."program_id", "camp_program"."camp_id", "camp_program"."title", "camp"."name", 
                                  EXTRACT(EPOCH from "program_dates"."start_date") * 1000 AS "start_date", 
                                  EXTRACT(EPOCH from "program_dates"."end_date") * 1000 AS "end_date", 
                                  EXTRACT(EPOCH from "program_dates"."end_time") * 1000 AS "end_time", 
@@ -71,7 +71,7 @@ router.get('/', (req, res) => {
                         result.end_time = result.end_date;
                     }
                     // add camp name to program title for display
-                    result.title = `${result.title} - ${result.Name}`
+                    result.title = `${result.title} - ${result.name}`
                     result.id = id;
                     // increase id counter by 1
                     id ++;

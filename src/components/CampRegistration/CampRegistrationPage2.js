@@ -77,10 +77,6 @@ class CampRegistrationPage2 extends Component {
     
   }
 
-  
-
-
-
   componentDidMount = () => {
     this.getDropDowns();
   };

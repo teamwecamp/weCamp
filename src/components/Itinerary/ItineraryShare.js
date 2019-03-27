@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -13,7 +13,6 @@ const theme = createMuiTheme({
         },
     },
 });
-
 
 
 class ItineraryShare extends Component {
@@ -55,14 +54,12 @@ class ItineraryShare extends Component {
                 }).catch((error) => {
                     Swal.fire('something went wrong');
                     console.log(error);
-                })
-                
+                })               
             }
         }).catch((error) => {
             Swal.fire('something went wrong');
             console.log(error);
         })
-
     }
 
     selectOptions = () => {

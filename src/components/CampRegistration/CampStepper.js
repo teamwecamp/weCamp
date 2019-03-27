@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
@@ -24,21 +23,6 @@ function getSteps() {
   return ['Input camp details.', 'Input cost and social media info.', 'Select camp activities','Input camp programs'];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return 'Input camp details.';
-    case 1:
-      return 'Input cost and social media info.';
-    case 2:
-      return 'Select camp activities';
-    case 3:
-      return 'Input camp programs';
-    default:
-      return 'Unknown step';
-  }
-}
-
 class CampStepper extends React.Component {
     constructor(props){
         super(props);
@@ -46,9 +30,6 @@ class CampStepper extends React.Component {
             activeStep: this.props.step,
             skipped: new Set(),
           };
-        
-    
-  
 }
   isStepOptional = step => step === 1;
 
@@ -123,49 +104,6 @@ class CampStepper extends React.Component {
             );
           })}
         </Stepper>
-        {/* <div>
-          {activeStep === steps.length ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed - you&apos;re finished
-              </Typography>
-              <Button onClick={this.handleReset} className={classes.button}>
-                Reset
-              </Button>
-            </div>
-          ) : (
-            <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
-                {this.isStepOptional(activeStep) && (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={this.handleSkip}
-                    className={classes.button}
-                  >
-                    Skip
-                  </Button>
-                )}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.handleNext}
-                  className={classes.button}
-                >
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
-              </div>
-            </div>
-          )}
-        </div> */}
       </div>
     );
   }

@@ -34,7 +34,7 @@ CREATE TABLE "activity_category" (
 CREATE TABLE "activities" (
 	"id" serial primary key,
 	"activity" varchar(40) NOT NULL,
-    "category_id" int NOT NULL
+    "category_id" int NOT NULL REFERENCES "activity_category"
 );
 
 
@@ -159,11 +159,10 @@ CREATE TABLE "sharing" (
 
 CREATE TABLE "favorites" (
 	"id" serial primary key,
-	"user_kid_id" int NOT NULL REFERENCES "user_child",
+	"user_child_id" int NOT NULL REFERENCES "user_child",
 	"camp_id" int NOT NULL REFERENCES "camp",
 	"favorite" BOOLEAN NOT NULL
 );
--- should be "user_child_id" for consistency
 
 INSERT INTO "gender" ("gender") VALUES ('boy'), ('girl'), ('co-ed');
 
@@ -189,4 +188,5 @@ INSERT INTO "activity_category" ("category") VALUES ('music'), ('athletic/sports
 INSERT INTO "activities" ("activity", "category_id") VALUES ('academic', 4), ('theater', 5), ('visual arts', 5), 
 ('cooking', 6), ('baseball', 2), ('basketball', 2), ('golf', 2), ('gymnastics', 2), ('horseback riding', 3),
 ('lacrosse', 2), ('rock climbing', 3), ('sailing', 3), ('soccer', 2), ('tennis', 2), ('track and field', 2), ('band', 1), 
-('hiking', 3), ('choir', 1), ('canoeing', 3), ('swimming', 3), ('arts & crafts', 5), ('foreign language', 4);
+('hiking', 3), ('choir', 1), ('canoeing', 3), ('swimming', 3), ('arts & crafts', 5), ('general music & singing', 1), 
+('foreign language', 4);

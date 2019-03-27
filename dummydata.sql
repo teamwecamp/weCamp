@@ -1,5 +1,5 @@
 -- camp #1, w/o insta
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
 "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", "twitter", "photo_url", "logo_url", 
 "website", "summary") VALUES ('Laketrails Base Camp', 'P.O. Box 25 Oak Island, MN, 56741', 1, '05/24/2019', 
 '09-08-2019', 3, false, 550, 750, false, 8004506460, 'https://www.facebook.com/laketrailsbasecamp', 
@@ -12,7 +12,7 @@ understanding of their own giftedness. Because of this, we don’t adhere to rig
 life to the fullest as our Creator presents it to us each day.');
 
 -- camp #2, with insta, no twitter
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
 "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", "instagram", "photo_url", "logo_url", 
 "website", "summary") VALUES ('Camp Mishawaka', 'P.O. Box 368 / 21525 Mishawaka Rd. Grand Rapids, MN 55744', 1, 
 '6/16/2019', '8/9/2019', 3, false, 3025, 9450, false, 2183265011, 'https://www.facebook.com/campmishawaka/', 
@@ -24,7 +24,7 @@ two, four, six and eight week sessions for boys and girls ages 8 to 16. We belie
 summer camp experience develops skills, friendships and memories that last a lifetime.'); 
 
 -- camp #3, with insta, no twitter
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", 
 "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", "instagram", "photo_url", "logo_url", 
 "website", "summary") VALUES ('Shetek Lutheran Ministeries', '14 Keeley Island Drive, Slayton, MN 56172', 2, '6/9/2019', '8/9/2019', 3, 
 true, 25, 515, false, 5077633567, 'https://www.facebook.com/pages/sheteklutheranministries', 
@@ -35,7 +35,7 @@ year-round retreats and meeting spaces, and environmental education. We are a Ch
 for your retreats, conferences, church group meetings, business & board meetings, family events, weddings, class reunions, and more.');
 
 -- camp #4 without insta and twitter
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
 "disabled_friendly", "phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Winnebago', '19708 Camp Winnebago Road Caledonia, MN 55921', 
 2, '6/12/2019', '8/4/2019', 3, false, 950, 1350, true, 5077242351, 'https://www.facebook.com/campwinnebagocaledonia?fref=ts', 
 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/2183326.jpg', 'http://www.campwinnebago.org/uploads/1/6/8/2/16820308/published/1465936858.png', 
@@ -43,7 +43,7 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 which we have been doing since 1968. ​We are situated in the beautiful Winnebago Valley in the globally rare blufflands of the famed driftless area.');
 
 -- camp #5 without social media 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Koronis', '15752 County Road 181  Paynesville, MN 56362-9377', 3, '6/12/2019', '8/3/2019', 3, true, 
 195, 680, false, 8556221973, 'https://www.koronisministries.org/files/tables/content/10569568/fields/primaryimage/00b97725562041e9b41f85945eb655a3/kayak+01.jpg?width=400&height=300&mode=crop', 
 'https://www.koronisministries.org/files/content/camps/images/koronis/newlogo_koronis.png', 'https://www.koronisministries.org/', E'Camp Koronis, has been 
@@ -52,7 +52,7 @@ kids love like archery, fishing, swimming, nature arts & crafts, boating, fishin
 led by our highly trained staff committed to safety, faith, and the individual worth of each camper.');
 
 -- camp #6 without insta and twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Reinbows Inc of Windom', '43341 480th Ave Windom, MN 56101-3326', 2, '6/10/19', '6/14/19', 
 3, false, 300, 300, false, 5078220526, 'https://www.facebook.com/ReinbowsInc/', 'https://www.reinbowsinc.org/wp-content/uploads/2018/11/IMG_8094.jpg', 
 'https://www.reinbowsinc.org/wp-content/uploads/2018/03/Reinbows-Logo-1.jpg', 'https://www.reinbowsinc.org/programs/summer-horse-camps/', 'Horse camp 
@@ -61,7 +61,7 @@ related camp crafts! For kids’ ages 7-14 years old who want to have fun learni
 of feeling like they own their own horse during horse camp!');
 
 -- camp #7 with insta, fb and twitter
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('ASI Summer Day Camps', '2600 Park Avenue Minneapolis MN 55407', 4, 
 '6/24/2019', '8/15/19', 3, false, 60, 125, true, 6128714907, 'https://www.facebook.com/AmericanSwedishInstitute', 'https://twitter.com/AmSwedInstitute', 
 'https://www.instagram.com/amswedinstitute/', 'https://www.asimn.org/sites/default/files/styles/oc_picture_header_desk_narrow/public/vikings_1.jpg?itok=h7aH25ir&timestamp=1405627522', 
@@ -70,7 +70,7 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 Minneapolis’ only castle while learning about Nordic history and culture. Camps are tailored for young minds entering grades 1-5.');
 
 -- camp #8 with insta, fb and twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
 "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Como', '1225 Estabrook Drive, Saint Paul, MN 55103', 4, '6/10/19', '8/30/19', 
 3, false, 135, 330, true, 6514878272, 'https://www.facebook.com/ComoZooConservatory', 'https://twitter.com/ComoZoo', 'https://www.instagram.com/comozooconservatory/', 
 'http://www.comozooconservatory.org/wp-content/uploads/2019/01/01.-giraffe-feeding-6.jpg', 'http://www.comozooconservatory.org/wp-content/uploads/2019/02/2019-camp-como.jpg', 
@@ -80,7 +80,7 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
  ambassadors. Qualified and enthusiastic instructors teach camps for children in preschool through eighth grade.');
 
 -- camp #9 without twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
 "facebook", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Mpls Bouldering Project Summer Camps', '1433 W. River Rd N. Minneapolis, MN 55411', 4, 
 '6/10/19', '8/23/19', 3, false, 200, 250, false, 6123082800, 'https://www.facebook.com/minneapolisboulderingproject', 'https://www.instagram.com/minneapolisboulderingproject/', 
 'https://static1.squarespace.com/static/58b0821a86e6c0c83ba97a07/5c3cc9d221c67c086c3b0427/5c3cd1c9b8a04593c30186e5/1547493889763/Youth+1.jpg?format=2500w', 
@@ -89,7 +89,7 @@ INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gen
 staff whose focus is youth development.');
 
 -- camp #10 without twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", 
 "facebook", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Lake Hubert for Girls', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/21/19', 2, false, 725, 
 9775, false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
 'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/PaddleboardGirls3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
@@ -98,7 +98,7 @@ we have continued to provide campers the opportunity to learn valuable life-skil
 than 40 different land and water activities to choose from, Camp Lake Hubert is the perfect playground for your child’s summer adventure.');
 
 -- camp #11 without twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", "phone", "facebook", 
 "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Lincoln for Boys', 'PO Box 1308 Lake Hubert, MN 56459', 1, '6/14/19', '8/15/19', 1, false, 725, 9775, 
 false, 8002421909, 'https://www.facebook.com/camplincolncamplakehubert/', 'https://www.instagram.com/camplincolncamplakehubert/', 
 'https://www.lincoln-lakehubert.com/wp-content/uploads/2017/07/HighRopesBoys3.jpg', 'https://www.lincoln-lakehubert.com/wp-content/uploads/2015/04/logo2.png', 
@@ -107,7 +107,7 @@ lifelong friendships, and memories. Throughout the years we have continued to pr
 leaders and friends. On over 400 acres and more than 40 different land and water activities to choose from, Camp Lincoln is the perfect playground for anyone’s summer adventure.');
 
 -- camp #12 without insta or twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", 
 "disabled_friendly", "phone", "facebook", "photo_url", "logo_url", "website", "summary") VALUES ('Circle R Ranch', '32549 State 27 Long Prairie, Minnesota 56347', 
 3, '6/2/19', '8/24/19', 3, false, 550, 650, false, 3205330322, 'https://www.facebook.com/circlerranchcamp/', 'http://circlerranch.com/wp-content/uploads/2017/03/trailride2.jpg', 
 'http://circlerranch.com/wp-content/themes/circleranch/images/logo.png',  'http://circlerranch.com/', E'Located in beautiful central Minnesota, the Circle R Ranch 
@@ -116,7 +116,7 @@ consisting of corn, oats and hay. Besides the 200 plus horses, there are many ot
 three llamas, potbelly pig and Pawnee the buffalo just to name a few of the animals around the ranch.');
 
 -- camp #13 with insta, fb and twitter 
-INSERT INTO "camp" ("Name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
+INSERT INTO "camp" ("name", "address", "region_id", "date_min", "date_max", "gender_id", "religion", "cost_min", "cost_max", "disabled_friendly", 
 "phone", "facebook", "twitter", "instagram", "photo_url", "logo_url", "website", "summary") VALUES ('Camp Birchwood for Boys', '12586 Gunflint Trl Slip 85 
 Grand Marais, MN 55604-4501', 1, '6/10/2019', '8/4/2019', 1, false, 450, 5350, false, 2183884402, 'https://www.facebook.com/gwc.bwb', 
 'https://twitter.com/CampBirchwood', 'https://www.instagram.com/campbirchwood/', 

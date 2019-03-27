@@ -87,7 +87,7 @@ class ResultsDetails extends Component {
                         <Card className={classes.card}>
                             <MuiThemeProvider theme={theme}>
                                 <CardHeader    
-                                    title={this.props.camp.Name}
+                                    title={this.props.camp.name}
                                     subheader={this.props.camp.region}
                                 />
                                 <CardContent>

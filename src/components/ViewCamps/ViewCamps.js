@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -114,14 +114,13 @@ class ViewCamps extends Component {
                 }
             })
         }
-
     }
 
     render() {
         let camp = this.props.viewCamp;
         return (
             <div className="viewCamps">
-                <h1 className="campName">{camp.Name}</h1>
+                <h1 className="campName">{camp.name}</h1>
                 {/* add logo */}
                 <img className="camp_pic" alt="camp pic" src={this.props.viewCamp.photo_url} />
                 <p className="summary">{camp.summary}</p>

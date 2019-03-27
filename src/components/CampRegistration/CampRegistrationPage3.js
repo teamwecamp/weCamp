@@ -6,7 +6,6 @@ import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 
-
 //this addes styling to only the form.
 const styles = theme => ({
   container: {
