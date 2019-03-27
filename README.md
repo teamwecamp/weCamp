@@ -40,7 +40,7 @@ new SQL query. All inserts must be done in order from top to bottom in the datab
 * Navigate to `localhost:3000`
 * Register for an account and login "username will be your email address."
 * Once logged in the homepage will look like this
-![HomePage](public/screenshots/homepage.png)
+* ![HomePage](public/screenshots/homepage.png)
 
 
 
