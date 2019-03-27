@@ -22,7 +22,7 @@ new SQL query. All inserts must be done in order from top to bottom in the datab
 
 * Open the dummydata.sql copy and paste the contents into a new SQL query. 
 
-* In the table "camp" go to the sponsored column and change a couple camps to TRUE so they will show on the homepage. 
+* In the table "camp" go to the "sponsored" column and change a couple camps to TRUE so they will show on the homepage. 
 
 
 ## Development Setup Instructions
