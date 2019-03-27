@@ -12,7 +12,6 @@ router.get('/recentCamps', (req, res) => {
                         LIMIT 4;`;
     pool.query(queryText)
     .then(result => {
-        console.log(result.rows);
         res.send(result.rows);
     }).catch(error => {
         console.log('there is error in get camps router', error);

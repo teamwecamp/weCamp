@@ -2,10 +2,6 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
-//Below will be the GET and POST from our search.
-/**
- * GET route template
- */
 //This will get all the dropdown information from the database to
 //populate the search dropdowns.
 router.get('/dropdown', (req, res) => {
@@ -50,7 +46,6 @@ router.get('/dropdown', (req, res) => {
       //end of query statements
 
       await client.query("COMMIT");
-      console.log(dropDown);
       res.send(dropDown);
     } catch (e) {
       console.log("ROLLBACK", e);
@@ -90,26 +85,11 @@ router.get('/searchresult', (req, res) => {
     }else{
       search.accessibility = false;
     }
-
   }
 
 setAccessibility();
 setReligion();
-  
-// WHERE "camp_program"."age_min" >= $1
-// AND "camp_program"."age_max" <= $2
-// AND "gender"."gender" = $3
-// AND "camp"."religion" = $4
-// AND "camp_type"."type" = $5
-// AND "activity_category"."category" = $6
-// AND "activities"."activity" = $7
-// AND "camp"."cost_min" >= $8
-// AND "camp"."cost_max" <= $9
-// AND "camp"."disabled_friendly" = $10
-// AND "regions"."region"= $11
-// AND "states"."state"= $12
-// AND "start_date" >= $13
-// AND "program_dates"."end_date" <= $14;`;
+
 
   let i = 1;
 
@@ -148,80 +128,6 @@ setReligion();
   }
   console.log(i);
 
-  // let values = [
-  //   Number(search.minAge),
-  //   Number(search.maxAge),
-  //   search.gender,
-  //   search.religion,
-  //   search.type,
-  //   search.activityCategory,
-  //   search.activityType,
-  //   search.minCost,
-  //   search.maxCost,
-  //   search.accessibility,
-  //   search.region,
-  //   search.state,
-  //   search.startDate,
-  //   search.endDate,
-  // ];
-  console.log('This is after conversion',values);
-  // const queryText = `SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", "program_dates"."start_date", "program_dates"."end_date", "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
-  //                    FROM "camp" 
-  //                    JOIN "regions" 
-  //                    ON  "camp"."region_id" = "regions"."id"
-  //                    JOIN "camps_activities"
-  //                    ON "camp"."id"="camps_activities"."camp_id"
-  //                    JOIN "activities"
-  //                    ON "activities"."id"="camps_activities"."activity_id"
-  //                    JOIN "activity_category"
-  //                    ON "activities"."category_id"="activity_category"."id"
-  //                    JOIN "camp_program"
-  //                    ON "camp"."id"="camp_program"."camp_id"
-  //                    JOIN "gender"
-  //                    ON "camp_program"."gender_id"="gender"."id"
-  //                    JOIN "camp_type"
-  //                    ON "camp_program"."type_id"="camp_type"."id"
-  //                    JOIN "program_dates"
-  //                    ON "camp_program"."id"="program_dates"."program_id"
-  //                    WHERE "camp_type"."id" =$1;`;
-
-// const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
-// "program_dates"."start_date" AS "start_date", 
-// "program_dates"."end_date" AS "end_date",
-//  "camp"."cost_min", "camp"."cost_max", "activity_category"."category"
-// FROM "camp"
-// JOIN "regions"
-// ON  "camp"."region_id" = "regions"."id"
-// JOIN "camps_activities"
-// ON "camp"."id"="camps_activities"."camp_id"
-// JOIN "activities"
-// ON "activities"."id"="camps_activities"."activity_id"
-// JOIN "activity_category"
-// ON "activities"."category_id"="activity_category"."id"
-// JOIN "camp_program"
-// ON "camp"."id"="camp_program"."camp_id"
-// JOIN "gender"
-// ON "camp_program"."gender_id"="gender"."id"
-// JOIN "camp_type"
-// ON "camp_program"."type_id"="camp_type"."id"
-// JOIN "program_dates"
-// ON "camp_program"."id"="program_dates"."program_id"
-// JOIN "states"
-// ON "regions"."state_id" = "states"."id"
-// WHERE "camp_program"."age_min" >= $1
-// AND "camp_program"."age_max" <= $2
-// AND "gender"."gender" = $3
-// AND "camp"."religion" = $4
-// AND "camp_type"."type" = $5
-// AND "activity_category"."category" = $6
-// AND "activities"."activity" = $7
-// AND "camp"."cost_min" >= $8
-// AND "camp"."cost_max" <= $9
-// AND "camp"."disabled_friendly" = $10
-// AND "regions"."region"= $11
-// AND "states"."state"= $12
-// AND "start_date" >= $13
-// AND "program_dates"."end_date" <= $14;`;
 const queryText =`SELECT DISTINCT "camp"."name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
  "camp"."cost_min", "camp"."cost_max","camp"."date_min","camp"."date_max"
 FROM "camp"
@@ -250,18 +156,12 @@ console.log(queryText);
   pool.query(queryText,values)
     .then(result => {
       console.log('search object', result.rows);
-
       res.send(result.rows);
     }).catch(error => {
       console.log('there is error in get search result router', error);
       res.sendStatus(500);
     });
-
 });
 
-/**
- * POST route template
- */
-router.post("/", (req, res) => { });
 
 module.exports = router;
