@@ -3,8 +3,6 @@ import axios from 'axios';
 
 function* fetchUserProfileInfo(){
     try{
-        // const userId = action.payload.userId
-        // ${ userId }
         const response = yield axios.get('/api/userprofileinfo/user');
         const nextAction = { type: 'SET_USER_PROFILE_INFO', payload: response.data};
         yield put(nextAction);
@@ -17,7 +15,6 @@ function* fetchUserProfileInfo(){
 
 function* fetchChildProfileInfo() {
     try {
-        // const userId = action.payload.userId
         const response = yield axios.get('/api/userprofileinfo/childInfo');
         const nextAction = { type: 'SET_CHILD_PROFILE_INFO', payload: response.data };
         yield put(nextAction);

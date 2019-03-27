@@ -7,7 +7,6 @@ import userSaga from './userSaga';
 
 // Sagas 
 import LandingSaga from './LandingSaga';
-// add Favorite saga
 import FavoriteSaga from './FavoriteSaga';
 import searchSaga from './searchSaga';
 import updateItinerarySaga from './updateItinerary';
@@ -25,9 +24,6 @@ import SharedItinerarySaga from './sharedItinerarySaga';
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
 
-// some sagas trigger other sagas, as an example
-// the registration triggers a login
-// and login triggers setting the user
 export default function* rootSaga() {
   yield all([
     loginSaga(),

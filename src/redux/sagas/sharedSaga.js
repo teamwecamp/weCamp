@@ -30,7 +30,6 @@ function* deleteSharedAccess(action){
 function* fetchSharedWithUser () {
     try{
         const response = yield axios.get('/api/sharedaccess/sharedWithUser')
-        console.log('response', response.rows);
         const nextAction = yield { type: 'SET_SHARED_ACCESS', payload: response.data }
         yield put(nextAction);
     }catch(error) {
@@ -42,10 +41,8 @@ function* fetchSharedWithUser () {
 function* fetchUserSharedWith () {
     try {
         const response = yield axios.get('api/sharedaccess/userSharedWith')
-        console.log('response', response.rows);
         const nextAction = yield {type: 'SET_SHARED_ACCESS', payload: response.data }
         yield put(nextAction);
-        
     }catch(error) {
         console.log('error in fetchusersharedwith', error);
         
@@ -64,13 +61,10 @@ function* addSharedAccess(action){
 //match user to share against database and pull user id
 function* matchUser(action) {
     try {
-        console.log(action.payload);
         const newShare = action.payload;
         const email = action.payload.email;
         const response = yield axios.get(`api/sharedAccess/user/${email}`);
-        console.log(response);
         newShare.id = response.data[0].id;
-        console.log(newShare);
         //send new guest with id to reducer
         yield put({ type: 'ADD_SHARED_ACCESS', payload: newShare })
     } catch (error) {

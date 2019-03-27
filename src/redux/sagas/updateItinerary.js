@@ -3,7 +3,6 @@ import axios from 'axios';
 
 
 function* putUpdateItinerary(action){
-    // console.log('this is putUpdateItinerary saga');
     try{
         const itineraryId = action.payload.itineraryId
         yield axios.put(`/api/itinerary/${itineraryId}`);

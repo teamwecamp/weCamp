@@ -2,7 +2,6 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* putUserRegistration (action){
-    // console.log('this is insider putUserRegistration saga')
     try{
         const registerId = action.payload.registerId
         yield axios.put(`/api/user/${registerId}`)

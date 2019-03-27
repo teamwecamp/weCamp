@@ -8,7 +8,6 @@ function* fetchSearchCamps(action){
         const response = yield axios.get(`/api/search/searchresult`, {params: action.payload});
         const nextAction = {type: 'SET_SEARCH_CAMPS', payload: response.data}
         yield put(nextAction);
-
     }catch(error) {
         console.log('this is inside fetchSearchCamps saga', error)
         Swal.fire('something went wrong')
@@ -22,7 +21,6 @@ function* fetchSearchCampsDropDown() {
         const response = yield axios.get('/api/search/dropdown');
         const nextAction = { type: 'SET_CAMP_DROP_DOWN', payload:response.data };
         yield put(nextAction);
-
     } catch (error) {
         console.log('this is inside fetchSearchCamps saga', error)
     }
