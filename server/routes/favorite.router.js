@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
                     console.log('kid', kid);
                     console.log('camp', camp);
                     //selecting camp name & info based on id received from above
-                    queryText = `SELECT "camp"."Name", "camp"."photo_url", "camp"."website"
+                    queryText = `SELECT "camp"."name", "camp"."photo_url", "camp"."website"
                                 FROM "camp" 
                                 WHERE "camp"."id" =$1`;
                     const secondPull = await client.query(queryText, [favorite.camp_id]);

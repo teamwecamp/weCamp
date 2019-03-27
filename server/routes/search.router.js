@@ -222,7 +222,7 @@ setReligion();
 // AND "states"."state"= $12
 // AND "start_date" >= $13
 // AND "program_dates"."end_date" <= $14;`;
-const queryText =`SELECT DISTINCT "camp"."Name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
+const queryText =`SELECT DISTINCT "camp"."name", "camp"."photo_url", "camp"."address", "camp"."id", "regions"."region", "gender"."gender", "camp_type"."type", 
  "camp"."cost_min", "camp"."cost_max","camp"."date_min","camp"."date_max"
 FROM "camp"
 JOIN "regions"

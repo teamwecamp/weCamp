@@ -192,7 +192,7 @@ class ViewCampProgram extends Component {
         itinerary.status = this.state.status;
         itinerary.camps = newState;
         const action = { type: 'ADD_ITINERARY', payload: itinerary }
-        this.props.dispatch(action);
+        // this.props.dispatch(action);
         this.props.history.push('/itinerary');
 
     }

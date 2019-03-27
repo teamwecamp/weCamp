@@ -102,7 +102,7 @@ class SharedItinerary extends Component {
                         groups={groups}
                         items={items}
                         // default time is set to display June 1, 2019 through Aug 31, 2019 (UNIX)
-                        defaultTimeStart="1559407540000"
+                    defaultTimeStart="1556697600000"
                         defaultTimeEnd="1567351065000"
                         canMove={false}
                         canResize={false}
