@@ -46,7 +46,7 @@ new SQL query. All inserts must be done in order from top to bottom in the datab
 
 # Authors
 
-* Brit Carter
+* Brit Cartter
 * Tang Yang
 * Erin Olson
 * Nick Neiert
