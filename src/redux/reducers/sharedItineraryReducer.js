@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 const setSharedItinerary = (state = [], action) => {
-    console.log('in setSharedItinerary', action.payload);
+    // console.log('in setSharedItinerary', action.payload);
 
     switch (action.type) {
         case 'SET_SHARED_ITINERARY':

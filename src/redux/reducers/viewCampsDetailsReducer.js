@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 
 const setViewCampsDetails = (state = [], action) => {
     // console.log('in setRecentCamps');
-
     switch (action.type) {
         case 'SET_VIEW_CAMPS_DETAILS':
             return action.payload;
@@ -12,7 +11,7 @@ const setViewCampsDetails = (state = [], action) => {
 };
 
 const setViewCampsPrograms = (state = [], action) => {
-    console.log('this is in setViewCampProgram');
+    // console.log('this is in setViewCampProgram');
 
     switch (action.type) {
         case 'SET_VIEW_CAMPS_PROGRAM':
@@ -23,7 +22,7 @@ const setViewCampsPrograms = (state = [], action) => {
 };
 
 const setStatus = (state = [], action) => {
-    console.log('this is setStatus reducer');
+    // console.log('this is setStatus reducer');
     switch (action.type) {
         case 'SET_STATUS':
             return action.payload;

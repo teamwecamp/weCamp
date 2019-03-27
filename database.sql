@@ -34,7 +34,7 @@ CREATE TABLE "activity_category" (
 CREATE TABLE "activities" (
 	"id" serial primary key,
 	"activity" varchar(40) NOT NULL,
-    "category_id" int NOT NULL
+    "category_id" int NOT NULL REFERENCES "activity_category"
 );
 
 

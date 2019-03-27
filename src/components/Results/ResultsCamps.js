@@ -36,7 +36,6 @@ class ResultsCamps extends Component {
             <div>
                 <h1>Results</h1>
                 {/* {JSON.stringify(this.props.results)} */}
-                {this.props.devResults !== undefined &&
                 <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
                     {this.resultsDetails()}
                 </Grid>}
@@ -47,7 +46,6 @@ class ResultsCamps extends Component {
 
 const mapStateToProps = (reduxStore) => ({
     results: reduxStore.setSearchCamps.setSearchCamps,
-    devResults: reduxStore.setFavoriteCamps.setResultsForDev
 });
 
 ResultsCamps.propTypes = {

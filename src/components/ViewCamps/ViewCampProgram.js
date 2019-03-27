@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-// this here is Material UI 
+// Material UI 
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
@@ -18,13 +18,10 @@ import InputBase from '@material-ui/core/InputBase';
 import TextField from "@material-ui/core/TextField";
 import Checkbox from '@material-ui/core/Checkbox';
 import { createMuiTheme } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
 
 
 
-
-
-// this is materia UI table
+// material UI table
 const CustomTableCell = withStyles(theme => ({
     head: {
         backgroundColor: '#127696',
@@ -64,9 +61,6 @@ const styles = theme => ({
             fontSize: 10,
         },
     },
-
-    // this is for material UI button
-
 });
 
 
@@ -115,7 +109,6 @@ const BootstrapInput = withStyles(theme => ({
 class ViewCampProgram extends Component {
 
     // this is for selects material UI
-
     constructor(props) {
         super(props);
         this.state = {
@@ -163,10 +156,6 @@ class ViewCampProgram extends Component {
 
     // checks the programs 
     handleChange = name => event => {
-        // let checkId = event.target.name
-        // this.setState({ [checkId]: event.target.checked });
-        // console.log(checkId);
-
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const activity = target.name;
@@ -192,16 +181,14 @@ class ViewCampProgram extends Component {
         itinerary.status = this.state.status;
         itinerary.camps = newState;
         const action = { type: 'ADD_ITINERARY', payload: itinerary }
-        // this.props.dispatch(action);
+        this.props.dispatch(action);
         this.props.history.push('/itinerary');
-
     }
 
 
 
 
     render() {
-
         const { classes } = this.props;
 
         return (
@@ -219,11 +206,9 @@ class ViewCampProgram extends Component {
                                 <CustomTableCell>End Time</CustomTableCell>
                                 <CustomTableCell>Type</CustomTableCell>
                                 <CustomTableCell></CustomTableCell>
-
                             </TableRow>
                         </TableHead>
                         <TableBody>
-
                             {this.props.campProgram !== undefined && this.props.campProgram.map(schedule => (
                                 <TableRow key={schedule.id}>
                                     <TableCell component="th" scope="row">
@@ -280,7 +265,6 @@ class ViewCampProgram extends Component {
                         </FormControl>
                         {/* this is for slecting the status */}
                         <FormControl className={classes.margin}>
-
                             <TextField
                                 id="outlined-type"
                                 select
@@ -304,16 +288,13 @@ class ViewCampProgram extends Component {
                                         </MenuItem>
 
                                     ))}
-
                             </TextField>
-
                         </FormControl>
                         <div>
                             <MuiThemeProvider theme={theme}>
                                 <Button variant="contained" color="primary" onClick={this.addItinerary} className={classes.button}>Add To Itinerary</Button>
                             </MuiThemeProvider>
                         </div>
-
                     </form>
                 </Paper>
             </div>

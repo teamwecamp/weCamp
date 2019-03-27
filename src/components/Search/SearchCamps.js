@@ -46,8 +46,8 @@ class SearchCamps extends Component {
         type: "overnight",
         activityCategory: 0,
         activityType: 0,
-        startDate: '01/01/2019',
-        endDate: '12/31/2019',
+        startDate: '2019-05-01',
+        endDate: '2019-08-31',
         minCost: 0,
         maxCost: 10000,
         accessibility: "no",
@@ -95,11 +95,6 @@ class SearchCamps extends Component {
         this.props.dispatch(action);
         console.log("GET DROP DOWNS", action);
     };
-
-    getResults = () => {
-        //for dev only
-        this.props.dispatch({ type: 'FETCH_DEV_RESULTS' });
-    }
 
     render() {
         console.log(this.props.dropDown);

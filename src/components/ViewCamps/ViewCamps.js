@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({

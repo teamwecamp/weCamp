@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import {connect} from 'react-redux';
-
+import './App.css';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
@@ -24,15 +24,9 @@ import ViewCamps from '../ViewCamps/ViewCamps';
 import SharedItinerary from '../Itinerary/SharedItinerary';
 import LoginPage from '../LoginPage/LoginPage';
 import UserProfile from '../UserProfile/UserProfile';
-
 import NavBar from '../Nav/NavBar';
 import Shared from '../Shared/Shared';
 import Itinerary from '../Itinerary/Itinerary';
-
-
-
-
-import './App.css';
 import ViewCampProgram from '../ViewCamps/ViewCampProgram';
 
 

@@ -1,7 +1,7 @@
 .viewCamps {
     justify-content: center;
     display: grid;
-    grid-template-columns: 450px 80px 160px  160px;
+    grid-template-columns: 450px 90px 170px  170px;
     grid-template-rows: auto;
     grid-template-areas: 
         "header header  header header"
@@ -11,8 +11,8 @@
 }
 
 .camp_pic {
-    height: 300px;
-    width: auto;
+    max-height: 300px;
+    max-width: 530px;
     grid-area: main;
 }
 
